@@ -43,7 +43,7 @@ menu:
   tags: /tags
   # sitemap: /sitemap.xml
   about: /about
-  # commonweal: /404.html
+  commonweal: /404.html
 
 
 # Enable/Disable menu icons.
