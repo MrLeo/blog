@@ -5,6 +5,7 @@ categories: about
 tags: 
 - Leo
 type: about
+comments: false
 ---
 
 
