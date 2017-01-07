@@ -17,5 +17,4 @@ target/
 Thumbs.db
 db.json
 *.log
-public/
 .deploy*/
