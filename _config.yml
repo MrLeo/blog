@@ -74,7 +74,6 @@ theme: next
 deploy:
   type: git
   repo: https://github.com/MrLeo/blog.git
-  branch: gh-pages
 
 # search
 search:
