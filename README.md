@@ -1,3 +1,3 @@
-### [Leo's GitHub pages blog.](http://mrleo.github.io/blog/index.html)
+### [Leo's GitHub pages blog.](http://mrleo.github.io/blog/)
 ## 或
-### [xuebin.me](http://xuebin.me/index.html)
+### [xuebin.me](http://xuebin.me/)
