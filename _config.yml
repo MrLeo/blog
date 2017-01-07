@@ -73,8 +73,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:MrLeo/blog.git
-  branch: gh-pages
+  repo: https://github.com/MrLeo/blog.git
 
 # search
 search:
