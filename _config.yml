@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Leo’s blog
+title: Mr. Leo
 subtitle:
 description: 
 author: Leo
@@ -74,6 +74,7 @@ theme: next
 deploy:
   type: git
   repo: https://github.com/MrLeo/blog.git
+  branch: gh-pages
 
 # search
 search:
