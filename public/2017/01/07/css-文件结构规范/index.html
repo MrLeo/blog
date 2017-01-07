@@ -1,0 +1,925 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="dev,css,前端,规范,结构," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Sass 文件夹结构说明参考：http://sass-guidelin.es/zh/#section-53
+下载Sass文件结构示例
+Base 文件夹
+base/文件夹存放项目中的模板文件。在这里，可以找到重置文件、排版规范文件或者一个样式表——定义一些 HTML 元素公认的标准样式（我喜欢命名为_base.scss）。
+
+
+_base.scss:公认的标准样式
+_reset.scss:浏览器重置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS文件结构规范">
+<meta property="og:url" content="http://xuebin.me/2017/01/07/css-文件结构规范/index.html">
+<meta property="og:site_name" content="Leo’s blog">
+<meta property="og:description" content="Sass 文件夹结构说明参考：http://sass-guidelin.es/zh/#section-53
+下载Sass文件结构示例
+Base 文件夹
+base/文件夹存放项目中的模板文件。在这里，可以找到重置文件、排版规范文件或者一个样式表——定义一些 HTML 元素公认的标准样式（我喜欢命名为_base.scss）。
+
+
+_base.scss:公认的标准样式
+_reset.scss:浏览器重置">
+<meta property="og:updated_time" content="2017-01-07T11:43:28.827Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS文件结构规范">
+<meta name="twitter:description" content="Sass 文件夹结构说明参考：http://sass-guidelin.es/zh/#section-53
+下载Sass文件结构示例
+Base 文件夹
+base/文件夹存放项目中的模板文件。在这里，可以找到重置文件、排版规范文件或者一个样式表——定义一些 HTML 元素公认的标准样式（我喜欢命名为_base.scss）。
+
+
+_base.scss:公认的标准样式
+_reset.scss:浏览器重置">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xuebin.me/2017/01/07/css-文件结构规范/"/>
+
+
+
+
+
+  <title> CSS文件结构规范 | Leo’s blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1706cfef7a8fd27b12633a699c2f75c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Leo’s blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            所有
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xuebin.me/2017/01/07/css-文件结构规范/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Leo">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Leo’s blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Leo’s blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS文件结构规范
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T16:48:32+08:00">
+                2017-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/规范/" itemprop="url" rel="index">
+                    <span itemprop="name">规范</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Sass-文件夹结构说明"><a href="#Sass-文件夹结构说明" class="headerlink" title="Sass 文件夹结构说明"></a>Sass 文件夹结构说明</h1><p>参考：<a href="http://sass-guidelin.es/zh/#section-53" target="_blank" rel="external">http://sass-guidelin.es/zh/#section-53</a></p>
+<p><a href="sass.zip">下载Sass文件结构示例</a></p>
+<h3 id="Base-文件夹"><a href="#Base-文件夹" class="headerlink" title="Base 文件夹"></a>Base 文件夹</h3><blockquote>
+<p><code>base/</code>文件夹存放项目中的模板文件。在这里，可以找到重置文件、排版规范文件或者一个样式表——定义一些 HTML 元素公认的标准样式（我喜欢命名为_base.scss）。</p>
+</blockquote>
+<ul>
+<li><strong>_base.scss</strong>:公认的标准样式</li>
+<li><strong>_reset.scss</strong>:浏览器重置样式</li>
+<li><strong>_animations.scss</strong>:动画</li>
+<li>。。。</li>
+</ul>
+<h3 id="Layout-Partials文件夹"><a href="#Layout-Partials文件夹" class="headerlink" title="Layout / Partials文件夹"></a>Layout / Partials文件夹</h3><blockquote>
+<p><code>layout/</code>(partials/) 文件夹存放构建网站或者应用程序使用到的布局部分。该文件夹存放网站主体（头部、尾部、导航栏、侧边栏…）的样式表、栅格系统甚至是所有表单的 CSS 样式。</p>
+</blockquote>
+<h3 id="Components-Modules-文件夹"><a href="#Components-Modules-文件夹" class="headerlink" title="Components / Modules 文件夹"></a>Components / Modules 文件夹</h3><blockquote>
+<p>对于小型组件来说，有一个 <code>components/</code> 文件夹来存放。相对于 <code>layout/</code> 的宏观（定义全局线框结构），<code>components/</code> 更专注于局部组件。该文件夹包含各类具体模块，基本上是所有的独立模块，比如一个滑块、一个加载块、一个部件……由于整个网站或应用程序主要由微型模块构成，<code>components/</code> 中往往有大量文件。</p>
+</blockquote>
+<h3 id="Pages-文件夹"><a href="#Pages-文件夹" class="headerlink" title="Pages 文件夹"></a>Pages 文件夹</h3><blockquote>
+<p>如果页面有特定的样式，最好将该样式文件放进 <code>pages/</code> 文件夹并用页面名字。例如，主页通常具有独特的样式，因此可以在 <code>pages/</code> 下包含一个 <code>_home.scss</code> 以实现需求。<br>取决于各自的开发流程，这些文件可以使用你自己的前缀命名，避免在最终样式表中与他人的样式表发生合并。一切完全取决于你。</p>
+</blockquote>
+<h3 id="Themes-文件夹"><a href="#Themes-文件夹" class="headerlink" title="Themes 文件夹"></a>Themes 文件夹</h3><blockquote>
+<p>在大型网站和应用程序中，往往有多种主题。虽有多种方式管理这些主题，但是我个人更喜欢把它们存放在 <code>themes/</code> 文件夹中。</p>
+</blockquote>
+<h3 id="Utils-Helpers-Utilities-文件夹"><a href="#Utils-Helpers-Utilities-文件夹" class="headerlink" title="Utils / Helpers / Utilities 文件夹"></a>Utils / Helpers / Utilities 文件夹</h3><blockquote>
+<p>utils/ 文件夹包含了整个项目中使用到的 Sass 辅助工具，这里存放着每一个全局变量、函数、混合宏和占位符。<br>该文件夹的经验法则是，编译后这里不应该输出任何 CSS，单纯的只是一些 Sass 辅助工具。<br>当项目体量庞大工具复杂时，通过主题而不是类型分类整理可能更有帮助，比如排版（_typography.scss）、主题（_theming.scss）等。每一个文件都包含所有的相关信息：变量、函数、混合宏和占位符。这样做可以让维护更加单，特别针对于文件较长的情况。</p>
+</blockquote>
+<h3 id="Vendors-文件夹"><a href="#Vendors-文件夹" class="headerlink" title="Vendors 文件夹"></a>Vendors 文件夹</h3><blockquote>
+<p>最后但并非最终的是，大多数的项目都有一个 vendors/ 文件夹，用来存放所有外部库和框架（Normalize, Bootstrap, jQueryUI, FancyCarouselSliderjQueryPowered……）的 CSS 文件。将这些文件放在同一个文件中是一个很好的说明方式:”嘿，这些不是我的代码，无关我的责任。”<br>如果你重写了任何库或框架的部分，建议设置第 8 个文件夹 vendors-extensions/ 来存放，并使用相同的名字命名。<br>例如，vendors-extensions/_boostrap.scss 文件存放所有重写 Bootstrap 默认 CSS 之后的 CSS 规则。这是为了避免在原库或者框架文件中进行二次编辑——显然不是好方法。</p>
+</blockquote>
+<h3 id="入口文件"><a href="#入口文件" class="headerlink" title="入口文件"></a>入口文件</h3><blockquote>
+<p>主文件（通常写作 main.scss）应该是整个代码库中唯一开头不用下划线命名的 Sass 文件。除 @import 和注释外，该文件不应该包含任何其他代码。</p>
+</blockquote>
+<hr>
+<h1 id="文件引入方式："><a href="#文件引入方式：" class="headerlink" title="文件引入方式："></a>文件引入方式：</h1><p>为了保持可读性，主文件应遵守如下两种准则一种</p>
+<h4 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h4><ul>
+<li>每个 @import引用一个文件；</li>
+<li>每个 @import单独一行；</li>
+<li>从相同文件夹中引入的文件之间不用空行；</li>
+<li>从不同文件夹中引入的文件之间用空行分隔；</li>
+<li>忽略文件扩展名和下划线前缀。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> <span class="string">'utils/variables'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'utils/functions'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'utils/mixins'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'utils/placeholders'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span> <span class="string">'vendors/bootstrap'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'vendors/jquery-ui'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'vendors-extensions/bootstrap'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'vendors-extensions/jquery-ui'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span> <span class="string">'base/reset'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'base/typography'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span> <span class="string">'layout/navigation'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'layout/grid'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'layout/header'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'layout/footer'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'layout/sidebar'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'layout/forms'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span> <span class="string">'components/buttons'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'components/carousel'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'components/cover'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'components/dropdown'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span> <span class="string">'pages/home'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'pages/contact'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span> <span class="string">'themes/theme'</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">'themes/admin'</span>;</div></pre></td></tr></table></figure>
+<h4 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h4><ul>
+<li>每个文件夹只使用一个@import</li>
+<li>每个@import之后都断行</li>
+<li>每个文件占一行</li>
+<li>新的文件跟在最后的文件夹后面</li>
+<li>文件扩展名都可以省略</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span></div><div class="line">  <span class="string">'utils/variables'</span>,</div><div class="line">  <span class="string">'utils/functions'</span>,</div><div class="line">  <span class="string">'utils/mixins'</span>,</div><div class="line">  <span class="string">'utils/placeholders'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span></div><div class="line">  <span class="string">'vendors/bootstrap'</span>,</div><div class="line">  <span class="string">'vendors/jquery-ui'</span>,</div><div class="line">  <span class="string">'vendors-extensions/bootstrap'</span>,</div><div class="line">  <span class="string">'vendors-extensions/jquery-ui'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span></div><div class="line">  <span class="string">'base/reset'</span>,</div><div class="line">  <span class="string">'base/typography'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span></div><div class="line">  <span class="string">'layout/navigation'</span>,</div><div class="line">  <span class="string">'layout/grid'</span>,</div><div class="line">  <span class="string">'layout/header'</span>,</div><div class="line">  <span class="string">'layout/footer'</span>,</div><div class="line">  <span class="string">'layout/sidebar'</span>,</div><div class="line">  <span class="string">'layout/forms'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span></div><div class="line">  <span class="string">'components/buttons'</span>,</div><div class="line">  <span class="string">'components/carousel'</span>,</div><div class="line">  <span class="string">'components/cover'</span>,</div><div class="line">  <span class="string">'components/dropdown'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span></div><div class="line">  <span class="string">'pages/home'</span>,</div><div class="line">  <span class="string">'pages/demo'</span>;</div><div class="line"></div><div class="line">@<span class="keyword">import</span></div><div class="line">  <span class="string">'themes/theme'</span>,</div><div class="line">  <span class="string">'themes/admin'</span>;</div></pre></td></tr></table></figure>
+<hr>
+<p>另一个有意思的方面，由业内已流行的 <a href="http://csswizardry.com/" target="_blank" rel="external">Harry Roberts</a>, <a href="http://daverupert.com/" target="_blank" rel="external">Dave Rupert</a> 和 <a href="http://css-tricks.com/" target="_blank" rel="external">Chris Coyier</a> 引起的，那就是将所有的CSS声明、Hack行为和我们不支持的行为放入一个 <em>shame file</em>。该文件命名为 <code>_shame.scss</code>，在所有文件之后被引用，放在所有样式表的最后。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Nav specificity fix.</div><div class="line"> *</div><div class="line"> * Someone used an ID in the header code (`#header a &#123;&#125;`) which trumps the</div><div class="line"> * nav selectors (`.site-nav a &#123;&#125;`). Use !important to override it until I</div><div class="line"> * have time to refactor the header stuff.</div><div class="line"> */</div><div class="line"><span class="selector-class">.site-nav</span> <span class="selector-tag">a</span> &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#BADA55</span> <span class="meta">!important</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dev/" rel="tag"># dev</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/规范/" rel="tag"># 规范</a>
+          
+            <a href="/tags/结构/" rel="tag"># 结构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/07/css-选择器嵌套规范/" rel="next" title="CSS选择器嵌套规范">
+                <i class="fa fa-chevron-left"></i> CSS选择器嵌套规范
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/07/javascript规范/" rel="prev" title="javascript规范">
+                javascript规范 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460"
+               alt="Leo" />
+          <p class="site-author-name" itemprop="name">Leo</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Sass-文件夹结构说明"><span class="nav-number">1.</span> <span class="nav-text">Sass 文件夹结构说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Base-文件夹"><span class="nav-number">1.0.1.</span> <span class="nav-text">Base 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout-Partials文件夹"><span class="nav-number">1.0.2.</span> <span class="nav-text">Layout / Partials文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Components-Modules-文件夹"><span class="nav-number">1.0.3.</span> <span class="nav-text">Components / Modules 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pages-文件夹"><span class="nav-number">1.0.4.</span> <span class="nav-text">Pages 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Themes-文件夹"><span class="nav-number">1.0.5.</span> <span class="nav-text">Themes 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Utils-Helpers-Utilities-文件夹"><span class="nav-number">1.0.6.</span> <span class="nav-text">Utils / Helpers / Utilities 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vendors-文件夹"><span class="nav-number">1.0.7.</span> <span class="nav-text">Vendors 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入口文件"><span class="nav-number">1.0.8.</span> <span class="nav-text">入口文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件引入方式："><span class="nav-number">2.</span> <span class="nav-text">文件引入方式：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式一："><span class="nav-number">2.0.0.1.</span> <span class="nav-text">方式一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式二："><span class="nav-number">2.0.0.2.</span> <span class="nav-text">方式二：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

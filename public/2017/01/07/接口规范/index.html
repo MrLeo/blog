@@ -1,0 +1,1326 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="dev,规范,开发,接口," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="所有的返回数据都要配合全局状态码；
+接口参数 requestData 中的 XXX 需要根据实际业务需求进行替换，其他参数为固定接口参数；
+接口返回值 returnData 中的 KEY 需要根据实际业务需求进行替换，格式要保持统一，其他返回参数为固定接口参数。
+
+
+[TOC]
+STATUS_CODE 状态码
+
+
+状态码
+说明
+
+
+
+
+1xx
+元数据
+
+
+2xx
+正确的响应
+
+
+3xx
+重定向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="接口规范">
+<meta property="og:url" content="http://xuebin.me/2017/01/07/接口规范/index.html">
+<meta property="og:site_name" content="Leo’s blog">
+<meta property="og:description" content="所有的返回数据都要配合全局状态码；
+接口参数 requestData 中的 XXX 需要根据实际业务需求进行替换，其他参数为固定接口参数；
+接口返回值 returnData 中的 KEY 需要根据实际业务需求进行替换，格式要保持统一，其他返回参数为固定接口参数。
+
+
+[TOC]
+STATUS_CODE 状态码
+
+
+状态码
+说明
+
+
+
+
+1xx
+元数据
+
+
+2xx
+正确的响应
+
+
+3xx
+重定向">
+<meta property="og:updated_time" content="2017-01-07T11:43:28.877Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="接口规范">
+<meta name="twitter:description" content="所有的返回数据都要配合全局状态码；
+接口参数 requestData 中的 XXX 需要根据实际业务需求进行替换，其他参数为固定接口参数；
+接口返回值 returnData 中的 KEY 需要根据实际业务需求进行替换，格式要保持统一，其他返回参数为固定接口参数。
+
+
+[TOC]
+STATUS_CODE 状态码
+
+
+状态码
+说明
+
+
+
+
+1xx
+元数据
+
+
+2xx
+正确的响应
+
+
+3xx
+重定向">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xuebin.me/2017/01/07/接口规范/"/>
+
+
+
+
+
+  <title> 接口规范 | Leo’s blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1706cfef7a8fd27b12633a699c2f75c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Leo’s blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            所有
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xuebin.me/2017/01/07/接口规范/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Leo">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Leo’s blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Leo’s blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                接口规范
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T16:23:42+08:00">
+                2017-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/规范/" itemprop="url" rel="index">
+                    <span itemprop="name">规范</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<ul>
+<li>所有的返回数据都要配合全局状态码；</li>
+<li>接口参数 requestData 中的 <em>XXX</em> 需要根据实际业务需求进行替换，其他参数为固定接口参数；</li>
+<li>接口返回值 returnData 中的 <em>KEY</em> 需要根据实际业务需求进行替换，格式要保持统一，其他返回参数为固定接口参数。</li>
+</ul>
+</blockquote>
+<p>[TOC]</p>
+<h2 id="STATUS-CODE-状态码"><a href="#STATUS-CODE-状态码" class="headerlink" title="STATUS_CODE 状态码"></a><code>STATUS_CODE</code> 状态码</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">状态码</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1xx</td>
+<td style="text-align:left">元数据</td>
+</tr>
+<tr>
+<td style="text-align:center">2xx</td>
+<td style="text-align:left">正确的响应</td>
+</tr>
+<tr>
+<td style="text-align:center">3xx</td>
+<td style="text-align:left">重定向</td>
+</tr>
+<tr>
+<td style="text-align:center">4xx</td>
+<td style="text-align:left">客户端错误</td>
+</tr>
+<tr>
+<td style="text-align:center">5xx</td>
+<td style="text-align:left">服务端错误</td>
+</tr>
+</tbody>
+</table>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="单条数据"><a href="#单条数据" class="headerlink" title="单条数据"></a>单条数据</h3><h4 id="XXX接口"><a href="#XXX接口" class="headerlink" title="XXX接口"></a>XXX接口</h4><blockquote>
+<p>接口用途:获取XXX单条信息</p>
+</blockquote>
+<p><code>URL</code> : /app/interface/getItem</p>
+<p><code>Method</code> : POST or GET</p>
+<p><code>requestData</code>：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必选</th>
+<th>类型及范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>XXX</em></td>
+<td>√</td>
+<td>string</td>
+<td>如用户ID[^示例]</td>
+</tr>
+</tbody>
+</table>
+<p><em>接口参数示例</em></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"MEMBER_ID"</span>:<span class="string">"123"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>returnData</code> :</p>
+<table>
+<thead>
+<tr>
+<th>返回键</th>
+<th>类型</th>
+<th>返回值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STATUS_CODE</td>
+<td>int</td>
+<td>状态码</td>
+<td>参考上方的全局状态码</td>
+</tr>
+<tr>
+<td>MSG</td>
+<td>string</td>
+<td>返回状态信息</td>
+<td>如操作成功，可以为空</td>
+</tr>
+<tr>
+<td>KEY1</td>
+<td>int</td>
+<td>响应字段值1[^示例]</td>
+<td></td>
+</tr>
+<tr>
+<td>KEY2</td>
+<td>string</td>
+<td>响应字段值2[^示例]</td>
+<td></td>
+</tr>
+<tr>
+<td>KEY3</td>
+<td>object</td>
+<td>响应字段值3[^示例]</td>
+<td>可以依然包含对象</td>
+</tr>
+<tr>
+<td>- KEY3_KEY1</td>
+<td>string</td>
+<td>- 响应字段值3-1[^示例]</td>
+<td></td>
+</tr>
+<tr>
+<td>- KEY3_KEY2</td>
+<td>string</td>
+<td>- 响应字段值3-2[^示例]</td>
+</tr>
+</tbody>
+</table>
+<p><em>（接口返回数据示例，可以直接将测试工具[^1]中的数据粘贴过来）</em></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//测试地址 =&gt; http://123.57.89.97:8080/t2o/app/forum/listForumByActivity?ACTIVITY_ID=1f423553e3534b20b01523a08460a981&amp;MEMBER_ID=58b6195bfe804fbb94dadac5f500124b&amp;TYPE=2&amp;showCount=10&amp;currentPage=1</div><div class="line"></div><div class="line">&#123;</div><div class="line">  "STATUS_CODE": 0, //=&gt;状态码，必需</div><div class="line">  "MSG": "success", //=&gt;返回信息，必需</div><div class="line">  // 以下字段需要根据实际业务需求替换</div><div class="line">  "KEY1": "响应字段值1",</div><div class="line">  "KEY2": "响应字段值2",</div><div class="line">  "KEY3": &#123;</div><div class="line">    "KEY3_KEY1": "响应字段值3-1",</div><div class="line">    "KEY3_KEY2": "响应字段值3-2"</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="列表数据"><a href="#列表数据" class="headerlink" title="列表数据"></a>列表数据</h3><h4 id="XXX接口-1"><a href="#XXX接口-1" class="headerlink" title="XXX接口"></a>XXX接口</h4><blockquote>
+<p>接口用途:获取XXX列表数据</p>
+</blockquote>
+<p><code>URL</code> : /app/interface/getList</p>
+<p><code>Method</code> : POST / GET</p>
+<p><code>requestData</code>：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必选</th>
+<th>类型及范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>XXX</em></td>
+<td>√</td>
+<td>string</td>
+<td>如用户ID[^示例]</td>
+</tr>
+<tr>
+<td>PAGE_INDEX</td>
+<td></td>
+<td>int</td>
+<td>页码，不传默认获取第一页</td>
+</tr>
+<tr>
+<td>SHOW_COUNT</td>
+<td></td>
+<td>int</td>
+<td>每页显示条数，不传默认每页10条</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"MEMBER_ID"</span>:<span class="string">"123"</span>,</div><div class="line">  <span class="attr">"PAGE_INDEX"</span>:<span class="number">1</span>,</div><div class="line">  <span class="attr">"SHOW_COUNT"</span>:<span class="number">10</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>returnData</code> :</p>
+<table>
+<thead>
+<tr>
+<th>返回键</th>
+<th>类型</th>
+<th>返回值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STATUS_CODE</td>
+<td>int</td>
+<td>状态码</td>
+<td>参考上方的全局状态码</td>
+</tr>
+<tr>
+<td>MSG</td>
+<td>string</td>
+<td>返回状态信息</td>
+<td>如操作成功，可以为空</td>
+</tr>
+<tr>
+<td>CURRENT_PAGE</td>
+<td>int</td>
+<td>当前页码</td>
+<td></td>
+</tr>
+<tr>
+<td>PAGE_COUNT</td>
+<td>int</td>
+<td>总页数</td>
+<td></td>
+</tr>
+<tr>
+<td><em>KEY1</em></td>
+<td>int</td>
+<td>响应字段值1[^示例]</td>
+<td></td>
+</tr>
+<tr>
+<td><em>KEY2</em></td>
+<td>string</td>
+<td>相应字段值2[^示例]</td>
+<td></td>
+</tr>
+<tr>
+<td>LIST</td>
+<td>Array[Object]</td>
+<td>对象列表</td>
+<td>LIST为空时显示 <em>“LIST”:[]</em></td>
+</tr>
+<tr>
+<td>- <em>KEY</em></td>
+<td>string</td>
+<td>- 对象列表字段值[^示例]</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试地址 =&gt; http://123.57.89.97:8080/t2o/app/forum/listForumByActivity?ACTIVITY_ID=1f423553e3534b20b01523a08460a981&amp;MEMBER_ID=58b6195bfe804fbb94dadac5f500124b&amp;TYPE=2&amp;showCount=10&amp;currentPage=1</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"STATUS_CODE"</span>: <span class="number">0</span>, <span class="comment">//=&gt;状态码，必需</span></div><div class="line">  <span class="string">"MSG"</span>: <span class="string">"success"</span>, <span class="comment">//=&gt;返回信息，必需</span></div><div class="line">  <span class="string">"CURRENT_PAGE"</span>: <span class="number">1</span>, <span class="comment">//=&gt;当前页码</span></div><div class="line">  <span class="string">"PAGE_COUNT"</span>: <span class="number">10</span>, <span class="comment">//=&gt;总页数</span></div><div class="line">  <span class="string">"KEY1"</span>: <span class="number">123</span>,</div><div class="line">  <span class="string">"KEY2"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"LIST"</span>: [ <span class="comment">//=&gt; 列表数组</span></div><div class="line">    &#123;<span class="string">"KEY"</span>: <span class="string">"对象列表字段值"</span>&#125;,</div><div class="line">    &#123;<span class="string">"KEY"</span>: <span class="string">"对象列表字段值"</span>&#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="增-删-改"><a href="#增-删-改" class="headerlink" title="增/删/改"></a>增/删/改</h3><h4 id="XXX接口-2"><a href="#XXX接口-2" class="headerlink" title="XXX接口"></a>XXX接口</h4><blockquote>
+<p>接口用途:……</p>
+</blockquote>
+<p><code>URL</code> : /app/interface/add</p>
+<p><code>Method</code> : POST</p>
+<p><code>requestData</code>：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必选</th>
+<th>类型及范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>XXX</em></td>
+<td>√</td>
+<td>string</td>
+<td>如用户ID[^示例]</td>
+</tr>
+<tr>
+<td><em>XXX</em></td>
+<td></td>
+<td>string</td>
+<td>如昵称[^示例]</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"MEMBER_ID"</span>:<span class="string">"123"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>returnData</code> :</p>
+<table>
+<thead>
+<tr>
+<th>返回键</th>
+<th>类型</th>
+<th>返回值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STATUS_CODE</td>
+<td>int</td>
+<td>状态码</td>
+<td>参考上方的全局状态码</td>
+</tr>
+<tr>
+<td>MSG</td>
+<td>string</td>
+<td>返回状态信息</td>
+<td>如操作成功，可以为空</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>int</td>
+<td>增、删、改数据的ID或者标志</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试地址 =&gt; http://123.57.89.97:8080/t2o/app/forum/listForumByActivity?ACTIVITY_ID=1f423553e3534b20b01523a08460a981&amp;MEMBER_ID=58b6195bfe804fbb94dadac5f500124b&amp;TYPE=2&amp;showCount=10&amp;currentPage=1</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"STATUS_CODE"</span>: <span class="number">0</span>, <span class="comment">//=&gt;状态码，必需</span></div><div class="line">  <span class="string">"MSG"</span>: <span class="string">"success"</span>, <span class="comment">//=&gt;返回信息，必需</span></div><div class="line">  <span class="string">"ID"</span>: <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><h3 id="Base64上传图片"><a href="#Base64上传图片" class="headerlink" title="Base64上传图片"></a>Base64上传图片</h3><h4 id="XXX接口-3"><a href="#XXX接口-3" class="headerlink" title="XXX接口"></a>XXX接口</h4><blockquote>
+<p>接口用途:……</p>
+</blockquote>
+<p><code>URL</code> : /app/interface/uploadBase64</p>
+<p><code>Method</code> : POST</p>
+<p><code>requestData</code>：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必选</th>
+<th>类型及范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>XXX</em></td>
+<td></td>
+<td>string</td>
+<td>如用户ID[^示例]</td>
+</tr>
+<tr>
+<td>FILE</td>
+<td>√</td>
+<td>string</td>
+<td>图片文件的Base64字符串</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"MEMBER_ID"</span>:<span class="string">"123"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>returnData</code> :</p>
+<table>
+<thead>
+<tr>
+<th>返回键</th>
+<th>类型</th>
+<th>返回值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STATUS_CODE</td>
+<td>int</td>
+<td>状态码</td>
+<td>参考上方的全局状态码</td>
+</tr>
+<tr>
+<td>MSG</td>
+<td>string</td>
+<td>返回状态信息</td>
+<td>如操作成功，可以为空</td>
+</tr>
+<tr>
+<td>FILE_PATH</td>
+<td>int</td>
+<td>文件上传后的服务器路径</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试地址 =&gt; http://123.57.89.97:8080/t2o/app/forum/listForumByActivity?ACTIVITY_ID=1f423553e3534b20b01523a08460a981&amp;MEMBER_ID=58b6195bfe804fbb94dadac5f500124b&amp;TYPE=2&amp;showCount=10&amp;currentPage=1</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"STATUS_CODE"</span>: <span class="number">0</span>, <span class="comment">//=&gt;状态码，必需</span></div><div class="line">  <span class="string">"MSG"</span>: <span class="string">"success"</span>, <span class="comment">//=&gt;返回信息，必需</span></div><div class="line">  <span class="string">"FILE_PATH"</span>: <span class="string">"xxx/xxx.png"</span> <span class="comment">//=&gt;保存的文件路径</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="文件流上传"><a href="#文件流上传" class="headerlink" title="文件流上传"></a>文件流上传</h3><h4 id="XXX接口-4"><a href="#XXX接口-4" class="headerlink" title="XXX接口"></a>XXX接口</h4><blockquote>
+<p>接口用途:……</p>
+</blockquote>
+<p><code>URL</code> : /app/interface/uploadFile</p>
+<p><code>Method</code> : POST</p>
+<p><code>requestData</code>：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必选</th>
+<th>类型及范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>XXX</em></td>
+<td></td>
+<td>string</td>
+<td>如用户ID[^示例]</td>
+</tr>
+<tr>
+<td>FILE</td>
+<td>√</td>
+<td>file</td>
+<td>文件对象</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"MEMBER_ID"</span>:<span class="string">"123"</span>,</div><div class="line">  <span class="attr">"FILE"</span>:<span class="string">"..."</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>returnData</code> :</p>
+<table>
+<thead>
+<tr>
+<th>返回键</th>
+<th>类型</th>
+<th>返回值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STATUS_CODE</td>
+<td>int</td>
+<td>状态码</td>
+<td>参考上方的全局状态码</td>
+</tr>
+<tr>
+<td>MSG</td>
+<td>string</td>
+<td>返回状态信息</td>
+<td>如操作成功，可以为空</td>
+</tr>
+<tr>
+<td>FILE_PATH</td>
+<td>int</td>
+<td>文件上传后的服务器路径</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//测试地址 =&gt; http://123.57.89.97:8080/t2o/app/forum/listForumByActivity?ACTIVITY_ID=1f423553e3534b20b01523a08460a981&amp;MEMBER_ID=58b6195bfe804fbb94dadac5f500124b&amp;TYPE=2&amp;showCount=10&amp;currentPage=1</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"STATUS_CODE"</span>: <span class="number">0</span>, <span class="comment">//=&gt;状态码，必需</span></div><div class="line">  <span class="string">"MSG"</span>: <span class="string">"success"</span>, <span class="comment">//=&gt;返回信息，必需</span></div><div class="line">  <span class="string">"FILE_PATH"</span>: <span class="string">"xxx/xxx.png"</span> <span class="comment">//=&gt;保存的文件路径</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>[^示例]: <a href="http://toutiao.com/a6324044757329051906/" target="_blank" rel="external">http://toutiao.com/a6324044757329051906/</a> “接口示例”<br>[^1]: <a href="http://www.getpostman.com" target="_blank" rel="external">http://www.getpostman.com</a> “接口测试工具：POSTMAN”<br>[^2]: <a href="http://jsoneditoronline.org/index.html?referrer=chrome_app" target="_blank" rel="external">http://jsoneditoronline.org/index.html?referrer=chrome_app</a> “JSON格式化工具”</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dev/" rel="tag"># dev</a>
+          
+            <a href="/tags/规范/" rel="tag"># 规范</a>
+          
+            <a href="/tags/开发/" rel="tag"># 开发</a>
+          
+            <a href="/tags/接口/" rel="tag"># 接口</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/07/命名规范/" rel="next" title="命名规范">
+                <i class="fa fa-chevron-left"></i> 命名规范
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/07/css-命名规范/" rel="prev" title="CSS命名规范">
+                CSS命名规范 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460"
+               alt="Leo" />
+          <p class="site-author-name" itemprop="name">Leo</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#STATUS-CODE-状态码"><span class="nav-number">1.</span> <span class="nav-text">STATUS_CODE 状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询"><span class="nav-number">2.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单条数据"><span class="nav-number">2.1.</span> <span class="nav-text">单条数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XXX接口"><span class="nav-number">2.1.1.</span> <span class="nav-text">XXX接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表数据"><span class="nav-number">2.2.</span> <span class="nav-text">列表数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XXX接口-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">XXX接口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">3.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增-删-改"><span class="nav-number">3.1.</span> <span class="nav-text">增/删/改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XXX接口-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">XXX接口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传"><span class="nav-number">4.</span> <span class="nav-text">上传</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Base64上传图片"><span class="nav-number">4.1.</span> <span class="nav-text">Base64上传图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XXX接口-3"><span class="nav-number">4.1.1.</span> <span class="nav-text">XXX接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件流上传"><span class="nav-number">4.2.</span> <span class="nav-text">文件流上传</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XXX接口-4"><span class="nav-number">4.2.1.</span> <span class="nav-text">XXX接口</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
