@@ -3,7 +3,7 @@
   <!-- 代码1：放在页面需要展示的位置  -->
   <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
   <!--打赏-->
-  <div id="cyReward" role="cylabs" data-use="reward"></div>
+  <div id="cyReward" role="cylabs" data-use="reward" style="text-align: center;"></div>
   <!--评论表情-->
   <div id="cyEmoji" role="cylabs" data-use="emoji"></div>
   <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
