@@ -12,10 +12,17 @@ keywords: "博客, 柳学斌, 学斌, xuebin, Leo, blog, Hexo, NexT"
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss:
+rss: /atom.xml
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
 
 # Specify the date when the site was setup
-since: 2015
+since: 2016
 
 # icon between year and author @Footer
 authoricon: heart
@@ -136,8 +143,9 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
-  #LinkLabel: Link
+social:
+  QQ: http://wpa.qq.com/msgrd?v=3&uin=652889559&site=qq&menu=yes
+  GitHub: https://github.com/MrLeo
 
 
 # Social Links Icons
@@ -272,7 +280,7 @@ mathjax:
 #baidu_analytics:
 
 # Duoshuo ShortName
-#duoshuo_shortname:
+# duoshuo_shortname: xuebin-leo
 
 # Disqus
 #disqus_shortname:
