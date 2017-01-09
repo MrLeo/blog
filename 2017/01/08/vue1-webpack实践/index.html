@@ -1,0 +1,1010 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="dev,前端,vue," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mr. Leo" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="参考
+vue-tutorial
+Vue+Webpack开发可复用的单页面富应用教程
+Vue+Webpack使用规范
+
+对比其他框架
+推荐代码使用 CommonJS 或 ES6 模块，然后使用 Webpack 或 Browserify 打包。
+你可以使用 Webpack + vue-loader 或 Browserify + vueify 构建这些单文件 Vue 组件。
+
+可以在 Webpackbi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue1+webpack实践">
+<meta property="og:url" content="http://xuebin.me/2017/01/08/vue1-webpack实践/index.html">
+<meta property="og:site_name" content="Mr. Leo">
+<meta property="og:description" content="参考
+vue-tutorial
+Vue+Webpack开发可复用的单页面富应用教程
+Vue+Webpack使用规范
+
+对比其他框架
+推荐代码使用 CommonJS 或 ES6 模块，然后使用 Webpack 或 Browserify 打包。
+你可以使用 Webpack + vue-loader 或 Browserify + vueify 构建这些单文件 Vue 组件。
+
+可以在 Webpackbi">
+<meta property="og:image" content="https://cdn.scotch.io/9/vFba0QgQRReyNZPgFpKU_vue-time-1.png">
+<meta property="og:image" content="http://cn.vuejs.org/images/vue-component.png">
+<meta property="og:image" content="http://cn.vuejs.org/images/vue-component-with-preprocessors.png">
+<meta property="og:updated_time" content="2017-01-09T17:02:59.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue1+webpack实践">
+<meta name="twitter:description" content="参考
+vue-tutorial
+Vue+Webpack开发可复用的单页面富应用教程
+Vue+Webpack使用规范
+
+对比其他框架
+推荐代码使用 CommonJS 或 ES6 模块，然后使用 Webpack 或 Browserify 打包。
+你可以使用 Webpack + vue-loader 或 Browserify + vueify 构建这些单文件 Vue 组件。
+
+可以在 Webpackbi">
+<meta name="twitter:image" content="https://cdn.scotch.io/9/vFba0QgQRReyNZPgFpKU_vue-time-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xuebin.me/2017/01/08/vue1-webpack实践/"/>
+
+
+
+
+
+  <title> vue1+webpack实践 | Mr. Leo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1706cfef7a8fd27b12633a699c2f75c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mr. Leo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description"></h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            所有
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xuebin.me/2017/01/08/vue1-webpack实践/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Leo">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Mr. Leo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Mr. Leo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                vue1+webpack实践
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-08T16:16:41+08:00">
+                2017-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://github.com/MeCKodo/vue-tutorial" target="_blank" rel="external">vue-tutorial</a></li>
+<li><a href="https://www.talkingcoder.com/article/6310756346094488391" target="_blank" rel="external">Vue+Webpack开发可复用的单页面富应用教程</a></li>
+<li><a href="https://www.talkingcoder.com/article/6309726065044556372" target="_blank" rel="external">Vue+Webpack使用规范</a></li>
+</ul>
+<p><a href="http://cn.vuejs.org/guide/comparison.html" target="_blank" rel="external">对比其他框架</a></p>
+<p>推荐代码使用 CommonJS 或 ES6 模块，然后使用 <a href="http://webpack.github.io/" target="_blank" rel="external">Webpack</a> 或 <a href="http://browserify.org/" target="_blank" rel="external">Browserify</a> 打包。</p>
+<p>你可以使用 Webpack + <a href="https://github.com/vuejs/vue-loader" target="_blank" rel="external">vue-loader</a> 或 Browserify + <a href="https://github.com/vuejs/vueify" target="_blank" rel="external">vueify</a> 构建这些单文件 Vue 组件。</p>
+<blockquote>
+<p>可以在 <a href="http://www.webpackbin.com/vue" target="_blank" rel="external">Webpackbin.com</a> 上在线尝试！<br><strong>chrome开发工具 : <a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd" target="_blank" rel="external">vue-developertools</a></strong></p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>我们将会使用webpack去为我们的模块打包，预处理，热加载。如果你对webpack不熟悉，它就是可以帮助我们把多个js文件打包为1个入口文件，并且可以达到按需加载。这就意味着，我们不用去担心由于太多的组件，导致了过多的HTTP请求，这是非常有益于产品体验的。但，我们并不只是为了这个而使用webpack，我们需要用webpack去编译.vue文件，如果没有使用一个loader去转换我们.vue文件里的style，js，html，那么浏览器就无法识别。</li>
+<li>模块热加载是webpack的一个非常碉堡的特性，将会为我们的单页应用带来极大的便利。<br> 通常来说，当我们修改了代码刷新页面，那应用里的所有状态就都没有了。这对于开发一个单页应用来说是非常痛苦的，因为需要重新在跑一遍流程。如果有模块热加载，当你修改了代码，你的代码会直接修改，页面并不会刷新，所以状态也会被保留。</li>
+<li>Vue也为我们提供了CSS预处理，所以我们可以选择在.vue文件里写LESS或者SASS去代替原生CSS。</li>
+<li>我们过去通常需要使用npm下载一堆的依赖，但是现在我们可以选择Vue-cli。这是一个vue生态系统中一个伟大创举。这意味着我们不需要手动构建我们的项目，而它就可以很快地为我们生成。</li>
+</ol>
+<blockquote>
+<p>使用脚手架工具 <a href="https://github.com/vuejs/vue-cli" target="_blank" rel="external">vue-cli</a> 可以快速地构建项目：单文件 Vue 组件，热加载，保存时检查代码，单元测试等。</p>
+</blockquote>
+<ul>
+<li><p>安装vue-cli (确保你有node和npm)</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g vue-cli</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用脚手架初始创建项目</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vue init &lt;template-name&gt; &lt;project-name&gt;</div></pre></td></tr></table></figure>
+<p>  Example:<em>创建一个webpack项目</em> </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vue init webpack my-project</div></pre></td></tr></table></figure>
+</li>
+<li><p>项目模版下载好了之后需要安装项目用到的依赖包</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd my-project</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+</li>
+<li><p>这时可以将项目运行起来看看效果了</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm run dev</div></pre></td></tr></table></figure>
+<p>这一行命令代表着它会去找到<code>package.json</code>的<code>scripts</code>对象，执行<code>node bulid/dev-server.js</code>。在这文件里，配置了Webpack，会让它去编译项目文件，并且运行服务器，我们在<code>localhost:8080</code>即可查看我们的应用。</p>
+<p><img src="https://cdn.scotch.io/9/vFba0QgQRReyNZPgFpKU_vue-time-1.png" alt=""></p>
+</li>
+</ul>
+<h3 id="vue-cli-构建的目录结构"><a href="#vue-cli-构建的目录结构" class="headerlink" title="vue-cli 构建的目录结构"></a>vue-cli 构建的目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── build/                      # webpack config files</div><div class="line">│   └── ...</div><div class="line">├── config/                     </div><div class="line">│   ├── index.js                # main project config</div><div class="line">│   └── ...</div><div class="line">├── src/</div><div class="line">│   ├── main.js                 # app entry file</div><div class="line">│   ├── App.vue                 # main app component</div><div class="line">│   ├── components/             # ui components</div><div class="line">│   │   └── ...</div><div class="line">│   └── assets/                 # module assets (processed by webpack)</div><div class="line">│       └── ...</div><div class="line">├── static/                     # pure static assets (directly copied)</div><div class="line">├── test/</div><div class="line">│   └── unit/                   # unit tests</div><div class="line">│   │   ├── specs/              # test spec files</div><div class="line">│   │   ├── index.js            # test build entry file</div><div class="line">│   │   └── karma.conf.js       # test runner config file</div><div class="line">│   └── e2e/                    # e2e tests</div><div class="line">│   │   ├── specs/              # test spec files</div><div class="line">│   │   ├── custom-assertions/  # custom assertions for e2e tests</div><div class="line">│   │   ├── runner.js           # test runner script</div><div class="line">│   │   └── nightwatch.conf.js  # test runner config file</div><div class="line">├── .babelrc                    # babel config</div><div class="line">├── .editorconfig.js            # editor config</div><div class="line">├── .eslintrc.js                # eslint config</div><div class="line">├── index.html                  # index.html template</div><div class="line">└── package.json                # build scripts and dependencies</div></pre></td></tr></table></figure>
+<p>  更多内容参照<a href="https://vuejs-templates.github.io/webpack" target="_blank" rel="external">https://vuejs-templates.github.io/webpack</a></p>
+<h2 id="Vue-指令"><a href="#Vue-指令" class="headerlink" title="Vue 指令"></a>Vue 指令</h2><p>常用指令:</p>
+<ul>
+<li>v-if</li>
+<li>v-show</li>
+<li>v-else</li>
+<li>v-for</li>
+<li>v-bind</li>
+<li>v-on</li>
+<li>v-model<br>更多指令请移步<a href="http://cn.vuejs.org/api/#u6307_u4EE4" target="_blank" rel="external">Vue 指令</a></li>
+</ul>
+<h2 id="初始化（main-js"><a href="#初始化（main-js" class="headerlink" title="初始化（main.js)"></a>初始化（main.js)</h2><p>对于单页应用，推荐使用<a href="https://github.com/vuejs/vue-router" target="_blank" rel="external">官方库 vue-router</a>。详细请查看它的<a href="http://vuejs.github.io/vue-router/" target="_blank" rel="external">文档</a>。</p>
+<h3 id="添加route配置"><a href="#添加route配置" class="headerlink" title="添加route配置"></a>添加route配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">'vue-router'</span></div><div class="line"><span class="keyword">import</span> VueResource <span class="keyword">from</span> <span class="string">'vue-resource'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> Hello <span class="keyword">from</span> <span class="string">'./components/Hello.vue'</span></div><div class="line"><span class="keyword">import</span> Page <span class="keyword">from</span> <span class="string">'./components/Page.vue'</span></div><div class="line"></div><div class="line"><span class="comment">//注册两个插件</span></div><div class="line">Vue.use(VueResource)</div><div class="line">Vue.use(VueRouter)</div><div class="line"></div><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter()</div><div class="line"></div><div class="line"><span class="comment">// 路由map</span></div><div class="line">router.map(&#123;</div><div class="line">  <span class="string">'/hello'</span>: &#123;</div><div class="line">    <span class="attr">component</span>: Hello</div><div class="line">  &#125;,</div><div class="line">  <span class="string">'/page'</span>: &#123;</div><div class="line">    <span class="attr">component</span>: Page</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">router.redirect(&#123;</div><div class="line">  <span class="string">'*'</span>: <span class="string">'/hello'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line">router.start(App, <span class="string">'#app'</span>)<span class="comment">//设置启动页面</span></div></pre></td></tr></table></figure>
+<p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">app</span>&gt;</span><span class="tag">&lt;/<span class="name">app</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="应用route"><a href="#应用route" class="headerlink" title="应用route"></a>应用route</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 使用指令 v-link 进行导航。 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-link</span>=<span class="string">"&#123;path: '/home'&#125;"</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-link</span>=<span class="string">"&#123;path: '/page'&#125;"</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 路由外链 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="创建＆应用组件"><a href="#创建＆应用组件" class="headerlink" title="创建＆应用组件"></a>创建＆应用组件</h2><p><img src="http://cn.vuejs.org/images/vue-component.png" alt=""><br>如果你喜欢预处理器，甚至可以这么做：<br><img src="http://cn.vuejs.org/images/vue-component-with-preprocessors.png" alt=""></p>
+<p>定义View:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">vue-component</span>&gt;</span><span class="tag">&lt;/<span class="name">vue-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>定义Model和ViewModel:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vueComponent = <span class="built_in">require</span>(<span class="string">'../components/vue-component'</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    <span class="attr">components</span>: &#123;</div><div class="line">        vueComponent</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="数据请求-vue-resource"><a href="#数据请求-vue-resource" class="headerlink" title="数据请求:vue-resource"></a>数据请求:<a href="http://www.cnblogs.com/keepfool/p/5657065.html" target="_blank" rel="external">vue-resource</a></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在main.js中注册vue-resource</span></div><div class="line"><span class="keyword">import</span> VueResource <span class="keyword">from</span> <span class="string">'vue-resource'</span></div><div class="line">Vue.use(VueResource)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基于全局Vue对象使用http</span></div><div class="line">Vue.http.get(<span class="string">'//webapi.busi.inke.com/web/live_hotlist_pc'</span>, &#123;&#125;).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'[Leo]Vue-resource:success=&gt;'</span>, response);</div><div class="line">&#125;, (response) =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'[Leo]Vue-resource:error=&gt;'</span>, response);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 在一个Vue实例内使用$http</span></div><div class="line"><span class="keyword">this</span>.$http.get(<span class="string">'//webapi.busi.inke.com/web/live_hotlist_pc'</span>, &#123;&#125;).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'[Leo]Vue-resource:success=&gt;'</span>, response);</div><div class="line">&#125;, (response) =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'[Leo]Vue-resource:error=&gt;'</span>, response);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dev/" rel="tag"># dev</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/07/npm/" rel="next" title="npm">
+                <i class="fa fa-chevron-left"></i> npm
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/08/vue单页应用发布到服务器/" rel="prev" title="vue单页应用发布到服务器">
+                vue单页应用发布到服务器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <!--畅言插件-->
+  <!-- 代码1：放在页面需要展示的位置  -->
+  <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+  <!--打赏-->
+  <div id="cyReward" role="cylabs" data-use="reward" style="text-align: center;"></div>
+  <!--评论表情-->
+  <div id="cyEmoji" role="cylabs" data-use="emoji"></div>
+  <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+  <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+  <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+  <script type="text/javascript" charset="utf-8" src="http://changyan.itc.cn/js/lib/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cyssdFaue"></script>
+
+  <!--多说评论-->
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <!--畅言评论-->
+  <section id="comments">
+    <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+    <div id="SOHUCS" sid="vue1+webpack实践"></div>
+    <script>
+      (function(){
+        var appid = 'cysMNUGiM',//cyssdFaue
+        conf = '746691ef70d87f9e0b14acf9e9f473df';//18694a97589062f29188dcc5b3c30703
+        var doc = document,
+        s = doc.createElement('script'),
+        h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+        s.type = 'text/javascript';
+        s.charset = 'utf-8';
+        s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+        h.insertBefore(s,h.firstChild);
+        window.SCS_NO_IFRAME = true;
+      })()
+    </script>
+  </section>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460"
+               alt="Leo" />
+          <p class="site-author-name" itemprop="name">Leo</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=652889559&site=qq&menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  QQ
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/MrLeo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-cli-构建的目录结构"><span class="nav-number">2.1.</span> <span class="nav-text">vue-cli 构建的目录结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-指令"><span class="nav-number">3.</span> <span class="nav-text">Vue 指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化（main-js"><span class="nav-number">4.</span> <span class="nav-text">初始化（main.js)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加route配置"><span class="nav-number">4.1.</span> <span class="nav-text">添加route配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用route"><span class="nav-number">4.2.</span> <span class="nav-text">应用route</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建＆应用组件"><span class="nav-number">5.</span> <span class="nav-text">创建＆应用组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据请求-vue-resource"><span class="nav-number">6.</span> <span class="nav-text">数据请求:vue-resource</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<!-- 不蒜子统计 http://busuanzi.ibruce.info -->
+</script>
+<section style="color:#ccc;">
+本站总访问量<span id="busuanzi_value_site_pv"></span>次&nbsp;|&nbsp;
+您是第<span id="busuanzi_value_site_uv"></span>位访客&nbsp;|&nbsp;
+本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</section>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
