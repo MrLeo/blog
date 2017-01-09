@@ -14,6 +14,7 @@ comments: false
 - [segmentfault专栏](https://segmentfault.com/blog/mr-leo)
 - [博客园](http:/www.cnblogs.com/blog-leo)
 - 我的简历：<a href="/resume.html" target="_blank">【简历】</a>
+- 我的邮箱：<a href="mailto:leo@xuebin.me">leo@xuebin.me</a>
 
 
 ![1483938241877.JPG](http://o8taa43yk.bkt.clouddn.com/1483938241877.JPG)
