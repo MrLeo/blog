@@ -6,15 +6,14 @@ tags:
 - javascript
 - 前端
 - dev
-categories: 规范
+categories: [规范]
 ---
 
 ## javascript 注释
 
-> [HBuilder官方文档](http://ask.dcloud.net.cn/article/129)
+> [HBuilder 官方文档](http://ask.dcloud.net.cn/article/129)
 
-
-``` javascript
+```javascript
 /**
  * 文档注释写在这里
  * @alias aliasName (使用@alias可以给一个变量或者函数指定一个别名，代码提示时会提示该别名)
@@ -28,13 +27,11 @@ categories: 规范
  * @return {Type[,Type,...]} (使用@return可以描述一个对象的属性)
  * @throw {TypeError} 参数类型不匹配 (异常信息)
  */
- function add(item){
-    if(typeof item === "number"){
-        arr.push(item)
-    }
-    else{
-        throw new TypeError();
-    }
+function add(item) {
+  if (typeof item === 'number') {
+    arr.push(item)
+  } else {
+    throw new TypeError()
+  }
 }
 ```
-

@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Mr. Leo
-subtitle:
-description: 
+title: ♌
+subtitle: Mr. Leo
+description: 😆
 author: Leo
 language: zh-Hans
 timezone:
@@ -47,7 +47,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace:
 
@@ -92,3 +92,8 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+
+algolia:
+  applicationID: '3W9IAI9QUW'
+  indexName: 'mr-leo-blog'
+  chunkSize: 5000

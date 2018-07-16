@@ -6,15 +6,20 @@ categories: about
 tags: 
 - Leo
 type: about
-comments: false
+comments: true
 ---
 
+<p style="text-align: center;">我的邮箱：<a href="mailto:leo@xuebin.me">leo@xuebin.me</a></p>
 
-- [GitHub 主页](https://github.com/MrLeo)
-- [segmentfault专栏](https://segmentfault.com/blog/mr-leo)
-- [博客园](http:/www.cnblogs.com/blog-leo)
-- 我的简历：<a href="/resume.html" target="_blank">【简历】</a>
-- 我的邮箱：<a href="mailto:leo@xuebin.me">leo@xuebin.me</a>
+|GitHub|segmentfault|博客园|GitBook|
+|:--:|:--:|:--:|:--:|
+|[github.com/MrLeo](https://github.com/MrLeo)|[segmentfault专栏](https://segmentfault.com/blog/mr-leo)|[blog-leo](http://www.cnblogs.com/blog-leo)|[mrleo.gitbooks.io](https://mrleo.gitbooks.io/books/content/)
 
 
-![1483938241877.JPG](http://o8taa43yk.bkt.clouddn.com/1483938241877.JPG)
+![签名](http://o8taa43yk.bkt.clouddn.com/1483938241877.JPG)
+
+
+![柳学斌](http://o8taa43yk.bkt.clouddn.com/xuebin.JPG)
+
+***
+
