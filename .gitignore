@@ -1,6 +1,5 @@
 .DS_Store
 node_modules/
-npm-debug.log
 selenium-debug.log
 test/unit/coverage
 test/e2e/reports
@@ -20,3 +19,8 @@ db.json
 .deploy*/
 public/
 db.json
+dist/
+npm-debug.log.*
+.vs
+.vscode
+package-lock.json
