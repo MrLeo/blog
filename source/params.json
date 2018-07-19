@@ -1,1 +1,7 @@
-{"name":"Leo","tagline":"leo's github blog","body":"### Welcome to my GitHub Pages.\r\n","google":"leo blog git","note":"Don't delete this file! It's used internally to help with page regeneration."}
+{
+  "name": "Leo",
+  "tagline": "leo's github blog",
+  "body": "# 柳学斌\r\n### Welcome to my GitHub Pages.\r\n",
+  "google": "leo blog git 柳学斌 web 前端",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
