@@ -24,3 +24,5 @@ npm-debug.log.*
 .vs
 .vscode
 package-lock.json
+.deploy_git
+Icon?
