@@ -12,8 +12,6 @@ tags:
 - error
 ---
 
-
-
 ```Javascript
 class ZPError extends Error {
   constructor ({ code, message }) {
@@ -30,9 +28,10 @@ class ZPError extends Error {
 export default ZPError
 ```
 
-使用👇
+<!-- more -->
+
+使用 👇
 
 ```Javascript
 throw new ZPError({ code: 400, message: '参数错误' })
 ```
-

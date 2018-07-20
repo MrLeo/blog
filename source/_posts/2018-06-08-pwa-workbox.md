@@ -17,6 +17,8 @@ tags:
 
 既然如此，我们最好是站在巨人的肩膀上，这个巨人就是谷歌。workbox 是由谷歌浏览器团队发布，用来协助创建 PWA 应用的 `JavaScript` 库。当然直接用 `workbox` 还是太复杂了，谷歌还很贴心的发布了一个 `webpack` 插件，能够自动生成 `Service Worker` 和 静态资源列表 - [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin)。
 
+<!-- more -->
+
 只需简单一步就能生成生产环境可用的 `Service Worker` ：
 
 ```
@@ -29,7 +31,7 @@ new GenerateSW()
 
 ![](https://segmentfault.com/img/bVbbjuu?w=3028&h=1318)
 
-还能说什么呢？谷歌大法好！当然这只是最简单的可用版本，其实这里有一个最严重的问题不知道有没人发现，那就是 `importScripts` 引用的是谷歌域名下的 cdn ，这让我们墙内的网站怎么用，所以我们需要把这个问题解决并自定义一些配置增强 `Service Worker` 的能力：
+还能说什么呢？谷歌大法好！当然这只是最简单的可用版本，其实这里有一个最严重的问题不知道有没人发现，那就是  `importScripts`  引用的是谷歌域名下的 cdn ，这让我们墙内的网站怎么用，所以我们需要把这个问题解决并自定义一些配置增强  `Service Worker`  的能力：
 
 ```javascript
 new GenerateSW({
@@ -45,9 +47,9 @@ new GenerateSW({
       options: {
         // Configure which responses are considered cacheable.
         cacheableResponse: {
-          statuses: [200]
-        }
-      }
+          statuses: [200],
+        },
+      },
     },
     {
       urlPattern: new RegExp('^https://cdn'),
@@ -57,11 +59,11 @@ new GenerateSW({
         // Fall back to the cache after 2 seconds.
         networkTimeoutSeconds: 2,
         cacheableResponse: {
-          statuses: [200]
-        }
-      }
-    }
-  ]
+          statuses: [200],
+        },
+      },
+    },
+  ],
 })
 ```
 
@@ -71,9 +73,6 @@ new GenerateSW({
 
 ![](https://segmentfault.com/img/bVbbjwz?w=2014&h=1386)
 
-*出自：<https://segmentfault.com/a/1190000015050724>*
-
-
+_出自：<https://segmentfault.com/a/1190000015050724>_
 
 > [pwd 学习 demo 下载](http://o8taa43yk.bkt.clouddn.com/offline-client.zip)
-

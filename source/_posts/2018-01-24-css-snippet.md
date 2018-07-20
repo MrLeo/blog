@@ -10,8 +10,7 @@ tags: [开发, dev, css, 前端, 代码片段]
 
 <iframe height='300' scrolling='no' title='GyagJj' src='//codepen.io/MrLeo/embed/GyagJj/?height=300&theme-id=16695&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/MrLeo/pen/GyagJj/'>GyagJj</a> by Leo (<a href='https://codepen.io/MrLeo'>@MrLeo</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-
+<!-- more -->
 
 # pc-reset
 
@@ -193,17 +192,17 @@ html [type="button"],
 }
 
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -237,32 +236,32 @@ textarea {
   overflow: auto;
 }
 
-[type="checkbox"],
-[type="radio"] {
+[type='checkbox'],
+[type='radio'] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
 }
 
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
   /* 2 */
 }
 
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
- ::-webkit-file-upload-button {
+::-webkit-file-upload-button {
   -webkit-appearance: button;
   /* 1 */
   font: inherit;
@@ -292,7 +291,6 @@ template {
 [hidden] {
   display: none;
 }
-
 
 /* reset */
 
@@ -332,8 +330,6 @@ menu {
   box-sizing: border-box;
 }
 ```
-
-
 
 # phone-reset
 
@@ -515,17 +511,17 @@ html [type="button"],
 }
 
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -559,32 +555,32 @@ textarea {
   overflow: auto;
 }
 
-[type="checkbox"],
-[type="radio"] {
+[type='checkbox'],
+[type='radio'] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
 }
 
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
   /* 2 */
 }
 
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
- ::-webkit-file-upload-button {
+::-webkit-file-upload-button {
   -webkit-appearance: button;
   /* 1 */
   font: inherit;
@@ -614,7 +610,6 @@ template {
 [hidden] {
   display: none;
 }
-
 
 /* reset */
 
@@ -659,9 +654,8 @@ body {
   /* 禁止选中文本 */
   -webkit-user-select: none;
   user-select: none;
-  font: Oswald, 'Open Sans', Helvetica, Arial, sans-serif
+  font: Oswald, 'Open Sans', Helvetica, Arial, sans-serif;
 }
-
 
 /* 禁止长按链接与图片弹出菜单 */
 
@@ -670,7 +664,6 @@ img {
   -webkit-touch-callout: none;
 }
 
-
 /*ios android去除自带阴影的样式*/
 
 a,
@@ -678,8 +671,7 @@ input {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-input[type="text"] {
+input[type='text'] {
   -webkit-appearance: none;
 }
 ```
-

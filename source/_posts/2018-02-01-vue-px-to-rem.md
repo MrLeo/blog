@@ -10,35 +10,37 @@ tags: [前端, 开发, dev, vue, css, rem, 转载]
 
 而本文的目标就是通过一系列的配置后，在开发中可以直接使用设计图的尺寸开发，项目为我们自动编译，转换成`rem`。
 
+<!-- more -->
+
 ## 技术栈
 
 - vue-cli：使用脚手架工具创建项目。
-- postcss-pxtorem：转换px为rem的插件。
+- postcss-pxtorem：转换 px 为 rem 的插件。
 
 ## 自动设置根节点`html`的`font-size`
 
-因为`rem`单位是相对于根节点的字体大小的，所以通过设置根节点的字体大小可以动态的改变rem的大小。
+因为`rem`单位是相对于根节点的字体大小的，所以通过设置根节点的字体大小可以动态的改变 rem 的大小。
 
 原理网上有很多文章分享，这里不具体解释。
 
 ### 1、创建`rem.js`文件
 
-很多人写这种小工具文件会习惯性的加上闭包，这个其实是没有必要的。ES6中每个文件都是单独的一个模块。
+很多人写这种小工具文件会习惯性的加上闭包，这个其实是没有必要的。ES6 中每个文件都是单独的一个模块。
 
 ```js
 // 基准大小
 const baseSize = 32
 // 设置 rem 函数
-function setRem () {
+function setRem() {
   // 当前页面宽度相对于 750 宽的缩放比例，可根据自己需要修改。
   const scale = document.documentElement.clientWidth / 750
   // 设置页面根节点字体大小
-  document.documentElement.style.fontSize = (baseSize * Math.min(scale, 2)) + 'px'
+  document.documentElement.style.fontSize = baseSize * Math.min(scale, 2) + 'px'
 }
 // 初始化
 setRem()
 // 改变窗口大小时重新设置 rem
-window.onresize = function () {
+window.onresize = function() {
   setRem()
 }
 ```
@@ -49,13 +51,13 @@ window.onresize = function () {
 import './utils/rem'
 ```
 
-引入文件后，查看页面的html节点，是否有被自动添加 `font-size`。
+引入文件后，查看页面的 html 节点，是否有被自动添加 `font-size`。
 
-**注意：完成到这一步，也就是实现了rem布局，实际开发的时候，还是需要我们去计算对应的rem值去开发。**
+**注意：完成到这一步，也就是实现了 rem 布局，实际开发的时候，还是需要我们去计算对应的 rem 值去开发。**
 
-**下一步我们就配置一下webpack，自动转换px为对应的rem值。**
+**下一步我们就配置一下 webpack，自动转换 px 为对应的 rem 值。**
 
-## 配置 `postcss-pxtorem` 自动转换px为rem
+## 配置 `postcss-pxtorem` 自动转换 px 为 rem
 
 **1、安装 postcss-pxtorem**
 
@@ -108,13 +110,11 @@ body {
 
 ```css
 body {
-	widht: 23.4375rem;
-	height: 35.5rem;
+  widht: 23.4375rem;
+  height: 35.5rem;
 }
 ```
 
 ---End---
-
-
 
 [转至] https://juejin.im/post/5a716c4c6fb9a01cb42cac4b(https://juejin.im/post/5a716c4c6fb9a01cb42cac4b)

@@ -14,7 +14,7 @@ tags: [前端,dev,vue,vue-cli]
   $ brew install node
   ```
 
-- 检查 node & npm 
+- 检查 node & npm
 
   ```Bash
   $ node -v
@@ -27,44 +27,53 @@ tags: [前端,dev,vue,vue-cli]
   $ npm install -g vue-cli
   ```
 
+<!-- more -->
+
 # 初始化
 
 ```Bash
 $ vue init <template-name> <project-name>
 ```
+
 举例
+
 ```Bash
 vue init webpack vue-step-by-step
 ```
-根据提示依次输入相关信息↓
+
+根据提示依次输入相关信息 ↓
 ![](http://o8taa43yk.bkt.clouddn.com/FkJL3BJVzwCx4ZsJfq07RUh8OpJf)
-最后出现`finished`安装完成↓
+最后出现`finished`安装完成 ↓
 ![](http://o8taa43yk.bkt.clouddn.com/FuojPwH5ToccPFjaFl6vbzi3MuQc)
-在终端中运行↓
+在终端中运行 ↓
+
 ```
 cd vue-step-by-step
 npm run dev
 ```
+
 即可查看初始化完成的效果
 
 # 添加依赖
 
 项目初始化完成后添加项目常用依赖包
+
 ```
 npm install --save vuex axios qs
 npm install --save-dev node-sass sass-loader pug pug-loader
 ```
+
 包含[`vuex`](https://vuex.vuejs.org/zh-cn/)、[`axios`](https://github.com/axios/axios)、[`qs`](https://github.com/ljharb/qs)、`sass`、`pug`等，其他依赖包根据项目需求自己选择
-[`vue-router`](https://router.vuejs.org/zh-cn/)在脚手架init的时候会提示是否选择安装
+[`vue-router`](https://router.vuejs.org/zh-cn/)在脚手架 init 的时候会提示是否选择安装
 
 # 完善项目结构
 
 ## 添加`views`文件夹
 
-> src 下添加 views 文件夹主要存放页面级的vue组件
+> src 下添加 views 文件夹主要存放页面级的 vue 组件
 > src 下的 components 文件夹主要用于存放通用的组件
 
-在views文件夹中创建`Home.vue`作为主页
+在 views 文件夹中创建`Home.vue`作为主页
 
 删除`App.vue`中无用的内容，只保留`router-view`
 
@@ -81,12 +90,12 @@ npm install --save-dev node-sass sass-loader pug pug-loader
 ```js
 if (window.addEventListener) {
   const html = document.documentElement
-  function setFont () {
+  function setFont() {
     const k = 750
-    html.style.fontSize = html.clientWidth / k * 100 + 'px'
+    html.style.fontSize = (html.clientWidth / k) * 100 + 'px'
   }
   setFont()
-  setTimeout(function () {
+  setTimeout(function() {
     setFont()
   }, 300)
   document.addEventListener('DOMContentLoaded', setFont, false)
@@ -95,13 +104,11 @@ if (window.addEventListener) {
 }
 ```
 
-
-
 ## 调整[`router`](https://router.vuejs.org/zh-cn/)配置
 
 > 更多路由相关使用方法请访问：[https://router.vuejs.org/zh-cn/](https://router.vuejs.org/zh-cn/)
 
-目录结构↓
+目录结构 ↓
 
 ```
 router
@@ -112,15 +119,15 @@ router
         └── products.js   # 产品模块
 ```
 
-修改路由主文件`router/index.js` 
+修改路由主文件`router/index.js`
 
 使用`require.context`实现路由[`去中心化`](https://github.com/wuchangming/blog/blob/master/docs/webpack/require-context-usage.md)
 
 ```js
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(Router);
+Vue.use(Router)
 
 let router = new Router({
   base: '/', // 应用的基路径
@@ -128,25 +135,24 @@ let router = new Router({
   scrollBehavior(to, from, savedPosition) {
     // 路由切换的滚动行为，只在 HTML5 history 模式下可用
     if (savedPosition) {
-      return savedPosition;
+      return savedPosition
     } else {
-      return { x: 0, y: 0 };
+      return { x: 0, y: 0 }
     }
   },
   routes: (r => {
     // 去中心化
     // console.log('r', r); // __webpack_require__
-    let sourceMap = [];
+    let sourceMap = []
     let res = r.keys().map(key => {
-      let rKey = r(key);
-      sourceMap.push(...rKey.default);
+      let rKey = r(key)
+      sourceMap.push(...rKey.default)
       // console.log('key', key, rKey); // ./modules/home/route.js  // {default: Array(3), __esModule: true}
-      return rKey;
-    });
-    return sourceMap;
-  })(require.context('./', true, /^\.\/modules\/\w+\.js$/))
-});
-
+      return rKey
+    })
+    return sourceMap
+  })(require.context('./', true, /^\.\/modules\/\w+\.js$/)),
+})
 
 router.beforeEach((to, from, next) => {
   // console.log('router beforeEach=>', to, from)
@@ -158,13 +164,13 @@ router.beforeEach((to, from, next) => {
   //     next()//正常跳转
   // }
   next()
-});
+})
 
 router.afterEach((to, from) => {
   // console.log('router afterEach=>', router)
-});
+})
 
-export default router;
+export default router
 ```
 
 在 router 文件夹下添加 `modules` 文件夹
@@ -172,21 +178,22 @@ export default router;
 在 modules 文件夹下添加 `home.js` ，这个 home.js 对应首页业务模块，首页相关的路由页面都可以写到 home.js 文件里。
 
 如果以后添加其他业务模块，只需要在 modules 文件夹添加相对应的业务模块文件，并在其中添加业务相关的路由页面。这样所有不同业务线的开发人员就可以互不干扰 ↓
+
 ```js
-import Home from '../../views/Home';
+import Home from '../../views/Home'
 const routes = [
   {
     path: '/',
     name: 'index',
-    redirect: '/home'
+    redirect: '/home',
   },
   {
     path: '/home',
     name: 'home',
-    component: Home
-  }
-];
-export default routes;
+    component: Home,
+  },
+]
+export default routes
 ```
 
 对于不需要即时加载的非一级页面可以使用异步路由组件
@@ -207,10 +214,12 @@ export default routes;
 ```
 
 ## 添加`store`文件夹
-> src 下的 store 文件夹主要是存放 [vuex](https://vuex.vuejs.org/zh-cn/) 相关信息的
-> 更多vuex相关使用方法请访问：[https://vuex.vuejs.org/zh-cn/](https://vuex.vuejs.org/zh-cn/)
 
-在 store 文件夹下创建目录结构↓
+> src 下的 store 文件夹主要是存放 [vuex](https://vuex.vuejs.org/zh-cn/) 相关信息的
+> 更多 vuex 相关使用方法请访问：[https://vuex.vuejs.org/zh-cn/](https://vuex.vuejs.org/zh-cn/)
+
+在 store 文件夹下创建目录结构 ↓
+
 ```
 store
     ├── index.js               # 我们组装模块并导出 store 的地方
@@ -224,21 +233,23 @@ store
         └── products.js        # 产品模块
 ```
 
-下面开始改造store文件夹↓
+下面开始改造 store 文件夹 ↓
 
-1. 在`mutation-types.js`中添加一个常量
+1.  在`mutation-types.js`中添加一个常量
+
     ```js
     export const BASE = {
-        SET_USER_INFO: 'SET_USER_INFO'
+      SET_USER_INFO: 'SET_USER_INFO',
     }
     ```
 
-2. 修改`modules/base.js`
+2.  修改`modules/base.js`
+
     ```js
-    import Vue from 'vue';
-    import { base } from '../mutation-types';
-    import axios from 'axios';
-    import qs from 'qs';
+    import Vue from 'vue'
+    import { base } from '../mutation-types'
+    import axios from 'axios'
+    import qs from 'qs'
 
     const state = {
       version: '',
@@ -249,60 +260,61 @@ store
         name: '',
         tel: '',
         email: '',
-        head: ''
-      }
-    };
+        head: '',
+      },
+    }
 
     const getters = {
       versionGetter(state, getters) {
-        return state.version;
-      }
-    };
+        return state.version
+      },
+    }
 
     const mutations = {
       [BASE.SET_USER_INFO](state, userInfo) {
-        userInfo.userID && (state.user.userID = userInfo.userID);
-        userInfo.USERNAME && (state.user.userName = userInfo.USERNAME);
-        userInfo.NAME && (state.user.name = userInfo.NAME);
-        userInfo.TEL && (state.user.tel = userInfo.TEL);
-        userInfo.EMAIL && (state.user.email = userInfo.EMAIL);
-        userInfo.HEAD && (state.user.head = userInfo.HEAD);
-      }
-    };
+        userInfo.userID && (state.user.userID = userInfo.userID)
+        userInfo.USERNAME && (state.user.userName = userInfo.USERNAME)
+        userInfo.NAME && (state.user.name = userInfo.NAME)
+        userInfo.TEL && (state.user.tel = userInfo.TEL)
+        userInfo.EMAIL && (state.user.email = userInfo.EMAIL)
+        userInfo.HEAD && (state.user.head = userInfo.HEAD)
+      },
+    }
 
     const actions = {
       async login({ commit, dispatch, state }, { userName, password }) {
-        let userInfo = await axios.post('/api/login', qs.stringify({ userName, password }));
-        commit(BASE.SET_USER_INFO, userInfo);
-      }
-    };
+        let userInfo = await axios.post('/api/login', qs.stringify({ userName, password }))
+        commit(BASE.SET_USER_INFO, userInfo)
+      },
+    }
 
     export default {
       state,
       mutations,
       actions,
-      getters
-    };
+      getters,
+    }
     ```
 
-3. 修改vuex主文件`index.js`，组合所有状态模块
-    ```js
-    import Vue from 'vue';
-    import Vuex from 'vuex';
-    import getters from './getters';
-    import actions from './actions';
-    import mutations from './mutations';
+3.  修改 vuex 主文件`index.js`，组合所有状态模块
 
-    import base from './modules/base';
-    import cart from './modules/cart';
-    import products from './modules/products';
+    ```js
+    import Vue from 'vue'
+    import Vuex from 'vuex'
+    import getters from './getters'
+    import actions from './actions'
+    import mutations from './mutations'
+
+    import base from './modules/base'
+    import cart from './modules/cart'
+    import products from './modules/products'
 
     // import createLogger from 'vuex/dist/logger' //vuex内置的Logger日志插件
-    const debug = process.env.NODE_ENV !== 'production'; // 发布品种时需要用 Webpack 的 DefinePlugin 来转换 process.env.NODE_ENV !== 'production' 的值为 false
+    const debug = process.env.NODE_ENV !== 'production' // 发布品种时需要用 Webpack 的 DefinePlugin 来转换 process.env.NODE_ENV !== 'production' 的值为 false
 
-    Vue.use(Vuex);
+    Vue.use(Vuex)
 
-    const state = {};
+    const state = {}
 
     export default new Vuex.Store({
       state,
@@ -312,14 +324,14 @@ store
       modules: {
         base,
         cart,
-        products
+        products,
       },
-      strict: debug // 开发阶段使用
+      strict: debug, // 开发阶段使用
       // plugins: debug ? [createLogger()] : []//vuex插件
-    });
+    })
     ```
 
-4. 修改`main.js`，引入vuex
+4.  修改`main.js`，引入 vuex
 
     ```js
     //...
@@ -332,7 +344,7 @@ store
       store,
       // components: { App },
       // template: '<App/>',
-      render: h => h(App) // https://cn.vuejs.org/v2/guide/render-function.html#JSX
+      render: h => h(App), // https://cn.vuejs.org/v2/guide/render-function.html#JSX
     })
     ```
 
@@ -340,8 +352,7 @@ store
 
 ## 添加`mixins`文件夹
 
-
-目录结构↓
+目录结构 ↓
 
 ```
 mixins
@@ -350,7 +361,7 @@ mixins
 
 ## 添加`filters`文件夹
 
-目录结构↓
+目录结构 ↓
 
 ```
 filters
@@ -359,7 +370,7 @@ filters
 
 ## 添加`utils`文件夹
 
-目录结构↓
+目录结构 ↓
 
 ```
 utils
@@ -368,115 +379,114 @@ utils
     └── mixin.js               # 全局mixin
 ```
 
-`src/main.js`中添加全局引用↓
+`src/main.js`中添加全局引用 ↓
 
 ```js
-import * as filters from './utils/filters';
-import fetch from './utils/fetch';
+import * as filters from './utils/filters'
+import fetch from './utils/fetch'
 
 /* 全局注册fetch */
-Vue.prototype.$fetch = fetch;
+Vue.prototype.$fetch = fetch
 
 /* 注册全局过滤器 */
 Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key]);
-});
+  Vue.filter(key, filters[key])
+})
 ```
 
-## 封装axios
+## 封装 axios
 
 ```js
-import Vue from 'vue';
-import router from '../router';
-import axios from 'axios';
-import qs from 'qs';
-import Toast from '../components/toast';
+import Vue from 'vue'
+import router from '../router'
+import axios from 'axios'
+import qs from 'qs'
+import Toast from '../components/toast'
 
 // #region config
 // 每页条数
-export const ROW = 10;
+export const ROW = 10
 // 加载最小时间
-export const MINI_TIME = 300;
+export const MINI_TIME = 300
 // 超时时间（超时时间）
-export const TIME_OUT_MAX = 8000;
+export const TIME_OUT_MAX = 8000
 // 环境value
-export const _env = process.env.NODE_ENV;
+export const _env = process.env.NODE_ENV
 // 请求组（判断当前请求数）
-export const _requests = [];
+export const _requests = []
 // #endregion
 
 // #region 实例化axios
 const _instance = axios.create({
-  timeout: TIME_OUT_MAX
-});
+  timeout: TIME_OUT_MAX,
+})
 // #endregion
 
 // region request统一处理操作
-_instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+_instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 // POST传参序列化
 _instance.interceptors.request.use(
   config => {
     if (config.method === 'post') {
-      config.data = qs.stringify(config.data);
+      config.data = qs.stringify(config.data)
     }
-    return config;
+    return config
   },
   error => {
-    Toast('错误的传参');
-    return Promise.reject(error);
-  }
-);
+    Toast('错误的传参')
+    return Promise.reject(error)
+  },
+)
 // endregion
 
 // region response统一处理操作
 _instance.interceptors.response.use(
   res => {
-    let _message = null;
+    let _message = null
     if (res.status !== 200) {
-      console.error(res);
+      console.error(res)
       switch (res.status) {
         case 404:
-          _message = '404,错误请求';
-          break;
+          _message = '404,错误请求'
+          break
         case 401:
-          router.push({ path: '/login', query: { redirect: router.currentRoute.fullPath } });
-          _message = '未授权';
-          break;
+          router.push({ path: '/login', query: { redirect: router.currentRoute.fullPath } })
+          _message = '未授权'
+          break
         case 403:
-          _message = '禁止访问';
-          break;
+          _message = '禁止访问'
+          break
         case 408:
-          _message = '请求超时';
-          break;
+          _message = '请求超时'
+          break
         case 500:
-          _message = '服务器内部错误';
-          break;
+          _message = '服务器内部错误'
+          break
         case 501:
-          _message = '功能未实现';
-          break;
+          _message = '功能未实现'
+          break
         case 503:
-          _message = '服务不可用';
-          break;
+          _message = '服务不可用'
+          break
         case 504:
-          _message = '网关错误';
-          break;
+          _message = '网关错误'
+          break
         default:
-          _message = '未知错误';
+          _message = '未知错误'
       }
-      Toast(_message);
-      return Promise.reject(_message);
+      Toast(_message)
+      return Promise.reject(_message)
     } else {
       return res
     }
   },
   error => {
-    console.error(error);
-    Toast(error || '服务器繁忙，请稍后重试');
-    return Promise.reject(error || '服务器繁忙，请稍后重试');
-  }
-);
+    console.error(error)
+    Toast(error || '服务器繁忙，请稍后重试')
+    return Promise.reject(error || '服务器繁忙，请稍后重试')
+  },
+)
 // endregion
-
 
 // #region send get/post
 let toast = null
@@ -487,7 +497,7 @@ let toast = null
  * @param params 请求参数
  * @returns {Promise.<T>}
  */
-async function get (api, params) {
+async function get(api, params) {
   try {
     if (!toast) toast = Toast({ time: -1, message: '加载中', icon: 'loading' })
     let { data } = await _instance.get(api, { params })
@@ -506,7 +516,7 @@ async function get (api, params) {
  * @param params 请求参数
  * @returns {Promise.<T>}
  */
-async function post (api, params) {
+async function post(api, params) {
   try {
     if (!toast) toast = Toast({ time: -1, message: '加载中', icon: 'loading' })
     let { data } = await _instance.post(api, qs.stringify(params))
@@ -523,14 +533,11 @@ async function post (api, params) {
 export default {
   _instance,
   get,
-  post
+  post,
 }
-
 ```
 
-
-
-## config配置
+## config 配置
 
 ### build 生成的文件路径使用相对路径
 
@@ -546,12 +553,14 @@ module.exports = {
     // ...
     assetsPublicPath: './',
     // ...
-  }
-};
+  },
+}
 ```
+
 ### 开发的的时候需要使用代理(proxy)跨域访问服务器接口
 
 修改`config/index.js`文件中`dev`节点的`proxyTable`值
+
 ```js
 module.exports = {
   dev: {
@@ -563,11 +572,11 @@ module.exports = {
         // pathRewrite: {
         //   '^/api': '/api'
         // }
-      }
-    }
+      },
+    },
     // ...
-  }
-};
+  },
+}
 ```
 
 ### 分离线上环境和本地环境的配置信息
@@ -577,14 +586,13 @@ module.exports = {
 ```js
 module.exports = {
   NODE_ENV: '"development"',
-  API: '"http://123.57.89.97:8081"'
-};
+  API: '"http://123.57.89.97:8081"',
+}
 ```
-
 
 # 通用样式(SCSS)
 
-目录结构↓
+目录结构 ↓
 
 ```
 assets
@@ -599,87 +607,93 @@ assets
 ## base.scss
 
 ```scss
-@CHARSET "utf-8";
-@import "variable";
-@import "fun";
-@import "mixin";
-@import "common";
+@charset "utf-8";
+@import 'variable';
+@import 'fun';
+@import 'mixin';
+@import 'common';
 
 /*基础样式*/
 
-html, body, #app {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    font-family: Arial, "Microsoft YaHei", "微软雅黑", Verdana, sans-serif;
+html,
+body,
+#app {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, 'Microsoft YaHei', '微软雅黑', Verdana, sans-serif;
 }
 
-ul, li {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 * > img {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 button {
-    position: relative;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 14px;
-    padding-right: 14px;
-    box-sizing: border-box;
-    font-size: 18px;
-    text-align: center;
-    text-decoration: none;
-    line-height: 2.55555556;
-    border-radius: 5px;
-    -webkit-tap-highlight-color: transparent;
-    overflow: hidden;
-    color: #000000;
-    background-color: #F8F8F8;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 2.55555556;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  color: #000000;
+  background-color: #f8f8f8;
 
-    &::after {
-        content: " ";
-        width: 200%;
-        height: 200%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        -webkit-transform: scale(0.5);
-        transform: scale(0.5);
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-        box-sizing: border-box;
-        border-radius: 10px;
-    }
+  &::after {
+    content: ' ';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
 }
 
 //页面切换动画
 .slide {
-    &-enter, &-leave-to {
-        -webkit-transform: translate(100%, 0);
-        transform: translate(100%, 0);
-    }
+  &-enter,
+  &-leave-to {
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+  }
 
-    &-enter-active, &-leave-active {
-        transition: all .5s cubic-bezier(.55, 0, .1, 1);
-    }
+  &-enter-active,
+  &-leave-active {
+    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+  }
 
-    &-enter-to, &-leave {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0);
-    }
+  &-enter-to,
+  &-leave {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 }
 ```
 
@@ -687,9 +701,9 @@ button {
 
 ```scss
 @charset "UTF-8";
-@import "fun";
-@import "mixin";
-@import "variable";
+@import 'fun';
+@import 'mixin';
+@import 'variable';
 
 /*通用样式*/
 
@@ -714,7 +728,7 @@ button {
 }
 
 .clearfix:after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
   height: 0;
@@ -741,11 +755,11 @@ button {
 /*混合*/
 
 @mixin fullpage {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 ```
 
@@ -754,29 +768,27 @@ button {
 ```scss
 @charset "UTF-8";
 
-@import "fun";
+@import 'fun';
 
 /*变量*/
 
 $headerHeight: rem(50px);
 ```
 
-
-
-
-> **demo地址**：[https://github.com/MrLeo/wedive](https://github.com/MrLeo/wedive)
-
-
-
+> **demo 地址**：[https://github.com/MrLeo/wedive](https://github.com/MrLeo/wedive)
 
 # 查缺补漏
-### 我用了 ` axios ` , 为什么 IE 浏览器不识别(IE9+)
+
+### 我用了 `axios` , 为什么 IE 浏览器不识别(IE9+)
+
 那是因为 IE 整个家族都不支持 promise, 解决方案:
-```bash    
+
+```bash
 npm install es6-promise
 ```
-```js    
+
+```js
 // 在 main.js 引入即可
 // ES6的polyfill
-require("es6-promise").polyfill();
+require('es6-promise').polyfill()
 ```

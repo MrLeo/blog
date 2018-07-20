@@ -10,6 +10,8 @@ tags: [前端,dev,vue,vue-cli]
 
 用过[`Vue.js`][vue]的同学对`vue-cli`一定都不陌生，借助`vue-cli`我们可以通过问答的形式，方便地初始化一个 vue 工程，完全不用担心繁琐的 webpack、eslint 配置等。
 
+<!-- more -->
+
 # 什么是[vue-cli][vue-cli]
 
 引用 vue-cli 官方文档的一句话：
@@ -85,10 +87,10 @@ vue-cli 不仅仅能初始化 vue 工程，理论上能够初始化**一切工�
 
 在讨论区有许多类似的问题：
 
-* “vue-cli 当中如何配置 sass？”
-* “vue-cli 中如何修改 devServer 的端口？”
-* “vue-cli 中发现项目跑不起来”
-* ……
+- “vue-cli 当中如何配置 sass？”
+- “vue-cli 中如何修改 devServer 的端口？”
+- “vue-cli 中发现项目跑不起来”
+- ……
 
 vue-cli 说：“这锅我不背。”
 
@@ -100,13 +102,13 @@ vue-cli 说：“这锅我不背。”
 
 ## 初始化项目
 
-* 先全局安装 [vue-cli][vue-cli] 脚手架工具：
+- 先全局安装 [vue-cli][vue-cli] 脚手架工具：
 
   ```Bash
   $ npm install -g vue-cli
   ```
 
-* 如果喜欢尝鲜的可以使用最新版的[`@vue/cli 3.0`](https://github.com/vuejs/vue-cli/tree/dev)
+- 如果喜欢尝鲜的可以使用最新版的[`@vue/cli 3.0`](https://github.com/vuejs/vue-cli/tree/dev)
 
   > [`@vue/cli 3.0`](https://github.com/vuejs/vue-cli)默认是没有根据模板 init 项目的，不过官方提供了一个插件`@vue/cli-init`
 
@@ -258,7 +260,7 @@ new Vue({
 
 然后就可以按照官方的模板照猫画虎修改自己的模板配置。
 
-* **修改`template`模板文件**
+- **修改`template`模板文件**
 
   首先我们对 `template/package.json`做些调整，添加 vuex、axios、qs、pug、scss……依赖。最终修改完成的 package.json 文件如下。
 
@@ -484,14 +486,15 @@ new Vue({
   })
   ```
 
-* 修改`meta.js`
+- 修改`meta.js`
 
   例如上面的我在 main.js 中添加 vuex 的相关信息，但是有些小项目可能用不上 vuex，这是我们可以模仿官方的问答模式添加自己的问题，这里我选择询问是否安装 router 之后询问是否安装 vuex。
 
-  > * `prompts`：问答列表。
-  > * `filters`：根据问答列表要过滤的文件夹。
+  > - `prompts`：问答列表。
+  > - `filters`：根据问答列表要过滤的文件夹。
 
   - 例如我在 prompts 的 router 下一条添加 vuex ↓
+
     ```js
     vuex: {
       when: 'isNotTest',
@@ -521,7 +524,7 @@ new Vue({
   module.exports = {
     metalsmith: {
       // When running tests for the template, this adds answers for the selected scenario
-      before: addTestAnswers
+      before: addTestAnswers,
     },
     helpers: {
       if_or(v1, v2, options) {
@@ -533,7 +536,7 @@ new Vue({
       },
       template_version() {
         return templateVersion
-      }
+      },
     },
 
     prompts: {
@@ -541,19 +544,19 @@ new Vue({
         when: 'isNotTest',
         type: 'string',
         required: true,
-        message: 'Project name'
+        message: 'Project name',
       },
       description: {
         when: 'isNotTest',
         type: 'string',
         required: false,
         message: 'Project description',
-        default: 'A Vue.js project'
+        default: 'A Vue.js project',
       },
       author: {
         when: 'isNotTest',
         type: 'string',
-        message: 'Author'
+        message: 'Author',
       },
       build: {
         when: 'isNotTest',
@@ -563,29 +566,30 @@ new Vue({
           {
             name: 'Runtime + Compiler: recommended for most users',
             value: 'standalone',
-            short: 'standalone'
+            short: 'standalone',
           },
           {
-            name: 'Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere',
+            name:
+              'Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere',
             value: 'runtime',
-            short: 'runtime'
-          }
-        ]
+            short: 'runtime',
+          },
+        ],
       },
       router: {
         when: 'isNotTest',
         type: 'confirm',
-        message: 'Install vue-router?'
+        message: 'Install vue-router?',
       },
       vuex: {
         when: 'isNotTest',
         type: 'confirm',
-        message: 'Install vuex?'
+        message: 'Install vuex?',
       },
       lint: {
         when: 'isNotTest',
         type: 'confirm',
-        message: 'Use ESLint to lint your code?'
+        message: 'Use ESLint to lint your code?',
       },
       lintConfig: {
         when: 'isNotTest && lint',
@@ -595,24 +599,24 @@ new Vue({
           {
             name: 'Standard (https://github.com/standard/standard)',
             value: 'standard',
-            short: 'Standard'
+            short: 'Standard',
           },
           {
             name: 'Airbnb (https://github.com/airbnb/javascript)',
             value: 'airbnb',
-            short: 'Airbnb'
+            short: 'Airbnb',
           },
           {
             name: 'none (configure it yourself)',
             value: 'none',
-            short: 'none'
-          }
-        ]
+            short: 'none',
+          },
+        ],
       },
       unit: {
         when: 'isNotTest',
         type: 'confirm',
-        message: 'Set up unit tests'
+        message: 'Set up unit tests',
       },
       runner: {
         when: 'isNotTest && unit',
@@ -622,24 +626,24 @@ new Vue({
           {
             name: 'Jest',
             value: 'jest',
-            short: 'jest'
+            short: 'jest',
           },
           {
             name: 'Karma and Mocha',
             value: 'karma',
-            short: 'karma'
+            short: 'karma',
           },
           {
             name: 'none (configure it yourself)',
             value: 'noTest',
-            short: 'noTest'
-          }
-        ]
+            short: 'noTest',
+          },
+        ],
       },
       e2e: {
         when: 'isNotTest',
         type: 'confirm',
-        message: 'Setup e2e tests with Nightwatch?'
+        message: 'Setup e2e tests with Nightwatch?',
       },
       autoInstall: {
         when: 'isNotTest',
@@ -649,20 +653,20 @@ new Vue({
           {
             name: 'Yes, use NPM',
             value: 'npm',
-            short: 'npm'
+            short: 'npm',
           },
           {
             name: 'Yes, use Yarn',
             value: 'yarn',
-            short: 'yarn'
+            short: 'yarn',
           },
           {
             name: 'No, I will handle that myself',
             value: false,
-            short: 'no'
-          }
-        ]
-      }
+            short: 'no',
+          },
+        ],
+      },
     },
     filters: {
       '.eslintrc.js': 'lint',
@@ -677,7 +681,7 @@ new Vue({
       'test/unit/setup.js': "unit && runner === 'jest'",
       'test/e2e/**/*': 'e2e',
       'src/router/**/*': 'router',
-      'src/store/**/*': 'vuex'
+      'src/store/**/*': 'vuex',
     },
     complete: function(data, { chalk }) {
       const green = chalk.green
@@ -700,7 +704,7 @@ new Vue({
       } else {
         printMessage(data, chalk)
       }
-    }
+    },
   }
   ```
 
@@ -732,52 +736,18 @@ $ vue init MrLeo/webpack my-project
 
 当你你足够熟悉项目模板，你也可以对 `webpack` 配置进行更个性化的配置，或者添加 `vue init` 时的交互式命令。感兴趣的可以参看下我的个人模板 [MrLeo/webpack][mrleo/webpack]。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 > by [yugasun](https://yugasun.com/) from <https://yugasun.com/post/you-dont-know-vuejs-9.html>
 >
 > by [jrainlau](https://segmentfault.com/u/jrainlau) from <https://segmentfault.com/a/1190000011643581?_ea=2709729>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[vue]: http://cn.vuejs.org/ "Vue.js - A progressive, incrementally-adoptable JavaScript framework for building UI on the web."
-[vue-cli]: https://github.com/vuejs/vue-cli/tree/master "A simple CLI for scaffolding Vue.js projects."
-[vue-cli-readme]: https://github.com/vuejs/vue-cli/blob/master/README.md "vue-cli README.md"
-[download-git-repo]: https://github.com/flipxfx/download-git-repo "Download and extract a git repository (GitHub, GitLab, Bitbucket) from node."
-[inquirer.js]: https://github.com/SBoudrias/Inquirer.js "A collection of common interactive command line user interfaces."
+[vue]: http://cn.vuejs.org/ 'Vue.js - A progressive, incrementally-adoptable JavaScript framework for building UI on the web.'
+[vue-cli]: https://github.com/vuejs/vue-cli/tree/master 'A simple CLI for scaffolding Vue.js projects.'
+[vue-cli-readme]: https://github.com/vuejs/vue-cli/blob/master/README.md 'vue-cli README.md'
+[download-git-repo]: https://github.com/flipxfx/download-git-repo 'Download and extract a git repository (GitHub, GitLab, Bitbucket) from node.'
+[inquirer.js]: https://github.com/SBoudrias/Inquirer.js 'A collection of common interactive command line user interfaces.'
 [webpack-simple-readme]: https://github.com/vuejs-templates/webpack-simple/blob/master/template/README.md
-[handlebars]: http://handlebarsjs.com/ "Handlebars provides the power necessary to let you build semantic templates effectively with no frustration."
-[metalsmith]: https://github.com/segmentio/metalsmith "An extremely simple, pluggable static site generator."
-[vuejs-templates-webpack]: https://github.com/vuejs-templates/webpack "A full-featured Webpack + vue-loader setup with hot reload, linting, testing & css extraction."
+[handlebars]: http://handlebarsjs.com/ 'Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.'
+[metalsmith]: https://github.com/segmentio/metalsmith 'An extremely simple, pluggable static site generator.'
+[vuejs-templates-webpack]: https://github.com/vuejs-templates/webpack 'A full-featured Webpack + vue-loader setup with hot reload, linting, testing & css extraction.'
 [custom-templates]: https://github.com/vuejs/vue-cli/blob/master/README.md#custom-templates "It's unlikely to make everyone happy with the official templates."
-[mrleo/webpack]: https://github.com/MrLeo/webpack "A full-featured Webpack + vue-loader + vuex setup with hot reload, linting, testing & css extraction."
+[mrleo/webpack]: https://github.com/MrLeo/webpack 'A full-featured Webpack + vue-loader + vuex setup with hot reload, linting, testing & css extraction.'

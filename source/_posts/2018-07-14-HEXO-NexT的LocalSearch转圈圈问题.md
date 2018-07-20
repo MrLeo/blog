@@ -10,6 +10,8 @@ tags: [建站,blog,博客,hexo,markdown,搜索]
 有时候更新完文章，会莫名导致 NexT 的 LocalSearsh 有问题，
 像是点击搜索卡住转圈圈状态也没办法解掉，这篇纪录如何解决。
 
+<!-- more -->
+
 # Step1. 检查搜寻机制
 
 由于使用的是 localSearch，
@@ -47,4 +49,4 @@ tags: [建站,blog,博客,hexo,markdown,搜索]
 当完成修改后，重新测试理论上搜寻框就修好了～～
 找原因的途中也是学了不少啊：D
 
-[1]: https://guahsu.io/2017/12/Hexo-Next-LocalSearch-cant-work/ "HEXO-NexT的Local Search轉圈圈問題"
+[1]: https://guahsu.io/2017/12/Hexo-Next-LocalSearch-cant-work/ 'HEXO-NexT的Local Search轉圈圈問題'

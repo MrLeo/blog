@@ -13,6 +13,8 @@ categories: [规范]
 
 > [HBuilder 官方文档](http://ask.dcloud.net.cn/article/129)
 
+<!-- more -->
+
 ```javascript
 /**
  * 文档注释写在这里

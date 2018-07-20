@@ -6,7 +6,9 @@ categories: [前端,调试]
 tags: [前端,dev,调试]
 ---
 
-> 本文重点讨论如何在 Windows 系统中通过chrome 浏览器调试运行在 iPhone Safari 浏览器中的网页。如果你有一台 iMac/MacBook，可忽略该文档。iMac 环境下，直接通过 USB 将 iphone 与 iMac/MacBook 链接，之后在 iMac/MacBook 中打开 Safari 进入调试模式，即可对运行在手机中的页面进行调试。详情见：[Using Web Inspector to Debug Mobile Safari](https://webdesign.tutsplus.com/articles/quick-tip-using-web-inspector-to-debug-mobile-safari--webdesign-8787) 或 [Safari Web Inspector Guide](https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html)
+> 本文重点讨论如何在 Windows 系统中通过 chrome 浏览器调试运行在 iPhone Safari 浏览器中的网页。如果你有一台 iMac/MacBook，可忽略该文档。iMac 环境下，直接通过 USB 将 iphone 与 iMac/MacBook 链接，之后在 iMac/MacBook 中打开 Safari 进入调试模式，即可对运行在手机中的页面进行调试。详情见：[Using Web Inspector to Debug Mobile Safari](https://webdesign.tutsplus.com/articles/quick-tip-using-web-inspector-to-debug-mobile-safari--webdesign-8787) 或 [Safari Web Inspector Guide](https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html)
+
+<!-- more -->
 
 # 安装 iTunes
 
@@ -18,7 +20,7 @@ Windows 系统首先要安装 iTunes ，打开 Apple 官网下载 iTunes 并完�
 
 # ios-webkit-debug-proxy
 
-ios-webkit-debug-proxy 是一个 DevTools proxy ，项目托管在 Github 上。其使得开发者可以发送命令到真实（或虚拟）IOS设备中的 Safari 浏览器或 UIWebViews 。
+ios-webkit-debug-proxy 是一个 DevTools proxy ，项目托管在 Github 上。其使得开发者可以发送命令到真实（或虚拟）IOS 设备中的 Safari 浏览器或 UIWebViews 。
 
 ## 安装部署
 
@@ -42,7 +44,7 @@ ios_webkit_debug_proxy.exe -f chrome-devtools://devtools/bundled/inspector.html
 
 ```bat
 ios_webkit_debug_proxy.exe -f chrome-devtools://devtools/bundled/inspector.html
-Listing devices on :9221 
+Listing devices on :9221
 Connected :9222 to iPhone (c356a29f73043a36aa6de64b088d55aeeda8f034)
 ```
 
@@ -64,7 +66,7 @@ To open a link: right-click on the link (control-click on Mac), 'Copy Link Addre
 
 接下来，就可以进行正常的调试工作了。
 
-***
+---
 
-[ios-webkit-debug-proxy](https://github.com/google/ios-webkit-debug-proxy "target=_blank")
-[ios-webkit-debug-proxy-win32](https://github.com/artygus/ios-webkit-debug-proxy-win32 "target=_blank")
+[ios-webkit-debug-proxy](https://github.com/google/ios-webkit-debug-proxy 'target=_blank')
+[ios-webkit-debug-proxy-win32](https://github.com/artygus/ios-webkit-debug-proxy-win32 'target=_blank')

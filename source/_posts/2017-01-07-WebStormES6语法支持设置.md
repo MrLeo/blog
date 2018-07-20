@@ -8,6 +8,8 @@ categories: [工具]
 在 webstorm 写下了这段代码，体验一下 ES6 语法的便利，但是一大堆报错
 ![](http://upload-images.jianshu.io/upload_images/436630-e162440fc4554a14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+<!-- more -->
+
 ## 语法支持设置
 
 > Preferences > Languages & Frameworks > JavaScript

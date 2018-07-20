@@ -13,14 +13,11 @@ tags:
 - 转载
 ---
 
-
 > **原文地址**：[https://hufangyun.com/2017/array-learn/](https://hufangyun.com/2017/array-learn/)
-
-
 
 ![github.com/tooto1985/js-array-operations](https://ws4.sinaimg.cn/large/006tNc79ly1ftax1g9jxtj31c00ubb29.jpg)
 
-
+<!--more-->
 
 ## ECMAScript 5.1 中提供的数组方法
 
@@ -31,14 +28,14 @@ tags:
 ### 判断是否是数组
 
 ```js
-Array.isArray ( arg )
+Array.isArray(arg)
 // false or true
 ```
 
-不支持此方法的IE9-等浏览器可以这样处理：
+不支持此方法的 IE9-等浏览器可以这样处理：
 
 ```js
-Object.prototype.toString.call(obj) === '[object Array]';
+Object.prototype.toString.call(obj) === '[object Array]'
 ```
 
 ### 转换方法
@@ -48,8 +45,8 @@ Object.prototype.toString.call(obj) === '[object Array]';
 数组的 `valueOf` 会默认调用 `toString` 方法，所以他们的返回值一样，都是逗号分隔每一项组成的字符串
 
 ```js
-var months = ['Jan', 'Feb', 'Mar', 'Apr'];
-months.toString(); // "Jan,Feb,Mar,Apr"
+var months = ['Jan', 'Feb', 'Mar', 'Apr']
+months.toString() // "Jan,Feb,Mar,Apr"
 ```
 
 #### toLocaleString
@@ -59,10 +56,10 @@ months.toString(); // "Jan,Feb,Mar,Apr"
 #### join
 
 ```js
-a.join();      // 'Wind,Rain,Fire'
-a.join(', ');  // 'Wind, Rain, Fire'
-a.join(' + '); // 'Wind + Rain + Fire'
-a.join('');    // 'WindRainFire'
+a.join() // 'Wind,Rain,Fire'
+a.join(', ') // 'Wind, Rain, Fire'
+a.join(' + ') // 'Wind + Rain + Fire'
+a.join('') // 'WindRainFire'
 ```
 
 如果数组中的某一项的值是 `null` 或者 `undefined`，那么该值在 `join()`、`toLocale-String()`、`toString()` 和 `valueOf()` 方法返回的结果中以空字符串表示
@@ -76,11 +73,11 @@ a.join('');    // 'WindRainFire'
 操作原数组，返回删除项
 
 ```js
-var a = [1, 2, 3];
-var b = a.pop();
+var a = [1, 2, 3]
+var b = a.pop()
 
-console.log(a); // [1, 2]
-console.log(b); // 3
+console.log(a) // [1, 2]
+console.log(b) // 3
 ```
 
 #### push 在数组末尾添加新元素
@@ -88,11 +85,11 @@ console.log(b); // 3
 操作的原数组，返回数组长度
 
 ```js
-var a = [1, 2, 3];
-var b = a.push(4, 5);
+var a = [1, 2, 3]
+var b = a.push(4, 5)
 
-console.log(a); // [1, 2, 3, 4, 5]
-console.log(b); // 5
+console.log(a) // [1, 2, 3, 4, 5]
+console.log(b) // 5
 ```
 
 ### 队列方法
@@ -102,11 +99,11 @@ console.log(b); // 5
 操作的原数组，返回删除项
 
 ```js
-var a = [1, 2, 3];
-var b = a.shift();
+var a = [1, 2, 3]
+var b = a.shift()
 
-console.log(a); // [2, 3]
-console.log(b); // 1
+console.log(a) // [2, 3]
+console.log(b) // 1
 ```
 
 #### unshift 数组的前面添加新元素
@@ -114,11 +111,11 @@ console.log(b); // 1
 操作的原数组，返回数组长度
 
 ```js
-var a = [1, 2, 3];
-var b = a.unshift(4, 5);
+var a = [1, 2, 3]
+var b = a.unshift(4, 5)
 
-console.log(a); // [4, 5, 1, 2, 3]
-console.log(b); // 5
+console.log(a) // [4, 5, 1, 2, 3]
+console.log(b) // 5
 ```
 
 ### 重排序方法
@@ -128,11 +125,11 @@ console.log(b); // 5
 操作原数组，返回数组
 
 ```js
-var a = ['one', 'two', 'three'];
-var b= a.reverse();
+var a = ['one', 'two', 'three']
+var b = a.reverse()
 
-console.log(a); // ['three', 'two', 'one']
-console.log(b); // ['three', 'two', 'one']
+console.log(a) // ['three', 'two', 'one']
+console.log(b) // ['three', 'two', 'one']
 ```
 
 #### sort 排序
@@ -140,11 +137,11 @@ console.log(b); // ['three', 'two', 'one']
 按照 Unicode code 位置排序，默认升序
 
 ```js
-var fruit = ['cherries', 'apples', 'bananas'];
-fruit.sort(); // ['apples', 'bananas', 'cherries']
+var fruit = ['cherries', 'apples', 'bananas']
+fruit.sort() // ['apples', 'bananas', 'cherries']
 
-var scores = [1, 10, 21, 2];
-scores.sort(); // [1, 10, 2, 21]
+var scores = [1, 10, 21, 2]
+scores.sort() // [1, 10, 2, 21]
 
 // because '10' is mix of two characters '1' and '0' so '10' is before '2' in Unicode code point order.
 ```
@@ -162,16 +159,16 @@ scores.sort(); // [1, 10, 2, 21]
 返回新数组
 
 ```js
-var arr1 = ['a', 'b', 'c'];
-var arr2 = ['d', 'e', 'f'];
+var arr1 = ['a', 'b', 'c']
+var arr2 = ['d', 'e', 'f']
 
-var arr3 = arr1.concat(arr2);
+var arr3 = arr1.concat(arr2)
 
-console.log(arr3);
+console.log(arr3)
 // expected output: ["a", "b", "c", "d", "e", "f"]
 
-var arr4 = arr1.concat(1, [4, [5, 6]]);
-console.log(arr4);
+var arr4 = arr1.concat(1, [4, [5, 6]])
+console.log(arr4)
 //猜猜这个的结果？
 
 // 输出： ['a', 'b', 'c', 1, 4, [5, 6]]
@@ -191,11 +188,11 @@ console.log(arr4);
 结束位置小于起始位置，则返回空数组
 
 ```js
-var a = ['1', '2', '3', '4'];
-var sliced = a.slice(1, 3);
+var a = ['1', '2', '3', '4']
+var sliced = a.slice(1, 3)
 
-console.log(a);      // ['1', '2', '3', '4']
-console.log(sliced); // ['2', '3']
+console.log(a) // ['1', '2', '3', '4']
+console.log(sliced) // ['2', '3']
 ```
 
 #### splice
@@ -207,22 +204,22 @@ console.log(sliced); // ['2', '3']
 参数： 起始位置(包含)、要删除的元素个数、元素
 
 ```js
-var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+var myFish = ['angel', 'clown', 'mandarin', 'sturgeon']
 
-myFish.splice(2, 0, 'drum');
+myFish.splice(2, 0, 'drum')
 // ["angel", "clown", "drum", "mandarin", "sturgeon"]
 
-myFish.splice(2, 1);
+myFish.splice(2, 1)
 // ["angel", "clown", "mandarin", "sturgeon"]
 
-myFish.splice(-1, 0, 'drum');
+myFish.splice(-1, 0, 'drum')
 //["angel", "clown", "mandarin", "drum", "sturgeon"]
 ```
 
 区别于 `concat` 如果插入数组，就会插入数组，而不是将数组拆开。
 
 ```js
-myFish.splice(2, 1, ["hello", "world"]);
+myFish.splice(2, 1, ['hello', 'world'])
 // ["angel", "clown", ["hello", "world"], "sturgeon"]
 ```
 
@@ -235,9 +232,9 @@ myFish.splice(2, 1, ["hello", "world"]);
 #### indexOf
 
 ```js
-var a = [2, 9, 9];
-a.indexOf(2); // 0
-a.indexOf(7); // -1
+var a = [2, 9, 9]
+a.indexOf(2) // 0
+a.indexOf(7) // -1
 
 if (a.indexOf(7) === -1) {
   // element doesn't exist in array
@@ -247,18 +244,18 @@ if (a.indexOf(7) === -1) {
 #### lastIndexOf
 
 ```js
-var numbers = [2, 5, 9, 2];
-numbers.lastIndexOf(2);     // 3
-numbers.lastIndexOf(7);     // -1
-numbers.lastIndexOf(2, 3);  // 3
-numbers.lastIndexOf(2, 2);  // 0
-numbers.lastIndexOf(2, -2); // 0
-numbers.lastIndexOf(2, -1); // 3
+var numbers = [2, 5, 9, 2]
+numbers.lastIndexOf(2) // 3
+numbers.lastIndexOf(7) // -1
+numbers.lastIndexOf(2, 3) // 3
+numbers.lastIndexOf(2, 2) // 0
+numbers.lastIndexOf(2, -2) // 0
+numbers.lastIndexOf(2, -1) // 3
 ```
 
 ### 迭代方法
 
-ECMAScript 5 提供了5个迭代方法，他们的参数都是
+ECMAScript 5 提供了 5 个迭代方法，他们的参数都是
 
 给定的函数(当前元素、位置、数组)
 
@@ -270,10 +267,10 @@ ECMAScript 5 提供了5个迭代方法，他们的参数都是
 
 ```js
 function isBigEnough(element, index, array) {
-  return element < 10;
+  return element < 10
 }
 
-[2, 5, 8, 3, 4].every(isBigEnough);   // true
+;[2, 5, 8, 3, 4].every(isBigEnough) // true
 ```
 
 #### some
@@ -282,11 +279,11 @@ function isBigEnough(element, index, array) {
 
 ```js
 function isBiggerThan10(element, index, array) {
-  return element > 10;
+  return element > 10
 }
 
-[2, 5, 8, 1, 4].some(isBiggerThan10);  // false
-[12, 5, 8, 1, 4].some(isBiggerThan10); // true
+;[2, 5, 8, 1, 4].some(isBiggerThan10) // false
+;[12, 5, 8, 1, 4].some(isBiggerThan10) // true
 ```
 
 #### filter
@@ -294,11 +291,11 @@ function isBiggerThan10(element, index, array) {
 对数组的每一项都运行给定的函数，返回 结果为 ture 的项组成的数组
 
 ```js
-var words = ["spray", "limit", "elite", "exuberant", "destruction", "present", "happy"];
+var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present', 'happy']
 
-var longWords = words.filter(function(word){
-  return word.length > 6;
-});
+var longWords = words.filter(function(word) {
+  return word.length > 6
+})
 // Filtered array longWords is ["exuberant", "destruction", "present"]
 ```
 
@@ -307,10 +304,10 @@ var longWords = words.filter(function(word){
 对数组的每一项都运行给定的函数，返回每次函数调用的结果组成一个新数组
 
 ```js
-var numbers = [1, 5, 10, 15];
+var numbers = [1, 5, 10, 15]
 var doubles = numbers.map(function(x) {
-   return x * 2;
-});
+  return x * 2
+})
 // doubles is now [2, 10, 20, 30]
 // numbers is still [1, 5, 10, 15]
 ```
@@ -318,12 +315,12 @@ var doubles = numbers.map(function(x) {
 #### forEach 数组遍历
 
 ```js
-const items = ['item1', 'item2', 'item3'];
-const copy = [];
+const items = ['item1', 'item2', 'item3']
+const copy = []
 
-items.forEach(function(item){
+items.forEach(function(item) {
   copy.push(item)
-});
+})
 ```
 
 ### 缩小方法
@@ -337,13 +334,13 @@ reduce、reduceRight 一个是从前往后遍历，一个是从后往前遍历�
 #### reduce
 
 ```js
-var numbers = [0, 1, 2, 3];
+var numbers = [0, 1, 2, 3]
 
 var result = numbers.reduce(function(accumulator, currentValue) {
-    return accumulator + currentValue;
-});
+  return accumulator + currentValue
+})
 
-console.log(result);
+console.log(result)
 // expected output: 6
 ```
 
@@ -353,7 +350,7 @@ console.log(result);
 
 ```js
 const arr = [
-  {envName: 'stg', cpu: 4, memory: 2}, 
+  {envName: 'stg', cpu: 4, memory: 2},
   {envName: 'pre', cpu: 2, memory: 4}
 ];
 const newObj = arr.reduce((acc, o) => {
@@ -382,8 +379,8 @@ console.log(newObj);
 
 ```js
 var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
-    return a.concat(b);
-}, []);
+  return a.concat(b)
+}, [])
 
 // flattened is [4, 5, 2, 3, 0, 1]
 ```
@@ -419,11 +416,11 @@ var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
 将类似数组的对象（array-like object）和可遍历（iterable）的对象转为真正的数组
 
 ```js
-const bar = ["a", "b", "c"];
-Array.from(bar);
+const bar = ['a', 'b', 'c']
+Array.from(bar)
 // ["a", "b", "c"]
 
-Array.from('foo');
+Array.from('foo')
 // ["f", "o", "o"]
 ```
 
@@ -440,11 +437,11 @@ Array(3, 11, 8) // [3, 11, 8]
 ```
 
 ```js
-Array.of(7);       // [7]
-Array.of(1, 2, 3); // [1, 2, 3]
+Array.of(7) // [7]
+Array.of(1, 2, 3) // [1, 2, 3]
 
-Array(7);          // [ , , , , , , ]
-Array(1, 2, 3);    // [1, 2, 3]
+Array(7) // [ , , , , , , ]
+Array(1, 2, 3) // [1, 2, 3]
 ```
 
 ### copyWithin
@@ -454,20 +451,17 @@ Array(1, 2, 3);    // [1, 2, 3]
 它接受三个参数。
 
 - target（必需）：从该位置开始替换数据。
-- start（可选）：从该位置开始读取数据，默认为0。如果为负值，表示倒数。
+- start（可选）：从该位置开始读取数据，默认为 0。如果为负值，表示倒数。
 - end（可选）：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。
 
 ```js
-[1, 2, 3, 4, 5].copyWithin(-2);
+;[1, 2, 3, 4, 5].copyWithin(-2)
 // [1, 2, 3, 1, 2]
-
-[1, 2, 3, 4, 5].copyWithin(0, 3);
+;[1, 2, 3, 4, 5].copyWithin(0, 3)
 // [4, 5, 3, 4, 5]
-
-[1, 2, 3, 4, 5].copyWithin(0, 3, 4);
+;[1, 2, 3, 4, 5].copyWithin(0, 3, 4)
 // [4, 2, 3, 4, 5]
-
-[1, 2, 3, 4, 5].copyWithin(-2, -3, -1);
+;[1, 2, 3, 4, 5].copyWithin(-2, -3, -1)
 // [1, 2, 3, 3, 4]
 ```
 
@@ -481,10 +475,9 @@ Array(1, 2, 3);    // [1, 2, 3]
 
 ```js
 var numbers = [1, 2, 3]
-numbers.fill(1);
+numbers.fill(1)
 // results in [1, 1, 1]
-
-['a', 'b', 'c'].fill(7, 1, 2)
+;['a', 'b', 'c'].fill(7, 1, 2)
 // ['a', 7, 'c']
 ```
 
@@ -493,13 +486,14 @@ numbers.fill(1);
 找出第一个符合条件的数组元素，参数是一个回调函数，所有数组元素依次执行该回调函数，直到找出第一个返回值为 `true` 的元素，然后返回该元素。如果没有符合条件的元素，则返回 `undefined`。回调函数可以接受三个参数，依次为当前的值、当前的位置和原数组。
 
 ```js
-[1, 5, 10, 15].find(function(value, index, arr) {
-  return value > 9;
-}) // 10
+;[1, 5, 10, 15]
+  .find(function(value, index, arr) {
+    return value > 9
+  }) // 10
 
-[1, 5, 2, 3].find(function(value, index, arr) {
-  return value > 9;
-}) // undefined
+  [(1, 5, 2, 3)].find(function(value, index, arr) {
+    return value > 9
+  }) // undefined
 ```
 
 ### findIndex
@@ -507,8 +501,8 @@ numbers.fill(1);
 `findIndex` 方法的用法与 `find` 方法非常类似，返回第一个符合条件的数组元素的位置，如果所有元素都不符合条件，则返回 -1。
 
 ```js
-[1, 5, 10, 15].findIndex(function(value, index, arr) {
-  return value > 9;
+;[1, 5, 10, 15].findIndex(function(value, index, arr) {
+  return value > 9
 }) // 2
 ```
 
@@ -516,19 +510,19 @@ numbers.fill(1);
 
 ```js
 for (let index of ['a', 'b'].keys()) {
-  console.log(index);
+  console.log(index)
 }
 // 0
 // 1
 
 for (let elem of ['a', 'b'].values()) {
-  console.log(elem);
+  console.log(elem)
 }
 // 'a'
 // 'b'
 
 for (let [index, elem] of ['a', 'b'].entries()) {
-  console.log(index, elem);
+  console.log(index, elem)
 }
 // 0 "a"
 // 1 "b"
@@ -537,40 +531,40 @@ for (let [index, elem] of ['a', 'b'].entries()) {
 ### entries
 
 ```js
-var a = ['a', 'b', 'c'];
-var iterator = a.entries();
+var a = ['a', 'b', 'c']
+var iterator = a.entries()
 
-console.log(iterator.next().value); // [0, 'a']
-console.log(iterator.next().value); // [1, 'b']
-console.log(iterator.next().value); // [2, 'c']
+console.log(iterator.next().value) // [0, 'a']
+console.log(iterator.next().value) // [1, 'b']
+console.log(iterator.next().value) // [2, 'c']
 ```
 
 ### keys
 
 ```js
-var arr = ['a', 'b', 'c'];
-var iterator = arr.keys();
+var arr = ['a', 'b', 'c']
+var iterator = arr.keys()
 
-console.log(iterator.next()); // { value: 0, done: false }
-console.log(iterator.next()); // { value: 1, done: false }
-console.log(iterator.next()); // { value: 2, done: false }
-console.log(iterator.next()); // { value: undefined, done: true }
+console.log(iterator.next()) // { value: 0, done: false }
+console.log(iterator.next()) // { value: 1, done: false }
+console.log(iterator.next()) // { value: 2, done: false }
+console.log(iterator.next()) // { value: undefined, done: true }
 ```
 
 ### values
 
 ```js
-var a = ['w', 'y', 'k', 'o', 'p'];
-var iterator = a.values();
+var a = ['w', 'y', 'k', 'o', 'p']
+var iterator = a.values()
 
-console.log(iterator.next().value); // w
-console.log(iterator.next().value); // y
-console.log(iterator.next().value); // k
-console.log(iterator.next().value); // o
-console.log(iterator.next().value); // p
+console.log(iterator.next().value) // w
+console.log(iterator.next().value) // y
+console.log(iterator.next().value) // k
+console.log(iterator.next().value) // o
+console.log(iterator.next().value) // p
 ```
 
-更多使用方式，可以参考 [阮一峰 ECMAScript 6入门](http://es6.ruanyifeng.com/#docs/array)
+更多使用方式，可以参考 [阮一峰 ECMAScript 6 入门](http://es6.ruanyifeng.com/#docs/array)
 
 ## ECMAScript 7.0 新增的方法
 
@@ -587,9 +581,9 @@ console.log(iterator.next().value); // p
 `indexOf` 判断元素是否为 `NaN`，会判断错误
 
 ```js
-var a = [1, 2, 3];
-a.includes(2); // true
-a.includes(4); // false
+var a = [1, 2, 3]
+a.includes(2) // true
+a.includes(4) // false
 ```
 
 [ECMA-262/8.0 规范](https://www.ecma-international.org/ecma-262/8.0/index.html#sec-array-objects)
@@ -602,5 +596,4 @@ JavaScript 高级程序设计
 
 [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-[阮一峰 ECMAScript 6入门](http://es6.ruanyifeng.com/#docs/array)
-
+[阮一峰 ECMAScript 6 入门](http://es6.ruanyifeng.com/#docs/array)
