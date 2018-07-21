@@ -683,8 +683,24 @@ motion:
     # Only for Pisces | Gemini.
     sidebar: slideUpIn
 
-# Fancybox
+# Fancybox 图片幻灯片
 fancybox: true
+# 图片幻灯片，可关闭主题的fancybox
+# https://github.com/lzane/hexo-light-gallery
+# lightgallery:
+#     # if you don't specify the css or js source, the default cdn will be used.
+#     css: https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css
+#     js: https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js
+#     # sorry that I can not find any cdn hosting following plugins,
+#     # please self-host the plugin js and add url here
+#     plugins:
+#         lg-thumbnail: https://cdn.jsdelivr.net/npm/lg-thumbnail@1.1.0/dist/lg-thumbnail.min.js
+#         lg-fullscreen: https://cdn.jsdelivr.net/npm/lg-fullscreen@1.0.1/dist/lg-fullscreen.min.js
+#         lg-zoom: https://cdn.jsdelivr.net/npm/lg-zoom@1.1.0/dist/lg-zoom.min.js
+#         lg-autoplay: https://cdn.jsdelivr.net/npm/lg-autoplay@1.0.4/dist/lg-autoplay.min.js
+#         lg-video: https://cdn.jsdelivr.net/npm/lg-video@1.2.2/dist/lg-video.min.js
+#         lg-hash: https://cdn.jsdelivr.net/npm/lg-hash@1.0.4/dist/lg-hash.min.js
+#         lg-paper: https://cdn.jsdelivr.net/npm/lg-pager@1.0.2/dist/lg-pager.min.js
 
 # Progress bar in the top during page loading.
 pace: true
