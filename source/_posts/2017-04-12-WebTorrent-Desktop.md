@@ -14,7 +14,7 @@ tags: [工具,视频播放,下载]
 >
 > 官方网站：[https://webtorrent.io/](https://webtorrent.io/)
 >
-> 小众软件的介绍：[http://www.appinn.com/webtorrent-desktop/](http://www.appinn.com/webtorrent-desktop/)
+> 小众软件的介绍：[https://www.appinn.com/webtorrent-desktop/](https://www.appinn.com/webtorrent-desktop/)
 
 <!-- more -->
 

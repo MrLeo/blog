@@ -64,7 +64,7 @@ toastr.success('Hello')
 
 **参考: **
 
-- [Managing Jquery plugin dependency in webpack](http://stackoverflow.com/questions/28969861/managing-jquery-plugin-dependency-in-webpack)
+- [Managing Jquery plugin dependency in webpack](https://stackoverflow.com/questions/28969861/managing-jquery-plugin-dependency-in-webpack)
 - [如何在 vue 项目里正确地引用 jquery 和 jquery-ui 的插件](https://forum.vuejs.org/topic/4976/%E5%A6%82%E4%BD%95%E5%9C%A8-vue-%E9%A1%B9%E7%9B%AE%E9%87%8C%E6%AD%A3%E7%A1%AE%E5%9C%B0%E5%BC%95%E7%94%A8-jquery-%E5%92%8C-jquery-ui%E7%9A%84%E6%8F%92%E4%BB%B6/2)
 
 # vue-cli webpack 全局引入 jquery
@@ -96,7 +96,7 @@ toastr.success('Hello')
     import $ from 'jquery'
     ```
 
-参考:[vue-cli 怎么引入 jquery](http://618cj.com/2016/08/24/vue-cli%E6%80%8E%E4%B9%88%E5%BC%95%E5%85%A5jquery/)
+参考:[vue-cli 怎么引入 jquery](https://618cj.com/2016/08/24/vue-cli%E6%80%8E%E4%B9%88%E5%BC%95%E5%85%A5jquery/)
 
 # 在.vue 文件中引入第三方非 NPM 模块
 
@@ -104,7 +104,7 @@ toastr.success('Hello')
 var Showbo = require('exports?Showbo!./path/to/showbo.js')
 ```
 
-参考:[exports-loader](http://webpack.github.io/docs/shimming-modules.html#exporting)
+参考:[exports-loader](https://webpack.github.io/docs/shimming-modules.html#exporting)
 
 # vue-cli 引入外部文件
 

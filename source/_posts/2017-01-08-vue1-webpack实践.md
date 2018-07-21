@@ -11,15 +11,15 @@ categories: [前端,vue]
 - [Vue+Webpack 开发可复用的单页面富应用教程](https://www.talkingcoder.com/article/6310756346094488391)
 - [Vue+Webpack 使用规范](https://www.talkingcoder.com/article/6309726065044556372)
 
-[对比其他框架](http://cn.vuejs.org/guide/comparison.html)
+[对比其他框架](https://cn.vuejs.org/guide/comparison.html)
 
 <!-- more -->
 
-推荐代码使用 CommonJS 或 ES6 模块，然后使用 [Webpack](http://webpack.github.io/) 或 [Browserify](http://browserify.org/) 打包。
+推荐代码使用 CommonJS 或 ES6 模块，然后使用 [Webpack](https://webpack.github.io/) 或 [Browserify](https://browserify.org/) 打包。
 
 你可以使用 Webpack + [vue-loader](https://github.com/vuejs/vue-loader) 或 Browserify + [vueify](https://github.com/vuejs/vueify) 构建这些单文件 Vue 组件。
 
-> 可以在 [Webpackbin.com](http://www.webpackbin.com/vue) 上在线尝试！
+> 可以在 [Webpackbin.com](https://www.webpackbin.com/vue) 上在线尝试！
 > **chrome 开发工具 : [vue-developertools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)**
 
 ## 安装
@@ -114,11 +114,11 @@ categories: [前端,vue]
 - v-bind
 - v-on
 - v-model
-  更多指令请移步[Vue 指令](http://cn.vuejs.org/api/#u6307_u4EE4)
+  更多指令请移步[Vue 指令](https://cn.vuejs.org/api/#u6307_u4EE4)
 
 ## 初始化（main.js)
 
-对于单页应用，推荐使用[官方库 vue-router](https://github.com/vuejs/vue-router)。详细请查看它的[文档](http://vuejs.github.io/vue-router/)。
+对于单页应用，推荐使用[官方库 vue-router](https://github.com/vuejs/vue-router)。详细请查看它的[文档](https://vuejs.github.io/vue-router/)。
 
 ### 添加 route 配置
 
@@ -176,9 +176,9 @@ index.html
 
 ## 创建＆应用组件
 
-![](http://cn.vuejs.org/images/vue-component.png)
+![](https://cn.vuejs.org/images/vue-component.png)
 如果你喜欢预处理器，甚至可以这么做：
-![](http://cn.vuejs.org/images/vue-component-with-preprocessors.png)
+![](https://cn.vuejs.org/images/vue-component-with-preprocessors.png)
 
 定义 View:
 
@@ -199,7 +199,7 @@ module.exports = {
 }
 ```
 
-## 数据请求:[vue-resource](http://www.cnblogs.com/keepfool/p/5657065.html)
+## 数据请求:[vue-resource](https://www.cnblogs.com/keepfool/p/5657065.html)
 
 ```js
 //在main.js中注册vue-resource

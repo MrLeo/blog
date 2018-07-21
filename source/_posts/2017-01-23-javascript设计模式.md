@@ -415,7 +415,7 @@ if (validator.hasErrors()) {
 }
 ```
 
-> 策略模式定义及例子实现参考与《javascript 模式》及 [汤姆大叔的博客](http://www.cnblogs.com/TomXu/archive/2012/03/05/2358552.html)
+> 策略模式定义及例子实现参考与《javascript 模式》及 [汤姆大叔的博客](https://www.cnblogs.com/TomXu/archive/2012/03/05/2358552.html)
 
 ---
 
@@ -479,7 +479,7 @@ console.log(ems.send('键盘')) //gary你的包裹:键盘
 
 ## 论坛权限管理例子
 
-本例子参考与 [大熊君](http://www.tuicool.com/articles/eyqeUjn)
+本例子参考与 [大熊君](https://www.tuicool.com/articles/eyqeUjn)
 
 - 权限列表
 - 发帖 1
@@ -587,7 +587,7 @@ new Forum(new User('administartor', '003'))
 
 **图示**
 
-![](http://oj7lzlt0w.bkt.clouddn.com/mediatorpattern.jpg)
+![](https://oj7lzlt0w.bkt.clouddn.com/mediatorpattern.jpg)
 
 ```javascript
 function Player(name) {
@@ -659,7 +659,7 @@ setTimeout(function() {
 
 设计这种模式原因是促进形成松散耦合，在这种模式中，并不是一个对象调用另一个对象的方法，而是一个对象订阅另一个对象的特定活动并在状态改编后获得通知。订阅者因此也成为观察者，而被观察的对象成为发布者或者主题。当发生了一个重要事件时候发布者会通知（调用）所有订阅者并且可能经常已事件对象的形式传递消息。
 
-参考：[nodejs 的 EventEmitter](http://garychang.cn/2016/12/15/nodejsEventEmitter/)
+参考：[nodejs 的 EventEmitter](https://garychang.cn/2016/12/15/nodejsEventEmitter/)
 
 ---
 
@@ -700,4 +700,4 @@ setTimeout(function() {
 1.  观察者模式
     > 通过创建“可观察”的对象，当发生一个感兴趣的事件时可将改时间通告给所有观察者从而形成松散耦合。
 
-[参考]: http://garychang.cn/2017/01/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#单体模式 '单体模式'
+[参考]: https://garychang.cn/2017/01/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#单体模式 '单体模式'

@@ -564,7 +564,7 @@ console.log(iterator.next().value) // o
 console.log(iterator.next().value) // p
 ```
 
-更多使用方式，可以参考 [阮一峰 ECMAScript 6 入门](http://es6.ruanyifeng.com/#docs/array)
+更多使用方式，可以参考 [阮一峰 ECMAScript 6 入门](https://es6.ruanyifeng.com/#docs/array)
 
 ## ECMAScript 7.0 新增的方法
 
@@ -596,4 +596,4 @@ JavaScript 高级程序设计
 
 [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-[阮一峰 ECMAScript 6 入门](http://es6.ruanyifeng.com/#docs/array)
+[阮一峰 ECMAScript 6 入门](https://es6.ruanyifeng.com/#docs/array)

@@ -24,13 +24,13 @@ word-break:break-all;
 text-align:justify;text-justify:inter-ideogra
 ```
 
-- [去掉Webkit(chrome)浏览器中input(文本框)或textarea的黄色焦点框](http://www.cnblogs.com/niao/archive/2012/09/07/2674511.html)
+- [去掉Webkit(chrome)浏览器中input(文本框)或textarea的黄色焦点框](https://www.cnblogs.com/niao/archive/2012/09/07/2674511.html)
 ```css
 input,button,select,textarea{ outline:none;}
 textarea{ font-size:13px; resize:none;}
 ```
 
-- [去掉chrome记住密码后自动填充表单的黄色背景](http://www.tuicool.com/articles/EZ777n )
+- [去掉chrome记住密码后自动填充表单的黄色背景](https://www.tuicool.com/articles/EZ777n )
 
 - ie6: position:fixed
 
@@ -54,8 +54,8 @@ html[xmlns] .clearfix{display:block;}
 .clearfix{overflow:hidden;_zoom:1;}
 ```
 
-> [http://www.cnblogs.com/blog-leo/p/3959217.html](http://www.cnblogs.com/blog-leo/p/3959217.html)
-> [http://www.daqianduan.com/3606.html](http://www.daqianduan.com/3606.html)
+> [https://www.cnblogs.com/blog-leo/p/3959217.html](https://www.cnblogs.com/blog-leo/p/3959217.html)
+> [https://www.daqianduan.com/3606.html](https://www.daqianduan.com/3606.html)
 
 - seperate-table
 
@@ -114,7 +114,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='
 background:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#50000000',endColorstr='#50000000')\9;
 ```
 
-- [search占位](http://www.qianduan.net/search-box-style-custom-webkit.html)
+- [search占位](https://www.qianduan.net/search-box-style-custom-webkit.html)
 
 ```css
 ::-webkit-input-placeholder {}
@@ -122,8 +122,8 @@ background:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.gradient(Gra
 input:focus::-webkit-input-placeholder { color: transparent; }
 -webkit-appearance:none;  google边框去除
 input[type="search"]{-webkit-appearance:textfield;} // 去除chrome默认样式
-http://i.wanz.im/2011/02/04/remove_border_from_input_type_search/
-http://blog.csdn.net/do_it__/article/details/6789699
+https://i.wanz.im/2011/02/04/remove_border_from_input_type_search/
+https://blog.csdn.net/do_it__/article/details/6789699
 line-height: normal; /* for non-ie */
 line-height: 22px\9; /* for ie */
 ```
@@ -140,8 +140,8 @@ line-height: 22px\9; /* for ie */
 &#215;
 ```
 
-- [全部浏览器的兼容代码生成](http://www.colorzilla.com/gradient-editor/ )
-  [CSS 实现 textArea 的 placeholder 换行](http://segmentfault.com/a/1190000000362621)
+- [全部浏览器的兼容代码生成](https://www.colorzilla.com/gradient-editor/ )
+  [CSS 实现 textArea 的 placeholder 换行](https://segmentfault.com/a/1190000000362621)
 
 - 阻止默认事件
 
@@ -158,7 +158,7 @@ html{
     -moz-filter: grayscale(100%);
     -ms-filter: grayscale(100%);
     -o-filter: grayscale(100%);
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'https://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
     filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
     -webkit-filter: grayscale(1);
 }
@@ -213,7 +213,7 @@ input[type=search]::-webkit-search-results-decoration {
 }
 ```
 
-- [chrome取消默认黄色背景](http://stackoverflow.com/questions/2338102/override-browser-form-filling-and-input-highlighting-with-html-css)
+- [chrome取消默认黄色背景](https://stackoverflow.com/questions/2338102/override-browser-form-filling-and-input-highlighting-with-html-css)
 
 ```css
 input:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px white inset;}
@@ -245,25 +245,25 @@ input:-moz-placeholder {color: #369;}
 ::-webkit-input-placeholder {color:#369;}
 ```
 
-- [IOS 禁用高亮](http://hi.barretlee.com/2014/03/31/tap-highlight-in-webview/)
+- [IOS 禁用高亮](https://hi.barretlee.com/2014/03/31/tap-highlight-in-webview/)
 
 ```css
 -webkit-tap-highlight-color:rgba(255,0,0,0.5);-webkit-tap-highlight-color:transparent; /* For some Androids */
 ```
 
-- [用户不能选择元素中的任何内容](http://www.qianduan.net/introduce-user-select/)
+- [用户不能选择元素中的任何内容](https://www.qianduan.net/introduce-user-select/)
 
 ```css
 user-select:none
 ```
 
-- IOS iframe 滚动 [滚动回弹特效](http://www.cnblogs.com/flash3d/archive/2013/09/28/3343877.html)
+- IOS iframe 滚动 [滚动回弹特效](https://www.cnblogs.com/flash3d/archive/2013/09/28/3343877.html)
 
 ```css
 -webkit-overflow-scrolling:touch;overflow-y:scroll;
 ```
 
-- [禁止选中文本](http://www.qianduan.net/introduce-user-select/)
+- [禁止选中文本](https://www.qianduan.net/introduce-user-select/)
 
 ```css
 -moz-user-select:none;
@@ -272,9 +272,9 @@ user-select:none
 user-select:none;
 ```
 
-- [模糊(毛玻璃)效果1](http://www.zhangxinxu.com/wordpress/2013/11/%E5%B0%8Ftip-%E4%BD%BF%E7%94%A8css%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A8%A1%E7%B3%8A%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C/)
-- [模糊(毛玻璃)效果2](http://mao.li/css3-blur-filter-pratice/)
-- [模糊(毛玻璃)逼真效果](http://codepen.io/ariona/pen/geFIK)
+- [模糊(毛玻璃)效果1](https://www.zhangxinxu.com/wordpress/2013/11/%E5%B0%8Ftip-%E4%BD%BF%E7%94%A8css%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A8%A1%E7%B3%8A%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C/)
+- [模糊(毛玻璃)效果2](https://mao.li/css3-blur-filter-pratice/)
+- [模糊(毛玻璃)逼真效果](https://codepen.io/ariona/pen/geFIK)
 
 ```css
 .blur {    
@@ -309,7 +309,7 @@ user-select:none;
 </div>
 ```
 
-- [居中](http://www.cnblogs.com/blog-leo/p/4377362.html)
+- [居中](https://www.cnblogs.com/blog-leo/p/4377362.html)
 
 
 - css media ：通过媒体查询为不同的设备和大小配置不同的样式。

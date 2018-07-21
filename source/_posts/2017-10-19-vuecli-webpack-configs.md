@@ -515,7 +515,7 @@ describe('Hello.vue', () => {
 
 karma 的单元测试，同时提供了 `coverage Rate`即单元测试的覆盖率，会根据不同文件，从行数到函数的数量，描述你的单元测试是否完整，通过 `npm run unit`完成后，查看 `coverage\lcov-report\index.html`可以看到覆盖率结果：
 
-![简析vue-cli快速搭建项目下的配置](http://7ktvc3.com1.z0.glb.clouddn.com/vue_webpack_coverage.png)
+![简析vue-cli快速搭建项目下的配置](https://7ktvc3.com1.z0.glb.clouddn.com/vue_webpack_coverage.png)
 
 ## 根目录
 

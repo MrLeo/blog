@@ -11,7 +11,7 @@ categories: [规范]
 
 ## javascript 注释
 
-> [HBuilder 官方文档](http://ask.dcloud.net.cn/article/129)
+> [HBuilder 官方文档](https://ask.dcloud.net.cn/article/129)
 
 <!-- more -->
 

@@ -6,7 +6,7 @@ categories: [前端, vue]
 tags: [前端, 开发, dev, vue, css, rem, 转载]
 ---
 
-> 之前转载过一篇[《【转载】Vue 项目自动转换 px 为 rem，高保真还原设计图》](http://xuebin.me/2018/02/01/vue-px-to-rem/)使用的是 postcss 的插件`postcss-pxtorem`，这次介绍另外一个插件[`px2rem-loader`][px2rem-loader]
+> 之前转载过一篇[《【转载】Vue 项目自动转换 px 为 rem，高保真还原设计图》](https://xuebin.me/2018/02/01/vue-px-to-rem/)使用的是 postcss 的插件`postcss-pxtorem`，这次介绍另外一个插件[`px2rem-loader`][px2rem-loader]
 
 <!-- more -->
 

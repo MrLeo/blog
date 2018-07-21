@@ -740,13 +740,13 @@ $ vue init MrLeo/webpack my-project
 >
 > by [jrainlau](https://segmentfault.com/u/jrainlau) from <https://segmentfault.com/a/1190000011643581?_ea=2709729>
 
-[vue]: http://cn.vuejs.org/ 'Vue.js - A progressive, incrementally-adoptable JavaScript framework for building UI on the web.'
+[vue]: https://cn.vuejs.org/ 'Vue.js - A progressive, incrementally-adoptable JavaScript framework for building UI on the web.'
 [vue-cli]: https://github.com/vuejs/vue-cli/tree/master 'A simple CLI for scaffolding Vue.js projects.'
 [vue-cli-readme]: https://github.com/vuejs/vue-cli/blob/master/README.md 'vue-cli README.md'
 [download-git-repo]: https://github.com/flipxfx/download-git-repo 'Download and extract a git repository (GitHub, GitLab, Bitbucket) from node.'
 [inquirer.js]: https://github.com/SBoudrias/Inquirer.js 'A collection of common interactive command line user interfaces.'
 [webpack-simple-readme]: https://github.com/vuejs-templates/webpack-simple/blob/master/template/README.md
-[handlebars]: http://handlebarsjs.com/ 'Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.'
+[handlebars]: https://handlebarsjs.com/ 'Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.'
 [metalsmith]: https://github.com/segmentio/metalsmith 'An extremely simple, pluggable static site generator.'
 [vuejs-templates-webpack]: https://github.com/vuejs-templates/webpack 'A full-featured Webpack + vue-loader setup with hot reload, linting, testing & css extraction.'
 [custom-templates]: https://github.com/vuejs/vue-cli/blob/master/README.md#custom-templates "It's unlikely to make everyone happy with the official templates."

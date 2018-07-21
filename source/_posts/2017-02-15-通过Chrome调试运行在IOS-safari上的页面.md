@@ -50,7 +50,7 @@ Connected :9222 to iPhone (c356a29f73043a36aa6de64b088d55aeeda8f034)
 
 ## 开始调试
 
-打开 chrome 浏览器，在地址栏输入 [http://localhost:9221/](http://localhost:9221/) ，这里会显示所有已连接的设备清单，选择一个设备并点击打开。
+打开 chrome 浏览器，在地址栏输入 [https://localhost:9221/](https://localhost:9221/) ，这里会显示所有已连接的设备清单，选择一个设备并点击打开。
 
 打开的页面可看到当前 iphone 中 Safari 浏览器打开的所有页面，点击要调试的页面链接打开即可进入调试界面。此时可能会有一个错误提示如下:
 

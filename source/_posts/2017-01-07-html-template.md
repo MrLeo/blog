@@ -23,7 +23,7 @@ categories: [前端,html]
         <meta name="robots" content="index,follow"/>
         <!-- 为移动设备添加 viewport -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
-        <!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边 http://bigc.at/ios-webapp-viewport-meta.orz -->
+        <!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边 https://bigc.at/ios-webapp-viewport-meta.orz -->
 
         <!-- iOS 设备 begin -->
         <meta name="apple-mobile-web-app-title" content="标题">
