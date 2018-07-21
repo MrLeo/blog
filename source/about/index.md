@@ -14,8 +14,8 @@ comments: true
 | :------------------------------------------: | :-------------------------------------------------------: | :-----------------------------------------: | :-----------------------------------------------------------: |
 | [github.com/MrLeo](https://github.com/MrLeo) | [segmentfault 专栏](https://segmentfault.com/blog/mr-leo) | [blog-leo](https://www.cnblogs.com/blog-leo) | [mrleo.gitbooks.io](https://mrleo.gitbooks.io/books/content/) |
 
-![签名](https://o8taa43yk.bkt.clouddn.com/1483938241877.JPG)
+![签名](http://o8taa43yk.bkt.clouddn.com/1483938241877.JPG)
 
-![柳学斌](https://o8taa43yk.bkt.clouddn.com/xuebin.JPG)
+![柳学斌](http://o8taa43yk.bkt.clouddn.com/xuebin.JPG)
 
 ---

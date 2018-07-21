@@ -75,4 +75,4 @@ new GenerateSW({
 
 _出自：<https://segmentfault.com/a/1190000015050724>_
 
-> [pwd 学习 demo 下载](https://o8taa43yk.bkt.clouddn.com/offline-client.zip)
+> [pwd 学习 demo 下载](http://o8taa43yk.bkt.clouddn.com/offline-client.zip)
