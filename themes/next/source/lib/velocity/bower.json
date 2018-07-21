@@ -1,10 +1,10 @@
 {
   "name": "velocity",
   "version": "1.2.2",
-  "homepage": "http://velocityjs.org",
+  "homepage": "https://velocityjs.org",
   "authors": [
     { "name" : "Julian Shapiro",
-      "homepage" : "http://julian.com/"
+      "homepage" : "https://julian.com/"
     }
   ],
   "description": "Accelerated JavaScript animation.",
@@ -33,6 +33,6 @@
   "repository" :
   { 
     "type" : "git",
-    "url" : "http://github.com/julianshapiro/velocity.git"
+    "url" : "https://github.com/julianshapiro/velocity.git"
   }
 }

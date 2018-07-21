@@ -21,7 +21,7 @@ the body entirely); tools like rebase can get confused if you run the
 two together.
 ```
 
-When in doubt see Tim Pope's blogpost [A Note About Git Commit Messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+When in doubt see Tim Pope's blogpost [A Note About Git Commit Messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
 
 ## Follow the existing coding standards
 

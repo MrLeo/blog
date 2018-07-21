@@ -2,7 +2,7 @@
 
 A brand new default theme for [Hexo].
 
-- [Preview](http://hexo.io/hexo-theme-landscape/)
+- [Preview](https://hexo.io/hexo-theme-landscape/)
 
 ## Installation
 
@@ -105,7 +105,7 @@ All of them are enabled by default. You can edit them in `widget` setting.
 - **fancybox** - Only download [Fancybox].
 - **clean** - Clean temporarily files and downloaded files.
 
-[Hexo]: http://zespia.tw/hexo/
-[Fancybox]: http://fancyapps.com/fancybox/
-[Font Awesome]: http://fontawesome.io/
-[Grunt]: http://gruntjs.com/
+[Hexo]: https://zespia.tw/hexo/
+[Fancybox]: https://fancyapps.com/fancybox/
+[Font Awesome]: https://fontawesome.io/
+[Grunt]: https://gruntjs.com/

@@ -116,7 +116,7 @@ NexT.utils = NexT.$u = {
 
   /**
    * Transform embedded video to support responsive layout.
-   * @see http://toddmotto.com/fluid-and-responsive-youtube-and-vimeo-videos-with-fluidvids-js/
+   * @see https://toddmotto.com/fluid-and-responsive-youtube-and-vimeo-videos-with-fluidvids-js/
    */
   embeddedVideoTransformer: function () {
     var $iframes = $('iframe');

@@ -2,7 +2,7 @@
   needShareButton
   - Version 1.0.0
   - Copyright 2015 Dzmitry Vasileuski
-	- Licensed under MIT (http://opensource.org/licenses/MIT)
+	- Licensed under MIT (https://opensource.org/licenses/MIT)
 ***********************************************/
 
 (function () {
@@ -101,7 +101,7 @@
     root.share = {
       "weibo": function (el) {
         var myoptions = getOptions(el);
-        var url = "http://v.t.sina.com.cn/share/share.php?title=" +
+        var url = "https://v.t.sina.com.cn/share/share.php?title=" +
           encodeURIComponent(myoptions.title) +
           "&url=" + encodeURIComponent(myoptions.url) +
           "&pic=" + encodeURIComponent(myoptions.image);
@@ -132,7 +132,7 @@
       },
       "qqzone": function (el) {
         var myoptions = getOptions(el);
-        var url = "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title=" +
+        var url = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title=" +
           encodeURIComponent(myoptions.title) +
           "&url=" + encodeURIComponent(myoptions.url) +
           "&pics=" + encodeURIComponent(myoptions.image) +
@@ -141,7 +141,7 @@
       },
       "renren": function (el) {
         var myoptions = getOptions(el);
-        var url = "http://widget.renren.com/dialog/share?title=" +
+        var url = "https://widget.renren.com/dialog/share?title=" +
           encodeURIComponent(myoptions.title) +
           "&resourceUrl=" + encodeURIComponent(myoptions.url) +
           "&pic=" + encodeURIComponent(myoptions.image) +

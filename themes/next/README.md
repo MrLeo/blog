@@ -1,6 +1,6 @@
 <h1 align="center"><a title="New «NexT» 6.0.0 version [Reloaded]" href="https://github.com/theme-next/hexo-theme-next">NexT</a></h1>
 
-<p align="center">NexT is a high quality elegant <a href="http://hexo.io">Hexo</a> theme. It is crafted from scratch, with love.</p>
+<p align="center">NexT is a high quality elegant <a href="https://hexo.io">Hexo</a> theme. It is crafted from scratch, with love.</p>
 
 [![gitter-image]][gitter-url]
 [![mnt-image]](https://github.com/theme-next/hexo-theme-next)
@@ -13,10 +13,10 @@
 
 ## Live Preview
 
-* :heart_decoration: Muse scheme: [XiaMo](https://notes.wanghao.work) | [OAwan](https://oawan.me) | [Hui Wang](http://hui-wang.info)
-* :six_pointed_star: Mist scheme: [Jeff](https://blog.zzbd.org) | [uchuhimo](http://uchuhimo.me) | [xirong](http://www.ixirong.com)
-* :pisces: Pisces scheme: [Vi](http://notes.iissnan.com) | [Acris](https://acris.me) | [Rainy](https://rainylog.com)
-* :gemini: Gemini scheme: [Ivan.Nginx](https://almostover.ru) | [Alynx](http://sh.alynx.xyz) | [Raincal](https://raincal.top)
+* :heart_decoration: Muse scheme: [XiaMo](https://notes.wanghao.work) | [OAwan](https://oawan.me) | [Hui Wang](https://hui-wang.info)
+* :six_pointed_star: Mist scheme: [Jeff](https://blog.zzbd.org) | [uchuhimo](https://uchuhimo.me) | [xirong](https://www.ixirong.com)
+* :pisces: Pisces scheme: [Vi](https://notes.iissnan.com) | [Acris](https://acris.me) | [Rainy](https://rainylog.com)
+* :gemini: Gemini scheme: [Ivan.Nginx](https://almostover.ru) | [Alynx](https://sh.alynx.xyz) | [Raincal](https://raincal.top)
 
 More NexT examples [here](https://github.com/iissnan/hexo-theme-next/issues/119).
 
@@ -275,15 +275,15 @@ Set `rss` field in theme's `_config.yml`, as the following value:
 
     Follow the installation instruction in the plugin's README. After the configuration is done for this plugin, the feed link is ready too.
 
-3. `rss: http://your-feed-url` set specific feed link.
+3. `rss: https://your-feed-url` set specific feed link.
 
 ### Up to 5 code highlight themes built-in.
 
 NexT uses [Tomorrow Theme](https://github.com/chriskempson/tomorrow-theme) with 5 themes for you to choose from.
 Next use `normal` by default. Have a preview about `normal` and `night`:
 
-![Tomorrow Normal Preview](http://iissnan.com/nexus/next/tomorrow-normal.png)
-![Tomorrow Night Preview](http://iissnan.com/nexus/next/tomorrow-night.png)
+![Tomorrow Normal Preview](https://iissnan.com/nexus/next/tomorrow-normal.png)
+![Tomorrow Night Preview](https://iissnan.com/nexus/next/tomorrow-night.png)
 
 Head over to [Tomorrow Theme](https://github.com/chriskempson/tomorrow-theme) for more details.
 
@@ -332,12 +332,12 @@ Contribution is welcome, feel free to open an issue and fork. Waiting for your p
 [![bower-image]][bower-url]
 [![jquery-image]][jquery-url]
 
-[hexo-image]: http://img.shields.io/badge/Hexo-2.4+-2BAF2B.svg?style=flat-square
-[hexo-url]: http://hexo.io
-[bower-image]: http://img.shields.io/badge/Bower-*-2BAF2B.svg?style=flat-square
-[bower-url]: http://bower.io
+[hexo-image]: https://img.shields.io/badge/Hexo-2.4+-2BAF2B.svg?style=flat-square
+[hexo-url]: https://hexo.io
+[bower-image]: https://img.shields.io/badge/Bower-*-2BAF2B.svg?style=flat-square
+[bower-url]: https://bower.io
 [jquery-image]: https://img.shields.io/badge/jquery-1.9-blue.svg?style=flat-square
-[jquery-url]: http://jquery.com/
+[jquery-url]: https://jquery.com/
 -->
 
 [browser-image]: https://img.shields.io/badge/browser-%20chrome%20%7C%20firefox%20%7C%20opera%20%7C%20safari%20%7C%20ie%20%3E%3D%209-lightgrey.svg
@@ -350,7 +350,7 @@ Contribution is welcome, feel free to open an issue and fork. Waiting for your p
 [travis-url]: https://travis-ci.org/iissnan/hexo-theme-next?branch=master "Travis CI"
 
 [hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue.svg
-[hexo-url]: http://hexo.io
+[hexo-url]: https://hexo.io
 
 [mnt-image]: https://img.shields.io/maintenance/yes/2017.svg
 [rel-image]: https://img.shields.io/github/release/iissnan/hexo-theme-next.svg
@@ -360,9 +360,9 @@ Contribution is welcome, feel free to open an issue and fork. Waiting for your p
 [git-image]: https://img.shields.io/badge/install%20with%20-git-blue.svg
 [curl-tar-image]: https://img.shields.io/badge/install%20with%20-curl%20%7C%20tar-blue.svg
 [curl-tar-wget-image]: https://img.shields.io/badge/install%20with%20-curl%20%7C%20tar%20%7C%20wget-blue.svg
-[git-url]: http://lmgtfy.com/?q=linux+git+install
-[curl-tar-url]: http://lmgtfy.com/?q=linux+curl+tar+install
-[curl-tar-wget-url]: http://lmgtfy.com/?q=linux+curl+tar+wget+install
+[git-url]: https://lmgtfy.com/?q=linux+git+install
+[curl-tar-url]: https://lmgtfy.com/?q=linux+curl+tar+install
+[curl-tar-wget-url]: https://lmgtfy.com/?q=linux+curl+tar+wget+install
 
 [download-latest-url]: https://github.com/iissnan/hexo-theme-next/archive/master.zip
 [releases-latest-url]: https://github.com/iissnan/hexo-theme-next/releases/latest

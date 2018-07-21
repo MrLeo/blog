@@ -1,8 +1,8 @@
 # <div align="center"><a href="https://github.com/iissnan/hexo-theme-next"><img align="center" width="56" height="56" src="../../blob/master/source/images/logo.svg"></a> e x T</div>
 
-<p align="center">NexT 是一个高质量并且优雅的<a href="http://hexo.io">Hexo</a> 主题。这是精心制作做出来的 hexo 主题。</p>
+<p align="center">NexT 是一个高质量并且优雅的<a href="https://hexo.io">Hexo</a> 主题。这是精心制作做出来的 hexo 主题。</p>
 
-![NexT Schemes](http://iissnan.com/nexus/next/next-schemes.jpg)
+![NexT Schemes](https://iissnan.com/nexus/next/next-schemes.jpg)
 
 [![Join the chat at https://gitter.im/iissnan/hexo-theme-next](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/iissnan/hexo-theme-next?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![mnt-image]][commits-url]
@@ -11,15 +11,15 @@
 [![hexo-image]][hexo-url]
 [![lic-image]](LICENSE)
 
-* <a href="http://theme-next.iissnan.com" target="_blank">NexT 使用文档</a> |  [English Documentation](README.md)
+* <a href="https://theme-next.iissnan.com" target="_blank">NexT 使用文档</a> |  [English Documentation](README.md)
 
 ## 实时预览 Live Preview
 
 
-* :heart_decoration: Muse 方案: [XiaMo](https://notes.wanghao.work) | [OAwan](https://oawan.me) | [Hui Wang](http://hui-wang.info)
-* :six_pointed_star: Mist 方案: [Jeff](https://blog.zzbd.org) | [uchuhimo](http://uchuhimo.me) | [xirong](http://www.ixirong.com)
-* :pisces: Pisces 方案: [Vi](http://notes.iissnan.com) | [Acris](https://acris.me) | [Rainy](https://rainylog.com)
-* :gemini: Gemini 方案: [Ivan.Nginx](https://almostover.ru) | [Alynx](http://sh.alynx.xyz) | [Raincal](https://raincal.top)
+* :heart_decoration: Muse 方案: [XiaMo](https://notes.wanghao.work) | [OAwan](https://oawan.me) | [Hui Wang](https://hui-wang.info)
+* :six_pointed_star: Mist 方案: [Jeff](https://blog.zzbd.org) | [uchuhimo](https://uchuhimo.me) | [xirong](https://www.ixirong.com)
+* :pisces: Pisces 方案: [Vi](https://notes.iissnan.com) | [Acris](https://acris.me) | [Rainy](https://rainylog.com)
+* :gemini: Gemini 方案: [Ivan.Nginx](https://almostover.ru) | [Alynx](https://sh.alynx.xyz) | [Raincal](https://raincal.top)
 
 
 更多 NexT 例子点击 [这里](https://github.com/iissnan/hexo-theme-next/issues/119).
@@ -281,15 +281,15 @@ social:
 
     按照插件[hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed)的README中的安装说明进行操作。在完成这个插件的配置后，Feed链接也生成好了
 
-3. `rss: http://your-feed-url` 设置你的 feed 链接.
+3. `rss: https://your-feed-url` 设置你的 feed 链接.
 
 ### 内置5种代码高亮主题 Up to 5 code highlight themes built-in
 
 NexT 使用的是 [Tomorrow 主题](https://github.com/chriskempson/tomorrow-theme) ，一共有5种主题供你选择。
 Next 默认使用 `normal`. 下面是 `normal` 和 `night` 主题的预览:
 
-![Tomorrow Normal Preview](http://iissnan.com/nexus/next/tomorrow-normal.png)
-![Tomorrow Night Preview](http://iissnan.com/nexus/next/tomorrow-night.png)
+![Tomorrow Normal Preview](https://iissnan.com/nexus/next/tomorrow-normal.png)
+![Tomorrow Night Preview](https://iissnan.com/nexus/next/tomorrow-night.png)
 
 查看更多信息点击[Tomorrow 主题](https://github.com/chriskempson/tomorrow-theme)。
 
@@ -326,7 +326,7 @@ since: 2013
 
 ## 浏览器支持 Browser support
 
-![Browser support](http://iissnan.com/nexus/next/browser-support.png)
+![Browser support](https://iissnan.com/nexus/next/browser-support.png)
 
 [![Browser Stack](.github/browserstack_logo.png)](https://www.browserstack.com/)
 >**BrowserStack** is a cloud-based cross-browser testing tool that enables developers to test their websites across various browsers on different operating systems and mobile devices, without requiring users to install virtual machines, devices or emulators.
@@ -362,7 +362,7 @@ NexT is built for easily use with elegant appearance. First things first, always
 [travis-url]: https://travis-ci.org/iissnan/hexo-theme-next?branch=master "Travis CI"
 
 [hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue.svg
-[hexo-url]: http://hexo.io
+[hexo-url]: https://hexo.io
 
 [mnt-image]: https://img.shields.io/maintenance/yes/2017.svg
 [rel-image]: https://img.shields.io/github/release/iissnan/hexo-theme-next.svg
@@ -372,9 +372,9 @@ NexT is built for easily use with elegant appearance. First things first, always
 [git-image]: https://img.shields.io/badge/install%20with%20-git-blue.svg
 [curl-tar-image]: https://img.shields.io/badge/install%20with%20-curl%20%7C%20tar-blue.svg
 [curl-tar-wget-image]: https://img.shields.io/badge/install%20with%20-curl%20%7C%20tar%20%7C%20wget-blue.svg
-[git-url]: http://lmgtfy.com/?q=linux+git+install
-[curl-tar-url]: http://lmgtfy.com/?q=linux+curl+tar+install
-[curl-tar-wget-url]: http://lmgtfy.com/?q=linux+curl+tar+wget+install
+[git-url]: https://lmgtfy.com/?q=linux+git+install
+[curl-tar-url]: https://lmgtfy.com/?q=linux+curl+tar+install
+[curl-tar-wget-url]: https://lmgtfy.com/?q=linux+curl+tar+wget+install
 
 [download-latest-url]: https://github.com/iissnan/hexo-theme-next/archive/master.zip
 [releases-latest-url]: https://github.com/iissnan/hexo-theme-next/releases/latest

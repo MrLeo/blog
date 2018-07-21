@@ -1,4 +1,4 @@
-/* http://james.padolsey.com/javascript/special-scroll-events-for-jquery/ */
+/* https://james.padolsey.com/javascript/special-scroll-events-for-jquery/ */
 
 (function(){
     

@@ -77,7 +77,7 @@ Issue Number(s): #xxxx.
 ### How it looks?
 ![image](https://user-images.githubusercontent.com/xxxxxxxx/xxxxxxxx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx.png)
 
-Live demo [here](http://site.com/).
+Live demo [here](https://site.com/).
 
 ### How to use?
 In Next `_config.yml`:

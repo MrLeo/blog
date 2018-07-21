@@ -10,7 +10,7 @@ You may delete this recomendations and use template which is placed below.
 
 <!-- Check all with "x" (使用 "x" 选择) -->
 - [] Yes, I was on [Hexo Docs page](https://hexo.io/docs/), especially on [Templates](https://hexo.io/docs/templates.html), [Variables](https://hexo.io/docs/variables.html), [Helpers](https://hexo.io/docs/helpers.html) and [Troubleshooting](https://hexo.io/docs/troubleshooting.html).
-- [] Yes, I was on [NexT Documentation Site](http://theme-next.iissnan.com/).
+- [] Yes, I was on [NexT Documentation Site](https://theme-next.iissnan.com/).
 - [] And yes, I already searched for current [issues](https://github.com/iissnan/hexo-theme-next/issues?utf8=%E2%9C%93&q=is%3Aissue) and this is not help to me.
 
 ***
