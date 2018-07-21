@@ -18,11 +18,11 @@ iPhoneX 发布至今已经有将近一年的时间了，各类 app 都多多少�
 
 -- by Apple's Human Interface Guidelines
 
-![图1](http://o8taa43yk.bkt.clouddn.com/p1.jpg)
+![图1](https://image.xuebin.me/p1.jpg)
 
 对于 h5 页面来说，通常是在浏览器或 app 的 webview 这样的“容器”中打开，这些容器大都会做这样的适配：
 
-![图2](http://o8taa43yk.bkt.clouddn.com/p2.jpg)
+![图2](https://image.xuebin.me/p2.jpg)
 
 可以看到，这些容器都会保证页面顶部在安全区内，而为了保证全屏体验的效果，底部会占满屏幕。
 
@@ -30,7 +30,7 @@ iPhoneX 发布至今已经有将近一年的时间了，各类 app 都多多少�
 
 如下图所示，iPhoneX 底部的危险区域高度为 34pt，对应@3x 页面像素值为 102px。我们可以根据这个值对底部导航做适配。
 
-![图3](http://o8taa43yk.bkt.clouddn.com/p3.jpg)
+![图3](https://image.xuebin.me/p3.jpg)
 
 # 底部导航适配三法
 
@@ -52,7 +52,7 @@ iPhoneX 发布至今已经有将近一年的时间了，各类 app 都多多少�
     }
     ```
 
-    ![demo](http://o8taa43yk.bkt.clouddn.com/demo1.png)
+    ![demo](https://image.xuebin.me/demo1.png)
 
 1.  **js 动态适配**
 
@@ -79,9 +79,9 @@ iPhoneX 发布至今已经有将近一年的时间了，各类 app 都多多少�
     }
     ```
 
-    ![效果图](http://o8taa43yk.bkt.clouddn.com/p4.gif)
+    ![效果图](https://image.xuebin.me/p4.gif)
 
-    ![demo](http://o8taa43yk.bkt.clouddn.com/demo2.png)
+    ![demo](https://image.xuebin.me/demo2.png)
 
 1.  **纯 css 实现**
 
@@ -127,7 +127,7 @@ iPhoneX 发布至今已经有将近一年的时间了，各类 app 都多多少�
     }
     ```
 
-    ![demo](http://o8taa43yk.bkt.clouddn.com/demo3.png)
+    ![demo](https://image.xuebin.me/demo3.png)
 
 # 总结
 

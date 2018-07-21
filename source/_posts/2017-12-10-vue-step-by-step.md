@@ -42,9 +42,9 @@ vue init webpack vue-step-by-step
 ```
 
 根据提示依次输入相关信息 ↓
-![](http://o8taa43yk.bkt.clouddn.com/FkJL3BJVzwCx4ZsJfq07RUh8OpJf)
+![](https://image.xuebin.me/FkJL3BJVzwCx4ZsJfq07RUh8OpJf)
 最后出现`finished`安装完成 ↓
-![](http://o8taa43yk.bkt.clouddn.com/FuojPwH5ToccPFjaFl6vbzi3MuQc)
+![](https://image.xuebin.me/FuojPwH5ToccPFjaFl6vbzi3MuQc)
 在终端中运行 ↓
 
 ```
