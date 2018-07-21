@@ -60,12 +60,6 @@ function createCopyBtns() {
     //鼠标 在复制按钮上滑动和离开后渐变显示/隐藏效果
     $('#copyBtn').hover(
       function() {
-        $(this)
-          .find('#imgSuccess')
-          .css({
-            opacity: 0,
-            display: 'block',
-          })
         $(this).stop()
         $(this).css('opacity', 1)
       },
