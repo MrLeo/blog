@@ -132,3 +132,14 @@ pwa:
       - pattern: !!js/regexp /\//
         strategy: networkFirst
   priority: 5
+
+# 使用Google翻译，百度翻译和有道翻译将Hexo中的汉字标题转成英文标题，配置完成后直接翻译，无需手工修改标题内容
+# https://www.npmjs.com/package/hexo-translate-title
+# translate_title:
+#   translate_way: google  # google,youdao,baidu_with_appid,baidu_no_appid
+#   youdao_api_key: '1185055258' # Your youdao_api_key
+#   youdao_keyfrom: 'imgxqb' # Your youdao_keyfrom
+#   is_need_proxy: false     # true | false
+#   # proxy_url: http://localhost:50018 # Your proxy_url
+#   baidu_appid: '20180721000187596' # Your baidu_appid
+#   baidu_appkey: '0OUpWsvyr96K379FrrPK' # Your baidu_appkey
