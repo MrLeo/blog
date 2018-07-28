@@ -15,6 +15,8 @@ tags:
 {% label primary@主服务器 %}192.168.1.5 /Win2003
 {% label primary@从服务器 %}192.168.1.25 /WinXP
 
+<!--more-->
+
 1. 建立数据库目录
 
    主服务器：D:\Database\MongoDB\db_master

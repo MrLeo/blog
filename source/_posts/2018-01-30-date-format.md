@@ -6,6 +6,8 @@ categories: [代码片段,javascript]
 tags: [dev,javascript,代码片段,格式化,日期]
 ---
 
+<!--more-->
+
 ```javascript
 /**
  * 格式化时间

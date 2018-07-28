@@ -6,7 +6,7 @@ categories: [代码片段,javascript]
 tags: [代码片段,javascript,dev,开发]
 ---
 
-# 动态脚本加载
+<!--more-->
 
 ```js
 export default function remoteLoad (url, hasCallback) {

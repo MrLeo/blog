@@ -29,6 +29,8 @@ tags:
 
   数据库版本：mysql-essential-5.1.61 x32
 
+<!--more-->
+
 # MySQL单向同步复制
 
 ## 准备

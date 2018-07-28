@@ -6,6 +6,8 @@ categories: [代码片段,javascript]
 tags: [dev,javascript,代码片段,格式化,数字]
 ---
 
+<!--more-->
+
 ```javascript
 /*随机数范围*/
 random (min, max) {

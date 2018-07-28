@@ -6,6 +6,8 @@ categories: [代码片段,javascript]
 tags: [dev,javascript,代码片段,类型检查]
 ---
 
+<!--more-->
+
 ```Javascript
 isString (o) { //是否字符串
     return Object.prototype.toString.call(o).slice(8, -1) === 'String'

@@ -6,6 +6,8 @@ categories: [代码片段,javascript]
 tags: [dev,javascript,代码片段,jquery]
 ---
 
+<!-- more -->
+
 # 链式调用
 
 ```js
