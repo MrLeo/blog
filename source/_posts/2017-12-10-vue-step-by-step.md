@@ -2,8 +2,8 @@
 title: 基于vue-cli搭建vue2.0项目
 date: 2017-12-10 12:33:16
 updated: 2017-12-10 12:33:16
-categories: [前端,vue]
-tags: [前端,dev,vue,vue-cli]
+categories: [前端, vue]
+tags: [前端, dev, vue, vue-cli]
 ---
 
 # 准备
@@ -243,7 +243,15 @@ store
     }
     ```
 
-2.  修改`modules/base.js`
+1.  在`action-types.js`中添加一个常量
+
+    ```js
+    export const BASE = {
+      login: 'login',
+    }
+    ```
+
+1.  修改`modules/base.js`
 
     ```js
     import Vue from 'vue'
@@ -289,6 +297,7 @@ store
     }
 
     export default {
+      // namespaced: true, // https://vuex.vuejs.org/zh/guide/modules.html#命名空间
       state,
       mutations,
       actions,
@@ -296,7 +305,7 @@ store
     }
     ```
 
-3.  修改 vuex 主文件`index.js`，组合所有状态模块
+1.  修改 vuex 主文件`index.js`，组合所有状态模块
 
     ```js
     import Vue from 'vue'
@@ -325,13 +334,14 @@ store
         base,
         cart,
         products,
+        // https://vuex.vuejs.org/zh/guide/modules.html#模块动态注册
       },
       strict: debug, // 开发阶段使用
-      // plugins: debug ? [createLogger()] : []//vuex插件
+      // plugins: debug ? [createLogger()] : []//vuex插件,https://vuex.vuejs.org/zh/guide/plugins.html
     })
     ```
 
-4.  修改`main.js`，引入 vuex
+1.  修改`main.js`，引入 vuex
 
     ```js
     //...
@@ -348,7 +358,11 @@ store
     })
     ```
 
-    ​
+> https://juejin.im/post/5bcd967b6fb9a05d07197b1e
+>
+> [Vuex 实战：如何在大规模 Vue 应用中组织 Vuex 代码](https://juejin.im/post/5860cc47128fe10069e19c26)
+>
+> [super-vuex](https://github.com/cevio/super-vuex)
 
 ## 添加`mixins`文件夹
 
