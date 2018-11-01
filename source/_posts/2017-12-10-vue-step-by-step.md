@@ -1,5 +1,5 @@
 ---
-title: 基于vue-cli搭建vue2.0项目
+title: 一步步基于vue-cli搭建vue2.0项目
 date: 2017-12-10 12:33:16
 updated: 2017-12-10 12:33:16
 categories: [前端, vue]
