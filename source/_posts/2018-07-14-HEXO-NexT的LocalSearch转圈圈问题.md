@@ -46,7 +46,7 @@ tags: [建站,blog,博客,hexo,markdown,搜索]
 虽然搜寻框内的 bs 肉眼看不j到，但是实际上他会去进行搜寻，
 接着就一个一个替换吧（一个一个替换是因为我只替换我自己产出的档案，避免影响其他东西）。
 
-也可以在[`正则`](http://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html#grouping)模式搜索下：[^控制字符]
+也可以在[`正则`](http://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html#grouping)模式搜索下：[^1]
 
 ```js
 /[\u0000]|[\u0001]|[\u0002]|[\u0003]|[\u0004]|[\u0005]|[\u0006]|[\u0007]|[\u0008]|[\u000b]|[\u000c]|[\u000d]|[\u000e]|[\u000f]|[\u0010]|[\u0011]|[\u0012]|[\u0013]|[\u0014]|[\u0015]|[\u0016]|[\u0017]|[\u0018]|[\u0019]|[\u001a]|[\u001b]|[\u001c]|[\u001d]|[\u001e]|[\u001f]|[\u001c]|[\u007f]/gm
@@ -57,12 +57,4 @@ tags: [建站,blog,博客,hexo,markdown,搜索]
 当完成修改后，重新测试理论上搜寻框就修好了～～
 找原因的途中也是学了不少啊：D
 
-[1]: https://guahsu.io/2017/12/Hexo-Next-LocalSearch-cant-work/ "HEXO-NexT的Local Search轉圈圈問題"
-
-[2]: https://segmentfault.com/a/1190000013357949#articleHeader7	"vscode控制字符引起的问题以及解决思路"
-
-
-
-
-
-[^控制字符]: [vscode控制字符引起的问题以及解决思路][2]
+[^1]: [vscode控制字符引起的问题以及解决思路](https://segmentfault.com/a/1190000013357949#articleHeader7)
