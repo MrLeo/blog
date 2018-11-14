@@ -70,10 +70,6 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-##    - hexo-reference : https://github.com/kchen0x/hexo-reference
-plugins:
-  - hexo-reference 
-
 ## Themes: https://hexo.io/themes/
 theme: next
 
@@ -147,3 +143,6 @@ pwa:
 #   # proxy_url: http://localhost:50018 # Your proxy_url
 #   baidu_appid: '20180721000187596' # Your baidu_appid
 #   baidu_appkey: '0OUpWsvyr96K379FrrPK' # Your baidu_appkey
+
+# 脚注
+# hexo-reference : https://github.com/kchen0x/hexo-reference / https://kchen.cc/2016/11/10/footnotes-in-hexo/ / https://raw.githubusercontent.com/kchen0x/kchen0x.github.io/blog-source/source/_posts/footnotes-in-hexo.md
