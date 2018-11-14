@@ -70,6 +70,10 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+##    - hexo-reference : https://github.com/kchen0x/hexo-reference
+plugins:
+  - hexo-reference 
+
 ## Themes: https://hexo.io/themes/
 theme: next
 
