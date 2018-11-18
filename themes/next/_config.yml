@@ -138,9 +138,9 @@ scheme: Gemini
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
   QQ: https://wpa.qq.com/msgrd?v=3&uin=652889559&site=qq&menu=yes || qq
+  微博: https://weibo.com/u/1378252637 || weibo
   E-Mail: mailto:leo@xuebin.me || envelope
   GitHub: https://github.com/MrLeo || github
-  微博: https://weibo.com/u/1378252637 || weibo
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
