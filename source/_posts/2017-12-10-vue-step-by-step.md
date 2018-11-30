@@ -4,6 +4,7 @@ date: 2017-12-10 12:33:16
 updated: 2017-12-10 12:33:16
 categories: [前端, vue]
 tags: [前端, dev, vue, vue-cli]
+top: 1
 ---
 
 # 准备
