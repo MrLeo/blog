@@ -10,16 +10,7 @@ tags:
 - 摘抄
 - 情感
 - PUA
-top: 1
 ---
-
-<div style="text-align:center;">
-  <video id="video" controls="" preload="none" poster="https://raw.githubusercontent.com/MrLeo/images/master/000oSFUflx07pzWkK5Y401040200LTX30E010.png">
-        <source id="mp4" src="https://raw.githubusercontent.com/MrLeo/images/master/000oSFUflx07pzWkK5Y401040200LTX30E010.mp4" type="video/mp4">
-        <p>Your user agent does not support the HTML5 Video element.</p>
-  </video>
-</div>
-
 
 
 > *一则故事：*
