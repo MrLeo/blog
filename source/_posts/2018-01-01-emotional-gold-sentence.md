@@ -31,9 +31,14 @@ top: 999
 >
 >
 >
-> 感情中呢，我们是需要“不撞南墙不回头”的勇气。但是，[**南墙我撞了，故事我忘了，你我真的不要了**](https://f.us.sinaimg.cn/001RCbeTlx07pzWfWh2M01040200uZpK0E010.mp4?label=mp4_ld&template=640x360.28.0&Expires=1543498170&ssig=GD%2BRAClJOI&KID=unistore,video)。这种急流勇退何尝不是一种智慧。
+> 感情中呢，我们是需要“不撞南墙不回头”的勇气。但是，[**南墙我撞了，故事我忘了，你我真的不要了**](http://p.weibo.com/show/channerWbH5/1034:4311742759566123)。这种急流勇退何尝不是一种智慧。
 
-
+<div style="text-align:center;">
+  <video id="video" controls="" preload="none" poster="https://raw.githubusercontent.com/MrLeo/images/master/000oSFUflx07pzWkK5Y401040200LTX30E010-0001.png">
+        <source id="mp4" src="https://raw.githubusercontent.com/MrLeo/images/master/000oSFUflx07pzWkK5Y401040200LTX30E010.mp4" type="video/mp4">
+        <p>Your user agent does not support the HTML5 Video element.</p>
+  </video>
+</div>
 
 <!--more-->
 
