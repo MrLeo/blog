@@ -10,8 +10,15 @@ tags:
 - 摘抄
 - 情感
 - PUA
-top: 999
+top: 1
 ---
+
+<div style="text-align:center;">
+  <video id="video" controls="" preload="none" poster="https://raw.githubusercontent.com/MrLeo/images/master/000oSFUflx07pzWkK5Y401040200LTX30E010.png">
+        <source id="mp4" src="https://raw.githubusercontent.com/MrLeo/images/master/000oSFUflx07pzWkK5Y401040200LTX30E010.mp4" type="video/mp4">
+        <p>Your user agent does not support the HTML5 Video element.</p>
+  </video>
+</div>
 
 
 
@@ -33,12 +40,7 @@ top: 999
 >
 > 感情中呢，我们是需要“不撞南墙不回头”的勇气。但是，[**南墙我撞了，故事我忘了，你我真的不要了**](http://p.weibo.com/show/channerWbH5/1034:4311742759566123)。这种急流勇退何尝不是一种智慧。
 
-<div style="text-align:center;">
-  <video id="video" controls="" preload="none" poster="https://raw.githubusercontent.com/MrLeo/images/master/000oSFUflx07pzWkK5Y401040200LTX30E010-0001.png">
-        <source id="mp4" src="https://raw.githubusercontent.com/MrLeo/images/master/000oSFUflx07pzWkK5Y401040200LTX30E010.mp4" type="video/mp4">
-        <p>Your user agent does not support the HTML5 Video element.</p>
-  </video>
-</div>
+
 
 <!--more-->
 
