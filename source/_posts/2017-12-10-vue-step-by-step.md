@@ -22,10 +22,14 @@ top: 100
   $ npm -v
   ```
 
-- Vue-cli
+- [vue-cli](https://cli.vuejs.org/)
 
   ```Bash
   $ npm install -g vue-cli
+  ```
+  或
+  ```Bash
+  $ npm install -g @vue/cli @vue/cli-init @vue/cli-service-global
   ```
 
 <!-- more -->
