@@ -13,12 +13,20 @@ tags:
 
 1. 完成功能分支之后先不 merge，而是 `git checkout 主分支` 回到主干分支去 `git pull --rebase`
 2. 如果主干有更新，`git checkout 子分支` 回到子分支 `git rebase 主分支` 更新主分支的内容到功能分支来预检一下，看看在加入了最近别人的改动之后我的功能是否依然 OK（在这个过程中可能会有冲突处理，解决冲突之后使用 `git add .` 更新索引，更新完之后不需要执行 commit，只要执行 `git rebase --continue` 应用余下的补丁即可）
-3. 一切就绪之后再次 `git fetch` 主干看看有没有变动（因为在第二步的进行期间没准又有人 push 了新的变化），有的话重复第二步
+3. 一切就绪之后再次 `git fetch` 主干看看有没有变动（因为在第二步的进行期间没准又有人 push 了新的变化），有的话重复前两步
 4. `git merge 子分支` 合并功能分支到主干然后 push，收工。
 
 {% endnote %}
 
 <!--more-->
+
+# 参考
+
+- [git 命令在线学习](https://learngitbranching.js.org/)
+- [用 git 整合分支的时候，大家更常用的是变基操作(git rebase)还是合并操作(git merge)，你们觉得哪个比较好？](https://segmentfault.com/q/1010000007704573)
+- [在 sourceTree 中使用 rebase （变基）](https://xiaozhuanlan.com/topic/6873210549)
+- [Git - 使用 rebase 命令保持主分支树的整洁](https://juejin.im/entry/597086845188252645572ebd)
+- [git 的 GUI 工具 Sourcetree 使用及命令行对比](https://juejin.im/post/5b4d66125188251ace75ba27)
 
 # 在 sourceTree 中使用 rebase （变基）
 
@@ -59,10 +67,3 @@ tags:
 再推送 master 分支，就保证了 git 分支的整洁
 
 ![img](https://ws4.sinaimg.cn/large/006tNbRwgy1fy69dtpcenj30zk0fstbx.jpg)
-
-# 参考
-
-- [用 git 整合分支的时候，大家更常用的是变基操作(git rebase)还是合并操作(git merge)，你们觉得哪个比较好？](https://segmentfault.com/q/1010000007704573)
-- [在 sourceTree 中使用 rebase （变基）](https://xiaozhuanlan.com/topic/6873210549)
-- [Git - 使用 rebase 命令保持主分支树的整洁](https://juejin.im/entry/597086845188252645572ebd)
-- [git 的 GUI 工具 Sourcetree 使用及命令行对比](https://juejin.im/post/5b4d66125188251ace75ba27)
