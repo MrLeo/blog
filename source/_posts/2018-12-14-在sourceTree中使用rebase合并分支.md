@@ -20,6 +20,8 @@ tags:
 
 <!--more-->
 
+# 在 sourceTree 中使用 rebase （变基）
+
 原始状态
 
 ![](https://ws3.sinaimg.cn/large/006tNbRwgy1fy69b0529uj30sy0pg41h.jpg)
