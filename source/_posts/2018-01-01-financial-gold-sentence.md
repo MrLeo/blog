@@ -1,15 +1,16 @@
 ---
 title: 金融投资
+categories:
+  - 随笔
+tags:
+  - 随笔
+  - 金句
+  - 摘抄
+  - 金融
+  - 投资
+abbrlink: e93cef39
 date: 2018-01-07 15:23:39
 updated: 2017-01-08 16:44:16
-categories:
-- 随笔
-tags:
-- 随笔
-- 金句
-- 摘抄
-- 金融
-- 投资
 ---
 
 

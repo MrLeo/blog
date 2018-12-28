@@ -1,15 +1,16 @@
 ---
 title: node-mongodb
+categories:
+  - 代码片段
+  - javascript
+tags:
+  - dev
+  - javascript
+  - 代码片段
+  - mongodb
+abbrlink: a787b817
 date: 2018-01-30 13:57:06
 updated: 2018-01-30 13:57:06
-categories: 
-- 代码片段
-- javascript
-tags: 
-- dev
-- javascript
-- 代码片段
-- mongodb
 ---
 
 配置信息：

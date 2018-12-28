@@ -1,8 +1,14 @@
 ---
 title: vuex-router-sync
+tags:
+  - vue
+  - dev
+  - 前端
+categories:
+  - 前端
+  - vue
+abbrlink: 8456c250
 date: 2017-01-08 16:36:38
-tags: [vue,dev,前端]
-categories: [前端,vue]
 ---
 
 > 问题：vuex-router-sync，干嘛用的？

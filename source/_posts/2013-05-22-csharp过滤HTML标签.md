@@ -1,15 +1,16 @@
 ---
 title: csharp过滤HTML标签
+categories:
+  - 代码片段
+  - 'c#'
+tags:
+  - dev
+  - 'c#'
+  - html
+  - 代码片段
+abbrlink: '827e8832'
 date: 2013-05-22 10:44:20
 updated: 2013-05-22 10:44:20
-categories:
-- 代码片段
-- c#
-tags:
-- dev
-- c#
-- html
-- 代码片段
 ---
 
 <!--more-->

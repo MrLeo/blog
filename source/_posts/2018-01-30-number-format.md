@@ -1,9 +1,17 @@
 ---
 title: Number 数字操作
+categories:
+  - 代码片段
+  - javascript
+tags:
+  - dev
+  - javascript
+  - 代码片段
+  - 格式化
+  - 数字
+abbrlink: 9dbaefc0
 date: 2018-01-30 10:24:35
 updated: 2018-01-30 10:24:35
-categories: [代码片段,javascript]
-tags: [dev,javascript,代码片段,格式化,数字]
 ---
 
 <!--more-->

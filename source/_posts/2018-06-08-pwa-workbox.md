@@ -1,16 +1,17 @@
 ---
 title: PWA - workbox
+categories:
+  - 前端
+  - webpack
+tags:
+  - 前端
+  - dev
+  - webpack
+  - pwa
+  - workbox
+abbrlink: d4fe0182
 date: 2018-06-08 14:44:17
 updated: 2018-06-08 14:44:17
-categories: 
-- 前端
-- webpack
-tags:
-- 前端
-- dev
-- webpack
-- pwa
-- workbox
 ---
 
 # [workbox](https://developers.google.com/web/tools/workbox)

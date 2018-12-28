@@ -1,13 +1,14 @@
 ---
 title: WebTorrent Desktop – 支持 BT 种子、磁力链接，可以「边播边下」
-
+categories:
+  - 工具
+tags:
+  - 工具
+  - 视频播放
+  - 下载
+abbrlink: 90e279c8
 date: 2017-04-12 10:31:19
-
 updated: 2017-04-12 10:31:19
-
-categories: [工具]
-
-tags: [工具,视频播放,下载]
 ---
 
 > 一款可以直接在线播放视频的 BT 下载客户端，支持种子文件与磁力链接，拥有 Win/macOS/Linux 客户端程序

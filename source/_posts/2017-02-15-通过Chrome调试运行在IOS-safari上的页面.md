@@ -1,9 +1,15 @@
 ---
 title: 通过Chrome调试运行在IOS-safari上的页面
+categories:
+  - 前端
+  - 调试
+tags:
+  - 前端
+  - dev
+  - 调试
+abbrlink: 587f8f31
 date: 2017-02-15 22:25:37
 updated: 2017-02-15 22:25:37
-categories: [前端,调试]
-tags: [前端,dev,调试]
 ---
 
 > 本文重点讨论如何在 Windows 系统中通过 chrome 浏览器调试运行在 iPhone Safari 浏览器中的网页。如果你有一台 iMac/MacBook，可忽略该文档。iMac 环境下，直接通过 USB 将 iphone 与 iMac/MacBook 链接，之后在 iMac/MacBook 中打开 Safari 进入调试模式，即可对运行在手机中的页面进行调试。详情见：[Using Web Inspector to Debug Mobile Safari](https://webdesign.tutsplus.com/articles/quick-tip-using-web-inspector-to-debug-mobile-safari--webdesign-8787) 或 [Safari Web Inspector Guide](https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html)

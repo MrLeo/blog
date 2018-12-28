@@ -1,9 +1,17 @@
 ---
 title: vue-cli项目下的配置简析
+categories:
+  - 前端
+  - vue
+tags:
+  - 前端
+  - 开发
+  - dev
+  - vue
+  - webpack
+abbrlink: dd966ac9
 date: 2017-10-19 23:13:37
 updated: 2017-10-19 23:13:37
-categories: [前端, vue]
-tags: [前端, 开发, dev, vue, webpack]
 ---
 
 ## 准备

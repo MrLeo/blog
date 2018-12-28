@@ -1,9 +1,19 @@
 ---
-title:  【转载】如何写一个适配iPhoneX的底部导航
-date:  2018-06-02 10:54:34
-updated:  2018-06-02 10:54:34
-categories:  [前端, css]
-tags:  [前端, 开发, dev, css, iPhone X, 适配, 转载]
+title: 【转载】如何写一个适配iPhoneX的底部导航
+categories:
+  - 前端
+  - css
+tags:
+  - 前端
+  - 开发
+  - dev
+  - css
+  - iPhone X
+  - 适配
+  - 转载
+abbrlink: 73d3ce58
+date: 2018-06-02 10:54:34
+updated: 2018-06-02 10:54:34
 ---
 
 # 引言

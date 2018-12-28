@@ -1,9 +1,16 @@
 ---
 title: type 类型判断
+categories:
+  - 代码片段
+  - javascript
+tags:
+  - dev
+  - javascript
+  - 代码片段
+  - 类型检查
+abbrlink: 52b393b5
 date: 2018-01-30 10:18:07
 updated: 2018-01-30 10:18:07
-categories: [代码片段,javascript]
-tags: [dev,javascript,代码片段,类型检查]
 ---
 
 <!--more-->

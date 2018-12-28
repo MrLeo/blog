@@ -1,9 +1,16 @@
 ---
 title: 动态脚本加载
+categories:
+  - 代码片段
+  - javascript
+tags:
+  - 代码片段
+  - javascript
+  - dev
+  - 开发
+abbrlink: f72281e3
 date: 2017-11-25 23:36:03
 updated: 2017-11-25 23:36:03
-categories: [代码片段,javascript]
-tags: [代码片段,javascript,dev,开发]
 ---
 
 <!--more-->

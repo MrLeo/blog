@@ -1,12 +1,13 @@
 ---
 title: 在sourceTree中使用rebase合并分支
-date: 2018-12-14 14:05:00
-updated: 2018-12-14 14:05:00
 categories:
   - 工具
 tags:
   - git
   - sourcetree
+abbrlink: cc0c94d4
+date: 2018-12-14 14:05:00
+updated: 2018-12-14 14:05:00
 ---
 
 `git merge` vs `git rebase`

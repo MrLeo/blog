@@ -1,8 +1,15 @@
 ---
 title: css 代码片段
+tags:
+  - css
+  - 代码
+  - dev
+  - 前端
+categories:
+  - 前端
+  - css
+abbrlink: 809788d9
 date: 2017-01-07 17:12:00
-tags: [css,代码,dev,前端]
-categories: [前端,css]
 ---
 
 ### 以下是常用的代码收集，没有任何技术含量，只是填坑的积累。转载请注明出处，谢谢。

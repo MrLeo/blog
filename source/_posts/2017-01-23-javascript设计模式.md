@@ -1,9 +1,15 @@
 ---
 title: javascript设计模式
+categories:
+  - 前端
+  - javascript
+tags:
+  - 前端
+  - javascript
+  - dev
+abbrlink: c43592f8
 date: 2017-01-23 16:15:30
 updated: 2017-01-23 16:15:30
-categories: [前端,javascript]
-tags: [前端,javascript,dev]
 ---
 
 > 本文参考于`《javascript模式》`，因此会大量内容会和书中相同，手上有这本书的朋友可以直接看书。因为我的记忆习惯是抄书，所以我会先抄写下来再发到博客上。

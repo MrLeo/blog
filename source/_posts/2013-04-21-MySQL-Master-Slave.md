@@ -1,14 +1,15 @@
 ---
 title: MySQL Master&Slave
+categories:
+  - db
+tags:
+  - dev
+  - db
+  - mysql
+  - 同步
+abbrlink: 9bbb994f
 date: 2013-04-21 10:48:37
 updated: 2013-04-21 10:48:37
-categories: 
-- db
-tags:
-- dev
-- db
-- mysql
-- 同步
 ---
 
 # 运行环境

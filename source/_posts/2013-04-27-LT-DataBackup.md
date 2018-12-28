@@ -1,14 +1,15 @@
 ---
 title: 自动备份（支持MySQL，MSSQL，文本文件） - LT.DataBackup
+categories:
+  - db
+tags:
+  - dev
+  - db
+  - mysql
+  - 备份
+abbrlink: 70bcbd9f
 date: 2013-04-27 12:17:22
 updated: 2013-04-27 12:17:22
-categories: 
-- db
-tags:
-- dev
-- db
-- mysql
-- 备份
 ---
 
 # 概述

@@ -1,9 +1,16 @@
 ---
 title: 定制Vue项目模板
+categories:
+  - 前端
+  - vue
+tags:
+  - 前端
+  - dev
+  - vue
+  - vue-cli
+abbrlink: '34092e18'
 date: 2018-03-24 09:17:14
 updated: 2018-03-24 09:17:14
-categories: [前端,vue]
-tags: [前端,dev,vue,vue-cli]
 ---
 
 > 懒人改变世界

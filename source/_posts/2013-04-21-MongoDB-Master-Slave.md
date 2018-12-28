@@ -1,14 +1,15 @@
 ---
 title: MongoDB Master&Slave
+categories:
+  - db
+tags:
+  - dev
+  - db
+  - mongodb
+  - 同步
+abbrlink: '533e8110'
 date: 2013-04-21 10:48:53
 updated: 2013-04-21 10:48:53
-categories:
-- db
-tags:
-- dev
-- db
-- mongodb
-- 同步
 ---
 # 主从同步
 

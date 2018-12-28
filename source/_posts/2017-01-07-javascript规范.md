@@ -1,12 +1,14 @@
 ---
 title: javascript规范
+tags:
+  - 规范
+  - javascript
+  - 前端
+  - dev
+categories:
+  - 规范
+abbrlink: 29f0c2d2
 date: 2017-01-07 16:50:39
-tags: 
-- 规范
-- javascript
-- 前端
-- dev
-categories: [规范]
 ---
 
 ## javascript 注释

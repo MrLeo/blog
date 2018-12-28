@@ -1,8 +1,14 @@
 ---
 title: 如何在 vue 项目里正确地引用 jquery 和 jquery-ui的插件
+tags:
+  - vue
+  - dev
+  - 前端
+categories:
+  - 前端
+  - vue
+abbrlink: d32ca02
 date: 2017-01-08 16:41:14
-tags:  [vue,dev,前端]
-categories: [前端,vue]
 ---
 
 使用 vue-cli 构建的 vue 项目，webpack 的配置文件是分散在很多地方的，而我们需要修改的是`build/webpack.base.conf.js`，修改两处的代码

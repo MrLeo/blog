@@ -1,8 +1,14 @@
 ---
 title: vue1+webpack实践
+tags:
+  - vue
+  - dev
+  - 前端
+categories:
+  - 前端
+  - vue
+abbrlink: f2388ed2
 date: 2017-01-08 16:16:41
-tags: [vue,dev,前端]
-categories: [前端,vue]
 ---
 
 ## 参考

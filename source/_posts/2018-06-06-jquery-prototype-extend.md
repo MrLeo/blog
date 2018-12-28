@@ -1,9 +1,16 @@
 ---
 title: jQuery学习
+categories:
+  - 代码片段
+  - javascript
+tags:
+  - dev
+  - javascript
+  - 代码片段
+  - jquery
+abbrlink: 7a95906a
 date: 2018-06-06 15:05:41
 updated: 2018-06-06 15:05:41
-categories: [代码片段,javascript]
-tags: [dev,javascript,代码片段,jquery]
 ---
 
 <!-- more -->

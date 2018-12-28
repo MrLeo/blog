@@ -1,8 +1,14 @@
 ---
 title: 使用webpack生成不同发布环境的api地址
+tags:
+  - vue
+  - dev
+  - 前端
+categories:
+  - 前端
+  - vue
+abbrlink: 6cff3863
 date: 2017-01-08 16:38:58
-tags:  [vue,dev,前端]
-categories: [前端,vue]
 ---
 
 > webpack 官方提供了一个 definePlugin，专门用来定义一些变量，通常我们把用于类似开发和生产环境的切换上。

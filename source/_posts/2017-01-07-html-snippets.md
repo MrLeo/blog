@@ -1,8 +1,14 @@
 ---
 title: html 代码片段札记
+tags:
+  - html
+  - dev
+  - 前端
+categories:
+  - 前端
+  - html
+abbrlink: e67af75c
 date: 2017-01-07 17:50:52
-tags: [html,dev,前端]
-categories: [前端,html]
 ---
 
 1. 自定义苹果图标

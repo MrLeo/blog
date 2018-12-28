@@ -1,9 +1,17 @@
 ---
 title: 时间格式化
+categories:
+  - 代码片段
+  - javascript
+tags:
+  - dev
+  - javascript
+  - 代码片段
+  - 格式化
+  - 日期
+abbrlink: df24fa06
 date: 2018-01-30 10:21:16
 updated: 2018-01-30 10:21:16
-categories: [代码片段,javascript]
-tags: [dev,javascript,代码片段,格式化,日期]
 ---
 
 <!--more-->

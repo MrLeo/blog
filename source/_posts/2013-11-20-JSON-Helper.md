@@ -1,15 +1,16 @@
 ---
 title: JSON Helper
+categories:
+  - 代码片段
+  - 'c#'
+tags:
+  - dev
+  - 'c#'
+  - json
+  - 代码片段
+abbrlink: ce9b377c
 date: 2013-11-20 14:36:49
 updated: 2013-11-20 14:36:49
-categories:
-- 代码片段
-- c#
-tags:
-- dev
-- c#
-- json
-- 代码片段
 ---
 
 <!--more-->

@@ -1,12 +1,14 @@
 ---
 title: 在 macOS 上的 Apple Mail 中使用 HTML 签名
+categories:
+  - mac
+tags:
+  - mac
+  - mail
+  - 邮件
+abbrlink: 32ccdf7d
 date: 2018-11-08 23:09:23
 updated: 2018-11-08 23:09:23
-categories: [mac]
-tags:
-- mac
-- mail
-- 邮件
 ---
 
 > 原文地址：[https://cherysunzhang.com/2017/01/how-to-make-an-html-signature-in-apple-mail-for-macos/](https://cherysunzhang.com/2017/01/how-to-make-an-html-signature-in-apple-mail-for-macos/)

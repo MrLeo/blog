@@ -1,11 +1,12 @@
 ---
 title: 使用sourceTree回滚git代码到历史节点
-date: 2018-11-19 11:45:47
-updated: 2018-11-19 11:45:47
 categories: 工具
 tags:
-- sourcetree
-- git
+  - sourcetree
+  - git
+abbrlink: d9381a03
+date: 2018-11-19 11:45:47
+updated: 2018-11-19 11:45:47
 ---
 
 # 前记

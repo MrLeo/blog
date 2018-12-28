@@ -1,15 +1,16 @@
 ---
 title: 自定义错误信息
+categories:
+  - 代码片段
+  - javascript
+tags:
+  - dev
+  - javascript
+  - 代码片段
+  - error
+abbrlink: 8e8f8856
 date: 2018-06-08 14:35:00
 updated: 2018-06-08 14:35:00
-categories: 
-- 代码片段
-- javascript
-tags: 
-- dev
-- javascript
-- 代码片段
-- error
 ---
 
 ```Javascript

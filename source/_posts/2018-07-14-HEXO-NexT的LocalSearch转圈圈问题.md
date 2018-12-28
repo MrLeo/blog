@@ -1,10 +1,17 @@
 ---
 title: HEXO-NexT的Local Search转圈圈问题
+categories:
+  - 建站
+tags:
+  - 建站
+  - blog
+  - 博客
+  - hexo
+  - markdown
+  - 搜索
+abbrlink: abcc0996
 date: 2018-07-14 13:05:02
 updated: 2018-07-14 13:05:02
-categories: 
-- 建站
-tags: [建站,blog,博客,hexo,markdown,搜索]
 ---
 
 有时候更新完文章，会莫名导致 NexT 的 LocalSearsh 有问题，

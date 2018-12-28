@@ -1,15 +1,16 @@
 ---
 title: 'C# 导出 Excel'
+categories:
+  - 代码片段
+  - 'c#'
+tags:
+  - dev
+  - 'c#'
+  - 代码片段
+  - excel
+abbrlink: aa2690c9
 date: 2013-10-31 17:19:13
 updated: 2018-07-28 10:24:13
-categories:
-- 代码片段
-- c#
-tags:
-- dev
-- c#
-- 代码片段
-- excel
 ---
 
 <!--more-->

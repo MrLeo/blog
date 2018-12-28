@@ -1,8 +1,14 @@
 ---
 title: html-template
+tags:
+  - html
+  - dev
+  - 前端
+categories:
+  - 前端
+  - html
+abbrlink: adaf6fe5
 date: 2017-01-07 17:49:36
-tags: [html,dev,前端]
-categories: [前端,html]
 ---
 
 ```html

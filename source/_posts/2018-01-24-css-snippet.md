@@ -1,9 +1,17 @@
 ---
 title: css 代码片段
+categories:
+  - 代码片段
+  - css
+tags:
+  - 开发
+  - dev
+  - css
+  - 前端
+  - 代码片段
+abbrlink: 809788d9
 date: 2018-01-24 10:21:40
 updated: 2018-01-24 10:21:40
-categories: [代码片段,css]
-tags: [开发, dev, css, 前端, 代码片段]
 ---
 
 # 关闭按钮

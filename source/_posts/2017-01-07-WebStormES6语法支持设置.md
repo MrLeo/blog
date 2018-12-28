@@ -1,8 +1,13 @@
 ---
 title: WebStorm ES6 语法支持设置
+tags:
+  - 工具
+  - dev
+  - webstorm
+categories:
+  - 工具
+abbrlink: '931279e8'
 date: 2017-01-07 17:29:25
-tags: [工具, dev,webstorm]
-categories: [工具]
 ---
 
 在 webstorm 写下了这段代码，体验一下 ES6 语法的便利，但是一大堆报错

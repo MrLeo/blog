@@ -1,12 +1,13 @@
 ---
 title: 【转载】利用 Chrome 原生工具进行网页长截图
+categories:
+  - 工具
+tags:
+  - 工具
+  - Chrome
+abbrlink: 7a0383e6
 date: 2018-06-22 16:38:44
 updated: 2018-06-22 16:38:44
-categories: 
-- 工具
-tags:
-- 工具
-- Chrome
 ---
 
 之前试用 Firefox Quantum 时，我最喜欢的特性之一就是其自带的截图功能。它不仅可以自动检测网页元素边界，还能轻松保存整个网页，十分方便。

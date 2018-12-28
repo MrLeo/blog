@@ -1,9 +1,19 @@
 ---
 title: 【转载】Vue项目自动转换 px 为 rem，高保真还原设计图
+categories:
+  - 前端
+  - vue
+tags:
+  - 前端
+  - 开发
+  - dev
+  - vue
+  - css
+  - rem
+  - 转载
+abbrlink: 5abe2a3f
 date: 2018-02-01 11:47:08
 updated: 2018-02-01 11:47:08
-categories: [前端, vue]
-tags: [前端, 开发, dev, vue, css, rem, 转载]
 ---
 
 前端开发中还原设计图的重要性毋庸置疑，目前来说应用最多的应该也还是使用**rem**。然而很多人依然还是处于刀耕火种的时代，要么自己去计算`rem`值，要么依靠编辑器安装插件转换。

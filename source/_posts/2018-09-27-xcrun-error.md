@@ -1,7 +1,5 @@
 ---
 title: Mac升级Mojave后使用出现xcrun：error错误
-date: 2018-09-27 11:39:49
-updated: 2018-09-27 11:39:49
 categories:
   - mac
 tags:
@@ -9,6 +7,9 @@ tags:
   - error
   - Homebrew
   - brew
+abbrlink: 4d823baf
+date: 2018-09-27 11:39:49
+updated: 2018-09-27 11:39:49
 ---
 
 # 错误信息
