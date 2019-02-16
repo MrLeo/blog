@@ -12,12 +12,12 @@ comments: true
 	我的邮箱：<a href="mailto:leo@xuebin.me">leo@xuebin.me</a>
 </div>
 
-|                    GitHub                    |                       segmentfault                        |                   博客园                    |                            GitBook                            |
-| :------------------------------------------: | :-------------------------------------------------------: | :-----------------------------------------: | :-----------------------------------------------------------: |
+|                    GitHub                    |                       segmentfault                        |                    博客园                    |                            GitBook                            |
+| :------------------------------------------: | :-------------------------------------------------------: | :------------------------------------------: | :-----------------------------------------------------------: |
 | [github.com/MrLeo](https://github.com/MrLeo) | [segmentfault 专栏](https://segmentfault.com/blog/mr-leo) | [blog-leo](https://www.cnblogs.com/blog-leo) | [mrleo.gitbooks.io](https://mrleo.gitbooks.io/books/content/) |
 
-![签名](https://image.xuebin.me/name.png)
+![柳学斌](https://image.xuebin.me/xuebin.jpg)
 
-![柳学斌](https://image.xuebin.me/xuebin.JPG)
+![签名](https://image.xuebin.me/name.png)
 
 ---
