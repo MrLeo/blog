@@ -7,7 +7,7 @@ title: ♌
 subtitle: Mr. Leo
 description: 😆
 author: Leo
-language: zh-Hans
+language: zh-CN
 timezone:
 avatar: https://avatars0.githubusercontent.com/u/3761566?v=3&s=460
 
@@ -26,8 +26,8 @@ root: /
 # permalink_defaults:
 permalink: posts/:abbrlink.html
 abbrlink:
-  alg: crc32  # 算法：crc16(default) and crc32
-  rep: hex    # 进制：dec(default) and hex
+  alg: crc32 # 算法：crc16(default) and crc32
+  rep: hex # 进制：dec(default) and hex
 
 # Directory
 source_dir: source
@@ -75,7 +75,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: next2
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -92,14 +92,14 @@ search:
   limit: 10000
 
 # sitemap
-sitemap: 
+sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
 
 algolia:
-  applicationID: '3W9IAI9QUW'
-  indexName: 'mr-leo-blog'
+  applicationID: "3W9IAI9QUW"
+  indexName: "mr-leo-blog"
   chunkSize: 5000
 
 # https://github.com/hexojs/hexo-browsersync
@@ -136,17 +136,5 @@ pwa:
       - pattern: !!js/regexp /\//
         strategy: networkFirst
   priority: 5
-
-# 使用Google翻译，百度翻译和有道翻译将Hexo中的汉字标题转成英文标题，配置完成后直接翻译，无需手工修改标题内容
-# https://www.npmjs.com/package/hexo-translate-title
-# translate_title:
-#   translate_way: google  # google,youdao,baidu_with_appid,baidu_no_appid
-#   youdao_api_key: '1185055258' # Your youdao_api_key
-#   youdao_keyfrom: 'imgxqb' # Your youdao_keyfrom
-#   is_need_proxy: false     # true | false
-#   # proxy_url: http://localhost:50018 # Your proxy_url
-#   baidu_appid: '20180721000187596' # Your baidu_appid
-#   baidu_appkey: '0OUpWsvyr96K379FrrPK' # Your baidu_appkey
-
 # 脚注
 # hexo-reference : https://github.com/kchen0x/hexo-reference / https://kchen.cc/2016/11/10/footnotes-in-hexo/ / https://raw.githubusercontent.com/kchen0x/kchen0x.github.io/blog-source/source/_posts/footnotes-in-hexo.md
