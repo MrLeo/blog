@@ -11,4 +11,4 @@ git config user.email "leo@xuebin.me"
 # add commit timestamp
 git add .
 git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
-git push --force --quiet "https://${Travis_gh_token}@${GH_REF}" gh-pages:gh-pages
+git push --force --quiet "https://${Travis_token}@${GH_REF}" gh-pages:gh-pages
