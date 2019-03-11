@@ -109,32 +109,38 @@ browsersync:
     scroll: true
   instanceName: "uniqueString"
 
-# https://github.com/lavas-project/hexo-pwa
-pwa:
-  manifest:
-    path: /manifest.json
-    body:
-      name: hexo
-      short_name: hexo
-      icons:
-        - src: /images/logo.png
-          sizes: 192x192
-          type: image/png
-  serviceWorker:
-    path: /sw.js
-    preload:
-      urls:
-        - /
-      posts: 5
-    opts:
-      networkTimeoutSeconds: 5
-    routes:
-      - pattern: !!js/regexp /hm.baidu.com/
-        strategy: networkOnly
-      - pattern: !!js/regexp /.*\.(js|css|jpg|jpeg|png|gif)\?.*$/
-        strategy: cacheFirst
-      - pattern: !!js/regexp /\//
-        strategy: networkFirst
-  priority: 5
+# PWA https://github.com/lavas-project/hexo-pwa
+# pwa:
+#   manifest:
+#     path: /manifest.json
+#     body:
+#       name: hexo
+#       short_name: hexo
+#       icons:
+#         - src: /images/logo.jpg
+#           sizes: 192x192
+#           type: image/jpg
+#   serviceWorker:
+#     path: /sw.js
+#     preload:
+#       urls:
+#         - /
+#       posts: 5
+#     opts:
+#       networkTimeoutSeconds: 5
+#     routes:
+#       - pattern: !!js/regexp /hm.baidu.com/
+#         strategy: networkOnly
+#       - pattern: !!js/regexp /.*\.(js|css|jpg|jpeg|png|gif)\?.*$/
+#         strategy: cacheFirst
+#       - pattern: !!js/regexp /\//
+#         strategy: networkFirst
+#   priority: 5
 # 脚注
 # hexo-reference : https://github.com/kchen0x/hexo-reference / https://kchen.cc/2016/11/10/footnotes-in-hexo/ / https://raw.githubusercontent.com/kchen0x/kchen0x.github.io/blog-source/source/_posts/footnotes-in-hexo.md
+
+# 引导爬虫抓取有效的页面：避免爬虫抓取一些无意义的页面，影响爬虫抓取的效率。
+nofollow:
+  enable: true
+  exclude:
+    - xuebin.me
