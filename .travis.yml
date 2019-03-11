@@ -1,14 +1,18 @@
+# https://hadronw.com/2018/05-27/travis-autodeploy-github-with-coding/
+
 env:
   global:
     - TZ=Asia/Shanghai
+    - GH_REF: github.com/MrLeo/blog.git #设置GH_REF，注意更改成自己的仓库地址
 
 language: node_js # 设置语言
 node_js: stable # 设置相应版本
 
 branches:
   only: # 只监测hexo分支
-    - gh-pages
-    - /.*/
+    # - gh-pages
+    # - /.*/
+    - master
 
 git:
   depth: false
@@ -24,11 +28,15 @@ before_install:
   - git config user.name "MrLeo"
   - git config user.email "leo@xuebin.me"
   - npm install hexo-cli -g # 安装hexo环境
+  - chmod +x ./publish-to-gh-pages.sh # 为shell文件添加可执行权限
 
 install: npm install
 
 before_script:
 
 script:
-  # - hexo clean
-  - hexo deploy -g
+  - hexo clean
+  - hexo g
+
+after_script:
+  - ./publish-to-gh-pages.sh
