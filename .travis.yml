@@ -1,0 +1,59 @@
+dist: trusty
+sudo: required
+
+addons:
+  ssh_known_hosts:
+    - github.com
+    - git.coding.net
+  apt:
+    packages:
+      - nasm
+
+env:
+  global:
+    - TZ=Asia/Tokyo
+
+language: node_js
+node_js: node
+
+branches:
+  only:
+    - source
+
+git:
+  depth: false
+  submodules: false
+
+cache:
+  apt: true
+  directories:
+    - node_modules
+
+before_install:
+  # Git Config
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git config --global user.name "YOUR-GITHUB-NAME"
+  - git config --global user.email "YOUR-EMAIL"
+
+  # Restore last modified time
+  - 'git ls-files -z | while read -d '''' path; do touch -d "$(git log -1 --format="@%ct" "$path")" "$path"; done'
+
+  # Submodules
+  - git submodule update --recursive --remote --init
+
+  # Deploy history
+  - git clone --branch=master --single-branch YOUR-BLOG-REPO .deploy_git
+
+  # SSH Setup
+  - openssl aes-256-cbc -K $encrypted_693585a97b8c_key -iv $encrypted_693585a97b8c_iv -in deploy_key.enc -out deploy_key -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 ./deploy_key
+  - ssh-add ./deploy_key
+
+install: npm install
+
+before_script:
+
+script:
+  - hexo clean
+  - hexo g -d
