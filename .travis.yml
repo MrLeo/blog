@@ -18,7 +18,8 @@ node_js: node
 
 branches:
   only:
-    - source
+    - gh-pages
+    - /.*/
 
 git:
   depth: false
