@@ -21,6 +21,8 @@ cache:
 
 before_install:
   - export TZ='Asia/Shanghai' # 更改时区
+  - git config user.name "MrLeo"
+  - git config user.email "leo@xuebin.me"
   - npm install hexo-cli -g # 安装hexo环境
 
 install: npm install
