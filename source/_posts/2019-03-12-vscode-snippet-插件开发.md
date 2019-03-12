@@ -1,14 +1,15 @@
 ---
 title: vscode snippet 插件开发
+categories:
+  - 工具
+tags:
+  - 工具
+  - vscode
+  - snippet
+  - 插件
+abbrlink: a0508b9c
 date: 2019-03-12 10:16:22
 updated: 2019-03-12 10:16:22
-categories:
-- 工具
-tags:
-- 工具
-- vscode
-- snippet
-- 插件
 ---
 
 
