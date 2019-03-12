@@ -150,4 +150,4 @@ leancloud_counter_security:
   app_id: 7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz
   app_key: eYX7CBXn2T7iUGa9LAUnIt9q
   username: Xuebin.Leo # Will be asked while deploying if is left blank
-  password:
+  password: LXBin6819 # Recommmended to be left blank. Will be asked while deploying if is left blank
