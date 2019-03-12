@@ -29,6 +29,7 @@ updated: 2019-03-12 10:16:22
 # 参考
 
 - [VS Code 插件开发文档-中文版](https://liiked.github.io/VS-Code-Extension-Doc-ZH/#/)
+- [VSCode插件开发全攻略](http://blog.haoji.me/vscode-plugin-overview.html)
 - [插件市场](https://marketplace.visualstudio.com/) / [插件管理](https://marketplace.visualstudio.com/manage)
 
 
