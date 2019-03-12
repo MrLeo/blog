@@ -144,3 +144,10 @@ nofollow:
   enable: true
   exclude:
     - xuebin.me
+
+leancloud_counter_security:
+  enable_sync: true
+  app_id: 7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz
+  app_key: eYX7CBXn2T7iUGa9LAUnIt9q
+  username: Xuebin.Leo # Will be asked while deploying if is left blank
+  password:

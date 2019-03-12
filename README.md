@@ -4,4 +4,4 @@
 
 ### [xuebin.me](https://xuebin.me/)
 
-> https://theme-next.org/docs/tag-plugins/
+> https://theme-next.org/docs/
