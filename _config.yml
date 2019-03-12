@@ -80,10 +80,10 @@ theme: next+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/MrLeo/blog.git
-  branch: gh-pages
-
+  - type: git
+    repo: https://github.com/MrLeo/blog.git
+    branch: gh-pages
+  - type: leancloud_counter_security_sync
 # search
 search:
   path: search.xml
@@ -145,6 +145,7 @@ nofollow:
   exclude:
     - xuebin.me
 
+# https://leaferx.online/2018/02/11/lc-security/
 leancloud_counter_security:
   enable_sync: true
   app_id: 7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz
