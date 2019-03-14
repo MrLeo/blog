@@ -178,17 +178,130 @@ vsce package
 
 # 发布
 
-在[插件市场官网](https://marketplace.visualstudio.com/manage/publishers/)创建发布人
+## 方式一：`vsce publish` 工具发布
+
+> 用vsce的`vsce publish`工具来发布，但是需要在官网配置`Personal Access Token`较为繁琐。
+>
+> 可参考[官方教程](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) / [发布应用市场](http://blog.haoji.me/vscode-plugin-publish.html#fa-bu-ying-yong-shi-chang)
+
+Visual Studio Code的应用市场基于微软自己的`Azure DevOps`，插件的身份验证、托管和管理都是在这里。
+
+- 要发布到应用市场首先得有应用市场的`publisher`账号；
+- 而要有发布账号首先得有`Azure DevOps`组织；
+- 而创建组织之前，首先得创建`Azure`账号；
+- 创建`Azure`账号首先得有`Microsoft`账号；
+
+是不是有点晕，梳理一下：
+
+- 一个Microsoft账号可以创建多个`Azure`组织；
+- 一个组织可以创建多个`publisher`账号；
+- 同时一个组织可以创建多个`PAT`（`Personal Access Token`，个人访问令牌）；
+
+### 注册账号
+
+首先访问 <https://login.live.com/> 登录你的`Microsoft`账号，没有的先注册一个：
+
+![](https://ws1.sinaimg.cn/large/006tKfTcly1g12cbrd34fj30g30de42t.jpg)
+
+然后访问： <https://aka.ms/SignupAzureDevOps> ，如果你从来没有使用过Azure，那么会看到如下提示：
+
+![](https://ws2.sinaimg.cn/large/006tKfTcly1g12ccc4lz1j30db0963yx.jpg)
+
+点击继续，默认会创建一个以邮箱前缀为名的组织。
+
+### 创建令牌
+
+默认进入组织的主页后，点击右上角的`Security`：
+
+![](https://ws1.sinaimg.cn/large/006tKfTcly1g12cdmzbtoj30ks0gv3zw.jpg)
+
+点击创建新的个人访问令牌，这里特别要注意`Organization`要选择`all accessible organizations`，`Scopes`要选择`Full access`，否则后面发布会失败。
+
+![](https://ws3.sinaimg.cn/large/006tKfTcly1g12ce9wnf9j30hr0dy3zx.jpg)
+
+创建令牌成功后你需要本地记下来，因为网站是不会帮你保存的。
+
+### 创建发布账号
+
+获得个人访问令牌后，使用`vsce`以下命令创建新的发布者：
+
+```bash
+vsce create-publisher your-publisher-name
+```
+
+`your-publisher-name`必须是字母数字下划线，这是全网唯一的账号，然后会依次要求输入昵称、邮箱、令牌：
+
+![](https://ws1.sinaimg.cn/large/006tKfTcly1g12cgxdqauj30xc086wfr.jpg)
+
+创建成功后会默认登录这个账号，接下来你可以直接发布了，
+
+当然，如果你是在其它地方创建的，可以试用`vsce login your-publisher-name`来登录。
+
+除了用命令之外，你还可以使用网页版创建发布账号：<https://marketplace.visualstudio.com/manage>
+
+### 发布
+
+发布很简单：
+
+```bash
+vsce publish
+```
+
+![img](https://ws3.sinaimg.cn/large/006tKfTcly1g12ci26vzcj30uc072myr.jpg)
+
+发布成功后大概需要过几分钟才能在应用市场搜到。过几分钟就可以访问网页版的插件主页：<https://marketplace.visualstudio.com/items?itemName=MrLeo.zpm-snippet>
+
+### 增量发布
+
+版本号：`major.minor.patch`
+
+如果想让发布之后版本号的patch自增，例如：`1.0.2` -> `1.0.3`，可以这样：
+
+```bash
+vsce publish patch
+```
+
+执行这个命令后会自动修改`package.json`里面的版本号。同理，`vsce publish minor`也是可以的。
+
+### 取消发布
+
+```bash
+vsce unpublish (publisher name).(extension name)
+```
+
+
+
+## 方式二：在官网直接上传发布
+
+### 在[插件市场官网](https://marketplace.visualstudio.com/manage/publishers/)创建发布人
+
+![](https://ws4.sinaimg.cn/large/006tKfTcly1g0zv5eor8hj30yg07dwg3.jpg)
 
 ![image-20190312113750984](https://ws2.sinaimg.cn/large/006tKfTcly1g0zuxvhq1rj30y107zmy9.jpg)
 
-- 方法一：用vsce的`vsce publish`工具来发布，但是需要在官网配置`Personal Access Token`较为繁琐。可参考[官方教程](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
+### 上传插件
 
-- 方法二：在官网直接上传发布
+![](https://ws1.sinaimg.cn/large/006tKfTcly1g0zv4jpijaj30xs07imxd.jpg)
+![](https://ws3.sinaimg.cn/large/006tKfTcly1g0zv5qseo2j30wx0gc3zq.jpg)
 
-  ![](https://ws4.sinaimg.cn/large/006tKfTcly1g0zv5eor8hj30yg07dwg3.jpg)
-  ![](https://ws1.sinaimg.cn/large/006tKfTcly1g0zv4jpijaj30xs07imxd.jpg)
-  ![](https://ws3.sinaimg.cn/large/006tKfTcly1g0zv5qseo2j30wx0gc3zq.jpg)上传后点击确定即可发布成功。
+上传后点击确定即可发布成功。
+
+
+
+## 发布注意事项
+
+- `README.md`文件默认会显示在插件主页；
+- `README.md`中的资源必须全部是`HTTPS`的，如果是`HTTP`会发布失败；
+- `CHANGELOG.md`会显示在变更选项卡；
+- 如果代码是放在git仓库并且设置了repository字段，发布前必须先提交git，否则会提示`Git working directory not clean`；
+
+另外，如前面所说，如果`Organization`没有选择`all accessible organizations`，或者`Scopes`没有选择`Full access`，发布的时候可能会报如下错误：
+
+```bash
+Error: Failed Request: Unauthorized(401) - https://marketplace.visualstudio.com/_apis/gallery
+Be sure to use a Personal Access Token which has access to **all accessible accounts**.
+See https://code.visualstudio.com/docs/tools/vscecli#_common-questions for more information.
+```
 
 
 
