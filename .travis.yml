@@ -37,6 +37,7 @@ before_script:
 script:
   - hexo clean
   - hexo g
+  - hexo d
 
 after_script:
   - ./publish-to-gh-pages.sh
