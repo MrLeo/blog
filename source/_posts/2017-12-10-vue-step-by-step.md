@@ -234,10 +234,9 @@ export default routes
 ```
 store
     ├── index.js               # 我们组装模块并导出 store 的地方
-    ├── getters.js             # 根级别的 getter
-    ├── actions.js             # 根级别的 action
-    ├── mutations.js           # 根级别的 mutation
-    ├── mutation-types.js      # 定义链接 action 和 mutation 的方法名常量
+    ├── root.js                # 根级别的 getter
+    ├── actions-types.js       # 根级别的 action 的方法名常量
+    ├── mutation-types.js      # 定义链接 mutation 的方法名常量
     └── modules
         ├── base.js            # 首页模块
         ├── cart.js            # 购物车模块
@@ -250,7 +249,7 @@ store
 
     ```js
     export const BASE = {
-      SET_USER_INFO: 'SET_USER_INFO',
+      setUserInfo: 'base/setUserInfo',
     }
     ```
 
@@ -258,7 +257,7 @@ store
 
     ```js
     export const BASE = {
-      login: 'login',
+      login: 'base/login',
     }
     ```
 
@@ -269,8 +268,8 @@ store
     import { base } from '../mutation-types'
     import axios from 'axios'
     import qs from 'qs'
-
-    const state = {
+    
+    const states = {
       version: '',
       token: null,
       user: {
@@ -282,15 +281,24 @@ store
         head: '',
       },
     }
-
+    
     const getters = {
       versionGetter(state, getters) {
         return state.version
       },
     }
-
+    
     const mutations = {
-      [BASE.SET_USER_INFO](state, userInfo) {
+      // https://forum.vuejs.org/t/vuex-state/39459/5
+      ...Object.keys(states).reduce(
+        (obj, key) => ({
+          ...obj,
+          [key]: (state, payload) => (state[key] = payload)
+        }),
+        {}
+      ),
+      
+      setUserInfo(state, userInfo) {
         userInfo.userID && (state.user.userID = userInfo.userID)
         userInfo.USERNAME && (state.user.userName = userInfo.USERNAME)
         userInfo.NAME && (state.user.name = userInfo.NAME)
@@ -299,17 +307,17 @@ store
         userInfo.HEAD && (state.user.head = userInfo.HEAD)
       },
     }
-
+    
     const actions = {
       async login({ commit, dispatch, state }, { userName, password }) {
         let userInfo = await axios.post('/api/login', qs.stringify({ userName, password }))
         commit(BASE.SET_USER_INFO, userInfo)
       },
     }
-
+    
     export default {
-      // namespaced: true, // https://vuex.vuejs.org/zh/guide/modules.html#命名空间
-      state,
+      namespaced: true, // https://vuex.vuejs.org/zh/guide/modules.html#命名空间
+      state: states,
       mutations,
       actions,
       getters,
@@ -321,30 +329,21 @@ store
     ```js
     import Vue from 'vue'
     import Vuex from 'vuex'
-    import getters from './getters'
-    import actions from './actions'
-    import mutations from './mutations'
-
+    import root from './root'
+    
     import base from './modules/base'
-    import cart from './modules/cart'
-    import products from './modules/products'
-
+    
     // import createLogger from 'vuex/dist/logger' //vuex内置的Logger日志插件
     const debug = process.env.NODE_ENV !== 'production' // 发布品种时需要用 Webpack 的 DefinePlugin 来转换 process.env.NODE_ENV !== 'production' 的值为 false
-
+    
     Vue.use(Vuex)
-
+    
     const state = {}
-
+    
     export default new Vuex.Store({
-      state,
-      getters,
-      mutations,
-      actions,
+      ...root
       modules: {
         base,
-        cart,
-        products,
         // https://vuex.vuejs.org/zh/guide/modules.html#模块动态注册
       },
       strict: debug, // 开发阶段使用
