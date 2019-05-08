@@ -16,6 +16,17 @@ updated: 2018-01-30 10:18:07
 <!--more-->
 
 ```Javascript
+function DataType(tgt, type) {
+    const dataType = Object.prototype.toString.call(tgt).replace(/\[object /g, "").replace(/\]/g, "").toLowerCase();
+    return type ? dataType === type : dataType;
+}
+DataType("yajun"); // "string"
+DataType(19941112); // "number"
+DataType(true); // "boolean"
+DataType([], "array"); // true
+DataType({}, "array"); // false
+
+
 isString (o) { //是否字符串
     return Object.prototype.toString.call(o).slice(8, -1) === 'String'
 }
