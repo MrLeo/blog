@@ -16,7 +16,7 @@ updated: 2018-07-15 22:18:20
 
 > **原文地址**：[https://hufangyun.com/2017/array-learn/](https://hufangyun.com/2017/array-learn/)
 
-![github.com/tooto1985/js-array-operations](https://ws4.sinaimg.cn/large/006tNc79ly1ftax1g9jxtj31c00ubb29.jpg)
+![github.com/tooto1985/js-array-operations](https://image.xuebin.me/006tNc79ly1ftax1g9jxtj31c00ubb29.jpg)
 
 <!--more-->
 

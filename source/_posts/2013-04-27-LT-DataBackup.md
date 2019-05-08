@@ -14,18 +14,18 @@ updated: 2013-04-27 12:17:22
 
 # 概述
 
-在Window系统下使用的数据库份工具，轻量级，简单易用。使用工厂模式开发，可以扩展支持其它类型数据的备份操作，目前支持：
+在 Window 系统下使用的数据库份工具，轻量级，简单易用。使用工厂模式开发，可以扩展支持其它类型数据的备份操作，目前支持：
 
 - 支持数据库：MSSQL、MySQL
 - 支持本地文件（完整复制或差异化备份）
 - 支持备份后的文件压缩，节省硬盘空间
-- 支持备份后的文件二次上传至FTP或其它共享目录
+- 支持备份后的文件二次上传至 FTP 或其它共享目录
 
 <!--more-->
 
 # 使用介绍
 
-1. 下载安装包，解压后，对`LT.DataBackup.exe.config`配置内容，说明如下: 
+1. 下载安装包，解压后，对`LT.DataBackup.exe.config`配置内容，说明如下:
 
    备份组件配置
 
@@ -98,28 +98,25 @@ updated: 2013-04-27 12:17:22
 
 1. 确认配置无误后，点击`Install.bat`进行安装
 
-	![img](https://ws4.sinaimg.cn/large/006tNc79ly1ftph3704yej305z05aq2q.jpg)
+   ![img](https://image.xuebin.me/006tNc79ly1ftph3704yej305z05aq2q.jpg)
 
-	安装后，程序作为系统服务进驻到系统中。
+   安装后，程序作为系统服务进驻到系统中。
 
-3. 检查文件是否正常输出
+1. 检查文件是否正常输出
 
-  - 检查文件是否正常输出。
+- 检查文件是否正常输出。
 
-  - 检查EXE同目录的Log文件夹下是否含有日志，并检查是否正常即可。
+- 检查 EXE 同目录的 Log 文件夹下是否含有日志，并检查是否正常即可。
 
-    备份后的效果：
+  备份后的效果：
 
-|                                                              |                                                              |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![img](https://ws2.sinaimg.cn/large/006tNc79ly1ftph333v5qj306902wglg.jpg) | ![img](https://ws4.sinaimg.cn/large/006tNc79ly1ftph2v479zj305l04rmwy.jpg) |
-
-
+|                                                                      |                                                                      |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| ![img](https://image.xuebin.me/006tNc79ly1ftph333v5qj306902wglg.jpg) | ![img](https://image.xuebin.me/006tNc79ly1ftph2v479zj305l04rmwy.jpg) |
 
 # 下载地址
 
 - [exe 运行程序 (Release)](https://image.xuebin.me/LT.DataBackup/LT.DataBackup-EXE.rar)
 - [开发代码源程序](https://image.xuebin.me/LT.DataBackup/LT.DataBackup-SourceCode.rar)
-
 
 > {% label danger@原文 %}：http://www.lanxe.net/soft/LT.DataBackup/default.aspx
