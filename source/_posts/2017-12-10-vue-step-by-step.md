@@ -297,7 +297,22 @@ store
         }),
         {}
       ),
-      
+      // 多个state批量赋值
+      setData (state, payload) {
+        // state = { ...state, ...payload } // eslint-disable-line
+        Object.assign(state, payload)
+      },
+      // 深度合并赋值
+      setDataDeep (state, payload = {}) {
+        Object.keys(payload).forEach((key) => {
+          const type = Object.prototype.toString.call(payload[key])
+          if (type === '[object Object]') {
+            mergeJSON(state[key] || {}, payload[key] || {})
+          } else {
+            state[key] = type === '[object Null]' || type === '[object Undefined]' ? state[key] : payload[key]
+          }
+        })
+      },
       setUserInfo(state, userInfo) {
         userInfo.userID && (state.user.userID = userInfo.userID)
         userInfo.USERNAME && (state.user.userName = userInfo.USERNAME)
