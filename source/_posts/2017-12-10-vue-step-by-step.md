@@ -357,7 +357,7 @@ store
 
     ```js
     import Vue from 'vue'
-    import { base, mutations } from '../mutation-types'
+    import { BASE, mutations } from '../mutation-types'
     import axios from 'axios'
     import qs from 'qs'
     
