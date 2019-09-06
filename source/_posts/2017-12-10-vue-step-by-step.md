@@ -251,6 +251,98 @@ store
     export const BASE = {
       setUserInfo: 'base/setUserInfo',
     }
+    
+    export function mutations (states) {
+      addFirstUpperCaseToPrototype()
+      addFlatToPrototype()
+    
+      return {
+        // 单个state赋值 https://forum.vuejs.org/t/vuex-state/39459/5
+        ...Object.keys(states).reduce(
+          (obj, key) => ({
+            ...obj,
+            [`set${key.firstUpperCase()}`]: (state, payload) => (state[key] = payload)
+          }),
+          {}
+        ),
+        // 多个state批量赋值
+        setData (state, payload) {
+          // state = { ...state, ...payload } // eslint-disable-line
+          Object.assign(state, payload)
+        },
+        // 深度合并赋值
+        setDataDeep: mergeJSON,
+        // 表格页码改变
+        pageChange (state, payload) {
+          const { list, total } = payload
+          state.total = total
+          list.forEach((el, index) => {
+            el.key = index
+          })
+          state.list.splice(0, state.list.length, ...list)
+        }
+      }
+    }
+    
+    // #region addFirstUpperCaseToPrototype - String原型链方法firstUpperCase
+    /**
+     * String原型链方法firstUpperCase
+     * @export
+     */
+    export function addFirstUpperCaseToPrototype () {
+      /* eslint-disable */
+      String.prototype.firstUpperCase = function() {
+        return (([first, ...rest]) => first.toUpperCase() + rest.join(''))(this) // return this.replace(/^\S/, s => s.toUpperCase())
+      }
+      /* eslint-enable */
+    }
+    // #endregion
+    
+    // #region addFlatToPrototype - Array原型链方法flat
+    /**
+     * Array原型链方法flat
+     * @export
+     */
+    export function addFlatToPrototype () {
+      /* eslint-disable */
+      if (!Array.prototype.flat) {
+        Array.prototype.flat = function(num = 1) {
+          if (!Number(num) || Number(num) < 0) {
+            return this
+          }
+          let arr = []
+          this.forEach(item => {
+            if (Array.isArray(item)) {
+              arr = arr.concat(item.flat(--num))
+            } else {
+              arr.push(item)
+            }
+          })
+          return arr
+        }
+      }
+      /* eslint-enable */
+    }
+    // #endregion
+    
+    // #region mergeJSON - 合并JSON
+    /**
+     * 直接修改 main 将 minor 合并到 main
+     * @export
+     * @param {*} main
+     * @param {*} minor
+     */
+    export function mergeJSON (main = {}, minor = {}) {
+      Object.keys(minor).forEach((key) => {
+        const type = Object.prototype.toString.call(minor[key])
+        if (type === '[object Object]') {
+          mergeJSON(main[key] || {}, minor[key] || {})
+        } else {
+          main[key] = type === '[object Null]' || type === '[object Undefined]' ? main[key] : minor[key]
+        }
+      })
+    }
+    // #endregion
     ```
 
 1.  在`action-types.js`中添加一个常量
@@ -265,7 +357,7 @@ store
 
     ```js
     import Vue from 'vue'
-    import { base } from '../mutation-types'
+    import { base, mutations } from '../mutation-types'
     import axios from 'axios'
     import qs from 'qs'
     
@@ -282,63 +374,34 @@ store
       },
     }
     
-    const getters = {
-      versionGetter(state, getters) {
-        return state.version
-      },
-    }
-    
-    const mutations = {
-      // https://forum.vuejs.org/t/vuex-state/39459/5
-      ...Object.keys(states).reduce(
-        (obj, key) => ({
-          ...obj,
-          [key]: (state, payload) => (state[key] = payload)
-        }),
-        {}
-      ),
-      // 多个state批量赋值
-      setData (state, payload) {
-        // state = { ...state, ...payload } // eslint-disable-line
-        Object.assign(state, payload)
-      },
-      // 深度合并赋值
-      setDataDeep (state, payload = {}) {
-        Object.keys(payload).forEach((key) => {
-          const type = Object.prototype.toString.call(payload[key])
-          if (type === '[object Object]') {
-            mergeJSON(state[key] || {}, payload[key] || {})
-          } else {
-            state[key] = type === '[object Null]' || type === '[object Undefined]' ? state[key] : payload[key]
-          }
-        })
-      },
-      setUserInfo(state, userInfo) {
-        userInfo.userID && (state.user.userID = userInfo.userID)
-        userInfo.USERNAME && (state.user.userName = userInfo.USERNAME)
-        userInfo.NAME && (state.user.name = userInfo.NAME)
-        userInfo.TEL && (state.user.tel = userInfo.TEL)
-        userInfo.EMAIL && (state.user.email = userInfo.EMAIL)
-        userInfo.HEAD && (state.user.head = userInfo.HEAD)
-      },
-    }
-    
-    const actions = {
-      async login({ commit, dispatch, state }, { userName, password }) {
-        let userInfo = await axios.post('/api/login', qs.stringify({ userName, password }))
-        commit(BASE.SET_USER_INFO, userInfo)
-      },
-    }
-    
     export default {
       namespaced: true, // https://vuex.vuejs.org/zh/guide/modules.html#命名空间
       state: states,
-      mutations,
-      actions,
-      getters,
+      getters: {
+        versionGetter(state, getters) {
+          return state.version
+        },
+      },
+      mutations: {
+        ...mutations(states),
+        setUserInfo(state, userInfo) {
+          userInfo.userID && (state.user.userID = userInfo.userID)
+          userInfo.USERNAME && (state.user.userName = userInfo.USERNAME)
+          userInfo.NAME && (state.user.name = userInfo.NAME)
+          userInfo.TEL && (state.user.tel = userInfo.TEL)
+          userInfo.EMAIL && (state.user.email = userInfo.EMAIL)
+          userInfo.HEAD && (state.user.head = userInfo.HEAD)
+        },
+      },
+      actions: {
+        async login({ commit, dispatch, state }, { userName, password }) {
+          let userInfo = await axios.post('/api/login', qs.stringify({ userName, password }))
+          commit(BASE.SET_USER_INFO, userInfo)
+        },
+      },
     }
     ```
-
+    
 1.  修改 vuex 主文件`index.js`，组合所有状态模块
 
     ```js
