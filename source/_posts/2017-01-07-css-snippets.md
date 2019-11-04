@@ -264,6 +264,17 @@ input:-moz-placeholder {color: #369;}
 user-select:none
 ```
 
+- 移动端H5点击阴影
+
+```css
+div,a,img {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select:none;
+}
+```
+
 - IOS iframe 滚动 [滚动回弹特效](https://www.cnblogs.com/flash3d/archive/2013/09/28/3343877.html)
 
 ```css
