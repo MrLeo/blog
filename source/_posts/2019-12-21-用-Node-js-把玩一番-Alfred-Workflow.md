@@ -34,7 +34,7 @@ tags:
 
 按照提示，填写名称，分类，描述等。
 
-![http://static.1991421.cn/2019-01-13-035730.png](http://static.1991421.cn/2019-01-13-035730.png)
+![2019-01-13-035730.png](https://i.loli.net/2019/12/21/ZwoEQYfJMP418Lv.png)
 
 ## 添加ScriptFilter
 
@@ -47,7 +47,7 @@ tags:
 
 {query}指的是在alfred输入框中参数
 
-![http://static.1991421.cn/2019-01-13-035809.png](http://static.1991421.cn/2019-01-13-035809.png)
+![2019-01-13-035809.png](https://i.loli.net/2019/12/21/OSxbHlNZsrfRUw8.png)
 
 ### 说明
 
@@ -105,7 +105,7 @@ tags:
 
 当前面得到了检索的目标影片信息后，那么就应该是打开URL了，所以选中刚才的Script Filter，右键 => Insert After => Actions => Open URL,`query就是上一步结果中的arg`
 
-![Node%20js%20Alfred%20Workflow/Untitled.png](Node%20js%20Alfred%20Workflow/Untitled.png)
+![Untitled.png](https://i.loli.net/2019/12/21/a3gfzOcUuB4ylmV.png)
 
 ## 添加通知
 
@@ -113,7 +113,7 @@ tags:
 
 ## 最终效果
 
-![http://static.1991421.cn/2019-01-13-041740.png](http://static.1991421.cn/2019-01-13-041740.png)
+![2019-01-13-041740.png](https://i.loli.net/2019/12/21/GoqukdJ6S3AfUie.png)
 
 ## 写在最后
 
