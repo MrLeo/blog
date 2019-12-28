@@ -7,7 +7,6 @@ tags:
 type: about
 comments: true
 ---
-
 <div style="text-align:center;">我的邮箱：<a href="mailto:leo@xuebin.me">leo@xuebin.me</a></div>
 
 |                    GitHub                    |                       segmentfault                        |                    博客园                    |                            GitBook                            |
