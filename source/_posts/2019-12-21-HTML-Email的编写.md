@@ -3,7 +3,9 @@ title: HTML Email的编写
 date: 2019-12-21 01:25:56
 updated: 2019-12-21 01:25:56
 categories: 其他
-tags: email
+tags: 
+- email
+- 转载
 ---
 {% cq %}
 [HTML Email的编写](https://juejin.im/post/5df0bdc25188251257286733)
