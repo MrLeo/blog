@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/han-css@3/dist/han.min.css">
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true,"dimmer":true},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '3W9IAI9QUW',
+      apiKey: '',
+      indexName: 'mr-leo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="准备 node &amp;amp; npm 1$ brew install node  检查 node &amp;amp; npm 12$ node -v$ npm -v  vue-cli 1$ npm install -g vue-cli 或 1$ npm install -g @vue/cli @vue/cli-init @vue/cli-service-global">
+<meta name="keywords" content="dev,前端,vue,vue-cli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一步步基于vue-cli搭建vue2.0项目">
+<meta property="og:url" content="https://xuebin.me/posts/b191399c.html">
+<meta property="og:site_name" content="♌">
+<meta property="og:description" content="准备 node &amp;amp; npm 1$ brew install node  检查 node &amp;amp; npm 12$ node -v$ npm -v  vue-cli 1$ npm install -g vue-cli 或 1$ npm install -g @vue/cli @vue/cli-init @vue/cli-service-global">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://image.xuebin.me/FkJL3BJVzwCx4ZsJfq07RUh8OpJf">
+<meta property="og:image" content="https://image.xuebin.me/FuojPwH5ToccPFjaFl6vbzi3MuQc">
+<meta property="og:updated_time" content="2017-12-10T04:33:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一步步基于vue-cli搭建vue2.0项目">
+<meta name="twitter:description" content="准备 node &amp;amp; npm 1$ brew install node  检查 node &amp;amp; npm 12$ node -v$ npm -v  vue-cli 1$ npm install -g vue-cli 或 1$ npm install -g @vue/cli @vue/cli-init @vue/cli-service-global">
+<meta name="twitter:image" content="https://image.xuebin.me/FkJL3BJVzwCx4ZsJfq07RUh8OpJf">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="♌" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://xuebin.me/posts/b191399c.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>一步步基于vue-cli搭建vue2.0项目 | ♌</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1706cfef7a8fd27b12633a699c2f75c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">♌</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Mr. Leo</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">26</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">142</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">138</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xuebin.me/posts/b191399c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo">
+      <meta itemprop="description" content="😆">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="♌">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">一步步基于vue-cli搭建vue2.0项目
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-12-10 12:33:16" itemprop="dateCreated datePublished" datetime="2017-12-10T12:33:16+08:00">2017-12-10</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/b191399c.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://xuebin.me/posts/b191399c.html" itemprop="commentCount">0</span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/b191399c.html" class="leancloud_visitors" data-flag-title="一步步基于vue-cli搭建vue2.0项目">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2VuLw==" title="https://nodejs.org/en/">node<i class="fa fa-external-link"></i></span> &amp; npm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install node</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查 node &amp; npm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9jbGkudnVlanMub3JnLw==" title="https://cli.vuejs.org/">vue-cli<i class="fa fa-external-link"></i></span></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g vue-cli</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g @vue/cli @vue/cli-init @vue/cli-service-global</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vue init &lt;template-name&gt; &lt;project-name&gt;</span><br></pre></td></tr></table></figure>
+<p>举例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack vue-step-by-step</span><br></pre></td></tr></table></figure>
+<p>根据提示依次输入相关信息 ↓<br><img src="https://image.xuebin.me/FkJL3BJVzwCx4ZsJfq07RUh8OpJf" alt><br>最后出现<code>finished</code>安装完成 ↓<br><img src="https://image.xuebin.me/FuojPwH5ToccPFjaFl6vbzi3MuQc" alt><br>在终端中运行 ↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd vue-step-by-step</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>即可查看初始化完成的效果</p>
+<h1 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h1><p>项目初始化完成后添加项目常用依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save vuex axios qs</span><br><span class="line">npm install --save-dev node-sass sass-loader pug pug-loader</span><br></pre></td></tr></table></figure>
+<p>包含<span class="exturl" data-url="aHR0cHM6Ly92dWV4LnZ1ZWpzLm9yZy96aC1jbi8=" title="https://vuex.vuejs.org/zh-cn/"><code>vuex</code><i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2F4aW9zL2F4aW9z" title="https://github.com/axios/axios"><code>axios</code><i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xqaGFyYi9xcw==" title="https://github.com/ljharb/qs"><code>qs</code><i class="fa fa-external-link"></i></span>、<code>sass</code>、<code>pug</code>等，其他依赖包根据项目需求自己选择<br><span class="exturl" data-url="aHR0cHM6Ly9yb3V0ZXIudnVlanMub3JnL3poLWNuLw==" title="https://router.vuejs.org/zh-cn/"><code>vue-router</code><i class="fa fa-external-link"></i></span>在脚手架 init 的时候会提示是否选择安装</p>
+<h1 id="完善项目结构"><a href="#完善项目结构" class="headerlink" title="完善项目结构"></a>完善项目结构</h1><h2 id="添加views文件夹"><a href="#添加views文件夹" class="headerlink" title="添加views文件夹"></a>添加<code>views</code>文件夹</h2><blockquote>
+<p>src 下添加 views 文件夹主要存放页面级的 vue 组件<br>src 下的 components 文件夹主要用于存放通用的组件</p>
+</blockquote>
+<p>在 views 文件夹中创建<code>Home.vue</code>作为主页</p>
+<p>删除<code>App.vue</code>中无用的内容，只保留<code>router-view</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果是移动端项目用 rem 作为单位，可以在<code>src/main.js</code>中添加如下代码做自适应 ↓</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">  <span class="keyword">const</span> html = <span class="built_in">document</span>.documentElement</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setFont</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> k = <span class="number">750</span></span><br><span class="line">    html.style.fontSize = (html.clientWidth / k) * <span class="number">100</span> + <span class="string">'px'</span></span><br><span class="line">  &#125;</span><br><span class="line">  setFont()</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    setFont()</span><br><span class="line">  &#125;, <span class="number">300</span>)</span><br><span class="line">  <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, setFont, <span class="literal">false</span>)</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, setFont, <span class="literal">false</span>)</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, setFont, <span class="literal">false</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="调整router配置"><a href="#调整router配置" class="headerlink" title="调整router配置"></a>调整<span class="exturl" data-url="aHR0cHM6Ly9yb3V0ZXIudnVlanMub3JnL3poLWNuLw==" title="https://router.vuejs.org/zh-cn/"><code>router</code><i class="fa fa-external-link"></i></span>配置</h2><blockquote>
+<p>更多路由相关使用方法请访问：<span class="exturl" data-url="aHR0cHM6Ly9yb3V0ZXIudnVlanMub3JnL3poLWNuLw==" title="https://router.vuejs.org/zh-cn/">https://router.vuejs.org/zh-cn/<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<p>目录结构 ↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">router</span><br><span class="line">    ├── index.js          # 我们组装模块并导出 store 的地方</span><br><span class="line">    └── modules</span><br><span class="line">        ├── home.js       # 首页模块</span><br><span class="line">        ├── cart.js       # 购物车模块</span><br><span class="line">        └── products.js   # 产品模块</span><br></pre></td></tr></table></figure>
+<p>修改路由主文件<code>router/index.js</code></p>
+<p>使用<code>require.context</code>实现路由<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3d1Y2hhbmdtaW5nL2Jsb2cvYmxvYi9tYXN0ZXIvZG9jcy93ZWJwYWNrL3JlcXVpcmUtY29udGV4dC11c2FnZS5tZA==" title="https://github.com/wuchangming/blog/blob/master/docs/webpack/require-context-usage.md"><code>去中心化</code><i class="fa fa-external-link"></i></span></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> router = <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  base: <span class="string">'/'</span>, <span class="comment">// 应用的基路径</span></span><br><span class="line">  mode: <span class="string">'hash'</span>, <span class="comment">// "hash" (URL hash 模式) | "history"(HTML5 History 模式) | "abstract" (Node.js 环境)</span></span><br><span class="line">  scrollBehavior(to, <span class="keyword">from</span>, savedPosition) &#123;</span><br><span class="line">    <span class="comment">// 路由切换的滚动行为，只在 HTML5 history 模式下可用</span></span><br><span class="line">    <span class="keyword">if</span> (savedPosition) &#123;</span><br><span class="line">      <span class="keyword">return</span> savedPosition</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  routes: (<span class="function"><span class="params">r</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 去中心化</span></span><br><span class="line">    <span class="comment">// console.log('r', r); // __webpack_require__</span></span><br><span class="line">    <span class="keyword">let</span> sourceMap = []</span><br><span class="line">    <span class="keyword">let</span> res = r.keys().map(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> rKey = r(key)</span><br><span class="line">      sourceMap.push(...rKey.default)</span><br><span class="line">      <span class="comment">// console.log('key', key, rKey); // ./modules/home/route.js  // &#123;default: Array(3), __esModule: true&#125;</span></span><br><span class="line">      <span class="keyword">return</span> rKey</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> sourceMap</span><br><span class="line">  &#125;)(<span class="built_in">require</span>.context(<span class="string">'./'</span>, <span class="literal">true</span>, /^\.\/modules\/\w+\.js$/)),</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log('router beforeEach=&gt;', to, from)</span></span><br><span class="line">  <span class="comment">// 全局路由切换前执行</span></span><br><span class="line">  <span class="comment">// 是否有用户信息，并且用户ID是否存在</span></span><br><span class="line">  <span class="comment">// if (window.localStorage.getItem("loginInfo") &amp;&amp; JSON.stringify(window.localStorage.getItem("loginInfo")).userId) &#123;</span></span><br><span class="line">  <span class="comment">//     next(&#123;path: '/login'&#125;)//重定向到登录页面</span></span><br><span class="line">  <span class="comment">// &#125; else &#123;</span></span><br><span class="line">  <span class="comment">//     next()//正常跳转</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.afterEach(<span class="function">(<span class="params">to, <span class="keyword">from</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log('router afterEach=&gt;', router)</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+<p>在 router 文件夹下添加 <code>modules</code> 文件夹</p>
+<p>在 modules 文件夹下添加 <code>home.js</code> ，这个 home.js 对应首页业务模块，首页相关的路由页面都可以写到 home.js 文件里。</p>
+<p>如果以后添加其他业务模块，只需要在 modules 文件夹添加相对应的业务模块文件，并在其中添加业务相关的路由页面。这样所有不同业务线的开发人员就可以互不干扰 ↓</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'../../views/Home'</span></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/'</span>,</span><br><span class="line">    name: <span class="string">'index'</span>,</span><br><span class="line">    redirect: <span class="string">'/home'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/home'</span>,</span><br><span class="line">    name: <span class="string">'home'</span>,</span><br><span class="line">    component: Home,</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> routes</span><br></pre></td></tr></table></figure>
+<p>对于不需要即时加载的非一级页面可以使用异步路由组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// region 异步组件 - 路由地址demo</span></span><br><span class="line"><span class="comment">// ES 提案的 import（推荐）</span></span><br><span class="line">&#123; <span class="attr">name</span>: <span class="string">'index'</span>, <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'../views/index'</span>)&#125;,</span><br><span class="line"><span class="comment">// ES 提案的 import，带分组，指定webpackChunkName，相同的name打包到一个js文件</span></span><br><span class="line">&#123; <span class="attr">name</span>: <span class="string">'index'</span>, <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(webpackChunkName:<span class="string">'viewsIndex'</span>,<span class="string">'../views/index'</span>)&#125;,</span><br><span class="line"><span class="comment">// Webpack 风格的异步组件</span></span><br><span class="line">&#123; <span class="attr">name</span>: <span class="string">'index'</span>, <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>.ensure([<span class="string">'views/Foo.vue'</span>], () =&gt; resolve(<span class="built_in">require</span>(<span class="string">'views/Foo.vue'</span>)))&#125;,</span><br><span class="line"><span class="comment">// Webpack 风格的异步组件，带分组</span></span><br><span class="line">&#123; <span class="attr">name</span>: <span class="string">'index'</span>, <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>.ensure([], () =&gt; resolve(<span class="built_in">require</span>(<span class="string">'views/index.vue'</span>)), <span class="string">'group-index'</span>)&#125;,</span><br><span class="line"><span class="comment">// AMD 风格的异步组件</span></span><br><span class="line">&#123; <span class="attr">name</span>: <span class="string">'index'</span>, <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'views/index.vue'</span>], resolve)&#125;,</span><br><span class="line"><span class="comment">// endregion</span></span><br></pre></td></tr></table></figure>
+<h2 id="添加store文件夹"><a href="#添加store文件夹" class="headerlink" title="添加store文件夹"></a>添加<code>store</code>文件夹</h2><blockquote>
+<p>src 下的 store 文件夹主要是存放 <span class="exturl" data-url="aHR0cHM6Ly92dWV4LnZ1ZWpzLm9yZy96aC1jbi8=" title="https://vuex.vuejs.org/zh-cn/">vuex<i class="fa fa-external-link"></i></span> 相关信息的<br>更多 vuex 相关使用方法请访问：<span class="exturl" data-url="aHR0cHM6Ly92dWV4LnZ1ZWpzLm9yZy96aC1jbi8=" title="https://vuex.vuejs.org/zh-cn/">https://vuex.vuejs.org/zh-cn/<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<p>在 store 文件夹下创建目录结构 ↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">store</span><br><span class="line">    ├── index.js               # 我们组装模块并导出 store 的地方</span><br><span class="line">    ├── root.js                # 根级别的 getter</span><br><span class="line">    ├── actions-types.js       # 根级别的 action 的方法名常量</span><br><span class="line">    ├── mutation-types.js      # 定义链接 mutation 的方法名常量</span><br><span class="line">    └── modules</span><br><span class="line">        ├── base.js            # 首页模块</span><br><span class="line">        ├── cart.js            # 购物车模块</span><br><span class="line">        └── products.js        # 产品模块</span><br></pre></td></tr></table></figure>
+<p>下面开始改造 store 文件夹 ↓</p>
+<ol>
+<li><p>在<code>mutation-types.js</code>中添加一个常量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> BASE = &#123;</span><br><span class="line">  setUserInfo: <span class="string">'base/setUserInfo'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">mutations</span> (<span class="params">states</span>) </span>&#123;</span><br><span class="line">  addFirstUpperCaseToPrototype()</span><br><span class="line">  addFlatToPrototype()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// 单个state赋值 https://forum.vuejs.org/t/vuex-state/39459/5</span></span><br><span class="line">    ...Object.keys(states).reduce(</span><br><span class="line">      (obj, key) =&gt; (&#123;</span><br><span class="line">        ...obj,</span><br><span class="line">        [<span class="string">`set<span class="subst">$&#123;key.firstUpperCase()&#125;</span>`</span>]: <span class="function">(<span class="params">state, payload</span>) =&gt;</span> (state[key] = payload)</span><br><span class="line">      &#125;),</span><br><span class="line">      &#123;&#125;</span><br><span class="line">    ),</span><br><span class="line">    <span class="comment">// 多个state批量赋值</span></span><br><span class="line">    setData (state, payload) &#123;</span><br><span class="line">      <span class="comment">// state = &#123; ...state, ...payload &#125; // eslint-disable-line</span></span><br><span class="line">      <span class="built_in">Object</span>.assign(state, payload)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 深度合并赋值</span></span><br><span class="line">    setDataDeep: mergeJSON,</span><br><span class="line">    <span class="comment">// 表格页码改变</span></span><br><span class="line">    pageChange (state, payload) &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123; list, total &#125; = payload</span><br><span class="line">      state.total = total</span><br><span class="line">      list.forEach(<span class="function">(<span class="params">el, index</span>) =&gt;</span> &#123;</span><br><span class="line">        el.key = index</span><br><span class="line">      &#125;)</span><br><span class="line">      state.list.splice(<span class="number">0</span>, state.list.length, ...list)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// #region addFirstUpperCaseToPrototype - String原型链方法firstUpperCase</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * String原型链方法firstUpperCase</span></span><br><span class="line"><span class="comment"> * @export</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">addFirstUpperCaseToPrototype</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">/* eslint-disable */</span></span><br><span class="line">  <span class="built_in">String</span>.prototype.firstUpperCase = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">([first, ...rest]</span>) =&gt;</span> first.toUpperCase() + rest.join(<span class="string">''</span>))(<span class="keyword">this</span>) <span class="comment">// return this.replace(/^\S/, s =&gt; s.toUpperCase())</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* eslint-enable */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// #endregion</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #region addFlatToPrototype - Array原型链方法flat</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Array原型链方法flat</span></span><br><span class="line"><span class="comment"> * @export</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">addFlatToPrototype</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">/* eslint-disable */</span></span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype.flat) &#123;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.flat = <span class="function"><span class="keyword">function</span>(<span class="params">num = <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (!<span class="built_in">Number</span>(num) || <span class="built_in">Number</span>(num) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">let</span> arr = []</span><br><span class="line">      <span class="keyword">this</span>.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(item)) &#123;</span><br><span class="line">          arr = arr.concat(item.flat(--num))</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          arr.push(item)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span> arr</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* eslint-enable */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// #endregion</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #region mergeJSON - 合并JSON</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 直接修改 main 将 minor 合并到 main</span></span><br><span class="line"><span class="comment"> * @export</span></span><br><span class="line"><span class="comment"> * @param &#123;*&#125; main</span></span><br><span class="line"><span class="comment"> * @param &#123;*&#125; minor</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">mergeJSON</span> (<span class="params">main = &#123;&#125;, minor = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">Object</span>.keys(minor).forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> type = <span class="built_in">Object</span>.prototype.toString.call(minor[key])</span><br><span class="line">    <span class="keyword">if</span> (type === <span class="string">'[object Object]'</span>) &#123;</span><br><span class="line">      mergeJSON(main[key] || &#123;&#125;, minor[key] || &#123;&#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      main[key] = type === <span class="string">'[object Null]'</span> || type === <span class="string">'[object Undefined]'</span> ? main[key] : minor[key]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// #endregion</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>action-types.js</code>中添加一个常量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> BASE = &#123;</span><br><span class="line">  login: <span class="string">'base/login'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改<code>modules/base.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123; BASE, mutations &#125; <span class="keyword">from</span> <span class="string">'../mutation-types'</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> states = &#123;</span><br><span class="line">  version: <span class="string">''</span>,</span><br><span class="line">  token: <span class="literal">null</span>,</span><br><span class="line">  user: &#123;</span><br><span class="line">    userID: <span class="string">''</span>,</span><br><span class="line">    userName: <span class="string">''</span>,</span><br><span class="line">    name: <span class="string">''</span>,</span><br><span class="line">    tel: <span class="string">''</span>,</span><br><span class="line">    email: <span class="string">''</span>,</span><br><span class="line">    head: <span class="string">''</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  namespaced: <span class="literal">true</span>, <span class="comment">// https://vuex.vuejs.org/zh/guide/modules.html#命名空间</span></span><br><span class="line">  state: states,</span><br><span class="line">  getters: &#123;</span><br><span class="line">    versionGetter(state, getters) &#123;</span><br><span class="line">      <span class="keyword">return</span> state.version</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    ...mutations(states),</span><br><span class="line">    setUserInfo(state, userInfo) &#123;</span><br><span class="line">      userInfo.userID &amp;&amp; (state.user.userID = userInfo.userID)</span><br><span class="line">      userInfo.USERNAME &amp;&amp; (state.user.userName = userInfo.USERNAME)</span><br><span class="line">      userInfo.NAME &amp;&amp; (state.user.name = userInfo.NAME)</span><br><span class="line">      userInfo.TEL &amp;&amp; (state.user.tel = userInfo.TEL)</span><br><span class="line">      userInfo.EMAIL &amp;&amp; (state.user.email = userInfo.EMAIL)</span><br><span class="line">      userInfo.HEAD &amp;&amp; (state.user.head = userInfo.HEAD)</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    <span class="keyword">async</span> login(&#123; commit, dispatch, state &#125;, &#123; userName, password &#125;) &#123;</span><br><span class="line">      <span class="keyword">let</span> userInfo = <span class="keyword">await</span> axios.post(<span class="string">'/api/login'</span>, qs.stringify(&#123; userName, password &#125;))</span><br><span class="line">      commit(BASE.SET_USER_INFO, userInfo)</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>修改 vuex 主文件<code>index.js</code>，组合所有状态模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> root <span class="keyword">from</span> <span class="string">'./root'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> base <span class="keyword">from</span> <span class="string">'./modules/base'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// import createLogger from 'vuex/dist/logger' //vuex内置的Logger日志插件</span></span><br><span class="line"><span class="keyword">const</span> debug = process.env.NODE_ENV !== <span class="string">'production'</span> <span class="comment">// 发布品种时需要用 Webpack 的 DefinePlugin 来转换 process.env.NODE_ENV !== 'production' 的值为 false</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> state = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  ...root</span><br><span class="line">  modules: &#123;</span><br><span class="line">    base,</span><br><span class="line">    <span class="comment">// https://vuex.vuejs.org/zh/guide/modules.html#模块动态注册</span></span><br><span class="line">  &#125;,</span><br><span class="line">  strict: debug, <span class="comment">// 开发阶段使用</span></span><br><span class="line">  <span class="comment">// plugins: debug ? [createLogger()] : []//vuex插件,https://vuex.vuejs.org/zh/guide/plugins.html</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改<code>main.js</code>，引入 vuex</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./store/index'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  <span class="comment">// components: &#123; App &#125;,</span></span><br><span class="line">  <span class="comment">// template: '&lt;App/&gt;',</span></span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App), <span class="comment">// https://cn.vuejs.org/v2/guide/render-function.html#JSX</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81YmNkOTY3YjZmYjlhMDVkMDcxOTdiMWU=" title="https://juejin.im/post/5bcd967b6fb9a05d07197b1e">https://juejin.im/post/5bcd967b6fb9a05d07197b1e<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81ODYwY2M0NzEyOGZlMTAwNjllMTljMjY=" title="https://juejin.im/post/5860cc47128fe10069e19c26">Vuex 实战：如何在大规模 Vue 应用中组织 Vuex 代码<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NldmlvL3N1cGVyLXZ1ZXg=" title="https://github.com/cevio/super-vuex">super-vuex<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h2 id="添加mixins文件夹"><a href="#添加mixins文件夹" class="headerlink" title="添加mixins文件夹"></a>添加<code>mixins</code>文件夹</h2><p>目录结构 ↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mixins</span><br><span class="line">    ├── index.js               # 全局mixin</span><br></pre></td></tr></table></figure>
+<h2 id="添加filters文件夹"><a href="#添加filters文件夹" class="headerlink" title="添加filters文件夹"></a>添加<code>filters</code>文件夹</h2><p>目录结构 ↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">filters</span><br><span class="line">    ├── index.js               # 全局过滤器</span><br></pre></td></tr></table></figure>
+<h2 id="添加utils文件夹"><a href="#添加utils文件夹" class="headerlink" title="添加utils文件夹"></a>添加<code>utils</code>文件夹</h2><p>目录结构 ↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">utils</span><br><span class="line">    ├── fetch.js               # axios</span><br><span class="line">    ├── filters.js             # 全局filter</span><br><span class="line">    └── mixin.js               # 全局mixin</span><br></pre></td></tr></table></figure>
+<p><code>src/main.js</code>中添加全局引用 ↓</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> filters <span class="keyword">from</span> <span class="string">'./utils/filters'</span></span><br><span class="line"><span class="keyword">import</span> fetch <span class="keyword">from</span> <span class="string">'./utils/fetch'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 全局注册fetch */</span></span><br><span class="line">Vue.prototype.$fetch = fetch</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 注册全局过滤器 */</span></span><br><span class="line"><span class="built_in">Object</span>.keys(filters).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">  Vue.filter(key, filters[key])</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="封装-axios"><a href="#封装-axios" class="headerlink" title="封装 axios"></a>封装 axios</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'../router'</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span></span><br><span class="line"><span class="keyword">import</span> Toast <span class="keyword">from</span> <span class="string">'../components/toast'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #region config</span></span><br><span class="line"><span class="comment">// 每页条数</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ROW = <span class="number">10</span></span><br><span class="line"><span class="comment">// 加载最小时间</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> MINI_TIME = <span class="number">300</span></span><br><span class="line"><span class="comment">// 超时时间（超时时间）</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> TIME_OUT_MAX = <span class="number">8000</span></span><br><span class="line"><span class="comment">// 环境value</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> _env = process.env.NODE_ENV</span><br><span class="line"><span class="comment">// 请求组（判断当前请求数）</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> _requests = []</span><br><span class="line"><span class="comment">// #endregion</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #region 实例化axios</span></span><br><span class="line"><span class="keyword">const</span> _instance = axios.create(&#123;</span><br><span class="line">  timeout: TIME_OUT_MAX,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// #endregion</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// region request统一处理操作</span></span><br><span class="line">_instance.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded;charset=UTF-8'</span></span><br><span class="line"><span class="comment">// POST传参序列化</span></span><br><span class="line">_instance.interceptors.request.use(</span><br><span class="line">  config =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (config.method === <span class="string">'post'</span>) &#123;</span><br><span class="line">      config.data = qs.stringify(config.data)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> config</span><br><span class="line">  &#125;,</span><br><span class="line">  error =&gt; &#123;</span><br><span class="line">    Toast(<span class="string">'错误的传参'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error)</span><br><span class="line">  &#125;,</span><br><span class="line">)</span><br><span class="line"><span class="comment">// endregion</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// region response统一处理操作</span></span><br><span class="line">_instance.interceptors.response.use(</span><br><span class="line">  res =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> _message = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">if</span> (res.status !== <span class="number">200</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(res)</span><br><span class="line">      <span class="keyword">switch</span> (res.status) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">404</span>:</span><br><span class="line">          _message = <span class="string">'404,错误请求'</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">401</span>:</span><br><span class="line">          router.push(&#123; <span class="attr">path</span>: <span class="string">'/login'</span>, <span class="attr">query</span>: &#123; <span class="attr">redirect</span>: router.currentRoute.fullPath &#125; &#125;)</span><br><span class="line">          _message = <span class="string">'未授权'</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">403</span>:</span><br><span class="line">          _message = <span class="string">'禁止访问'</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">408</span>:</span><br><span class="line">          _message = <span class="string">'请求超时'</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">500</span>:</span><br><span class="line">          _message = <span class="string">'服务器内部错误'</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">501</span>:</span><br><span class="line">          _message = <span class="string">'功能未实现'</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">503</span>:</span><br><span class="line">          _message = <span class="string">'服务不可用'</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">504</span>:</span><br><span class="line">          _message = <span class="string">'网关错误'</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">          _message = <span class="string">'未知错误'</span></span><br><span class="line">      &#125;</span><br><span class="line">      Toast(_message)</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(_message)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  error =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(error)</span><br><span class="line">    Toast(error || <span class="string">'服务器繁忙，请稍后重试'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error || <span class="string">'服务器繁忙，请稍后重试'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">)</span><br><span class="line"><span class="comment">// endregion</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #region send get/post</span></span><br><span class="line"><span class="keyword">let</span> toast = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送GET请求</span></span><br><span class="line"><span class="comment"> * @param api 接口api</span></span><br><span class="line"><span class="comment"> * @param params 请求参数</span></span><br><span class="line"><span class="comment"> * @returns &#123;Promise.&lt;T&gt;&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">api, params</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!toast) toast = Toast(&#123; <span class="attr">time</span>: <span class="number">-1</span>, <span class="attr">message</span>: <span class="string">'加载中'</span>, <span class="attr">icon</span>: <span class="string">'loading'</span> &#125;)</span><br><span class="line">    <span class="keyword">let</span> &#123; data &#125; = <span class="keyword">await</span> _instance.get(api, &#123; params &#125;)</span><br><span class="line">    toast.close()</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    toast.close()</span><br><span class="line">    Toast(&#123; <span class="attr">message</span>: <span class="string">'网络异常'</span>, <span class="attr">position</span>: <span class="string">'bottom'</span> &#125;)</span><br><span class="line">    <span class="keyword">throw</span> e</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送POST请求</span></span><br><span class="line"><span class="comment"> * @param api 接口api</span></span><br><span class="line"><span class="comment"> * @param params 请求参数</span></span><br><span class="line"><span class="comment"> * @returns &#123;Promise.&lt;T&gt;&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">post</span>(<span class="params">api, params</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!toast) toast = Toast(&#123; <span class="attr">time</span>: <span class="number">-1</span>, <span class="attr">message</span>: <span class="string">'加载中'</span>, <span class="attr">icon</span>: <span class="string">'loading'</span> &#125;)</span><br><span class="line">    <span class="keyword">let</span> &#123; data &#125; = <span class="keyword">await</span> _instance.post(api, qs.stringify(params))</span><br><span class="line">    toast.close()</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    toast.close()</span><br><span class="line">    Toast(&#123; <span class="attr">message</span>: <span class="string">'网络异常'</span>, <span class="attr">position</span>: <span class="string">'bottom'</span> &#125;)</span><br><span class="line">    <span class="keyword">throw</span> e</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// #endregion</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  _instance,</span><br><span class="line">  <span class="keyword">get</span>,</span><br><span class="line">  post,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="config-配置"><a href="#config-配置" class="headerlink" title="config 配置"></a>config 配置</h2><h3 id="build-生成的文件路径使用相对路径"><a href="#build-生成的文件路径使用相对路径" class="headerlink" title="build 生成的文件路径使用相对路径"></a>build 生成的文件路径使用相对路径</h3><p>修改<code>config/index.js</code>文件中<code>build</code>节点的<code>assetsPublicPath</code>值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  dev: &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  build: &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    assetsPublicPath: <span class="string">'./'</span>,</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="开发的的时候需要使用代理-proxy-跨域访问服务器接口"><a href="#开发的的时候需要使用代理-proxy-跨域访问服务器接口" class="headerlink" title="开发的的时候需要使用代理(proxy)跨域访问服务器接口"></a>开发的的时候需要使用代理(proxy)跨域访问服务器接口</h3><p>修改<code>config/index.js</code>文件中<code>dev</code>节点的<code>proxyTable</code>值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  dev: &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    proxyTable: &#123;</span><br><span class="line">      <span class="string">'/api'</span>: &#123;</span><br><span class="line">        target: <span class="string">'https://123.57.89.97:8081'</span>,</span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">// pathRewrite: &#123;</span></span><br><span class="line">        <span class="comment">//   '^/api': '/api'</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分离线上环境和本地环境的配置信息"><a href="#分离线上环境和本地环境的配置信息" class="headerlink" title="分离线上环境和本地环境的配置信息"></a>分离线上环境和本地环境的配置信息</h3><p>修改<code>config/dev.env.js</code>与<code>config/prod.env.js</code>，为不同的环境配置文件添加与<code>NODE_ENV</code>同级的环境变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  NODE_ENV: <span class="string">'"development"'</span>,</span><br><span class="line">  API: <span class="string">'"https://123.57.89.97:8081"'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="通用样式-SCSS"><a href="#通用样式-SCSS" class="headerlink" title="通用样式(SCSS)"></a>通用样式(SCSS)</h1><p>目录结构 ↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">assets</span><br><span class="line">    └── scss</span><br><span class="line">        ├── base.scss         # 基础样式</span><br><span class="line">        ├── common.scss       # 通用样式</span><br><span class="line">        ├── fun.scss          # 函数</span><br><span class="line">        ├── mixin.scss        # 混合</span><br><span class="line">        └── variable.js       # 变量</span><br></pre></td></tr></table></figure>
+<h2 id="base-scss"><a href="#base-scss" class="headerlink" title="base.scss"></a>base.scss</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">charset</span> <span class="string">"utf-8"</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'variable'</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'fun'</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'mixin'</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'common'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*基础样式*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">html</span>,</span><br><span class="line"><span class="selector-tag">body</span>,</span><br><span class="line"><span class="selector-id">#app</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">font-family</span>: Arial, <span class="string">'Microsoft YaHei'</span>, <span class="string">'微软雅黑'</span>, Verdana, sans-serif;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">ul</span>,</span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">* &gt; <span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">max-height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">margin-left</span>: auto;</span><br><span class="line">  <span class="attribute">margin-right</span>: auto;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">14px</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">14px</span>;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">2.55555556</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">  -webkit-tap-highlight-<span class="attribute">color</span>: transparent;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#000000</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f8f8f8</span>;</span><br><span class="line"></span><br><span class="line">  &amp;::after &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">' '</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200%</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>);</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: scale(<span class="number">0.5</span>);</span><br><span class="line">    <span class="attribute">transform</span>: scale(<span class="number">0.5</span>);</span><br><span class="line">    -webkit-<span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//页面切换动画</span></span><br><span class="line"><span class="selector-class">.slide</span> &#123;</span><br><span class="line">  &amp;-enter,</span><br><span class="line">  &amp;-leave-to &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: translate(<span class="number">100%</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">transform</span>: translate(<span class="number">100%</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &amp;-enter-active,</span><br><span class="line">  &amp;-leave-active &#123;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">0.5s</span> cubic-bezier(<span class="number">0.55</span>, <span class="number">0</span>, <span class="number">0.1</span>, <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &amp;-enter-to,</span><br><span class="line">  &amp;-leave &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: translate(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">transform</span>: translate(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="common-scss"><a href="#common-scss" class="headerlink" title="common.scss"></a>common.scss</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">charset</span> <span class="string">"UTF-8"</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'fun'</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'mixin'</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'variable'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*通用样式*/</span></span><br><span class="line"></span><br><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clear</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">clear</span>: both <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">float</span>: none <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clearfix</span> &#123;</span><br><span class="line">  zoom: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clearfix</span>:after &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="fun-scss"><a href="#fun-scss" class="headerlink" title="fun.scss"></a>fun.scss</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">charset</span> <span class="string">"UTF-8"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*函数*/</span></span><br><span class="line"></span><br><span class="line">@function rem(<span class="variable">$pixels</span>) &#123;</span><br><span class="line">  @return <span class="variable">$pixels</span> / 100px * 1rem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="mixin-scss"><a href="#mixin-scss" class="headerlink" title="mixin.scss"></a>mixin.scss</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">charset</span> <span class="string">"UTF-8"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*混合*/</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">mixin</span> fullpage &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="variable-scss"><a href="#variable-scss" class="headerlink" title="variable.scss"></a>variable.scss</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">charset</span> <span class="string">"UTF-8"</span>;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">import</span> <span class="string">'fun'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*变量*/</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$headerHeight</span>: rem(<span class="number">50px</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>demo 地址</strong>：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVvL3dlZGl2ZQ==" title="https://github.com/MrLeo/wedive">https://github.com/MrLeo/wedive<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h1 id="查缺补漏"><a href="#查缺补漏" class="headerlink" title="查缺补漏"></a>查缺补漏</h1><h3 id="我用了-axios-为什么-IE-浏览器不识别-IE9"><a href="#我用了-axios-为什么-IE-浏览器不识别-IE9" class="headerlink" title="我用了 axios , 为什么 IE 浏览器不识别(IE9+)"></a>我用了 <code>axios</code> , 为什么 IE 浏览器不识别(IE9+)</h3><p>那是因为 IE 整个家族都不支持 promise, 解决方案:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install es6-promise</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 main.js 引入即可</span></span><br><span class="line"><span class="comment">// ES6的polyfill</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'es6-promise'</span>).polyfill()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://image.xuebin.me/wechatpay.JPG" alt="Leo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://image.xuebin.me/alipay.JPG" alt="Leo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Leo</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://xuebin.me/posts/b191399c.html" title="一步步基于vue-cli搭建vue2.0项目">https://xuebin.me/posts/b191399c.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dev/" rel="tag"># dev</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/vue-cli/" rel="tag"># vue-cli</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/f72281e3.html" rel="next" title="动态脚本加载">
+                <i class="fa fa-chevron-left"></i> 动态脚本加载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/f50a909e.html" rel="prev" title="未哭过长夜的人，不足以语人生">
+                未哭过长夜的人，不足以语人生 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460" alt="Leo">
+            
+              <p class="site-author-name" itemprop="name">Leo</p>
+              <div class="site-description motion-element" itemprop="description">😆</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93cGEucXEuY29tL21zZ3JkP3Y9MyZ1aW49NjUyODg5NTU5JnNpdGU9cXEmbWVudT15ZXM=" title="QQ &rarr; https://wpa.qq.com/msgrd?v=3&uin=652889559&site=qq&menu=yes"><i class="fa fa-fw fa-qq"></i>QQ</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8xMzc4MjUyNjM3" title="微博 &rarr; https://weibo.com/u/1378252637"><i class="fa fa-fw fa-weibo"></i>微博</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:leo@xuebin.me" title="E-Mail &rarr; mailto:leo@xuebin.me"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="GitHub &rarr; https://github.com/MrLeo"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly96aGFuZ21pYW8uY2Mv" title="https://zhangmiao.cc/">ZM</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9sZW8tanVseS5naXRodWIuaW8v" title="https://leo-july.github.io/">july</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化"><span class="nav-number">2.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加依赖"><span class="nav-number">3.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完善项目结构"><span class="nav-number">4.</span> <span class="nav-text">完善项目结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加views文件夹"><span class="nav-number">4.1.</span> <span class="nav-text">添加views文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整router配置"><span class="nav-number">4.2.</span> <span class="nav-text">调整router配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加store文件夹"><span class="nav-number">4.3.</span> <span class="nav-text">添加store文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加mixins文件夹"><span class="nav-number">4.4.</span> <span class="nav-text">添加mixins文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加filters文件夹"><span class="nav-number">4.5.</span> <span class="nav-text">添加filters文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加utils文件夹"><span class="nav-number">4.6.</span> <span class="nav-text">添加utils文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装-axios"><span class="nav-number">4.7.</span> <span class="nav-text">封装 axios</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config-配置"><span class="nav-number">4.8.</span> <span class="nav-text">config 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#build-生成的文件路径使用相对路径"><span class="nav-number">4.8.1.</span> <span class="nav-text">build 生成的文件路径使用相对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发的的时候需要使用代理-proxy-跨域访问服务器接口"><span class="nav-number">4.8.2.</span> <span class="nav-text">开发的的时候需要使用代理(proxy)跨域访问服务器接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分离线上环境和本地环境的配置信息"><span class="nav-number">4.8.3.</span> <span class="nav-text">分离线上环境和本地环境的配置信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用样式-SCSS"><span class="nav-number">5.</span> <span class="nav-text">通用样式(SCSS)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#base-scss"><span class="nav-number">5.1.</span> <span class="nav-text">base.scss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#common-scss"><span class="nav-number">5.2.</span> <span class="nav-text">common.scss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fun-scss"><span class="nav-number">5.3.</span> <span class="nav-text">fun.scss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mixin-scss"><span class="nav-number">5.4.</span> <span class="nav-text">mixin.scss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variable-scss"><span class="nav-number">5.5.</span> <span class="nav-text">variable.scss</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查缺补漏"><span class="nav-number">6.</span> <span class="nav-text">查缺补漏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#我用了-axios-为什么-IE-浏览器不识别-IE9"><span class="nav-number">6.0.1.</span> <span class="nav-text">我用了 axios , 为什么 IE 浏览器不识别(IE9+)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1263395414&web_id=1263395414"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+
+
+
+  
+
+
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/fastclick@1/lib/fastclick.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery-lazyload@1/jquery.lazyload.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/exturl.js?v=7.0.1"></script>
+
+
+  
+  
+  
+    
+  
+
+  
+
+  
+  
+  
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://xuebin.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://xuebin.me/posts/b191399c.html";
+    this.page.identifier = "posts/b191399c.html";
+    this.page.title = '一步步基于vue-cli搭建vue2.0项目';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://xuebin.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz',
+                'X-LC-Key': 'eYX7CBXn2T7iUGa9LAUnIt9q',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+<style>
+.pdfobject-container {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+}
+</style>
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+</body>
+</html>

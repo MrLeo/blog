@@ -1,0 +1,2262 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/han-css@3/dist/han.min.css">
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true,"dimmer":true},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '3W9IAI9QUW',
+      apiKey: '',
+      indexName: 'mr-leo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="如何优雅的处理异常呢？  可疑区域增加 Try-Catch 全局监控 JS 异常 window.onerror 全局监控静态资源异常 window.addEventListener 捕获没有 Catch 的 Promise 异常：unhandledrejection VUE errorHandler 和 React componentDidCatch 监控网页崩溃：window 对象的 load">
+<meta name="keywords" content="dev,前端,转载,性能,异常上报,监控">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转载】前端性能与异常上报">
+<meta property="og:url" content="https://xuebin.me/posts/1ba69eb7.html">
+<meta property="og:site_name" content="♌">
+<meta property="og:description" content="如何优雅的处理异常呢？  可疑区域增加 Try-Catch 全局监控 JS 异常 window.onerror 全局监控静态资源异常 window.addEventListener 捕获没有 Catch 的 Promise 异常：unhandledrejection VUE errorHandler 和 React componentDidCatch 监控网页崩溃：window 对象的 load">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://image.xuebin.me/1ba69eb7/164e673466b32bf3.png">
+<meta property="og:image" content="https://image.xuebin.me/1ba69eb7/164e673466dc884f.png">
+<meta property="og:image" content="https://image.xuebin.me/1ba69eb7/164e673468d04a7b.png">
+<meta property="og:image" content="https://image.xuebin.me/1ba69eb7/164e67346f96b43a.png">
+<meta property="og:image" content="https://image.xuebin.me/1ba69eb7/164e673466239e06.png">
+<meta property="og:image" content="https://image.xuebin.me/1ba69eb7/164e673466efea2b.png">
+<meta property="og:image" content="https://image.xuebin.me/1ba69eb7/164e6734d5c03ff5.png">
+<meta property="og:image" content="https://image.xuebin.me/1ba69eb7/164e6734d6cb922e.png">
+<meta property="og:image" content="https://image.xuebin.me/1ba69eb7/164e673552f64206.png">
+<meta property="og:updated_time" content="2018-07-30T03:20:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转载】前端性能与异常上报">
+<meta name="twitter:description" content="如何优雅的处理异常呢？  可疑区域增加 Try-Catch 全局监控 JS 异常 window.onerror 全局监控静态资源异常 window.addEventListener 捕获没有 Catch 的 Promise 异常：unhandledrejection VUE errorHandler 和 React componentDidCatch 监控网页崩溃：window 对象的 load">
+<meta name="twitter:image" content="https://image.xuebin.me/1ba69eb7/164e673466b32bf3.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="♌" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://xuebin.me/posts/1ba69eb7.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>【转载】前端性能与异常上报 | ♌</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1706cfef7a8fd27b12633a699c2f75c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">♌</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Mr. Leo</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">26</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">142</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">138</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xuebin.me/posts/1ba69eb7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo">
+      <meta itemprop="description" content="😆">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="♌">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">【转载】前端性能与异常上报
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-30 11:20:48" itemprop="dateCreated datePublished" datetime="2018-07-30T11:20:48+08:00">2018-07-30</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/监控/" itemprop="url" rel="index"><span itemprop="name">监控</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/1ba69eb7.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://xuebin.me/posts/1ba69eb7.html" itemprop="commentCount">0</span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/1ba69eb7.html" class="leancloud_visitors" data-flag-title="【转载】前端性能与异常上报">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>如何优雅的处理异常呢？</p>
+<ol>
+<li>可疑区域增加 Try-Catch</li>
+<li>全局监控 JS 异常 window.onerror</li>
+<li>全局监控静态资源异常 window.addEventListener</li>
+<li>捕获没有 Catch 的 Promise 异常：unhandledrejection</li>
+<li>VUE errorHandler 和 React componentDidCatch</li>
+<li>监控网页崩溃：window 对象的 load 和 beforeunload</li>
+<li>跨域 crossOrigin 解决</li>
+</ol>
+<p>其实很简单，正如上文所说：采用组合方案，分类型的去捕获异常，这样基本 80%-90% 的问题都化于无形。</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hhcHB5bGluZHovYmxvZy9pc3N1ZXMvNQ==" title="https://github.com/happylindz/blog/issues/5">前端代码异常监控实战<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1JpY2FyZG9DYW8tQmlrZXIvRnJvbnQtRW5kLU1vbml0b3JpbmcvYmxvYi9tYXN0ZXIvQmFzaWNLbm93bGVkZ2UubWQ=" title="https://github.com/RicardoCao-Biker/Front-End-Monitoring/blob/master/BasicKnowledge.md">前端监控知识点<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL2phc29uamwubWUvYmxvZy8yMDE1LzA2LzIxL3Rha2luZy1hY3Rpb24tb24tYnJvd3Nlci1jcmFzaGVzLw==" title="http://jasonjl.me/blog/2015/06/21/taking-action-on-browser-crashes/">Logging Information on Browser Crashes<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2E5ODY1OTczNTMvYXJ0aWNsZS9kZXRhaWxzLzc4NDY5OTc5" title="https://blog.csdn.net/a986597353/article/details/78469979">Error Boundaries<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnNlbnRyeS5pby8yMDE2LzAxLzA0L2NsaWVudC1qYXZhc2NyaXB0LXJlcG9ydGluZy13aW5kb3ctb25lcnJvcg==" title="https://blog.sentry.io/2016/01/04/client-javascript-reporting-window-onerror">Capture and report JavaScript errors with window.onerror<i class="fa fa-external-link"></i></span></li>
+</ul>
+<blockquote>
+<p>原文地址: <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81YjVkY2ZiNDZmYjlhMDRmOGYzN2FmYmI=" title="https://juejin.im/post/5b5dcfb46fb9a04f8f37afbb">https://juejin.im/post/5b5dcfb46fb9a04f8f37afbb<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>对于后台开发来说，记录日志是一种非常常见的开发习惯，通常我们会使用<code>try...catch</code>代码块来主动捕获错误、对于每次接口调用，也会记录下每次接口调用的时间消耗，以便我们监控服务器接口性能，进行问题排查。</p>
+<p>刚进公司时，在进行<code>Node.js</code>的接口开发时，我不太习惯每次排查问题都要通过跳板机登上服务器看日志，后来慢慢习惯了这种方式。</p>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取列表数据</span></span><br><span class="line"><span class="comment"> * @parma req, res</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">exports.getList = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//获取请求参数</span></span><br><span class="line">    <span class="keyword">const</span> openId = req.session.userinfo.openId;</span><br><span class="line">    logger.info(<span class="string">`handler getList, user openId is <span class="subst">$&#123;openId&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 拿到列表数据</span></span><br><span class="line">        <span class="keyword">const</span> startTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">        <span class="keyword">let</span> res = <span class="keyword">await</span> ListService.getListFromDB(openId);</span><br><span class="line">        logger.info(<span class="string">`handler getList, ListService.getListFromDB cost time <span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - startDate&#125;</span>`</span>);</span><br><span class="line">        <span class="comment">// 对数据处理，返回给前端</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125; <span class="keyword">catch</span>(error) &#123;</span><br><span class="line">        logger.error(<span class="string">`handler getList is error, <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(error)&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>以下代码经常会出现在用<code>Node.js</code>的接口中，在接口中会统计查询<code>DB</code>所耗时间、亦或是统计<code>RPC</code>服务调用所耗时间，以便监测性能瓶颈，对性能做优化；又或是对异常使用<code>try ... catch</code>主动捕获，以便随时对问题进行回溯、还原问题的场景，进行<code>bug</code>的修复。</p>
+<p>而对于前端来说呢？可以看以下的场景。</p>
+<p>最近在进行一个需求开发时，偶尔发现<code>webgl</code>渲染影像失败的情况，或者说影像会出现解析失败的情况，我们可能根本不知道哪张影像会解析或渲染失败；又或如最近开发的另外一个需求，我们会做一个关于<code>webgl</code>渲染时间的优化和影像预加载的需求，如果缺乏性能监控，该如何统计所做的渲染优化和影像预加载优化的优化比例，如何证明自己所做的事情具有价值呢？可能是通过测试同学的黑盒测试，对优化前后的时间进行录屏，分析从进入页面到影像渲染完成到底经过了多少帧图像。这样的数据，可能既不准确、又较为片面，设想测试同学并不是真正的用户，也无法还原真实的用户他们所处的网络环境。回过头来发现，我们的项目，虽然在服务端层面做好了日志和性能统计，但在前端对异常的监控和性能的统计。对于前端的性能与异常上报的可行性探索是有必要的。</p>
+<h1 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h1><p>对于前端来说，我们需要的异常捕获无非为以下两种：</p>
+<ul>
+<li>接口调用情况；</li>
+<li>页面逻辑是否错误，例如，用户进入页面后页面显示白屏；</li>
+</ul>
+<p>对于接口调用情况，在前端通常需要上报客户端相关参数，例如：用户OS与浏览器版本、请求参数（如页面ID）；而对于页面逻辑是否错误问题，通常除了用户OS与浏览器版本外，需要的是报错的堆栈信息及具体报错位置。</p>
+<h2 id="异常捕获方法"><a href="#异常捕获方法" class="headerlink" title="异常捕获方法"></a>异常捕获方法</h2><h3 id="全局捕获"><a href="#全局捕获" class="headerlink" title="全局捕获"></a>全局捕获</h3><p>可以通过全局监听异常来捕获，通过<code>window.onerror</code>或者<code>addEventListener</code>，看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">errorMessage, scriptURI, lineNo, columnNo, error</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'errorMessage: '</span> + errorMessage); <span class="comment">// 异常信息</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'scriptURI: '</span> + scriptURI); <span class="comment">// 异常文件路径</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'lineNo: '</span> + lineNo); <span class="comment">// 异常行号</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'columnNo: '</span> + columnNo); <span class="comment">// 异常列号</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'error: '</span> + error); <span class="comment">// 异常堆栈信息</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// 异常上报</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'这是一个错误'</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.xuebin.me/1ba69eb7/164e673466b32bf3.png" alt="164e673466b32bf3"></p>
+<p>通过<code>window.onerror</code>事件，可以得到具体的异常信息、异常文件的URL、异常的行号与列号及异常的堆栈信息，再捕获异常后，统一上报至我们的日志服务器。</p>
+<p>亦或是，通过<code>window.addEventListener</code>方法来进行异常上报，道理同理：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error);</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// 异常上报</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'这是一个错误'</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.xuebin.me/1ba69eb7/164e673466dc884f.png" alt="164e673466dc884f"></p>
+<h3 id="try…-catch"><a href="#try…-catch" class="headerlink" title="try… catch"></a>try… catch</h3><p>使用<code>try... catch</code>虽然能够较好地进行异常捕获，不至于使得页面由于一处错误挂掉，但<code>try ... catch</code>捕获方式显得过于臃肿，大多代码使用<code>try ... catch</code>包裹，影响代码可读性。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="跨域脚本无法准确捕获异常"><a href="#跨域脚本无法准确捕获异常" class="headerlink" title="跨域脚本无法准确捕获异常"></a>跨域脚本无法准确捕获异常</h3><p>通常情况下，我们会把静态资源，如<code>JavaScript</code>脚本放到专门的静态资源服务器，亦或者<code>CDN</code>，看以下例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">  &lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    // 在index.html</span></span><br><span class="line"><span class="string">    window.onerror = function(errorMessage, scriptURI, lineNo, columnNo, error) &#123;</span></span><br><span class="line"><span class="string">      console.log('errorMessage: ' + errorMessage); // 异常信息</span></span><br><span class="line"><span class="string">      console.log('scriptURI: ' + scriptURI); // 异常文件路径</span></span><br><span class="line"><span class="string">      console.log('lineNo: ' + lineNo); // 异常行号</span></span><br><span class="line"><span class="string">      console.log('columnNo: ' + columnNo); // 异常列号</span></span><br><span class="line"><span class="string">      console.log('error: ' + error); // 异常堆栈信息</span></span><br><span class="line"><span class="string">      // ...</span></span><br><span class="line"><span class="string">      // 异常上报</span></span><br><span class="line"><span class="string">    &#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  &lt;/script&gt;</span></span><br><span class="line"><span class="string">  &lt;script src="</span>./error.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// error.js</span></span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'这是一个错误'</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.xuebin.me/1ba69eb7/164e673468d04a7b.png" alt="164e673468d04a7b"></p>
+<p>结果显示，跨域之后<code>window.onerror</code>根本捕获不到正确的异常信息，而是统一返回一个<code>Script error</code>，</p>
+<p>解决方案：对<code>script</code>标签增加一个<code>crossorigin=”anonymous”</code>，并且服务器添加<code>Access-Control-Allow-Origin</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.xxx.com/index.js"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="sourceMap"><a href="#sourceMap" class="headerlink" title="sourceMap"></a>sourceMap</h3><p>通常在生产环境下的代码是经过<code>webpack</code>打包后压缩混淆的代码，所以我们可能会遇到这样的问题，如图所示：</p>
+<p><img src="https://image.xuebin.me/1ba69eb7/164e67346f96b43a.png" alt="164e67346f96b43a"></p>
+<p>我们发现所有的报错的代码行数都在第一行了，为什么呢？这是因为在生产环境下，我们的代码被压缩成了一行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> n=&#123;&#125;;<span class="function"><span class="keyword">function</span> <span class="title">r</span>(<span class="params">o</span>)</span>&#123;<span class="keyword">if</span>(n[o])<span class="keyword">return</span> n[o].exports;<span class="keyword">var</span> t=n[o]=&#123;<span class="attr">i</span>:o,<span class="attr">l</span>:!<span class="number">1</span>,<span class="attr">exports</span>:&#123;&#125;&#125;;<span class="keyword">return</span> e[o].call(t.exports,t,t.exports,r),t.l=!<span class="number">0</span>,t.exports&#125;r.m=e,r.c=n,r.d=<span class="function"><span class="keyword">function</span>(<span class="params">e,n,o</span>)</span>&#123;r.o(e,n)||<span class="built_in">Object</span>.defineProperty(e,n,&#123;<span class="attr">enumerable</span>:!<span class="number">0</span>,<span class="attr">get</span>:o&#125;)&#125;,r.r=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="string">"undefined"</span>!=<span class="keyword">typeof</span> <span class="built_in">Symbol</span>&amp;&amp;<span class="built_in">Symbol</span>.toStringTag&amp;&amp;<span class="built_in">Object</span>.defineProperty(e,<span class="built_in">Symbol</span>.toStringTag,&#123;<span class="attr">value</span>:<span class="string">"Module"</span>&#125;),<span class="built_in">Object</span>.defineProperty(e,<span class="string">"__esModule"</span>,&#123;<span class="attr">value</span>:!<span class="number">0</span>&#125;)&#125;,r.t=<span class="function"><span class="keyword">function</span>(<span class="params">e,n</span>)</span>&#123;<span class="keyword">if</span>(<span class="number">1</span>&amp;n&amp;&amp;(e=r(e)),<span class="number">8</span>&amp;n)<span class="keyword">return</span> e;<span class="keyword">if</span>(<span class="number">4</span>&amp;n&amp;&amp;<span class="string">"object"</span>==<span class="keyword">typeof</span> e&amp;&amp;e&amp;&amp;e.__esModule)<span class="keyword">return</span> e;<span class="keyword">var</span> o=<span class="built_in">Object</span>.create(<span class="literal">null</span>);<span class="keyword">if</span>(r.r(o),<span class="built_in">Object</span>.defineProperty(o,<span class="string">"default"</span>,&#123;<span class="attr">enumerable</span>:!<span class="number">0</span>,<span class="attr">value</span>:e&#125;),<span class="number">2</span>&amp;n&amp;&amp;<span class="string">"string"</span>!=<span class="keyword">typeof</span> e)<span class="keyword">for</span>(<span class="keyword">var</span> t <span class="keyword">in</span> e)r.d(o,t,<span class="function"><span class="keyword">function</span>(<span class="params">n</span>)</span>&#123;<span class="keyword">return</span> e[n]&#125;.bind(<span class="literal">null</span>,t));<span class="keyword">return</span> o&#125;,r.n=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> n=e&amp;&amp;e.__esModule?<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> e.default&#125;:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> e&#125;;<span class="keyword">return</span> r.d(n,<span class="string">"a"</span>,n),n&#125;,r.o=<span class="function"><span class="keyword">function</span>(<span class="params">e,n</span>)</span>&#123;<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.hasOwnProperty.call(e,n)&#125;,r.p=<span class="string">""</span>,r(r.s=<span class="number">0</span>)&#125;([<span class="function"><span class="keyword">function</span>(<span class="params">e,n</span>)</span>&#123;<span class="keyword">throw</span> <span class="built_in">window</span>.onerror=<span class="function"><span class="keyword">function</span>(<span class="params">e,n,r,o,t</span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">"errorMessage: "</span>+e),<span class="built_in">console</span>.log(<span class="string">"scriptURI: "</span>+n),<span class="built_in">console</span>.log(<span class="string">"lineNo: "</span>+r),<span class="built_in">console</span>.log(<span class="string">"columnNo: "</span>+o),<span class="built_in">console</span>.log(<span class="string">"error: "</span>+t);<span class="keyword">var</span> l=&#123;<span class="attr">errorMessage</span>:e||<span class="literal">null</span>,<span class="attr">scriptURI</span>:n||<span class="literal">null</span>,<span class="attr">lineNo</span>:r||<span class="literal">null</span>,<span class="attr">columnNo</span>:o||<span class="literal">null</span>,<span class="attr">stack</span>:t&amp;&amp;t.stack?t.stack:<span class="literal">null</span>&#125;;<span class="keyword">if</span>(XMLHttpRequest)&#123;<span class="keyword">var</span> u=<span class="keyword">new</span> XMLHttpRequest;u.open(<span class="string">"post"</span>,<span class="string">"/middleware/errorMsg"</span>,!<span class="number">0</span>),u.setRequestHeader(<span class="string">"Content-Type"</span>,<span class="string">"application/json"</span>),u.send(<span class="built_in">JSON</span>.stringify(l))&#125;&#125;,<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"这是一个错误"</span>)&#125;]);</span><br></pre></td></tr></table></figure>
+<p>在我的开发过程中也遇到过这个问题，我在开发一个功能组件库的时候，使用<code>npm link</code>了我的组件库，但是由于组件库被<code>npm link</code>后是打包后的生产环境下的代码，所有的报错都定位到了第一行。</p>
+<p>解决办法是开启<code>webpack</code>的<code>source-map</code>，我们利用<code>webpack</code>打包后的生成的一份<code>.map</code>的脚本文件就可以让浏览器对错误位置进行追踪了。此处可以参考<span class="exturl" data-url="aHR0cHM6Ly93ZWJwYWNrLmpzLm9yZy9ndWlkZXMvZGV2ZWxvcG1lbnQvI3VzaW5nLXNvdXJjZS1tYXBz" title="https://webpack.js.org/guides/development/#using-source-maps">webpack document<i class="fa fa-external-link"></i></span>。</p>
+<p>其实就是<code>webpack.config.js</code>中加上一行<code>devtool: &#39;source-map&#39;</code>，如下所示，为示例的<code>webpack.config.js</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    devtool: <span class="string">'source-map'</span>,</span><br><span class="line">    mode: <span class="string">'development'</span>,</span><br><span class="line">    entry: <span class="string">'./client/index.js'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'client'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>webpack</code>打包后生成对应的<code>source-map</code>，这样浏览器就能够定位到具体错误的位置：</p>
+<p><img src="https://image.xuebin.me/1ba69eb7/164e673466239e06.png" alt="164e673466239e06"></p>
+<p>开启<code>source-map</code>的缺陷是兼容性，目前只有<code>Chrome</code>浏览器和<code>Firefox</code>浏览器才对<code>source-map</code>支持。不过我们对这一类情况也有解决办法。可以使用引入<code>npm</code>库来支持<code>source-map</code>，可以参考<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vemlsbGEvc291cmNlLW1hcA==" title="https://github.com/mozilla/source-map">mozilla/source-map<i class="fa fa-external-link"></i></span>。这个<code>npm</code>库既可以运行在客户端也可以运行在服务端，不过更为推荐的是在服务端使用<code>Node.js</code>对接收到的日志信息时使用<code>source-map</code>解析，以避免源代码的泄露造成风险，如下代码所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"><span class="keyword">const</span> sourceMap = <span class="built_in">require</span>(<span class="string">'source-map'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> resolve = <span class="function"><span class="params">file</span> =&gt;</span> path.resolve(__dirname, file);</span><br><span class="line"><span class="comment">// 定义post接口</span></span><br><span class="line">router.get(<span class="string">'/error/'</span>, <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取前端传过来的报错对象</span></span><br><span class="line">    <span class="keyword">let</span> error = <span class="built_in">JSON</span>.parse(req.query.error);</span><br><span class="line">    <span class="keyword">let</span> url = error.scriptURI; <span class="comment">// 压缩文件路径</span></span><br><span class="line">    <span class="keyword">if</span> (url) &#123;</span><br><span class="line">        <span class="keyword">let</span> fileUrl = url.slice(url.indexOf(<span class="string">'client/'</span>)) + <span class="string">'.map'</span>; <span class="comment">// map文件路径</span></span><br><span class="line">        <span class="comment">// 解析sourceMap</span></span><br><span class="line">        <span class="keyword">let</span> consumer = <span class="keyword">await</span> <span class="keyword">new</span> sourceMap.SourceMapConsumer(fs.readFileSync(resolve(<span class="string">'../'</span> + fileUrl), <span class="string">'utf8'</span>)); <span class="comment">// 返回一个promise对象</span></span><br><span class="line">        <span class="comment">// 解析原始报错数据</span></span><br><span class="line">        <span class="keyword">let</span> result = consumer.originalPositionFor(&#123;</span><br><span class="line">            line: error.lineNo, <span class="comment">// 压缩后的行号</span></span><br><span class="line">            column: error.columnNo <span class="comment">// 压缩后的列号</span></span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="built_in">console</span>.log(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+<p>如下图所示，我们已经可以看到，在服务端已经成功解析出了具体错误的行号、列号，我们可以通过日志的方式进行记录，达到了前端异常监控的目的。</p>
+<p><img src="https://image.xuebin.me/1ba69eb7/164e673466efea2b.png" alt="164e673466efea2b"></p>
+<h3 id="Vue捕获异常"><a href="#Vue捕获异常" class="headerlink" title="Vue捕获异常"></a>Vue捕获异常</h3><p>在我的项目中就遇到这样的问题，使用了<code>js-tracker</code>这样的插件来统一进行全局的异常捕获和日志上报，结果发现我们根本捕获不到<code>Vue</code>组件的异常，查阅资料得知，在<code>Vue</code>中，异常可能被<code>Vue</code>自身给<code>try ... catch</code>了，不会传到<code>window.onerror</code>事件触发，那么我们如何把<code>Vue</code>组件中的异常作统一捕获呢？</p>
+<p>使用<span class="exturl" data-url="aHR0cHM6Ly9jbi52dWVqcy5vcmcvdjIvYXBpLyNlcnJvckhhbmRsZXI=" title="https://cn.vuejs.org/v2/api/#errorHandler">Vue.config.errorHandler<i class="fa fa-external-link"></i></span>这样的<code>Vue</code>全局配置，可以在<code>Vue</code>指定组件的渲染和观察期间未捕获错误的处理函数。这个处理函数被调用时，可获取错误信息和<code>Vue</code> 实例。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.errorHandler = <span class="function"><span class="keyword">function</span> (<span class="params">err, vm, info</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// handle error</span></span><br><span class="line">  <span class="comment">// `info` 是 Vue 特定的错误信息，比如错误所在的生命周期钩子</span></span><br><span class="line">  <span class="comment">// 只在 2.2.0+ 可用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在<code>React</code>中，可以使用<code>ErrorBoundary</code>组件包括业务组件的方式进行异常捕获，配合<code>React 16.0+</code>新出的<code>componentDidCatch API</code>，可以实现统一的异常捕获和日志上报。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ErrorBoundary</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123; <span class="attr">hasError</span>: <span class="literal">false</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidCatch(error, info) &#123;</span><br><span class="line">    <span class="comment">// Display fallback UI</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">hasError</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">    <span class="comment">// You can also log the error to an error reporting service</span></span><br><span class="line">    logErrorToMyService(error, info);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state.hasError) &#123;</span><br><span class="line">      <span class="comment">// You can render any custom fallback UI</span></span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Something went wrong.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.props.children;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用方式如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ErrorBoundary</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">MyWidget</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ErrorBoundary</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="性能监控"><a href="#性能监控" class="headerlink" title="性能监控"></a>性能监控</h1><h2 id="最简单的性能监控"><a href="#最简单的性能监控" class="headerlink" title="最简单的性能监控"></a>最简单的性能监控</h2><p>最常见的性能监控需求则是需要我们统计用户从开始请求页面到所有<code>DOM</code>元素渲染完成的时间，也就是俗称的首屏加载时间，<code>DOM</code>提供了这一接口，监听<code>document</code>的<code>DOMContentLoaded</code>事件与<code>window</code>的<code>load</code>事件可统计页面首屏加载时间即所有<code>DOM</code>渲染时间：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 记录页面加载开始时间</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> timerStart = <span class="built_in">Date</span>.now();</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 加载静态资源，如样式资源 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 加载静态JS资源 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">"DOM 挂载时间: "</span>, <span class="built_in">Date</span>.now() - timerStart);</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 性能日志上报</span></span></span><br><span class="line">    &#125;);</span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">"所有资源加载完成时间: "</span>, <span class="built_in">Date</span>.now()-timerStart);</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 性能日志上报</span></span></span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对于使用框架，如<code>Vue</code>或者说<code>React</code>，组件是异步渲染然后挂载到<code>DOM</code>的，在页面初始化时并没有太多的<code>DOM</code>节点，可以参考下文<span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDAxMzAxNjc2Mw==" title="https://segmentfault.com/a/1190000013016763">关于首屏时间采集自动化的解决方案<i class="fa fa-external-link"></i></span>来对渲染时间进行打点。</p>
+<h2 id="performance"><a href="#performance" class="headerlink" title="performance"></a>performance</h2><p>但是以上时间的监控过于粗略，例如我们想统计文档的网络加载耗时、解析<code>DOM</code>的耗时与渲染<code>DOM</code>的耗时，就不太好办到了，所幸的是浏览器提供了<code>window.performance</code>接口，具体可见<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQVBJL1BlcmZvcm1hbmNl" title="https://developer.mozilla.org/zh-CN/docs/Web/API/Performance">MDN文档<i class="fa fa-external-link"></i></span></p>
+<p><img src="https://image.xuebin.me/1ba69eb7/164e6734d5c03ff5.png" alt="164e6734d5c03ff5"></p>
+<p>几乎所有浏览器都支持<code>window.performance</code>接口，下面来看看在控制台打印<code>window.performance</code>可以得到些什么：</p>
+<p><img src="https://image.xuebin.me/1ba69eb7/164e6734d6cb922e.png" alt="164e6734d6cb922e"></p>
+<p>可以看到，<code>window,performance</code>主要包括有<code>memory</code>、<code>navigation</code>、<code>timing</code>以及<code>timeOrigin</code>及<code>onresourcetimingbufferfull</code>方法。</p>
+<ul>
+<li><code>navigation</code>对象提供了在指定的时间段里发生的操作相关信息，包括页面是加载还是刷新、发生了多少次重定向等等。</li>
+<li><code>timing</code>对象包含延迟相关的性能信息。这是我们页面加载性能优化需求中主要上报的相关信息。</li>
+<li><code>memory</code>为<code>Chrome</code>添加的一个非标准扩展，这个属性提供了一个可以获取到基本内存使用情况的对象。在其它浏览器应该考虑到这个<code>API</code>的兼容处理。</li>
+<li><code>timeOrigin</code>则返回性能测量开始时的时间的高精度时间戳。如图所示，精确到了小数点后四位。</li>
+<li><code>onresourcetimingbufferfull</code>方法，它是一个在<code>resourcetimingbufferfull</code>事件触发时会被调用的<code>event handler</code>。这个事件当浏览器的资源时间性能缓冲区已满时会触发。可以通过监听这一事件触发来预估页面<code>crash</code>，统计页面<code>crash</code>概率，以便后期的性能优化，如下示例所示：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buffer_full</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"WARNING: Resource Timing Buffer is FULL!"</span>);</span><br><span class="line">  performance.setResourceTimingBufferSize(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Set a callback if the resource buffer becomes filled</span></span><br><span class="line">  performance.onresourcetimingbufferfull = buffer_full;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">onload</span>=<span class="string">"init()"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="计算网站性能"><a href="#计算网站性能" class="headerlink" title="计算网站性能"></a>计算网站性能</h3><p>使用<code>performance</code>的<code>timing</code>属性，可以拿到页面性能相关的数据，这里在很多文章都有提到关于利用<code>window.performance.timing</code>记录页面性能的文章，例如<code>alloyteam</code>团队写的<span class="exturl" data-url="aHR0cDovL3d3dy5hbGxveXRlYW0uY29tLzIwMTUvMDkvZXhwbG9yZS1wZXJmb3JtYW5jZS8=" title="http://www.alloyteam.com/2015/09/explore-performance/">初探 performance – 监控网页与程序性能<i class="fa fa-external-link"></i></span>，对于<code>timing</code>的各项属性含义，可以借助摘自此文的下图理解，以下代码摘自此文作为计算网站性能的工具函数参考：</p>
+<p><img src="https://image.xuebin.me/1ba69eb7/164e673552f64206.png" alt="164e673552f64206"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取 performance 数据</span></span><br><span class="line"><span class="keyword">var</span> performance = &#123;  </span><br><span class="line">    <span class="comment">// memory 是非标准属性，只在 Chrome 有</span></span><br><span class="line">    <span class="comment">// 财富问题：我有多少内存</span></span><br><span class="line">    memory: &#123;</span><br><span class="line">        usedJSHeapSize:  <span class="number">16100000</span>, <span class="comment">// JS 对象（包括V8引擎内部对象）占用的内存，一定小于 totalJSHeapSize</span></span><br><span class="line">        totalJSHeapSize: <span class="number">35100000</span>, <span class="comment">// 可使用的内存</span></span><br><span class="line">        jsHeapSizeLimit: <span class="number">793000000</span> <span class="comment">// 内存大小限制</span></span><br><span class="line">    &#125;,</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//  哲学问题：我从哪里来？</span></span><br><span class="line">    navigation: &#123;</span><br><span class="line">        redirectCount: <span class="number">0</span>, <span class="comment">// 如果有重定向的话，页面通过几次重定向跳转而来</span></span><br><span class="line">        type: <span class="number">0</span>           <span class="comment">// 0   即 TYPE_NAVIGATENEXT 正常进入的页面（非刷新、非重定向等）</span></span><br><span class="line">                          <span class="comment">// 1   即 TYPE_RELOAD       通过 window.location.reload() 刷新的页面</span></span><br><span class="line">                          <span class="comment">// 2   即 TYPE_BACK_FORWARD 通过浏览器的前进后退按钮进入的页面（历史记录）</span></span><br><span class="line">                          <span class="comment">// 255 即 TYPE_UNDEFINED    非以上方式进入的页面</span></span><br><span class="line">    &#125;,</span><br><span class="line"> </span><br><span class="line">    timing: &#123;</span><br><span class="line">        <span class="comment">// 在同一个浏览器上下文中，前一个网页（与当前页面不一定同域）unload 的时间戳，如果无前一个网页 unload ，则与 fetchStart 值相等</span></span><br><span class="line">        navigationStart: <span class="number">1441112691935</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 前一个网页（与当前页面同域）unload 的时间戳，如果无前一个网页 unload 或者前一个网页与当前页面不同域，则值为 0</span></span><br><span class="line">        unloadEventStart: <span class="number">0</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 和 unloadEventStart 相对应，返回前一个网页 unload 事件绑定的回调函数执行完毕的时间戳</span></span><br><span class="line">        unloadEventEnd: <span class="number">0</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 第一个 HTTP 重定向发生时的时间。有跳转且是同域名内的重定向才算，否则值为 0 </span></span><br><span class="line">        redirectStart: <span class="number">0</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 最后一个 HTTP 重定向完成时的时间。有跳转且是同域名内部的重定向才算，否则值为 0 </span></span><br><span class="line">        redirectEnd: <span class="number">0</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 浏览器准备好使用 HTTP 请求抓取文档的时间，这发生在检查本地缓存之前</span></span><br><span class="line">        fetchStart: <span class="number">1441112692155</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// DNS 域名查询开始的时间，如果使用了本地缓存（即无 DNS 查询）或持久连接，则与 fetchStart 值相等</span></span><br><span class="line">        domainLookupStart: <span class="number">1441112692155</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// DNS 域名查询完成的时间，如果使用了本地缓存（即无 DNS 查询）或持久连接，则与 fetchStart 值相等</span></span><br><span class="line">        domainLookupEnd: <span class="number">1441112692155</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// HTTP（TCP） 开始建立连接的时间，如果是持久连接，则与 fetchStart 值相等</span></span><br><span class="line">        <span class="comment">// 注意如果在传输层发生了错误且重新建立连接，则这里显示的是新建立的连接开始的时间</span></span><br><span class="line">        connectStart: <span class="number">1441112692155</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// HTTP（TCP） 完成建立连接的时间（完成握手），如果是持久连接，则与 fetchStart 值相等</span></span><br><span class="line">        <span class="comment">// 注意如果在传输层发生了错误且重新建立连接，则这里显示的是新建立的连接完成的时间</span></span><br><span class="line">        <span class="comment">// 注意这里握手结束，包括安全连接建立完成、SOCKS 授权通过</span></span><br><span class="line">        connectEnd: <span class="number">1441112692155</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// HTTPS 连接开始的时间，如果不是安全连接，则值为 0</span></span><br><span class="line">        secureConnectionStart: <span class="number">0</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// HTTP 请求读取真实文档开始的时间（完成建立连接），包括从本地读取缓存</span></span><br><span class="line">        <span class="comment">// 连接错误重连时，这里显示的也是新建立连接的时间</span></span><br><span class="line">        requestStart: <span class="number">1441112692158</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// HTTP 开始接收响应的时间（获取到第一个字节），包括从本地读取缓存</span></span><br><span class="line">        responseStart: <span class="number">1441112692686</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// HTTP 响应全部接收完成的时间（获取到最后一个字节），包括从本地读取缓存</span></span><br><span class="line">        responseEnd: <span class="number">1441112692687</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 开始解析渲染 DOM 树的时间，此时 Document.readyState 变为 loading，并将抛出 readystatechange 相关事件</span></span><br><span class="line">        domLoading: <span class="number">1441112692690</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 完成解析 DOM 树的时间，Document.readyState 变为 interactive，并将抛出 readystatechange 相关事件</span></span><br><span class="line">        <span class="comment">// 注意只是 DOM 树解析完成，这时候并没有开始加载网页内的资源</span></span><br><span class="line">        domInteractive: <span class="number">1441112693093</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// DOM 解析完成后，网页内资源加载开始的时间</span></span><br><span class="line">        <span class="comment">// 在 DOMContentLoaded 事件抛出前发生</span></span><br><span class="line">        domContentLoadedEventStart: <span class="number">1441112693093</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// DOM 解析完成后，网页内资源加载完成的时间（如 JS 脚本加载执行完毕）</span></span><br><span class="line">        domContentLoadedEventEnd: <span class="number">1441112693101</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// DOM 树解析完成，且资源也准备就绪的时间，Document.readyState 变为 complete，并将抛出 readystatechange 相关事件</span></span><br><span class="line">        domComplete: <span class="number">1441112693214</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// load 事件发送给文档，也即 load 回调函数开始执行的时间</span></span><br><span class="line">        <span class="comment">// 注意如果没有绑定 load 事件，值为 0</span></span><br><span class="line">        loadEventStart: <span class="number">1441112693214</span>,</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// load 事件的回调函数执行完毕的时间</span></span><br><span class="line">        loadEventEnd: <span class="number">1441112693215</span></span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 字母顺序</span></span><br><span class="line">        <span class="comment">// connectEnd: 1441112692155,</span></span><br><span class="line">        <span class="comment">// connectStart: 1441112692155,</span></span><br><span class="line">        <span class="comment">// domComplete: 1441112693214,</span></span><br><span class="line">        <span class="comment">// domContentLoadedEventEnd: 1441112693101,</span></span><br><span class="line">        <span class="comment">// domContentLoadedEventStart: 1441112693093,</span></span><br><span class="line">        <span class="comment">// domInteractive: 1441112693093,</span></span><br><span class="line">        <span class="comment">// domLoading: 1441112692690,</span></span><br><span class="line">        <span class="comment">// domainLookupEnd: 1441112692155,</span></span><br><span class="line">        <span class="comment">// domainLookupStart: 1441112692155,</span></span><br><span class="line">        <span class="comment">// fetchStart: 1441112692155,</span></span><br><span class="line">        <span class="comment">// loadEventEnd: 1441112693215,</span></span><br><span class="line">        <span class="comment">// loadEventStart: 1441112693214,</span></span><br><span class="line">        <span class="comment">// navigationStart: 1441112691935,</span></span><br><span class="line">        <span class="comment">// redirectEnd: 0,</span></span><br><span class="line">        <span class="comment">// redirectStart: 0,</span></span><br><span class="line">        <span class="comment">// requestStart: 1441112692158,</span></span><br><span class="line">        <span class="comment">// responseEnd: 1441112692687,</span></span><br><span class="line">        <span class="comment">// responseStart: 1441112692686,</span></span><br><span class="line">        <span class="comment">// secureConnectionStart: 0,</span></span><br><span class="line">        <span class="comment">// unloadEventEnd: 0,</span></span><br><span class="line">        <span class="comment">// unloadEventStart: 0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算加载时间</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPerformanceTiming</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> performance = <span class="built_in">window</span>.performance;</span><br><span class="line">    <span class="keyword">if</span> (!performance) &#123;</span><br><span class="line">        <span class="comment">// 当前浏览器不支持</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'你的浏览器不支持 performance 接口'</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> t = performance.timing;</span><br><span class="line">    <span class="keyword">var</span> times = &#123;&#125;;</span><br><span class="line">    <span class="comment">//【重要】页面加载完成的时间</span></span><br><span class="line">    <span class="comment">//【原因】这几乎代表了用户等待页面可用的时间</span></span><br><span class="line">    times.loadPage = t.loadEventEnd - t.navigationStart;</span><br><span class="line">    <span class="comment">//【重要】解析 DOM 树结构的时间</span></span><br><span class="line">    <span class="comment">//【原因】反省下你的 DOM 树嵌套是不是太多了！</span></span><br><span class="line">    times.domReady = t.domComplete - t.responseEnd;</span><br><span class="line">    <span class="comment">//【重要】重定向的时间</span></span><br><span class="line">    <span class="comment">//【原因】拒绝重定向！比如，http://example.com/ 就不该写成 http://example.com</span></span><br><span class="line">    times.redirect = t.redirectEnd - t.redirectStart;</span><br><span class="line">    <span class="comment">//【重要】DNS 查询时间</span></span><br><span class="line">    <span class="comment">//【原因】DNS 预加载做了么？页面内是不是使用了太多不同的域名导致域名查询的时间太长？</span></span><br><span class="line">    <span class="comment">// 可使用 HTML5 Prefetch 预查询 DNS ，见：[HTML5 prefetch](http://segmentfault.com/a/1190000000633364)            </span></span><br><span class="line">    times.lookupDomain = t.domainLookupEnd - t.domainLookupStart;</span><br><span class="line">    <span class="comment">//【重要】读取页面第一个字节的时间</span></span><br><span class="line">    <span class="comment">//【原因】这可以理解为用户拿到你的资源占用的时间，加异地机房了么，加CDN 处理了么？加带宽了么？加 CPU 运算速度了么？</span></span><br><span class="line">    <span class="comment">// TTFB 即 Time To First Byte 的意思</span></span><br><span class="line">    <span class="comment">// 维基百科：https://en.wikipedia.org/wiki/Time_To_First_Byte</span></span><br><span class="line">    times.ttfb = t.responseStart - t.navigationStart;</span><br><span class="line">    <span class="comment">//【重要】内容加载完成的时间</span></span><br><span class="line">    <span class="comment">//【原因】页面内容经过 gzip 压缩了么，静态资源 css/js 等压缩了么？</span></span><br><span class="line">    times.request = t.responseEnd - t.requestStart;</span><br><span class="line">    <span class="comment">//【重要】执行 onload 回调函数的时间</span></span><br><span class="line">    <span class="comment">//【原因】是否太多不必要的操作都放到 onload 回调函数里执行了，考虑过延迟加载、按需加载的策略么？</span></span><br><span class="line">    times.loadEvent = t.loadEventEnd - t.loadEventStart;</span><br><span class="line">    <span class="comment">// DNS 缓存时间</span></span><br><span class="line">    times.appcache = t.domainLookupStart - t.fetchStart;</span><br><span class="line">    <span class="comment">// 卸载页面的时间</span></span><br><span class="line">    times.unloadEvent = t.unloadEventEnd - t.unloadEventStart;</span><br><span class="line">    <span class="comment">// TCP 建立连接完成握手的时间</span></span><br><span class="line">    times.connect = t.connectEnd - t.connectStart;</span><br><span class="line">    <span class="keyword">return</span> times;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="日志上报"><a href="#日志上报" class="headerlink" title="日志上报"></a>日志上报</h1><h2 id="单独的日志域名"><a href="#单独的日志域名" class="headerlink" title="单独的日志域名"></a>单独的日志域名</h2><p>对于日志上报使用单独的日志域名的目的是避免对业务造成影响。其一，对于服务器来说，我们肯定不希望占用业务服务器的计算资源，也不希望过多的日志在业务服务器堆积，造成业务服务器的存储空间不够的情况。其二，我们知道在页面初始化的过程中，会对页面加载时间、PV、UV等数据进行上报，这些上报请求会和加载业务数据几乎是同时刻发出，而浏览器一般会对同一个域名的请求量有并发数的限制，如<code>Chrome</code>会有对并发数为<code>6</code>个的限制。因此需要对日志系统单独设定域名，最小化对页面加载性能造成的影响。</p>
+<h2 id="跨域的问题"><a href="#跨域的问题" class="headerlink" title="跨域的问题"></a>跨域的问题</h2><p>对于单独的日志域名，肯定会涉及到跨域的问题，采取的解决方案一般有以下两种：</p>
+<ul>
+<li>一种是构造空的<code>Image</code>对象的方式，其原因是请求图片并不涉及到跨域的问题；</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">'xxx'</span>;</span><br><span class="line"><span class="keyword">new</span> Image().src = url;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>利用<code>Ajax</code>上报日志，必须对日志服务器接口开启跨域请求头部<code>Access-Control-Allow-Origin:*</code>，这里<code>Ajax</code>就并不强制使用<code>GET</code>请求了，即可克服<code>URL</code>长度限制的问题。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (XMLHttpRequest) &#123;</span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  xhr.open(<span class="string">'post'</span>, <span class="string">'https://log.xxx.com'</span>, <span class="literal">true</span>); <span class="comment">// 上报给node中间层处理</span></span><br><span class="line">  xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>); <span class="comment">// 设置请求头</span></span><br><span class="line">  xhr.send(<span class="built_in">JSON</span>.stringify(errorObj)); <span class="comment">// 发送参数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在我的项目中使用的是第一种的方式，也就是构造空的<code>Image</code>对象，但是我们知道对于<code>GET</code>请求会有长度的限制，需要确保的是请求的长度不会超过阈值。</p>
+<h2 id="省去响应主体"><a href="#省去响应主体" class="headerlink" title="省去响应主体"></a>省去响应主体</h2><p>对于我们上报日志，其实对于客户端来说，并不需要考虑上报的结果，甚至对于上报失败，我们也不需要在前端做任何交互，所以上报来说，其实使用<code>HEAD</code>请求就够了，接口返回空的结果，最大地减少上报日志造成的资源浪费。</p>
+<h2 id="合并上报"><a href="#合并上报" class="headerlink" title="合并上报"></a>合并上报</h2><p>类似于雪碧图的思想，如果我们的应用需要上报的日志数量很多，那么有必要合并日志进行统一的上报。</p>
+<p>解决方案可以是尝试在用户离开页面或者组件销毁时发送一个异步的<code>POST</code>请求来进行上报，但是尝试在卸载（<code>unload</code>）文档之前向<code>web</code>服务器发送数据。保证在文档卸载期间发送数据一直是一个困难。因为用户代理通常会忽略在卸载事件处理器中产生的异步<code>XMLHttpRequest</code>，因为此时已经会跳转到下一个页面。所以这里是必须设置为同步的<code>XMLHttpRequest</code>请求吗？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'unload'</span>, logData, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> client = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    client.open(<span class="string">"POST"</span>, <span class="string">"/log"</span>, <span class="literal">false</span>); <span class="comment">// 第三个参数表明是同步的 xhr</span></span><br><span class="line">    client.setRequestHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/plain;charset=UTF-8"</span>);</span><br><span class="line">    client.send(analyticsData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用同步的方式势必会对用户体验造成影响，甚至会让用户感受到浏览器卡死感觉，对于产品而言，体验非常不好，通过查阅<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQVBJL05hdmlnYXRvci9zZW5kQmVhY29u" title="https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/sendBeacon">MDN文档<i class="fa fa-external-link"></i></span>，可以使用<code>sendBeacon()</code>方法，将会使用户代理在有机会时异步地向服务器发送数据，同时不会延迟页面的卸载或影响下一导航的载入性能。这就解决了提交分析数据时的所有的问题：使它可靠，异步并且不会影响下一页面的加载。此外，代码实际上还要比其他技术简单！</p>
+<p>下面的例子展示了一个理论上的统计代码模式——通过使用<code>sendBeacon()</code>方法向服务器发送数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'unload'</span>, logData, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logData</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    navigator.sendBeacon(<span class="string">"/log"</span>, analyticsData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>作为前端开发者而言，要对产品保持敬畏之心，时刻保持对性能追求极致，对异常不可容忍的态度。前端的性能监控与异常上报显得尤为重要。</p>
+<p>代码难免有问题，对于异常可以使用<code>window.onerror</code>或者<code>addEventListener</code>的方式添加全局的异常捕获侦听函数，但可能使用这种方式无法正确捕获到错误：对于跨域的脚本，需要对<code>script</code>标签增加一个<code>crossorigin=”anonymous”</code>；对于生产环境打包的代码，无法正确定位到异常产生的行数，可以使用<code>source-map</code>来解决；而对于使用框架的情况，需要在框架统一的异常捕获处埋点。</p>
+<p>而对于性能的监控，所幸的是浏览器提供了<code>window.performance API</code>，通过这个<code>API</code>，很便捷地获取到当前页面性能相关的数据。</p>
+<p>而这些异常和性能数据如何上报呢？一般说来，为了避免对业务产生的影响，会单独建立日志服务器和日志域名，但对于不同的域名，又会产生跨域的问题。我们可以通过构造空的<code>Image</code>对象来解决，亦或是通过设定跨域请求头部<code>Access-Control-Allow-Origin:*</code>来解决。此外，如果上报的性能和日志数据高频触发，则可以在页面<code>unload</code>时统一上报，而<code>unload</code>时的异步请求又可能会被浏览器所忽略，且不能改为同步请求。此时<code>navigator.sendBeacon API</code>可算帮了我们大忙，它可用于通过<code>HTTP</code>将少量数据异步传输到<code>Web</code>服务器。而忽略页面<code>unload</code>时的影响。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://image.xuebin.me/wechatpay.JPG" alt="Leo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://image.xuebin.me/alipay.JPG" alt="Leo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Leo</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://xuebin.me/posts/1ba69eb7.html" title="【转载】前端性能与异常上报">https://xuebin.me/posts/1ba69eb7.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dev/" rel="tag"># dev</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/转载/" rel="tag"># 转载</a>
+          
+            <a href="/tags/性能/" rel="tag"># 性能</a>
+          
+            <a href="/tags/异常上报/" rel="tag"># 异常上报</a>
+          
+            <a href="/tags/监控/" rel="tag"># 监控</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/66a64bad.html" rel="next" title="【转载】一次掌握 JavaScript ES5 到 ES8 数组内容">
+                <i class="fa fa-chevron-left"></i> 【转载】一次掌握 JavaScript ES5 到 ES8 数组内容
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/511fcea1.html" rel="prev" title="iterm2配置ssh自动登录">
+                iterm2配置ssh自动登录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460" alt="Leo">
+            
+              <p class="site-author-name" itemprop="name">Leo</p>
+              <div class="site-description motion-element" itemprop="description">😆</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93cGEucXEuY29tL21zZ3JkP3Y9MyZ1aW49NjUyODg5NTU5JnNpdGU9cXEmbWVudT15ZXM=" title="QQ &rarr; https://wpa.qq.com/msgrd?v=3&uin=652889559&site=qq&menu=yes"><i class="fa fa-fw fa-qq"></i>QQ</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8xMzc4MjUyNjM3" title="微博 &rarr; https://weibo.com/u/1378252637"><i class="fa fa-fw fa-weibo"></i>微博</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:leo@xuebin.me" title="E-Mail &rarr; mailto:leo@xuebin.me"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="GitHub &rarr; https://github.com/MrLeo"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly96aGFuZ21pYW8uY2Mv" title="https://zhangmiao.cc/">ZM</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9sZW8tanVseS5naXRodWIuaW8v" title="https://leo-july.github.io/">july</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异常捕获"><span class="nav-number">2.</span> <span class="nav-text">异常捕获</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异常捕获方法"><span class="nav-number">2.1.</span> <span class="nav-text">异常捕获方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局捕获"><span class="nav-number">2.1.1.</span> <span class="nav-text">全局捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#try…-catch"><span class="nav-number">2.1.2.</span> <span class="nav-text">try… catch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">2.2.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域脚本无法准确捕获异常"><span class="nav-number">2.2.1.</span> <span class="nav-text">跨域脚本无法准确捕获异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sourceMap"><span class="nav-number">2.2.2.</span> <span class="nav-text">sourceMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue捕获异常"><span class="nav-number">2.2.3.</span> <span class="nav-text">Vue捕获异常</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能监控"><span class="nav-number">3.</span> <span class="nav-text">性能监控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最简单的性能监控"><span class="nav-number">3.1.</span> <span class="nav-text">最简单的性能监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#performance"><span class="nav-number">3.2.</span> <span class="nav-text">performance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算网站性能"><span class="nav-number">3.2.1.</span> <span class="nav-text">计算网站性能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日志上报"><span class="nav-number">4.</span> <span class="nav-text">日志上报</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单独的日志域名"><span class="nav-number">4.1.</span> <span class="nav-text">单独的日志域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域的问题"><span class="nav-number">4.2.</span> <span class="nav-text">跨域的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#省去响应主体"><span class="nav-number">4.3.</span> <span class="nav-text">省去响应主体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并上报"><span class="nav-number">4.4.</span> <span class="nav-text">合并上报</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1263395414&web_id=1263395414"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+
+
+
+  
+
+
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/fastclick@1/lib/fastclick.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery-lazyload@1/jquery.lazyload.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/exturl.js?v=7.0.1"></script>
+
+
+  
+  
+  
+    
+  
+
+  
+
+  
+  
+  
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://xuebin.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://xuebin.me/posts/1ba69eb7.html";
+    this.page.identifier = "posts/1ba69eb7.html";
+    this.page.title = '【转载】前端性能与异常上报';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://xuebin.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz',
+                'X-LC-Key': 'eYX7CBXn2T7iUGa9LAUnIt9q',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+<style>
+.pdfobject-container {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+}
+</style>
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/han-css@3/dist/han.min.css">
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true,"dimmer":true},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '3W9IAI9QUW',
+      apiKey: '',
+      indexName: 'mr-leo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="转载至: https://juejin.im/post/5b8bf7e3e51d4538c210c6b0  前端实现录音有两种方式，一种是使用MediaRecorder，另一种是使用 WebRTC 的 getUserMedia 结合 AudioContext，MediaRecorder 出现得比较早，只不过 Safari/Edge 等浏览器一直没有实现，所以兼容性不是很好，而 WebRTC 已经得">
+<meta name="keywords" content="dev,前端,转载,多媒体,音频">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转载】如何实现前端录音功能">
+<meta property="og:url" content="https://xuebin.me/posts/2368f26a.html">
+<meta property="og:site_name" content="♌">
+<meta property="og:description" content="转载至: https://juejin.im/post/5b8bf7e3e51d4538c210c6b0  前端实现录音有两种方式，一种是使用MediaRecorder，另一种是使用 WebRTC 的 getUserMedia 结合 AudioContext，MediaRecorder 出现得比较早，只不过 Safari/Edge 等浏览器一直没有实现，所以兼容性不是很好，而 WebRTC 已经得">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4dq0199j30m405a74d.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4e4js69j31kw0pkq3t.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4ecseocj30jy07k74i.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4eojx19j31kw0tv408.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4f3v3jnj30ne08imx6.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4fa0968j30ua08st91.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4flcme0j30wa0fodg1.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4fv3b50j30n00dot96.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4g3zlg5j30ry0820tp.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw4ggbkr6j30rs07cmxj.jpg">
+<meta property="og:image" content="https://image.xuebin.me/006tNbRwly1fuw487hf7tj31kw0ogmye.jpg">
+<meta property="og:updated_time" content="2018-09-03T01:53:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转载】如何实现前端录音功能">
+<meta name="twitter:description" content="转载至: https://juejin.im/post/5b8bf7e3e51d4538c210c6b0  前端实现录音有两种方式，一种是使用MediaRecorder，另一种是使用 WebRTC 的 getUserMedia 结合 AudioContext，MediaRecorder 出现得比较早，只不过 Safari/Edge 等浏览器一直没有实现，所以兼容性不是很好，而 WebRTC 已经得">
+<meta name="twitter:image" content="https://image.xuebin.me/006tNbRwly1fuw4dq0199j30m405a74d.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="♌" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://xuebin.me/posts/2368f26a.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>【转载】如何实现前端录音功能 | ♌</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1706cfef7a8fd27b12633a699c2f75c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">♌</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Mr. Leo</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">26</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">142</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">138</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xuebin.me/posts/2368f26a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo">
+      <meta itemprop="description" content="😆">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="♌">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">【转载】如何实现前端录音功能
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-03 09:53:14" itemprop="dateCreated datePublished" datetime="2018-09-03T09:53:14+08:00">2018-09-03</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/多媒体/" itemprop="url" rel="index"><span itemprop="name">多媒体</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/2368f26a.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://xuebin.me/posts/2368f26a.html" itemprop="commentCount">0</span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/2368f26a.html" class="leancloud_visitors" data-flag-title="【转载】如何实现前端录音功能">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote class="blockquote-center">转载至: <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81YjhiZjdlM2U1MWQ0NTM4YzIxMGM2YjA=" title="https://juejin.im/post/5b8bf7e3e51d4538c210c6b0">https://juejin.im/post/5b8bf7e3e51d4538c210c6b0<i class="fa fa-external-link"></i></span></blockquote>
+
+<p>前端实现录音有两种方式，一种是使用<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5pbS8/dGFyZ2V0PWh0dHBzJTNBJTJGJTJGZGV2ZWxvcGVyLm1vemlsbGEub3JnJTJGemgtQ04lMkZkb2NzJTJGV2ViJTJGQVBJJTJGTWVkaWFSZWNvcmRlcg==" title="https://link.juejin.im/?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FAPI%2FMediaRecorder">MediaRecorder<i class="fa fa-external-link"></i></span>，另一种是使用 WebRTC 的 getUserMedia 结合 AudioContext，MediaRecorder 出现得比较早，只不过 Safari/Edge 等浏览器一直没有实现，所以兼容性不是很好，而 WebRTC 已经得到了所有主流浏览器的支持，如 Safari 11 起就支持了。所以我们用 WebRTC 的方式进行录制。</p>
+<p>利用 AudioContext 播放声音的使用，我已经在《<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5pbS8/dGFyZ2V0PWh0dHBzJTNBJTJGJTJGZmVkLnJlbnJlbi5jb20lMkYyMDE4JTJGMDUlMkYxMyUyRmF1ZGlvLWF1dG8tcGxheSUyRg==" title="https://link.juejin.im/?target=https%3A%2F%2Ffed.renren.com%2F2018%2F05%2F13%2Faudio-auto-play%2F">Chrome 66 禁止声音自动播放之后<i class="fa fa-external-link"></i></span>》做过介绍，本篇我们会继续用到 AudioContext 的 API.</p>
+<p>为实现录音功能，我们先从播放本地文件音乐说起，因为有些 API 是通用的。</p>
+<a id="more"></a>
+<h2 id="1-播放本地音频文件实现"><a href="#1-播放本地音频文件实现" class="headerlink" title="1. 播放本地音频文件实现"></a>1. 播放本地音频文件实现</h2><p>播放音频可以使用 audio 标签，也可以使用 AudioContext，audio 标签需要一个 url，它可以是一个远程的 http 协议的 url，也可以是一个本地的 blob 协议的 url，怎么创建一个本地的 url 呢？</p>
+<p>使用以下 html 做为说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; onchange=&quot;playMusic.call(this)&quot; class=&quot;select-file&quot;&gt;</span><br><span class="line">&lt;audio class=&quot;audio-node&quot; autoplay&gt;&lt;/audio&gt;复制代码</span><br></pre></td></tr></table></figure>
+<p>提供一个 file input 上传控件让用户选择本地的文件和一个 audio 标签准备来播放。当用户选择文件后会触发 onchange 事件，在 onchange 回调里面就可以拿到文件的内容，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function playMusic () &#123;</span><br><span class="line">    if (!this.value) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    let fileReader = new FileReader();</span><br><span class="line">    let file = this.files[0];</span><br><span class="line">    fileReader.onload = function () &#123;</span><br><span class="line">        let arrayBuffer = this.result;</span><br><span class="line">        console.log(arrayBuffer);</span><br><span class="line">    &#125;</span><br><span class="line">    fileReader.readAsArrayBuffer(this.files[0]);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>这里使用一个 FileReader 读取文件，读取为 ArrayBuffer 即原始的二进制内容，把它打印如下所示：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4dq0199j30m405a74d.jpg" alt="img"></p>
+<p>可以用这个 ArrayBuffer 实例化一个 Uint8Array 就能读取它里面的内容，Uint8Array 数组里面的每个元素都是一个无符号整型 8 位数字，即 0 ~ 255，相当于每 1 个字节的 0101 内容就读取为一个整数。更多讨论可以见这篇《<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5pbS8/dGFyZ2V0PWh0dHBzJTNBJTJGJTJGZmVkLnJlbnJlbi5jb20lMkYyMDE3JTJGMTElMkYyNSUyRmxvY2FsLWZpbGUtbWFuYWdlLXVwbG9hZCUyRg==" title="https://link.juejin.im/?target=https%3A%2F%2Ffed.renren.com%2F2017%2F11%2F25%2Flocal-file-manage-upload%2F">前端本地文件操作与上传<i class="fa fa-external-link"></i></span>》。</p>
+<p>这个 arrayBuffer 可以转成一个 blob，然后用这个 blob 生成一个 url，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fileReader.onload = function () &#123;</span><br><span class="line">    let arrayBuffer = this.result;</span><br><span class="line">    // 转成一个blob</span><br><span class="line">    let blob = new Blob([new Int8Array(this.result)]);</span><br><span class="line">    // 生成一个本地的blob url</span><br><span class="line">    let blobUrl = URL.createObjectURL(blob);</span><br><span class="line">    console.log(blobUrl);</span><br><span class="line">    // 给audio标签的src属性</span><br><span class="line">    document.querySelector(&apos;.audio-node&apos;).src = blobUrl;</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>主要利用 URL.createObjectURL 这个 API 生成一个 blob 的 url，这个 url 打印出来是这样的：</p>
+<blockquote>
+<p>blob:null/c2df9f4d-a19d-4016-9fb6-b4899bac630d</p>
+</blockquote>
+<p>然后丢给 audio 标签就能播放了，作用相当于一个远程的 http 的 url.</p>
+<p>在使用 ArrayBuffer 生成 blob 对象的时候可以指定文件类型或者叫 mime 类型，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let blob = new Blob([new Int8Array(this.result)], &#123;</span><br><span class="line">    type: &apos;audio/mp3&apos; // files[0].type</span><br><span class="line">&#125;);复制代码</span><br></pre></td></tr></table></figure>
+<p>这个 mime 可以通过 file input 的 files[0].type 得到，而 files[0]是一个 File 实例，File 有 mime 类型，而 Blob 也有，因为 File 是继承于 Blob 的，两者是同根的。所以在上面实现代码里面其实不需要读取为 ArrayBuffer 然后再封装成一个 Blob，直接使用 File 就行了，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function playMusic () &#123;</span><br><span class="line">    if (!this.value) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    // 直接使用File对象生成blob url</span><br><span class="line">    let blobUrl = URL.createObjectURL(this.files[0]);</span><br><span class="line">    document.querySelector(&apos;.audio-node&apos;).src = blobUrl;</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>而使用 AudioContext 需要拿到文件的内容，然后手动进行音频解码才能播放。</p>
+<h2 id="2-AudioContext-的模型"><a href="#2-AudioContext-的模型" class="headerlink" title="2. AudioContext 的模型"></a>2. AudioContext 的模型</h2><p>使用 AudioContext 怎么播放声音呢，我们来分析一下它的模型，如下图所示：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4e4js69j31kw0pkq3t.jpg" alt="img"></p>
+<p>我们拿到一个 ArrayBuffer 之后，使用 AudioContext 的 decodeAudioData 进行解码，生成一个 AudioBuffer 实例，把它做为 AudioBufferSourceNode 对象的 buffer 属性，这个 Node 继承于 AudioNode，它还有 connect 和 start 两个方法，start 是开始播放，而在开始播放之前，需要调一下 connect，把这个 Node 连结到 audioContext.destination 即扬声器设备。代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function play (arrayBuffer) &#123;</span><br><span class="line">    // Safari需要使用webkit前缀</span><br><span class="line">    let AudioContext = window.AudioContext || window.webkitAudioContext,</span><br><span class="line">        audioContext = new AudioContext();</span><br><span class="line">    // 创建一个AudioBufferSourceNode对象，使用AudioContext的工厂函数创建</span><br><span class="line">    let audioNode = audioContext.createBufferSource();</span><br><span class="line">    // 解码音频，可以使用Promise，但是较老的Safari需要使用回调</span><br><span class="line">    audioContext.decodeAudioData(arrayBuffer, function (audioBuffer) &#123;</span><br><span class="line">        console.log(audioBuffer);</span><br><span class="line">        audioNode.buffer = audioBuffer;</span><br><span class="line">        audioNode.connect(audioContext.destination);</span><br><span class="line">        // 从0s开始播放</span><br><span class="line">        audioNode.start(0);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">fileReader.onload = function () &#123;</span><br><span class="line">    let arrayBuffer = this.result;</span><br><span class="line">    play(arrayBuffer);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>把解码后的 audioBuffer 打印出来，如下图所示：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4ecseocj30jy07k74i.jpg" alt="img"></p>
+<p>他有几个对开发人员可见的属性，包括音频时长，声道数量和采样率。从打印的结果可以知道播放的音频是 2 声道，采样率为 44.1k Hz，时长为 196.8s。关于声音这些属性的意义可见《<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5pbS8/dGFyZ2V0PWh0dHBzJTNBJTJGJTJGd3d3LnlpbmNoZW5nbGkuY29tJTJGMjAxOCUyRjA3JTJGMDglMkZjaHJvbWUtbWVkaWEtc3RyZWFtJTJG" title="https://link.juejin.im/?target=https%3A%2F%2Fwww.yinchengli.com%2F2018%2F07%2F08%2Fchrome-media-stream%2F">从 Chrome 源码看 audio/video 流媒体实现一<i class="fa fa-external-link"></i></span>》.</p>
+<p>从上面的代码可以看到，利用 AudioContext 处理声音有一个很重要的枢纽元素 AudioNode，上面使用的是 AudioBufferSourceNode，它的数据来源于一个解码好的完整的 buffer。其它继承于 AudioNode 的还有 GainNode：用于设置音量、BiquadFilterNode：用于滤波、ScriptProcessorNode：提供了一个 onaudioprocess 的回调让你分析处理音频数据、MediaStreamAudioSourceNode：用于连接麦克风设备，等等。这些结点可以用装饰者模式，一层层 connect，如上面代码使用到的 bufferSourceNode 可以先 connect 到 gainNode，再由 gainNode connect 到扬声器，就能调整音量了。</p>
+<p>如下图示意：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4eojx19j31kw0tv408.jpg" alt="img"></p>
+<p>这些节点都是使用 audioContext 的工厂函数创建的，如调 createGainNode 就可以创建一个 gainNode.</p>
+<p>说了这么多就是为了录音做准备，录音需要用到 ScriptProcessorNode.</p>
+<h2 id="3-录音的实现"><a href="#3-录音的实现" class="headerlink" title="3. 录音的实现"></a>3. 录音的实现</h2><p>上面播放音乐的来源是本地音频文件，而录音的来源是麦克风，为了能够获取调起麦克风并获取数据，需要使用 WebRTC 的 getUserMedia，如下代码所示;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;record()&quot;&gt;开始录音&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">function record () &#123;</span><br><span class="line">    window.navigator.mediaDevices.getUserMedia(&#123;</span><br><span class="line">        audio: true</span><br><span class="line">    &#125;).then(mediaStream =&gt; &#123;</span><br><span class="line">        console.log(mediaStream);</span><br><span class="line">        beginRecord(mediaStream);</span><br><span class="line">    &#125;).catch(err =&gt; &#123;</span><br><span class="line">        // 如果用户电脑没有麦克风设备或者用户拒绝了，或者连接出问题了等</span><br><span class="line">        // 这里都会抛异常，并且通过err.name可以知道是哪种类型的错误</span><br><span class="line">        console.error(err);</span><br><span class="line">    &#125;)  ;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;复制代码</span><br></pre></td></tr></table></figure>
+<p>在调用 getUserMedia 的时候指定需要录制音频，如果同时需要录制视频那么再加一个 video: true 就可以了，也可以指定录制的格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">window.navigator.mediaDevices.getUserMedia(&#123;</span><br><span class="line">    audio: &#123;</span><br><span class="line">        sampleRate: 44100, // 采样率</span><br><span class="line">        channelCount: 2,   // 声道</span><br><span class="line">        volume: 1.0        // 音量</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(mediaStream =&gt; &#123;</span><br><span class="line">    console.log(mediaStream);</span><br><span class="line">&#125;);复制代码</span><br></pre></td></tr></table></figure>
+<p>调用的时候，浏览器会弹一个框，询问用户是否允许使用用麦克风：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4f3v3jnj30ne08imx6.jpg" alt="img"></p>
+<p>如果用户点了拒绝，那么会抛异常，在 catch 里面可以捕获到，而如果一切顺序的话，将会返回一个 MediaStream 对象：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4fa0968j30ua08st91.jpg" alt="img"></p>
+<p>它是音频流的抽象，把这个流用来初始化一个 MediaStreamAudioSourceNode 对象，然后把这个节点 connect 连接到一个 JavascriptProcessorNode，在它的 onaudioprocess 里面获取到音频数据，然后保存起来，就得到录音的数据。</p>
+<p>如果想直接把录的音直接播放出来的话，那么只要把它 connect 到扬声器就行了，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function beginRecord (mediaStream) &#123;</span><br><span class="line">    let audioContext = new (window.AudioContext || window.webkitAudioContext);</span><br><span class="line">    let mediaNode = audioContext.createMediaStreamSource(mediaStream);</span><br><span class="line">    // 这里connect之后就会自动播放了</span><br><span class="line">    mediaNode.connect(audioContext.destination);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>但一边录一边播的话，如果没用耳机的话容易产生回音，这里不要播放了。</p>
+<p>为了获取录到的音的数据，我们把它 connect 到一个 javascriptProcessorNode，为此先创建一个实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function createJSNode (audioContext) &#123;</span><br><span class="line">    const BUFFER_SIZE = 4096;</span><br><span class="line">    const INPUT_CHANNEL_COUNT = 2;</span><br><span class="line">    const OUTPUT_CHANNEL_COUNT = 2;</span><br><span class="line">    // createJavaScriptNode已被废弃</span><br><span class="line">    let creator = audioContext.createScriptProcessor || audioContext.createJavaScriptNode;</span><br><span class="line">    creator = creator.bind(audioContext);</span><br><span class="line">    return creator(BUFFER_SIZE,</span><br><span class="line">                    INPUT_CHANNEL_COUNT, OUTPUT_CHANNEL_COUNT);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>这里是使用 createScriptProcessor 创建的对象，需要传三个参数：一个是缓冲区大小，通常设定为 4kB，另外两个是输入和输出频道数量，这里设定为双声道。它里面有两个缓冲区，一个是输入 inputBuffer，另一个是输出 outputBuffer，它们是 AudioBuffer 实例。可以在 onaudioprocess 回调里面获取到 inputBuffer 的数据，处理之后，然后放到 outputBuffer，如下图所示：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4flcme0j30wa0fodg1.jpg" alt="img"></p>
+<p>例如我们可以把第 1 步播放本音频用到的 bufferSourceNode 连接到 jsNode，然后 jsNode 再连接到扬声器，就能在 process 回调里面分批处理声音的数据，如降噪。当扬声器把 4kB 的 outputBuffer 消费完之后，就会触发 process 回调。所以 process 回调是不断触发的。</p>
+<p>在录音的例子里，是要把 mediaNode 连接到这个 jsNode，进而拿到录音的数据，把这些数据不断地 push 到一个数组，直到录音终止了。如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function onAudioProcess (event) &#123;</span><br><span class="line">    console.log(event.inputBuffer);</span><br><span class="line">&#125;</span><br><span class="line">function beginRecord (mediaStream) &#123;</span><br><span class="line">    let audioContext = new (window.AudioContext || window.webkitAudioContext);</span><br><span class="line">    let mediaNode = audioContext.createMediaStreamSource(mediaStream);</span><br><span class="line">    // 创建一个jsNode</span><br><span class="line">    let jsNode = createJSNode(audioContext);</span><br><span class="line">    // 需要连到扬声器消费掉outputBuffer，process回调才能触发</span><br><span class="line">    // 并且由于不给outputBuffer设置内容，所以扬声器不会播放出声音</span><br><span class="line">    jsNode.connect(audioContext.destination);</span><br><span class="line">    jsNode.onaudioprocess = onAudioProcess;</span><br><span class="line">    // 把mediaNode连接到jsNode</span><br><span class="line">    mediaNode.connect(jsNode);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>我们把 inputBuffer 打印出来，可以看到每一段大概是 0.09s：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4fv3b50j30n00dot96.jpg" alt="img"></p>
+<p>也就是说每隔 0.09 秒就会触发一次。接下来的工作就是在 process 回调里面把录音的数据持续地保存起来，如下代码所示，分别获取到左声道和右声道的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function onAudioProcess (event) &#123;</span><br><span class="line">    let audioBuffer = event.inputBuffer;</span><br><span class="line">    let leftChannelData = audioBuffer.getChannelData(0),</span><br><span class="line">        rightChannelData = audioBuffer.getChannelData(1);</span><br><span class="line">    console.log(leftChannelData, rightChannelData);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>打印出来可以看到它是一个 Float32Array，即数组里的每个数字都是 32 位的单精度浮点数，如下图所示：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4g3zlg5j30ry0820tp.jpg" alt="img"></p>
+<p>这里有个问题，录音的数据到底表示的是什么呢，它是采样采来的表示声音的强弱，声波被麦克风转换为不同强度的电流信号，这些数字就代表了信号的强弱。它的取值范围是[-1, 1]，表示一个相对比例。</p>
+<p>然后不断地 push 到一个 array 里面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let leftDataList = [],</span><br><span class="line">    rightDataList = [];</span><br><span class="line">function onAudioProcess (event) &#123;</span><br><span class="line">    let audioBuffer = event.inputBuffer;</span><br><span class="line">    let leftChannelData = audioBuffer.getChannelData(0),</span><br><span class="line">        rightChannelData = audioBuffer.getChannelData(1);</span><br><span class="line">    // 需要克隆一下</span><br><span class="line">    leftDataList.push(leftChannelData.slice(0));</span><br><span class="line">    rightDataList.push(rightChannelData.slice(0));</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>最后加一个停止录音的按钮，并响应操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function stopRecord () &#123;</span><br><span class="line">    // 停止录音</span><br><span class="line">    mediaStream.getAudioTracks()[0].stop();</span><br><span class="line">    mediaNode.disconnect();</span><br><span class="line">    jsNode.disconnect();</span><br><span class="line">    console.log(leftDataList, rightDataList);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>把保存的数据打印出来是这样的：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw4ggbkr6j30rs07cmxj.jpg" alt="img"></p>
+<p>是一个普通数组里面有很多个 Float32Array，接下来它们合成一个单个 Float32Array：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function mergeArray (list) &#123;</span><br><span class="line">    let length = list.length * list[0].length;</span><br><span class="line">    let data = new Float32Array(length),</span><br><span class="line">        offset = 0;</span><br><span class="line">    for (let i = 0; i &lt; list.length; i++) &#123;</span><br><span class="line">        data.set(list[i], offset);</span><br><span class="line">        offset += list[i].length;</span><br><span class="line">    &#125;</span><br><span class="line">    return data;</span><br><span class="line">&#125;</span><br><span class="line">function stopRecord () &#123;</span><br><span class="line">    // 停止录音</span><br><span class="line">    let leftData = mergeArray(leftDataList),</span><br><span class="line">        rightData = mergeArray(rightDataList);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>那为什么一开始不直接就弄成一个单个的，因为这种 Array 不太方便扩容。一开始不知道数组总的长度，因为不确定要录多长，所以等结束录音的时候再合并一下比较方便。</p>
+<p>然后把左右声道的数据合并一下，wav 格式存储的时候并不是先放左声道再放右声道的，而是一个左声道数据，一个右声道数据交叉放的，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 交叉合并左右声道的数据</span><br><span class="line">function interleaveLeftAndRight (left, right) &#123;</span><br><span class="line">    let totalLength = left.length + right.length;</span><br><span class="line">    let data = new Float32Array(totalLength);</span><br><span class="line">    for (let i = 0; i &lt; left.length; i++) &#123;</span><br><span class="line">        let k = i * 2;</span><br><span class="line">        data[k] = left[i];</span><br><span class="line">        data[k + 1] = right[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return data;</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>最后创建一个 wav 文件，首先写入 wav 的头部信息，包括设置声道、采样率、位声等，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">function createWavFile (audioData) &#123;</span><br><span class="line">    const WAV_HEAD_SIZE = 44;</span><br><span class="line">    let buffer = new ArrayBuffer(audioData.length + WAV_HEAD_SIZE),</span><br><span class="line">        // 需要用一个view来操控buffer</span><br><span class="line">        view = new DataView(buffer);</span><br><span class="line">    // 写入wav头部信息</span><br><span class="line">    // RIFF chunk descriptor/identifier</span><br><span class="line">    writeUTFBytes(view, 0, &apos;RIFF&apos;);</span><br><span class="line">    // RIFF chunk length</span><br><span class="line">    view.setUint32(4, 44 + audioData.length * 2, true);</span><br><span class="line">    // RIFF type</span><br><span class="line">    writeUTFBytes(view, 8, &apos;WAVE&apos;);</span><br><span class="line">    // format chunk identifier</span><br><span class="line">    // FMT sub-chunk</span><br><span class="line">    writeUTFBytes(view, 12, &apos;fmt &apos;);</span><br><span class="line">    // format chunk length</span><br><span class="line">    view.setUint32(16, 16, true);</span><br><span class="line">    // sample format (raw)</span><br><span class="line">    view.setUint16(20, 1, true);</span><br><span class="line">    // stereo (2 channels)</span><br><span class="line">    view.setUint16(22, 2, true);</span><br><span class="line">    // sample rate</span><br><span class="line">    view.setUint32(24, 44100, true);</span><br><span class="line">    // byte rate (sample rate * block align)</span><br><span class="line">    view.setUint32(28, 44100 * 2, true);</span><br><span class="line">    // block align (channel count * bytes per sample)</span><br><span class="line">    view.setUint16(32, 2 * 2, true);</span><br><span class="line">    // bits per sample</span><br><span class="line">    view.setUint16(34, 16, true);</span><br><span class="line">    // data sub-chunk</span><br><span class="line">    // data chunk identifier</span><br><span class="line">    writeUTFBytes(view, 36, &apos;data&apos;);</span><br><span class="line">    // data chunk length</span><br><span class="line">    view.setUint32(40, audioData.length * 2, true);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>接下来写入录音数据，我们准备写入 16 位位深即用 16 位二进制表示声音的强弱，16 位表示的范围是 [-32768, +32767]，最大值是 32767 即 0x7FFF，录音数据的取值范围是[-1, 1]，表示相对比例，用这个比例乘以最大值就是实际要存储的值。如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function createWavFile (audioData) &#123;</span><br><span class="line">    // 写入wav头部，代码同上</span><br><span class="line">    // 写入PCM数据</span><br><span class="line">    let length = audioData.length;</span><br><span class="line">    let index = 44;</span><br><span class="line">    let volume = 1;</span><br><span class="line">    for (let i = 0; i &lt; length; i++) &#123;</span><br><span class="line">        view.setInt16(index, audioData[i] * (0x7FFF * volume), true);</span><br><span class="line">        index += 2;</span><br><span class="line">    &#125;</span><br><span class="line">    return buffer;</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>最后，再用第 1 点提到的生成一个本地播放的 blob url 就能够播放刚刚录的音了，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function playRecord (arrayBuffer) &#123;</span><br><span class="line">    let blob = new Blob([new Uint8Array(arrayBuffer)]);</span><br><span class="line">    let blobUrl = URL.createObjectURL(blob);</span><br><span class="line">    document.querySelector(&apos;.audio-node&apos;).src = blobUrl;</span><br><span class="line">&#125;</span><br><span class="line">function stopRecord () &#123;</span><br><span class="line">    // 停止录音</span><br><span class="line">    let leftData = mergeArray(leftDataList),</span><br><span class="line">        rightData = mergeArray(rightDataList);</span><br><span class="line">    let allData = interleaveLeftAndRight(leftData, rightData);</span><br><span class="line">    let wavBuffer = createWavFile(allData);</span><br><span class="line">    playRecord(wavBuffer);</span><br><span class="line">&#125;复制代码</span><br></pre></td></tr></table></figure>
+<p>或者是把 blob 使用 FormData 进行上传。</p>
+<p>整一个录音的实现基本就结束了，代码参考了一个录音库<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5pbS8/dGFyZ2V0PWh0dHBzJTNBJTJGJTJGZ2l0aHViLmNvbSUyRm11YXota2hhbiUyRlJlY29yZFJUQw==" title="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fmuaz-khan%2FRecordRTC">RecordRTC<i class="fa fa-external-link"></i></span>。</p>
+<h2 id="4-小结"><a href="#4-小结" class="headerlink" title="4. 小结"></a>4. 小结</h2><p>回顾一下，整体的流程是这样的：</p>
+<p><img src="https://image.xuebin.me/006tNbRwly1fuw487hf7tj31kw0ogmye.jpg" alt="img"></p>
+<p>先调用 webRTC 的 getUserMediaStream 获取音频流，用这个流初始化一个 mediaNode，把它 connect 连接到一个 jsNode，在 jsNode 的 process 回调里面不断地获取到录音的数据，停止录音后，把这些数据合并换算成 16 位的整型数据，并写入 wav 头部信息生成一个 wav 音频文件的内存 buffer，把这个 buffer 封装成 Blob 文件，生成一个 url，就能够在本地播放，或者是借助 FormData 进行上传。这个过程理解了就不是很复杂了。</p>
+<p>本篇涉及到了 WebRTC 和 AudioContext 的 API，重点介绍了 AudioContext 整体的模型，并且知道了音频数据实际上就是声音强弱的记录，存储的时候通过乘以 16 位整数的最大值换算成 16 位位深的表示。同时可利用 blob 和 URL.createObjectURL 生成一个本地数据的 blob 链接。</p>
+<p>RecordRTC 录音库最后面还使用了 webworker 进行合并左右声道数据和生成 wav 文件，可进一步提高效率，避免录音文件太大后面处理的时候卡住了。</p>
+<div class="note ">
+            <p>转载至: <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81YjhiZjdlM2U1MWQ0NTM4YzIxMGM2YjA=" title="https://juejin.im/post/5b8bf7e3e51d4538c210c6b0">https://juejin.im/post/5b8bf7e3e51d4538c210c6b0<i class="fa fa-external-link"></i></span> </p>
+          </div>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://image.xuebin.me/wechatpay.JPG" alt="Leo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://image.xuebin.me/alipay.JPG" alt="Leo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Leo</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://xuebin.me/posts/2368f26a.html" title="【转载】如何实现前端录音功能">https://xuebin.me/posts/2368f26a.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dev/" rel="tag"># dev</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/转载/" rel="tag"># 转载</a>
+          
+            <a href="/tags/多媒体/" rel="tag"># 多媒体</a>
+          
+            <a href="/tags/音频/" rel="tag"># 音频</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/fc2d1561.html" rel="next" title="自建frp服务实现内网穿透">
+                <i class="fa fa-chevron-left"></i> 自建frp服务实现内网穿透
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/4d823baf.html" rel="prev" title="Mac升级Mojave后使用出现xcrun：error错误">
+                Mac升级Mojave后使用出现xcrun：error错误 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460" alt="Leo">
+            
+              <p class="site-author-name" itemprop="name">Leo</p>
+              <div class="site-description motion-element" itemprop="description">😆</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93cGEucXEuY29tL21zZ3JkP3Y9MyZ1aW49NjUyODg5NTU5JnNpdGU9cXEmbWVudT15ZXM=" title="QQ &rarr; https://wpa.qq.com/msgrd?v=3&uin=652889559&site=qq&menu=yes"><i class="fa fa-fw fa-qq"></i>QQ</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8xMzc4MjUyNjM3" title="微博 &rarr; https://weibo.com/u/1378252637"><i class="fa fa-fw fa-weibo"></i>微博</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:leo@xuebin.me" title="E-Mail &rarr; mailto:leo@xuebin.me"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="GitHub &rarr; https://github.com/MrLeo"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly96aGFuZ21pYW8uY2Mv" title="https://zhangmiao.cc/">ZM</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9sZW8tanVseS5naXRodWIuaW8v" title="https://leo-july.github.io/">july</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-播放本地音频文件实现"><span class="nav-number">1.</span> <span class="nav-text">1. 播放本地音频文件实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-AudioContext-的模型"><span class="nav-number">2.</span> <span class="nav-text">2. AudioContext 的模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-录音的实现"><span class="nav-number">3.</span> <span class="nav-text">3. 录音的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-小结"><span class="nav-number">4.</span> <span class="nav-text">4. 小结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1263395414&web_id=1263395414"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+
+
+
+  
+
+
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/fastclick@1/lib/fastclick.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery-lazyload@1/jquery.lazyload.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/exturl.js?v=7.0.1"></script>
+
+
+  
+  
+  
+    
+  
+
+  
+
+  
+  
+  
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://xuebin.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://xuebin.me/posts/2368f26a.html";
+    this.page.identifier = "posts/2368f26a.html";
+    this.page.title = '【转载】如何实现前端录音功能';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://xuebin.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz',
+                'X-LC-Key': 'eYX7CBXn2T7iUGa9LAUnIt9q',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+<style>
+.pdfobject-container {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+}
+</style>
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+</body>
+</html>

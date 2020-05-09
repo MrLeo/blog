@@ -1,0 +1,2642 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/han-css@3/dist/han.min.css">
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true,"dimmer":true},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '3W9IAI9QUW',
+      apiKey: '',
+      indexName: 'mr-leo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="https://www.zhihu.com/question/27447370 https://medium.com/ayuth/iterm2-zsh-oh-my-zsh-the-most-power-full-of-terminal-on-macos-bdb2823fb04c https://jeremysu0131.github.io/Tool-Mac-iTerm-2-Oh-My-Zsh-P">
+<meta name="keywords" content="mac,终端,iTerm2,zsh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac终端-iTerm2">
+<meta property="og:url" content="https://xuebin.me/posts/14eb7497.html">
+<meta property="og:site_name" content="♌">
+<meta property="og:description" content="https://www.zhihu.com/question/27447370 https://medium.com/ayuth/iterm2-zsh-oh-my-zsh-the-most-power-full-of-terminal-on-macos-bdb2823fb04c https://jeremysu0131.github.io/Tool-Mac-iTerm-2-Oh-My-Zsh-P">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://louiszhai.github.io/docImages/tmux02.png">
+<meta property="og:image" content="http://louiszhai.github.io/docImages/tmux07.png">
+<meta property="og:image" content="http://louiszhai.github.io/docImages/tmux08.png">
+<meta property="og:image" content="https://image.xuebin.me/shell_command.png">
+<meta property="og:image" content="https://image.xuebin.me/zshrc.png">
+<meta property="og:image" content="https://image.xuebin.me/app%E6%98%BE%E7%A4%BA%E5%8C%85%E5%86%85%E5%AE%B9.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/31da002de611cfef95f6daaa8b1baedef4079703/687474703a2f2f6268696c6275726e2e6f72672f636f6e74656e742f696d616765732f323031352f30312f706c396b2d696d70726f7665642e706e67">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/15/168516fb5ec8eadc?imageslim">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/15/168516fbb0f385c8?imageslim">
+<meta property="og:updated_time" content="2017-06-29T01:49:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac终端-iTerm2">
+<meta name="twitter:description" content="https://www.zhihu.com/question/27447370 https://medium.com/ayuth/iterm2-zsh-oh-my-zsh-the-most-power-full-of-terminal-on-macos-bdb2823fb04c https://jeremysu0131.github.io/Tool-Mac-iTerm-2-Oh-My-Zsh-P">
+<meta name="twitter:image" content="http://louiszhai.github.io/docImages/tmux02.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="♌" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://xuebin.me/posts/14eb7497.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Mac终端-iTerm2 | ♌</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1706cfef7a8fd27b12633a699c2f75c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">♌</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Mr. Leo</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">26</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">142</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">138</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xuebin.me/posts/14eb7497.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo">
+      <meta itemprop="description" content="😆">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="♌">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Mac终端-iTerm2
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-29 09:49:40" itemprop="dateCreated datePublished" datetime="2017-06-29T09:49:40+08:00">2017-06-29</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mac/" itemprop="url" rel="index"><span itemprop="name">mac</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/14eb7497.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://xuebin.me/posts/14eb7497.html" itemprop="commentCount">0</span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/14eb7497.html" class="leancloud_visitors" data-flag-title="Mac终端-iTerm2">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzI3NDQ3Mzcw" title="https://www.zhihu.com/question/27447370">https://www.zhihu.com/question/27447370<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2F5dXRoL2l0ZXJtMi16c2gtb2gtbXktenNoLXRoZS1tb3N0LXBvd2VyLWZ1bGwtb2YtdGVybWluYWwtb24tbWFjb3MtYmRiMjgyM2ZiMDRj" title="https://medium.com/ayuth/iterm2-zsh-oh-my-zsh-the-most-power-full-of-terminal-on-macos-bdb2823fb04c">https://medium.com/ayuth/iterm2-zsh-oh-my-zsh-the-most-power-full-of-terminal-on-macos-bdb2823fb04c<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qZXJlbXlzdTAxMzEuZ2l0aHViLmlvL1Rvb2wtTWFjLWlUZXJtLTItT2gtTXktWnNoLVBvd2VybGV2ZWw5ay3oqK3lrpov" title="https://jeremysu0131.github.io/Tool-Mac-iTerm-2-Oh-My-Zsh-Powerlevel9k-設定/">https://jeremysu0131.github.io/Tool-Mac-iTerm-2-Oh-My-Zsh-Powerlevel9k-設定/ <i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="智能选中"><a href="#智能选中" class="headerlink" title="智能选中"></a>智能选中</h1><p>双击选中、三击选中整行、四击智能选中（智能规则可<span class="exturl" data-url="aHR0cHM6Ly93d3cuaXRlcm0yLmNvbS9kb2N1bWVudGF0aW9uLXNtYXJ0LXNlbGVjdGlvbi5odG1s" title="https://www.iterm2.com/documentation-smart-selection.html">配置<i class="fa fa-external-link"></i></span>），选中即复制</p>
+<h1 id="巧用-⌘-键"><a href="#巧用-⌘-键" class="headerlink" title="巧用 ⌘ 键"></a>巧用 ⌘ 键</h1><p>按住 ⌘ 键</p>
+<ul>
+<li>可以拖拽选中的字符串；</li>
+<li>点击 url：调用默认浏览器访问该网址；</li>
+<li>点击文件：调用默认程序打开文件；</li>
+<li>如果文件名是<code>filename:42</code>，且默认文本编辑器是 <code>Macvim</code>、<code>Textmate</code>或<code>BBEdit</code>，将会直接打开到这一行；</li>
+<li>点击文件夹：在 <code>finder</code> 中打开该文件夹；</li>
+<li>同时按住<code>⌥</code>键，可以以矩形选中，类似于 vim 中的<code>⌃ v</code>操作。</li>
+</ul>
+<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>新建标签：<code>⌘ + t</code></p>
+<p>关闭标签：<code>⌘ + w</code></p>
+<p>切换标签：<br><code>⌘ + 数字</code> <code>⌘ + 左右方向键</code></p>
+<p>切换全屏：<code>⌘ + enter</code></p>
+<p>查找：<code>⌘ + f</code></p>
+<h2 id="分屏"><a href="#分屏" class="headerlink" title="分屏"></a>分屏</h2><p>垂直分屏：<code>⌘ + d</code></p>
+<p>水平分屏：<code>⌘ + ⇧ + d</code></p>
+<p>切换屏幕：<br><code>⌘ + ⌥ + 方向键</code><br><code>⌘ + [</code> 或 <code>⌘ + ]</code></p>
+<p>查看历史命令：<code>⌘ + ;</code></p>
+<p>查看剪贴板历史：<code>⌘ + ⇧ + h</code></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>清除当前行：<code>⌃ + u</code></p>
+<p>到行首：<code>⌃ + a</code></p>
+<p>到行尾：<code>⌃ + e</code></p>
+<p>前进后退：<code>⌃ + f/b</code> (相当于左右方向键)</p>
+<p>上一条命令：<code>⌃ + p</code></p>
+<p>搜索命令历史：<code>⌃ + r</code></p>
+<p>删除当前光标的字符：<code>⌃ + d</code></p>
+<p>删除光标之前的字符：<code>⌃ + h</code></p>
+<p>删除光标之前的单词：<code>⌃ + w</code></p>
+<p>删除到文本末尾：<code>⌃ + k</code></p>
+<p>交换光标处文本：<code>⌃ + t</code></p>
+<p>清屏 1：<code>⌘ + r</code></p>
+<p>清屏 2：<code>⌃ + l</code></p>
+<p>时间线：<code>⌘ + ⇧ + e</code></p>
+<h2 id="自带有哪些很实用的功能-快捷键"><a href="#自带有哪些很实用的功能-快捷键" class="headerlink" title="自带有哪些很实用的功能/快捷键"></a>自带有哪些很实用的功能/快捷键</h2><p><code>⌘ + 数字</code> 在各 tab 标签直接来回切换</p>
+<p>选择即复制 + 鼠标中键粘贴，这个很实用</p>
+<p><code>⌘ + f</code> 所查找的内容会被自动复制</p>
+<p><code>⌘ + d</code> 横着分屏 /<br><code>⌘ + ⇧ + d</code> 竖着分屏</p>
+<p><code>⌘ + r</code> = <code>clear</code>，而且只是换到新一屏，不会想 <code>clear</code> 一样创建一个空屏</p>
+<p><code>⌃ + u</code> 清空当前行，无论光标在什么位置</p>
+<p>输入开头命令后 按 <code>⌘ + ;</code> 会自动列出输入过的命令</p>
+<p><code>⌘ + ⇧ + h</code> 会列出剪切板历史</p>
+<p>可以在 Preferences &gt; keys 设置全局快捷键调出 iterm，这个也可以用过 Alfred 实现</p>
+<h2 id="常用的一些快捷键"><a href="#常用的一些快捷键" class="headerlink" title="常用的一些快捷键"></a>常用的一些快捷键</h2><p><code>⌘ + 1 / 2</code> 左右 tab 之间来回切换，这个在 前面 已经介绍过了</p>
+<p><code>⌘←</code> / <code>⌘→</code> 到一行命令最左边/最右边 ，这个功能同 <code>C+a</code> / <code>C+e</code></p>
+<p><code>⌥←</code> / <code>⌥→</code> 按单词前移/后移，相当与 <code>C+f</code> / <code>C+b</code>，其实这个功能在 Iterm 中已经预定义好了，<code>⌥f</code> / <code>⌥b</code>，看个人习惯了</p>
+<p>好像就这几个</p>
+<p>设置方法如下</p>
+<p>当然除了这些可以自定义的也不能忘了 linux 下那些好用的组合</p>
+<p><code>C+a</code> / <code>C+e</code> 这个几乎在哪都可以使用</p>
+<p><code>C+p</code> / <code>!!</code> 上一条命令</p>
+<p><code>C+k</code> 从光标处删至命令行尾 (本来 <code>C+u</code> 是删至命令行首，但 iterm 中是删掉整行)</p>
+<p><code>C+w</code> <code>A+d</code> 从光标处删至字首/尾</p>
+<p><code>C+h</code> <code>C+d</code> 删掉光标前后的自负</p>
+<p><code>C+y</code> 粘贴至光标后</p>
+<p><code>C+r</code> 搜索命令历史，这个较常用</p>
+<h2 id="标记跳转"><a href="#标记跳转" class="headerlink" title="标记跳转"></a>标记跳转</h2><blockquote>
+<p>类似编辑器的 mark 工具，iTerm2 也可以在命令行位置设置标记</p>
+</blockquote>
+<p>设置标记：<code>⌘ + ⇧ + m</code></p>
+<p>跳转到上个标记：<code>⌘ + ⇧ + j</code></p>
+<p>多个标记切换：<code>⌘ + ⇧ + 方向键</code></p>
+<h2 id="选中即复制"><a href="#选中即复制" class="headerlink" title="选中即复制"></a>选中即复制</h2><p>iterm2 有 2 种好用的选中即复制模式。</p>
+<p>一种是用鼠标，在 iterm2 中，选中某个路径或者某个词汇，那么，iterm2 就自 动复制了。<br>另一种是无鼠标模式，⌘+f,弹出 iterm2 的查找模式，输入要查找并复制的内容的前几个字母，确认找到的是自己的内容之后，输入 tab，查找窗口将自动变化内容，并将其复制。如果输入的是 ⇧+tab，则自动将查找内容的左边选中并复制。</p>
+<p>自动完成<br>输入打头几个字母，然后输入 <code>⌘+;</code> iterm2 将自动列出之前输入过的类似命令。</p>
+<h2 id="剪切历史"><a href="#剪切历史" class="headerlink" title="剪切历史"></a>剪切历史</h2><p>输入 <code>⌘+⇧+h</code>，iterm2 将自动列出剪切板的历史记录。如果需要将剪切板的历史记录保存到磁盘，在 Preferences &gt; General &gt; Save copy/paste history to disk 中设置。</p>
+<h2 id="及时回放"><a href="#及时回放" class="headerlink" title="及时回放"></a>及时回放</h2><blockquote>
+<p>某个交互命令会覆写屏幕上的输入，之前的历史信息可能会被覆盖掉，无法查看，iterm2 这个及时回放功能，会记录历史输入，输出，有点类似视频录制。</p>
+</blockquote>
+<p>进入回放：<code>⌘ + opt + b</code></p>
+<p>方向键控制时间 ：<code>arrow</code></p>
+<p>退出回放：<code>esc</code></p>
+<h1 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h1><blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzI5OTc3MjU1" title="https://www.zhihu.com/question/29977255">https://www.zhihu.com/question/29977255<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h2 id="智能补全"><a href="#智能补全" class="headerlink" title="智能补全"></a>智能补全</h2><p>cd ~/ 切换目录，敲击<code>两下tab</code>，会列出当前目录下的所有目录，并且可以使用键盘上下左右键来选择要进入的目录。</p>
+<p>命令选项补齐，比如输入 docker，然后按 tab，即可显示出 docker 都有哪些命令选项。</p>
+<h2 id="智能切换目录"><a href="#智能切换目录" class="headerlink" title="智能切换目录"></a>智能切换目录</h2><p>进入一个很深的目录，例如 <code>/var/log/nginx/error/lastyear/may/first/monday</code>, 用 zsh 可以这样输入 <code>cd /v/l/n/e/l/m/f/m</code> 然后按 tab 即可补全整个路径。或者你实现知道当前目录名称，可以直接输入目录，即可进去目录。</p>
+<p>在 zsh 下可以记录最近进过的 10 个目录，只需要输入<code>d</code>，然后就可以看到对应的 0-9 的目录，输入<code>cd -数字</code>即可进入对应的目录。</p>
+<p>或者直接输入 <code>cd -</code> 然后 <code>tab</code>，会列出最近使用过的 31 个目录。</p>
+<h1 id="Tmux"><a href="#Tmux" class="headerlink" title="Tmux"></a>Tmux</h1><blockquote>
+<p><span class="exturl" data-url="aHR0cDovL2xvdWlzemhhaS5naXRodWIuaW8vMjAxNy8wOS8zMC90bXV4Lw==" title="http://louiszhai.github.io/2017/09/30/tmux/">http://louiszhai.github.io/2017/09/30/tmux/<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<p>tmux是一款优秀的终端复用软件，它比Screen更加强大，至于如何强大，网上有大量的文章讨论了这点，本文不再重复。tmux之所以受人们喜爱，主要得益于以下三处功能：</p>
+<ul>
+<li>丝滑分屏（split），虽然iTem2也提供了横向和竖向分屏功能，但这种分屏功能非常拙劣，完全等同于屏幕新开一个窗口，新开的pane不会自动进入到当前目录，也没有记住当前登录状态。这意味着如果我ssh进入到远程服务器时，iTem2新开的pane中，我依然要重新走一遍ssh登录的老路（omg）。tmux就不会这样，tmux窗口中，新开的pane，默认进入到之前的路径，如果是ssh连接，登录状态也依旧保持着，如此一来，我就可以随意的增删pane，这种灵活性，好处不言而喻。</li>
+<li>保护现场（attach），即使命令行的工作只进行到一半，关闭终端后还可以重新进入到操作现场，继续工作。对于ssh远程连接而言，即使网络不稳定也没有关系，掉线后重新连接，可以直奔现场，之前运行中的任务，依旧在跑，就好像从来没有离开过一样；特别是在远程服务器上运行耗时的任务，tmux可以帮你一直保持住会话。如此一来，你就可以随时随地放心地进行移动办公，只要你附近的计算机装有tmux（没有你也可以花几分钟装一个），你就能继续刚才的工作。</li>
+<li>会话共享（适用于结对编程或远程教学），将 tmux 会话的地址分享给他人，这样他们就可以通过 SSH 接入该会话。如果你要给同事演示远程服务器的操作，他不必直勾勾地盯着你的屏幕，借助tmux，他完全可以进入到你的会话，然后静静地看着他桌面上你风骚的键盘走位，只要他愿意，甚至还可以录个屏。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装tmux</span></span><br><span class="line">brew install tmux</span><br></pre></td></tr></table></figure>
+<h2 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h2><h3 id="新建会话"><a href="#新建会话" class="headerlink" title="新建会话"></a>新建会话</h3><p>新建一个tmux session非常简单，语法为<code>tmux new -s session-name</code>，也可以简写为<code>tmux</code>，为了方便管理，建议指定会话名称，如下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux <span class="comment"># 新建一个无名称的会话</span></span><br><span class="line">tmux new -s demo <span class="comment"># 新建一个名称为demo的会话</span></span><br></pre></td></tr></table></figure>
+<h3 id="断开当前会话"><a href="#断开当前会话" class="headerlink" title="断开当前会话"></a>断开当前会话</h3><p>会话中操作了一段时间，我希望断开会话同时下次还能接着用，怎么做？此时可以使用detach命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux detach <span class="comment"># 断开当前会话，会话在后台运行</span></span><br></pre></td></tr></table></figure>
+<p>也许你觉得这个太麻烦了，是的，tmux的会话中，我们已经可以使用tmux快捷键了。使用快捷键组合<code>Ctrl+b</code> + <code>d</code>，三次按键就可以断开当前会话。</p>
+<h3 id="进入之前的会话"><a href="#进入之前的会话" class="headerlink" title="进入之前的会话"></a>进入之前的会话</h3><p>断开会话后，想要接着上次留下的现场继续工作，就要使用到tmux的attach命令了，语法为<code>tmux attach-session -t session-name</code>，可简写为<code>tmux a -t session-name</code> 或 <code>tmux a</code>。通常我们使用如下两种方式之一即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux a <span class="comment"># 默认进入第一个会话</span></span><br><span class="line">tmux a -t demo <span class="comment"># 进入到名称为demo的会话</span></span><br></pre></td></tr></table></figure>
+<h3 id="关闭会话"><a href="#关闭会话" class="headerlink" title="关闭会话"></a>关闭会话</h3><p>会话的使命完成后，一定是要关闭的。我们可以使用tmux的kill命令，kill命令有<code>kill-pane</code>、<code>kill-server</code>、<code>kill-session</code> 和 <code>kill-window</code>共四种，其中<code>kill-session</code>的语法为<code>tmux kill-session -t session-name</code>。如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux <span class="built_in">kill</span>-session -t demo <span class="comment"># 关闭demo会话</span></span><br><span class="line">tmux <span class="built_in">kill</span>-server <span class="comment"># 关闭服务器，所有的会话都将关闭</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看所有的会话"><a href="#查看所有的会话" class="headerlink" title="查看所有的会话"></a>查看所有的会话</h3><p>管理会话的第一步就是要查看所有的会话，我们可以使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmux list-session <span class="comment"># 查看所有会话</span></span><br><span class="line">tmux ls <span class="comment"># 查看所有会话，提倡使用简写形式</span></span><br></pre></td></tr></table></figure>
+<p>如果刚好处于会话中怎么办？别担心，我们可以使用对应的tmux快捷键<code>Ctrl+b</code> + <code>s</code>，此时tmux将打开一个会话列表，按上下键(⬆︎⬇︎)或者鼠标滚轮，可选中目标会话，按左右键（⬅︎➜）可收起或展开会话的窗口，选中目标会话或窗口后，按回车键即可完成切换。</p>
+<p><img src="http://louiszhai.github.io/docImages/tmux02.png" alt></p>
+<h2 id="Tmux快捷指令"><a href="#Tmux快捷指令" class="headerlink" title="Tmux快捷指令"></a>Tmux快捷指令</h2><p>关于快捷指令，首先要认识到的是：tmux的所有指令，都包含同一个前缀，默认为<code>Ctrl+b</code>，输入完前缀过后，控制台激活，命令按键才能生效。前面tmux会话相关的操作中，我们共用到了两个快捷键<code>Ctrl+b</code> + <code>d</code>、<code>Ctrl+b</code> + <code>s</code>，但这仅仅是冰山一角，欲窥tmux庞大的快捷键体系，请看下表。</p>
+<p>表一：系统指令。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">前缀</th>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>?</code></td>
+<td style="text-align:center">显示快捷键帮助文档</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>d</code></td>
+<td style="text-align:center">断开当前会话</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>D</code></td>
+<td style="text-align:center">选择要断开的会话</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>Ctrl+z</code></td>
+<td style="text-align:center">挂起当前会话</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>r</code></td>
+<td style="text-align:center">强制重载当前会话</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>s</code></td>
+<td style="text-align:center">显示会话列表用于选择并切换</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>:</code></td>
+<td style="text-align:center">进入命令行模式，此时可直接输入<code>ls</code>等命令</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>[</code></td>
+<td style="text-align:center">进入复制模式，按<code>q</code>退出</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>]</code></td>
+<td style="text-align:center">粘贴复制模式中复制的文本</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>~</code></td>
+<td style="text-align:center">列出提示信息缓存</td>
+</tr>
+</tbody>
+</table>
+<p>表二：窗口（window）指令。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">前缀</th>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>c</code></td>
+<td style="text-align:center">新建窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>&amp;</code></td>
+<td style="text-align:center">关闭当前窗口（关闭前需输入<code>y</code> or <code>n</code>确认）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>0~9</code></td>
+<td style="text-align:center">切换到指定窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>p</code></td>
+<td style="text-align:center">切换到上一窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>n</code></td>
+<td style="text-align:center">切换到下一窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>w</code></td>
+<td style="text-align:center">打开窗口列表，用于且切换窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>,</code></td>
+<td style="text-align:center">重命名当前窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>.</code></td>
+<td style="text-align:center">修改当前窗口编号（适用于窗口重新排序）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>f</code></td>
+<td style="text-align:center">快速定位到窗口（输入关键字匹配窗口名称）</td>
+</tr>
+</tbody>
+</table>
+<p>表三：面板（pane）指令。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">前缀</th>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>&quot;</code></td>
+<td style="text-align:center">当前面板上下一分为二，下侧新建面板</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>%</code></td>
+<td style="text-align:center">当前面板左右一分为二，右侧新建面板</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>x</code></td>
+<td style="text-align:center">关闭当前面板（关闭前需输入<code>y</code> or <code>n</code>确认）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>z</code></td>
+<td style="text-align:center">最大化当前面板，再重复一次按键后恢复正常（v1.8版本新增）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>!</code></td>
+<td style="text-align:center">将当前面板移动到新的窗口打开（原窗口中存在两个及以上面板有效）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>;</code></td>
+<td style="text-align:center">切换到最后一次使用的面板</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>q</code></td>
+<td style="text-align:center">显示面板编号，在编号消失前输入对应的数字可切换到相应的面板</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>{</code></td>
+<td style="text-align:center">向前置换当前面板</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>}</code></td>
+<td style="text-align:center">向后置换当前面板</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>Ctrl+o</code></td>
+<td style="text-align:center">顺时针旋转当前窗口中的所有面板</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>方向键</code></td>
+<td style="text-align:center">移动光标切换面板</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>o</code></td>
+<td style="text-align:center">选择下一面板</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>空格键</code></td>
+<td style="text-align:center">在自带的面板布局中循环切换</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>Alt+方向键</code></td>
+<td style="text-align:center">以5个单元格为单位调整当前面板边缘</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>Ctrl+方向键</code></td>
+<td style="text-align:center">以1个单元格为单位调整当前面板边缘（Mac下被系统快捷键覆盖）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl+b</code></td>
+<td style="text-align:center"><code>t</code></td>
+<td style="text-align:center">显示时钟</td>
+</tr>
+</tbody>
+</table>
+<h2 id="保存Tmux会话"><a href="#保存Tmux会话" class="headerlink" title="保存Tmux会话"></a>保存Tmux会话</h2><p>信息时代，数据尤为重要。tmux保护现场的能力依赖于tmux进程，如果进程退出，则意味着会话数据的丢失，因此关机重启后，tmux中的会话将被清空，这不是我们想要见到的。幸运的是，目前有这样两款插件：<code>Tmux Resurrect</code> 和 <code>Tmux Continuum</code>，可以永久保存tmux会话（它们均适用于tmux v1.9及以上版本）。</p>
+<h3 id="Tmux-Resurrect"><a href="#Tmux-Resurrect" class="headerlink" title="Tmux Resurrect"></a>Tmux Resurrect</h3><p>Tmux Resurrect无须任何配置，就能够备份tmux会话中的各种细节，包括窗口、面板的顺序、布局、工作目录，运行程序等等数据。因此它能在系统重启后完全地恢复会话。由于其幂等的恢复机制，它不会试图去恢复一个已经存在的窗口或者面板，所以，即使你不小心多恢复了几次会话，它也不会出现问题，这样主动恢复时我们就不必担心手抖多按了一次。另外，如果你是<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RtdXhpbmF0b3IvdG11eGluYXRvcg==" title="https://github.com/tmuxinator/tmuxinator">tmuxinator<i class="fa fa-external-link"></i></span>用户，我也建议你迁移到 tmux-resurrect插件上来，具体请参考<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RtdXgtcGx1Z2lucy90bXV4LXJlc3VycmVjdC9ibG9iL21hc3Rlci9kb2NzL21pZ3JhdGluZ19mcm9tX3RtdXhpbmF0b3IubWQjbWlncmF0aW5nLWZyb20tdG11eGluYXRvcg==" title="https://github.com/tmux-plugins/tmux-resurrect/blob/master/docs/migrating_from_tmuxinator.md#migrating-from-tmuxinator">Migrating from <code>tmuxinator</code><i class="fa fa-external-link"></i></span>。</p>
+<p>Tmux Resurrec安装过程如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.tmux</span><br><span class="line">mkdir plugins</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/tmux-plugins/tmux-resurrect.git</span><br></pre></td></tr></table></figure>
+<p>安装后需在<code>~/.tmux.conf</code>中增加一行配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux</span><br></pre></td></tr></table></figure>
+<p>至此安装成功，按下<code>prefix + r</code>重载tmux配置。</p>
+<p>Tmux Resurrec提供如下两个操作：</p>
+<ul>
+<li><strong>保存</strong>，快捷指令是<code>prefix</code> + <code>Ctrl + s</code>，tmux状态栏在保存开始，保存后分别提示”Saving…”，”Tmux environment saved !”。</li>
+<li><strong>恢复</strong>，快捷指令是<code>prefix</code> + <code>Ctrl + r</code>，tmux状态栏在恢复开始，恢复后分别提示”Restoring…”，”Tmux restore complete !”。</li>
+</ul>
+<p>保存时，tmux会话的详细信息会以文本文件的格式保存到<code>~/.tmux/resurrect</code>目录，恢复时则从此处读取，由于数据文件是明文的，因此你完全可以自由管理或者编辑这些会话状态文件（如果备份频繁，记得定期清除历史备份）。</p>
+<p><strong>可选的配置</strong></p>
+<p>Tmux Resurrec本身是免配置开箱即用的，但同时也提供了如下选项以便修改其默认设置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g @resurrect-save <span class="string">'S'</span> <span class="comment"># 修改保存指令为S</span></span><br><span class="line"><span class="built_in">set</span> -g @resurrect-restore <span class="string">'R'</span> 修改恢复指令为R</span><br><span class="line"><span class="comment"># 修改会话数据的保持路径，此处不能使用除了$HOME, $HOSTNAME, ~之外的环境变量</span></span><br><span class="line"><span class="built_in">set</span> -g @resurrect-dir <span class="string">'/some/path'</span></span><br></pre></td></tr></table></figure>
+<p>默认情况下只有一个保守的列表项（即<code>vi vim nvim emacs man less more tail top htop irssi mutt</code>）可以恢复，对此 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RtdXgtcGx1Z2lucy90bXV4LXJlc3VycmVjdC9ibG9iL21hc3Rlci9kb2NzL3Jlc3RvcmluZ19wcm9ncmFtcy5tZA==" title="https://github.com/tmux-plugins/tmux-resurrect/blob/master/docs/restoring_programs.md">Restoring programs doc<i class="fa fa-external-link"></i></span> 解释了怎么去恢复额外的项目。</p>
+<p><strong>进阶的备份</strong></p>
+<p>除了基础备份外，Tmux Resurrec还提供<strong>进阶的备份功能</strong>，如下所示：</p>
+<ul>
+<li>恢复vim 和 neovim 会话</li>
+<li>恢复面板内容</li>
+<li>恢复shell的历史记录（实验性功能）</li>
+</ul>
+<p>进阶的备份功能默认不开启，需要特别配置。</p>
+<p>1）恢复vim 和 neovim 会话，需要完成如下两步：</p>
+<ul>
+<li><p>通过vim的vim-obsession插件保存vim/neovim会话。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.vim/bundle</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/tpope/vim-obsession.git</span><br><span class="line">vim -u NONE -c <span class="string">"helptags vim-obsession/doc"</span> -c q</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>~/.tmux.conf</code>中增加两行配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g @resurrect-strategy-vim <span class="string">'session'</span> <span class="comment"># for vim</span></span><br><span class="line"><span class="built_in">set</span> -g @resurrect-strategy-nvim <span class="string">'session'</span> <span class="comment"># for neovim</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>2）恢复面板内容，需在<code>~/.tmux.conf</code>中增加一行配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g @resurrect-capture-pane-contents <span class="string">'on'</span> <span class="comment"># 开启恢复面板内容功能</span></span><br></pre></td></tr></table></figure>
+<p>目前使用该功能时，请确保tmux的<code>default-command</code>没有包含<code>&amp;&amp;</code> 或者<code>||</code>操作符，否则将导致<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RtdXgtcGx1Z2lucy90bXV4LXJlc3VycmVjdC9pc3N1ZXMvOTg=" title="https://github.com/tmux-plugins/tmux-resurrect/issues/98">bug<i class="fa fa-external-link"></i></span>。（查看<code>default-command</code>的值，请使用命令<code>tmux show -g default-command</code>。）</p>
+<p>3）恢复shell的历史记录，需在<code>~/.tmux.conf</code>中增加一行配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g @resurrect-save-shell-history <span class="string">'on'</span></span><br></pre></td></tr></table></figure>
+<p>由于技术的限制，保存时，只有无前台任务运行的面板，它的shell历史记录才能被保存。</p>
+<h3 id="Tmux-Continuum"><a href="#Tmux-Continuum" class="headerlink" title="Tmux Continuum"></a>Tmux Continuum</h3><p>可能你嫌手动保存和恢复太过麻烦，别担心，这不是问题。Tmux Continuum 在 Tmux Resurrec的基础上更进一步，现在保存和恢复全部自动化了，如你所愿，可以无感使用tmux，不用再担心备份问题。</p>
+<p>Tmux Continuum安装过程如下所示（它依赖Tmux Resurrect，请保证已安装Tmux Resurrect插件）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.tmux/plugins</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/tmux-plugins/tmux-continuum.git</span><br></pre></td></tr></table></figure>
+<p>安装后需在<code>~/.tmux.conf</code>中增加一行配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux</span><br></pre></td></tr></table></figure>
+<p>Tmux Continuum默认每隔15mins备份一次，我设置的是一天一次：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g @continuum-save-interval <span class="string">'1440'</span></span><br></pre></td></tr></table></figure>
+<p><strong>关闭自动备份</strong>，只需设置时间间隔为 <code>0</code> 即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g @continuum-save-interval <span class="string">'0'</span></span><br></pre></td></tr></table></figure>
+<p>想要在<strong>tmux启动时就恢复最后一次保存的会话环境</strong>，需增加如下配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g @continuum-restore <span class="string">'on'</span> <span class="comment"># 启用自动恢复</span></span><br></pre></td></tr></table></figure>
+<p>如果不想要启动时自动恢复的功能了，直接移除上面这行就行。想要绝对确定自动恢复不会发生，就在用户根目录下创建一个<code>tmux_no_auto_restore</code>空文件（创建命令：<code>touch ~/tmux_no_auto_restore</code>），该文件存在时，自动恢复将不触发。</p>
+<p>对于tmux高级用户（可能就是你）而言，同时运行多个tmux服务器也是有可能的。你可能并不希望后面启用的几个tmux服务器自动恢复或者自动保存会话。因此Tmux Continuum会优先在第一个启用的tmux服务器中生效，随后启用的tmux服务器不再享受自动恢复或自动保存会话的待遇。</p>
+<p>实际上，不管Tmux Continuum功能有没有启用，或者多久保存一次，我们都有办法从状态栏知晓。Tmux Continuum提供了一个查看运行状态的插值<code>#{continuum_status}</code>，它支持<code>status-right</code> 和 <code>status-left</code>两种状态栏设置，如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g status-right <span class="string">'Continuum status: #&#123;continuum_status&#125;'</span></span><br></pre></td></tr></table></figure>
+<p>tmux运行时，<code>#{continuum_status}</code> 将显示保存的时间间隔（单位为分钟），此时状态栏会显示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Continuum status: 1440</span><br></pre></td></tr></table></figure>
+<p>如果其自动保存功能关闭了，那么状态栏会显示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Continuum status: off</span><br></pre></td></tr></table></figure>
+<p>借助Tmux Continuum插件，Mac重启时，我们甚至可以选择在<code>Terminal</code> 或者 <code>iTerm2</code> 中自动全屏启用tmux。</p>
+<p>为此，需在<code>~/.tmux.conf</code>中增加一行配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g @continuum-boot <span class="string">'on'</span></span><br></pre></td></tr></table></figure>
+<p>Mac下，自动启用tmux还支持如下选项：</p>
+<ul>
+<li><code>set -g @continuum-boot-options &#39;fullscreen&#39;</code> ，<code>Terminal</code>自动全屏，tmux命令在<code>Terminal</code>中执行。</li>
+<li><code>set -g @continuum-boot-options &#39;iterm&#39;</code> ， <code>iTerm2</code> 替换 <code>Terminal</code> 应用，tmux命令在<code>iTerm2</code>中执行。</li>
+<li><code>set -g @continuum-boot-options &#39;iterm,fullscreen&#39;</code>，<code>iTerm2</code>自动全屏，tmux命令在<code>iTerm2</code>中执行。</li>
+</ul>
+<p>Linux中则没有这些选项，它只能设置为自动启用tmux服务器。</p>
+<h3 id="Tpm"><a href="#Tpm" class="headerlink" title="Tpm"></a>Tpm</h3><p>以上，我们直接安装了tmux插件。这没有问题，可当插件越来越多时，我们就会需要统一的插件管理器。因此官方提供了tpm（支持tmux v1.9及以上版本）。</p>
+<p>tpm安装过程如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.tmux/plugins</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/tmux-plugins/tpm</span><br></pre></td></tr></table></figure>
+<p>安装后需在<code>~/.tmux.conf</code>中增加如下配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认需要引入的插件</span></span><br><span class="line"><span class="built_in">set</span> -g @plugin <span class="string">'tmux-plugins/tpm'</span></span><br><span class="line"><span class="built_in">set</span> -g @plugin <span class="string">'tmux-plugins/tmux-sensible'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 引入其他插件的示例</span></span><br><span class="line"><span class="comment"># set -g @plugin 'github_username/plugin_name' # 格式：github用户名/插件名</span></span><br><span class="line"><span class="comment"># set -g @plugin 'git@github.com/user/plugin' # 格式：git@github插件地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化tmux插件管理器(保证这行在~/.tmux.conf的非常靠后的位置)</span></span><br><span class="line">run <span class="string">'~/.tmux/plugins/tpm/tpm'</span></span><br></pre></td></tr></table></figure>
+<p>然后按下<code>prefix + r</code>重载tmux配置，使得tpm生效。</p>
+<p>基于tpm插件管理器，<strong>安装插件</strong>仅需如下两步：</p>
+<ol>
+<li>在<code>~/.tmux.conf</code>中增加新的插件，如<code>set -g @plugin &#39;...&#39;</code>。</li>
+<li>按下<code>prefix</code> + <code>I</code>键下载插件，并刷新tmux环境。</li>
+</ol>
+<p><strong>更新插件</strong>，请按下<code>prefix</code> + <code>U</code> 键，选择待更新的插件后，回车确认并更新。</p>
+<p><strong>卸载插件</strong>，需如下两步：</p>
+<ol>
+<li>在<code>~/.tmux.conf</code>中移除插件所在行。</li>
+<li>按下<code>prefix</code> + <code>alt</code> + <code>u</code> 移除插件。</li>
+</ol>
+<h2 id="会话共享"><a href="#会话共享" class="headerlink" title="会话共享"></a>会话共享</h2><h3 id="结对编程"><a href="#结对编程" class="headerlink" title="结对编程"></a>结对编程</h3><p>tmux多会话连接实时同步的功能，使得结对编程成为了可能，这也是开发者最喜欢的功能之一。现在就差一步了，就是借助tmate把tmux会话分享出去。</p>
+<p>tmate是tmux的管理工具，它可以轻松的创建tmux会话，并且自动生成ssh链接。</p>
+<p>安装tmate</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tmate</span><br></pre></td></tr></table></figure>
+<p>使用tmate新建一个tmux会话</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmate</span><br></pre></td></tr></table></figure>
+<p>此时屏幕下方会显示ssh url，如下所示：<img src="http://louiszhai.github.io/docImages/tmux07.png" alt></p>
+<p>查看tmate生成的ssh链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmate show-messages</span><br></pre></td></tr></table></figure>
+<p>生成的ssh url如下所示，其中一个为只读，另一个可编辑。</p>
+<p><img src="http://louiszhai.github.io/docImages/tmux08.png" alt></p>
+<h3 id="共享账号-amp-组会话"><a href="#共享账号-amp-组会话" class="headerlink" title="共享账号&amp;组会话"></a>共享账号&amp;组会话</h3><p>使用tmate远程共享tmux会话，受制于多方的网络质量，必然会存在些许延迟。如果共享会话的多方拥有同一个远程服务器的账号，那么我们可以使用<code>组会话</code>解决这个问题。</p>
+<p>先在远程服务器上新建一个公共会话，命名为<code>groupSession</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s groupSession</span><br></pre></td></tr></table></figure>
+<p>其他用户不去直接连接这个会话，而是通过创建一个新的会话来加入上面的公共会话<code>groupSession</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -t groupSession -s otherSession</span><br></pre></td></tr></table></figure>
+<p>此时两个用户都可以在同一个会话里操作，就会好像第二个用户连接到了<code>groupSession</code>的会话一样。此时两个用户都可以创建新建的窗口，新窗口的内容依然会实时同步，但是其中一个用户切换到其它窗口，对另外一个用户没有任何影响，因此在这个共享的组会话中，用户各自的操作可以通过新建窗口来执行。即使第二个用户关闭<code>otherSession</code>会话，共享会话<code>groupSession</code>依然存在。</p>
+<p>组会话在共享的同时，又保留了相对的独立，非常适合结对编程场景，它是结对编程最简单的方式，如果账号不能共享，我们就要使用下面的方案了。</p>
+<h3 id="独立账号-amp-Socket共享会话"><a href="#独立账号-amp-Socket共享会话" class="headerlink" title="独立账号&amp;Socket共享会话"></a>独立账号&amp;Socket共享会话</h3><p>开始之前我们需要确保用户对远程服务器上同一个目录拥有相同的读写权限，假设这个目录为<code>/var/tmux/</code>。</p>
+<p>使用new-session（简写new）创建会话时，使用的是默认的socket位置，默认socket无法操作，所以我们需要创建一个指定socket文件的会话。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux -S /var/tmux/sharefile</span><br></pre></td></tr></table></figure>
+<p>另一个用户进入时，需要指定socket文件加入会话。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux -S /var/tmux/sharefile attach</span><br></pre></td></tr></table></figure>
+<p>这样，两个不同的用户就可以共享同一个会话了。</p>
+<p>通常情况下，不同的用户使用不同的配置文件来创建会话，但是，使用指定socket文件创建的tmux会话，会话加载的是第一个创建会话的用户的<code>~/.tmux.conf</code>配置文件，随后加入会话的其他用户，依然使用同一份配置文件。</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="需要的时候把-iterm2-呼出来-不需要的时候自动隐藏"><a href="#需要的时候把-iterm2-呼出来-不需要的时候自动隐藏" class="headerlink" title="需要的时候把 iterm2 呼出来,不需要的时候自动隐藏"></a>需要的时候把 iterm2 呼出来,不需要的时候自动隐藏</h2><p><code>iTerm2 &gt; Preferences &gt; Keys</code>，左侧 <code>Hotkey</code> 选项 勾选 <code>Show/hide iTerm2 with a system-wide hotkey</code>，设置快捷键</p>
+<h2 id="复用上个会话的目录"><a href="#复用上个会话的目录" class="headerlink" title="复用上个会话的目录"></a>复用上个会话的目录</h2><p><code>iTerm2 &gt; Preferences &gt; Profiles &gt; Working Directory &gt; Reuse previous session’s directory</code></p>
+<h2 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> zsh-config=<span class="string">'vim ~/.zshrc'</span></span><br></pre></td></tr></table></figure>
+<h2 id="终端下命令行下用-Sublime、vscode、atom-打开文件夹或目录"><a href="#终端下命令行下用-Sublime、vscode、atom-打开文件夹或目录" class="headerlink" title="终端下命令行下用 Sublime、vscode、atom 打开文件夹或目录"></a>终端下命令行下用 Sublime、vscode、atom 打开文件夹或目录</h2><h3 id="vscode-命令行调用"><a href="#vscode-命令行调用" class="headerlink" title="vscode 命令行调用"></a>vscode 命令行调用</h3><p>VS Code 提供了一个 <code>code</code> 命令，用来在 shell 环境下调用编辑器。使用快捷键 <code>⇧⌘P</code>（或 F1） 唤起命令面板，输入以下命令即可完成安装。</p>
+<p><img src="https://image.xuebin.me/shell_command.png" alt="shell command"></p>
+<ul>
+<li><p>code 命令后可接多个路径或文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code pro6.js pro6.scss ../</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件对比：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code -d new-file.js old-file.js</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开文件并跳至指定行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code -g source/cn/static/global/tracker.js:15</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>更多 code 命令行使用方法，参见《<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcy9lZGl0b3IvY29kZWJhc2ljcyNfYWRkaXRpb25hbC1jb21tYW5kLWxpbmUtYXJndW1lbnRz" title="https://code.visualstudio.com/docs/editor/codebasics#_additional-command-line-arguments">Additional Command line arguments<i class="fa fa-external-link"></i></span>》。</p>
+</blockquote>
+<h3 id="手动添加"><a href="#手动添加" class="headerlink" title="手动添加"></a>手动添加</h3><ol>
+<li><p>打开终端，随便一个目录输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查是否有<code>.zshrc</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.xuebin.me/zshrc.png" alt=".zshrc文件"></p>
+</li>
+</ol>
+<p>1)  添加启动命令</p>
+<pre><code><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano .zshrc</span><br></pre></td></tr></table></figure>
+
+
+在文件末尾加上别名：
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias atom='/Applications/Atom.app/Contents/MacOS/Atom'</span><br><span class="line">alias subl='/Applications/SublimeText.app/Contents/SharedSupport/bin/subl'</span><br><span class="line">alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'</span><br></pre></td></tr></table></figure>
+
+
+`⌘ + X` 再输入 `y` 保存，重启 iterm2。
+</code></pre><blockquote>
+<p>查找 APP 路径：</p>
+<p><img src="https://image.xuebin.me/app%E6%98%BE%E7%A4%BA%E5%8C%85%E5%86%85%E5%AE%B9.png" alt="finder-应用程序-右键“显示包内容”"></p>
+</blockquote>
+<h2 id="vim配色"><a href="#vim配色" class="headerlink" title="vim配色"></a>vim配色</h2><p>终端输入<code>vim ~/.vimrc</code>，设置内容如下，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">syntax on</span><br><span class="line">set number</span><br><span class="line">set ruler</span><br></pre></td></tr></table></figure>
+<h1 id="Prezto"><a href="#Prezto" class="headerlink" title="Prezto"></a>Prezto</h1><p>Prezto是Zsh的配置框架，作用是简化Zsh的配置难度，Prezto的使用可以参考这两篇文章：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NvcmluLWlvbmVzY3UvcHJlenRv" title="https://github.com/sorin-ionescu/prezto">prezto官网<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9taWtlYnVzcy5jb20vMjAxNC8wNC8wNy9jdXN0b21pemluZy1wcmV6dG8v" title="https://mikebuss.com/2014/04/07/customizing-prezto/">Customizing Your Prezto Prompt<i class="fa fa-external-link"></i></span>。</p>
+<p>根据第一篇文章安装好Prezto后，需要按需配置Prezto，配置文件是~/.zpreztorc文件，将历史记录补全、语法高亮、git等插件的功能打开，另外在选择主题的时候，可以根据命令<code>prompt -l</code>列举出所有的主题，根据<code>prompt -p themename</code>预览主题的样式。我使用的就是它经典的主题sorin，其他的主题没有尝试过，你可以根据自己的喜好安装和配置。</p>
+<h1 id="Spaceship-ZSH"><a href="#Spaceship-ZSH" class="headerlink" title="Spaceship ZSH"></a><span class="exturl" data-url="aHR0cHM6Ly9kZW55c2Rvdmhhbi5jb20vc3BhY2VzaGlwLXByb21wdC8=" title="https://denysdovhan.com/spaceship-prompt/">Spaceship ZSH<i class="fa fa-external-link"></i></span></h1><h1 id="powerlevel9k主题"><a href="#powerlevel9k主题" class="headerlink" title="powerlevel9k主题"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JoaWxidXJuL3Bvd2VybGV2ZWw5aw==" title="powerlevel9k">powerlevel9k<i class="fa fa-external-link"></i></span>主题</h1><p><img src="https://camo.githubusercontent.com/31da002de611cfef95f6daaa8b1baedef4079703/687474703a2f2f6268696c6275726e2e6f72672f636f6e74656e742f696d616765732f323031352f30312f706c396b2d696d70726f7665642e706e67" alt></p>
+<h2 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h2><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JoaWxidXJuL3Bvd2VybGV2ZWw5ay93aWtpL1N0eWxpemluZy1Zb3VyLVByb21wdA==" title="https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt">Stylizing Your Prompt<i class="fa fa-external-link"></i></span></p>
+<h2 id="其他人的配置"><a href="#其他人的配置" class="headerlink" title="其他人的配置"></a>其他人的配置</h2><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JoaWxidXJuL3Bvd2VybGV2ZWw5ay93aWtpL1Nob3ctT2ZmLVlvdXItQ29uZmln" title="https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config">Show Off Your Config<i class="fa fa-external-link"></i></span></p>
+<h2 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="comment"># 以下是 .zshrc 配置信息</span></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If you come from bash you might have to change your $PATH.</span></span><br><span class="line"><span class="comment"># export PATH=$HOME/bin:/usr/local/bin:$PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Path to your oh-my-zsh installation.</span></span><br><span class="line"><span class="built_in">export</span> ZSH=/Users/leo/.oh-my-zsh</span><br><span class="line"><span class="built_in">export</span> DEFAULT_USER=<span class="string">"Leo"</span></span><br><span class="line"><span class="built_in">export</span> LPASS_AGENT_TIMEOUT=0</span><br><span class="line"><span class="built_in">export</span> TERM=<span class="string">"xterm-256color"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 代理</span></span><br><span class="line"><span class="comment"># export https_proxy=http://127.0.0.1:7890</span></span><br><span class="line"><span class="comment"># export http_proxy=http://127.0.0.1:7890</span></span><br><span class="line"><span class="comment"># export all_proxy=socks5://127.0.0.1:7891</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set name of the theme to load. Optionally, if you set this to "random"</span></span><br><span class="line"><span class="comment"># it'll load a random theme each time that oh-my-zsh is loaded.</span></span><br><span class="line"><span class="comment"># See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</span></span><br><span class="line"><span class="comment"># 主题</span></span><br><span class="line"><span class="comment"># ZSH_THEME="robbyrussell"</span></span><br><span class="line"><span class="comment"># ZSH_THEME="agnoster"</span></span><br><span class="line"><span class="comment"># ZSH_THEME="powerline"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="comment"># powerlevel9k 主题</span></span><br><span class="line"><span class="comment"># https://github.com/bhilburn/powerlevel9k</span></span><br><span class="line"><span class="comment"># https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#v1rguls-configuration</span></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line">ZSH_THEME=<span class="string">"powerlevel9k/powerlevel9k"</span></span><br><span class="line"><span class="comment"># 调整字体模式</span></span><br><span class="line">POWERLEVEL9K_MODE=<span class="string">'nerdfont-complete'</span></span><br><span class="line"><span class="comment"># 左侧提示符显示内容:系统时间(time)、root权限指示(root_indicator)、username and host(context)、当前工作目录(dir)、目录写入权限(dir_writable)、git信息(vcs)</span></span><br><span class="line">POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time context root_indicator dir dir_writable vcs)</span><br><span class="line"><span class="comment"># 右侧提示符显示内容:上一命令执行状态(status)、后台任务个数(background_jobs)、上一命令执行时间(command_execution_time)、可用RAM(ram)、系统的负载均值(load)</span></span><br><span class="line">POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time ram load)</span><br><span class="line"><span class="comment"># context也就是你的用户名以及终端名称，默认是 `%n@%m`。 </span></span><br><span class="line">POWERLEVEL9K_CONTEXT_TEMPLATE=<span class="string">"Leo"</span></span><br><span class="line"><span class="comment"># 低于这个值的命令执行时间不显示，0 也就是命令执行时间多长都显示</span></span><br><span class="line">POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=<span class="string">"1"</span></span><br><span class="line"><span class="comment"># 时间格式化</span></span><br><span class="line">POWERLEVEL9K_TIME_FORMAT=<span class="string">"%D&#123;%H:%M&#125;"</span></span><br><span class="line"><span class="comment"># 显示分支版本</span></span><br><span class="line">POWERLEVEL9K_SHOW_CHANGESET=<span class="literal">true</span></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="comment"># powerlevel9k-配置结束</span></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to use case-sensitive completion.</span></span><br><span class="line"><span class="comment"># 取消注释以下行使用区分大小写的完成。</span></span><br><span class="line"><span class="comment"># CASE_SENSITIVE="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to use hyphen-insensitive completion. Case</span></span><br><span class="line"><span class="comment"># sensitive completion must be off. _ and - will be interchangeable.</span></span><br><span class="line"><span class="comment"># 取消注释下面的行以使用连字符不敏感的完成。区分大小写的完成必须关闭。_ 和-将是可互换的。</span></span><br><span class="line"><span class="comment"># HYPHEN_INSENSITIVE="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to disable bi-weekly auto-update checks.</span></span><br><span class="line"><span class="comment"># 取消注释以下行禁用每两周检查自动升级。</span></span><br><span class="line"><span class="comment"># DISABLE_AUTO_UPDATE="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to change how often to auto-update (in days).</span></span><br><span class="line"><span class="comment"># 取消注释以下行来改变频率自动更新(天)。</span></span><br><span class="line"><span class="comment"># export UPDATE_ZSH_DAYS=13</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to disable colors in ls.</span></span><br><span class="line"><span class="comment"># 取消注释以下行ls禁用的颜色。</span></span><br><span class="line"><span class="comment"># DISABLE_LS_COLORS="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to disable auto-setting terminal title.</span></span><br><span class="line"><span class="comment"># 取消注释以下行禁用自动对焦功能终端标题。</span></span><br><span class="line"><span class="comment"># DISABLE_AUTO_TITLE="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to enable command auto-correction.</span></span><br><span class="line"><span class="comment"># 取消注释以下行来启用命令自动校对功能。</span></span><br><span class="line"><span class="comment"># ENABLE_CORRECTION="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line to display red dots whilst waiting for completion.</span></span><br><span class="line"><span class="comment"># 取消注释以下行来显示红点同时等待完成。</span></span><br><span class="line">COMPLETION_WAITING_DOTS=<span class="string">"true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line if you want to disable marking untracked files</span></span><br><span class="line"><span class="comment"># under VCS as dirty. This makes repository status check for large repositories</span></span><br><span class="line"><span class="comment"># much, much faster.</span></span><br><span class="line"><span class="comment"># 如果要禁用在 VCS 下标记未跟踪文件为脏, 请取消注释以下行。这使得存储库状态对大型存储库的检查速度要快得多。</span></span><br><span class="line"><span class="comment"># DISABLE_UNTRACKED_FILES_DIRTY="true"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line if you want to change the command execution time</span></span><br><span class="line"><span class="comment"># stamp shown in the history command output.</span></span><br><span class="line"><span class="comment"># The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"</span></span><br><span class="line"><span class="comment"># 如果要更改历史命令输出中显示的命令执行时间戳, 请取消注释以下行。可选的三格式:  "mm/dd/日/日 " |  "dd.mm.yyyy " |  "日"-mm-dd  "</span></span><br><span class="line"><span class="comment"># HIST_STAMPS="mm/dd/yyyy"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Would you like to use another custom folder than $ZSH/custom?</span></span><br><span class="line"><span class="comment"># 是否要使用其他自定义文件夹而不是 $ZSH/自定义？</span></span><br><span class="line"><span class="comment"># ZSH_CUSTOM=/path/to/new-custom-folder</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)</span></span><br><span class="line"><span class="comment"># Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span></span><br><span class="line"><span class="comment"># Example format: plugins=(rails git textmate ruby lighthouse)</span></span><br><span class="line"><span class="comment"># Add wisely, as too many plugins slow down shell startup.</span></span><br><span class="line">plugins=(zsh-syntax-highlighting zsh-autosuggestions z brew node npm osx git git-extras)</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> <span class="variable">$ZSH</span>/oh-my-zsh.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> <span class="variable">$HOME</span>/.bash_profile <span class="comment"># 环境变量</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User configuration</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># export MANPATH="/usr/local/man:$MANPATH"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># You may need to manually set your language environment</span></span><br><span class="line"><span class="comment"># export LANG=en_US.UTF-8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Preferred editor for local and remote sessions</span></span><br><span class="line"><span class="comment"># if [[ -n $SSH_CONNECTION ]]; then</span></span><br><span class="line"><span class="comment">#   export EDITOR='vim'</span></span><br><span class="line"><span class="comment"># else</span></span><br><span class="line"><span class="comment">#   export EDITOR='mvim'</span></span><br><span class="line"><span class="comment"># fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Compilation flags</span></span><br><span class="line"><span class="comment"># export ARCHFLAGS="-arch x86_64"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ssh</span></span><br><span class="line"><span class="comment"># export SSH_KEY_PATH="~/.ssh/rsa_id"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set personal aliases, overriding those provided by oh-my-zsh libs,</span></span><br><span class="line"><span class="comment"># plugins, and themes. Aliases can be placed here, though oh-my-zsh</span></span><br><span class="line"><span class="comment"># users are encouraged to define aliases within the ZSH_CUSTOM folder.</span></span><br><span class="line"><span class="comment"># For a full list of active aliases, run `alias`.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example aliases</span></span><br><span class="line"><span class="comment"># alias zshconfig="mate ~/.zshrc"</span></span><br><span class="line"><span class="comment"># alias ohmyzsh="mate ~/.oh-my-zsh"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="comment"># 别名</span></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="built_in">alias</span> code=<span class="string">'/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'</span></span><br><span class="line"><span class="built_in">alias</span> zsh-config=<span class="string">'code ~/.zshrc'</span></span><br><span class="line"><span class="built_in">alias</span> zsh-badges=<span class="string">'code ~/.badges'</span></span><br><span class="line"><span class="built_in">alias</span> nginx-config=<span class="string">'code /usr/local/etc/nginx/nginx.conf'</span></span><br><span class="line"><span class="built_in">alias</span> nginx-services=<span class="string">'cd /usr/local/etc/nginx/servers/ &amp;&amp; ls'</span></span><br><span class="line"><span class="built_in">alias</span> nginx-log=<span class="string">'cd /usr/local/Cellar/nginx/ &amp;&amp; ls'</span></span><br><span class="line"><span class="built_in">alias</span> npm-registry-zpfe=<span class="string">'npm config set registry http://npm.zhaopin.com'</span></span><br><span class="line"><span class="built_in">alias</span> npm-registry-npm=<span class="string">'npm config set registry https://registry.npmjs.org/'</span></span><br><span class="line"><span class="built_in">alias</span> glog=<span class="string">"git log --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --date=relative"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="comment"># 别名-配置结束</span></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="comment"># badge徽标</span></span><br><span class="line"><span class="comment"># 徽标配置文件：~/.badges</span></span><br><span class="line"><span class="comment">#   /Users/leo/OneDrive                                                📦</span></span><br><span class="line"><span class="comment">#   /Users/leo                                                         🏠</span></span><br><span class="line"><span class="comment"># Profiles Badge Text</span></span><br><span class="line"><span class="comment">#   \(user.badge) \n \(session.name) \n \(session.path) \n \(session.username)@\(session.hostname)</span></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">iterm2_print_user_vars</span></span>() &#123;</span><br><span class="line">  iterm2_set_user_var badge $(dir_badges)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">dir_badges</span></span>() &#123;</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">read</span> directory badge || [[ -n <span class="string">"<span class="variable">$directory</span>"</span> ]]</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$PWD</span>"</span> == <span class="variable">$directory</span>* ]]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="variable">$badge</span></span><br><span class="line">            <span class="built_in">break</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">done</span> &lt; ~/.badges</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="comment"># badge徽标-配置结束</span></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span> -e <span class="string">"<span class="variable">$&#123;HOME&#125;</span>/.iterm2_shell_integration.zsh"</span> &amp;&amp; <span class="built_in">source</span> <span class="string">"<span class="variable">$&#123;HOME&#125;</span>/.iterm2_shell_integration.zsh"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="comment"># Auto add env parameter $PROMPT_COMMAND when use non-Linux tty login by ssh.</span></span><br><span class="line"><span class="comment"># =======================================================================================================================================</span></span><br><span class="line"><span class="comment"># export PROMPT_COMMAND='echo -ne "\033]0;$&#123;USER&#125;@$&#123;HOSTNAME&#125;: $&#123;PWD&#125;\007"'</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$SSH_CONNECTION</span>"</span> != <span class="string">''</span> -a <span class="string">"<span class="variable">$TERM</span>"</span> != <span class="string">'linux'</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">declare</span> -a HOSTIP</span><br><span class="line">    HOSTIP=`<span class="built_in">echo</span> <span class="variable">$SSH_CONNECTION</span> |awk <span class="string">'&#123;print $3&#125;'</span>`</span><br><span class="line">    <span class="built_in">export</span> PROMPT_COMMAND=<span class="string">'echo -ne "\033]0;$&#123;USER&#125;@$HOSTIP:[$&#123;HOSTNAME%%.*&#125;]:$&#123;PWD/#$HOME/~&#125; \007"'</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment">###-tns-completion-start-###</span></span><br><span class="line"><span class="keyword">if</span> [ -f /Users/leo/.tnsrc ]; <span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">source</span> /Users/leo/.tnsrc </span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment">###-tns-completion-end-###</span></span><br></pre></td></tr></table></figure>
+<p>如果图标显示不出来可以进入 iTerm 的设置 &gt; Profiles &gt; Text &gt; Change Font &gt; 选择 <code>Hack Nerd Font</code> 字体 Regular 大小 18pt，完成后重新启动 iTerm ，设置完成。</p>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><blockquote>
+<p>打开配置文件：<code>~/.zshrc</code></p>
+</blockquote>
+<ul>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3d0aW5nL2F1dG9qdW1w" title="https://github.com/wting/autojump">autojump<i class="fa fa-external-link"></i></span>：快速切换目录</p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3J1cGEveg==" title="https://github.com/rupa/z">z<i class="fa fa-external-link"></i></span>: 功能同autojump，比autojump更轻量更快</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install z</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2019/1/15/168516fb5ec8eadc?imageslim" alt></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2p1bmVndW5uL2Z6Zg==" title="https://github.com/junegunn/fzf">fzf<i class="fa fa-external-link"></i></span>: 快速模糊搜寻器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install fzf</span><br></pre></td></tr></table></figure>
+<p>在命令行的任何地方按下 <code>CTRL-T</code>, <code>CTRL-R</code>, and <code>ALT-C</code> (bash, zsh, fish)，就可以开启交互式模糊搜索界面，递归搜索当前目录下的文件。输入搜索项后，上、下键选择结果，回车上屏：<img src="https://user-gold-cdn.xitu.io/2019/1/15/168516fbb0f385c8?imageslim" alt></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3pzaC11c2Vycy96c2gtc3ludGF4LWhpZ2hsaWdodGluZw==" title="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting<i class="fa fa-external-link"></i></span>：zsh 可用命令高亮</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3pzaC11c2Vycy96c2gtYXV0b3N1Z2dlc3Rpb25z" title="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions<i class="fa fa-external-link"></i></span>：命令自动提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$ZSH_CUSTOM</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81YzNkY2VjZWYyNjVkYTYxNjMwMjRiMWM=" title="https://juejin.im/post/5c3dcecef265da6163024b1c">优秀的命令行工具整理<i class="fa fa-external-link"></i></span></p>
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81YzQzZDkxY2YyNjVkYTYxMzM1NmQ5MGM=" title="https://juejin.im/post/5c43d91cf265da613356d90c">开发工具分享<i class="fa fa-external-link"></i></span></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://image.xuebin.me/wechatpay.JPG" alt="Leo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://image.xuebin.me/alipay.JPG" alt="Leo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Leo</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://xuebin.me/posts/14eb7497.html" title="Mac终端-iTerm2">https://xuebin.me/posts/14eb7497.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mac/" rel="tag"># mac</a>
+          
+            <a href="/tags/终端/" rel="tag"># 终端</a>
+          
+            <a href="/tags/iTerm2/" rel="tag"># iTerm2</a>
+          
+            <a href="/tags/zsh/" rel="tag"># zsh</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/df41afa4.html" rel="next" title="scss">
+                <i class="fa fa-chevron-left"></i> scss
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/6f2ded1f.html" rel="prev" title="MacOS基础命令">
+                MacOS基础命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460" alt="Leo">
+            
+              <p class="site-author-name" itemprop="name">Leo</p>
+              <div class="site-description motion-element" itemprop="description">😆</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93cGEucXEuY29tL21zZ3JkP3Y9MyZ1aW49NjUyODg5NTU5JnNpdGU9cXEmbWVudT15ZXM=" title="QQ &rarr; https://wpa.qq.com/msgrd?v=3&uin=652889559&site=qq&menu=yes"><i class="fa fa-fw fa-qq"></i>QQ</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8xMzc4MjUyNjM3" title="微博 &rarr; https://weibo.com/u/1378252637"><i class="fa fa-fw fa-weibo"></i>微博</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:leo@xuebin.me" title="E-Mail &rarr; mailto:leo@xuebin.me"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="GitHub &rarr; https://github.com/MrLeo"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly96aGFuZ21pYW8uY2Mv" title="https://zhangmiao.cc/">ZM</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9sZW8tanVseS5naXRodWIuaW8v" title="https://leo-july.github.io/">july</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#智能选中"><span class="nav-number">1.</span> <span class="nav-text">智能选中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#巧用-⌘-键"><span class="nav-number">2.</span> <span class="nav-text">巧用 ⌘ 键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快捷键"><span class="nav-number">3.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标签"><span class="nav-number">3.1.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分屏"><span class="nav-number">3.2.</span> <span class="nav-text">分屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">3.3.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自带有哪些很实用的功能-快捷键"><span class="nav-number">3.4.</span> <span class="nav-text">自带有哪些很实用的功能/快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的一些快捷键"><span class="nav-number">3.5.</span> <span class="nav-text">常用的一些快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标记跳转"><span class="nav-number">3.6.</span> <span class="nav-text">标记跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选中即复制"><span class="nav-number">3.7.</span> <span class="nav-text">选中即复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剪切历史"><span class="nav-number">3.8.</span> <span class="nav-text">剪切历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#及时回放"><span class="nav-number">3.9.</span> <span class="nav-text">及时回放</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#oh-my-zsh"><span class="nav-number">4.</span> <span class="nav-text">oh-my-zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#智能补全"><span class="nav-number">4.1.</span> <span class="nav-text">智能补全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#智能切换目录"><span class="nav-number">4.2.</span> <span class="nav-text">智能切换目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tmux"><span class="nav-number">5.</span> <span class="nav-text">Tmux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#会话"><span class="nav-number">5.1.</span> <span class="nav-text">会话</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建会话"><span class="nav-number">5.1.1.</span> <span class="nav-text">新建会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断开当前会话"><span class="nav-number">5.1.2.</span> <span class="nav-text">断开当前会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入之前的会话"><span class="nav-number">5.1.3.</span> <span class="nav-text">进入之前的会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭会话"><span class="nav-number">5.1.4.</span> <span class="nav-text">关闭会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看所有的会话"><span class="nav-number">5.1.5.</span> <span class="nav-text">查看所有的会话</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tmux快捷指令"><span class="nav-number">5.2.</span> <span class="nav-text">Tmux快捷指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存Tmux会话"><span class="nav-number">5.3.</span> <span class="nav-text">保存Tmux会话</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tmux-Resurrect"><span class="nav-number">5.3.1.</span> <span class="nav-text">Tmux Resurrect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tmux-Continuum"><span class="nav-number">5.3.2.</span> <span class="nav-text">Tmux Continuum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tpm"><span class="nav-number">5.3.3.</span> <span class="nav-text">Tpm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#会话共享"><span class="nav-number">5.4.</span> <span class="nav-text">会话共享</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结对编程"><span class="nav-number">5.4.1.</span> <span class="nav-text">结对编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享账号-amp-组会话"><span class="nav-number">5.4.2.</span> <span class="nav-text">共享账号&amp;组会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立账号-amp-Socket共享会话"><span class="nav-number">5.4.3.</span> <span class="nav-text">独立账号&amp;Socket共享会话</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">6.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要的时候把-iterm2-呼出来-不需要的时候自动隐藏"><span class="nav-number">6.1.</span> <span class="nav-text">需要的时候把 iterm2 呼出来,不需要的时候自动隐藏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复用上个会话的目录"><span class="nav-number">6.2.</span> <span class="nav-text">复用上个会话的目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#别名"><span class="nav-number">6.3.</span> <span class="nav-text">别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端下命令行下用-Sublime、vscode、atom-打开文件夹或目录"><span class="nav-number">6.4.</span> <span class="nav-text">终端下命令行下用 Sublime、vscode、atom 打开文件夹或目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode-命令行调用"><span class="nav-number">6.4.1.</span> <span class="nav-text">vscode 命令行调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动添加"><span class="nav-number">6.4.2.</span> <span class="nav-text">手动添加</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim配色"><span class="nav-number">6.5.</span> <span class="nav-text">vim配色</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Prezto"><span class="nav-number">7.</span> <span class="nav-text">Prezto</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spaceship-ZSH"><span class="nav-number">8.</span> <span class="nav-text">Spaceship ZSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#powerlevel9k主题"><span class="nav-number">9.</span> <span class="nav-text">powerlevel9k主题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置项"><span class="nav-number">9.1.</span> <span class="nav-text">配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他人的配置"><span class="nav-number">9.2.</span> <span class="nav-text">其他人的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的配置"><span class="nav-number">9.3.</span> <span class="nav-text">我的配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件"><span class="nav-number">10.</span> <span class="nav-text">插件</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1263395414&web_id=1263395414"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+
+
+
+  
+
+
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/fastclick@1/lib/fastclick.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery-lazyload@1/jquery.lazyload.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/exturl.js?v=7.0.1"></script>
+
+
+  
+  
+  
+    
+  
+
+  
+
+  
+  
+  
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://xuebin.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://xuebin.me/posts/14eb7497.html";
+    this.page.identifier = "posts/14eb7497.html";
+    this.page.title = 'Mac终端-iTerm2';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://xuebin.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz',
+                'X-LC-Key': 'eYX7CBXn2T7iUGa9LAUnIt9q',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+<style>
+.pdfobject-container {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+}
+</style>
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+</body>
+</html>

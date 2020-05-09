@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/han-css@3/dist/han.min.css">
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true,"dimmer":true},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '3W9IAI9QUW',
+      apiKey: '',
+      indexName: 'mr-leo-blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="UTF8编码函数1234567891011121314151617181920212223242526272829303132//#region UTF8编码函数function URLEncode(Str) &amp;#123;    if (Str == null || Str == &quot;&quot;)        return &quot;&quot;;    var newStr = &quot;&quot;;    function toCa">
+<meta name="keywords" content="dev,代码片段,javascript,加密&amp;解密,编码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用JS加密编码算法">
+<meta property="og:url" content="https://xuebin.me/posts/e3043b41.html">
+<meta property="og:site_name" content="♌">
+<meta property="og:description" content="UTF8编码函数1234567891011121314151617181920212223242526272829303132//#region UTF8编码函数function URLEncode(Str) &amp;#123;    if (Str == null || Str == &quot;&quot;)        return &quot;&quot;;    var newStr = &quot;&quot;;    function toCa">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-30T02:33:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用JS加密编码算法">
+<meta name="twitter:description" content="UTF8编码函数1234567891011121314151617181920212223242526272829303132//#region UTF8编码函数function URLEncode(Str) &amp;#123;    if (Str == null || Str == &quot;&quot;)        return &quot;&quot;;    var newStr = &quot;&quot;;    function toCa">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="♌" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://xuebin.me/posts/e3043b41.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>常用JS加密编码算法 | ♌</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1706cfef7a8fd27b12633a699c2f75c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">♌</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Mr. Leo</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">26</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">142</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">138</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xuebin.me/posts/e3043b41.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo">
+      <meta itemprop="description" content="😆">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="♌">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">常用JS加密编码算法
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-30 10:33:05" itemprop="dateCreated datePublished" datetime="2018-01-30T10:33:05+08:00">2018-01-30</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/代码片段/" itemprop="url" rel="index"><span itemprop="name">代码片段</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/代码片段/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/e3043b41.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://xuebin.me/posts/e3043b41.html" itemprop="commentCount">0</span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/e3043b41.html" class="leancloud_visitors" data-flag-title="常用JS加密编码算法">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><a id="more"></a>
+<h1 id="UTF8编码函数"><a href="#UTF8编码函数" class="headerlink" title="UTF8编码函数"></a>UTF8编码函数</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#region UTF8编码函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">URLEncode</span>(<span class="params">Str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Str == <span class="literal">null</span> || Str == <span class="string">""</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> newStr = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">toCase</span>(<span class="params">sStr</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sStr.toString(<span class="number">16</span>).toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, icode, len = Str.length; i &lt; len; i++) &#123;</span><br><span class="line">        icode = Str.charCodeAt(i);</span><br><span class="line">        <span class="keyword">if</span> (icode &lt; <span class="number">0x10</span>)</span><br><span class="line">            newStr += <span class="string">"%0"</span> + icode.toString(<span class="number">16</span>).toUpperCase();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (icode &lt; <span class="number">0x80</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (icode == <span class="number">0x20</span>)</span><br><span class="line">                newStr += <span class="string">"+"</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ((icode &gt;= <span class="number">0x30</span> &amp;&amp; icode &lt;= <span class="number">0x39</span>) || (icode &gt;= <span class="number">0x41</span> &amp;&amp; icode &lt;= <span class="number">0x5A</span>) || (icode &gt;= <span class="number">0x61</span> &amp;&amp; icode &lt;= <span class="number">0x7A</span>))</span><br><span class="line">                newStr += Str.charAt(i);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                newStr += <span class="string">"%"</span> + toCase(icode);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (icode &lt; <span class="number">0x800</span>) &#123;</span><br><span class="line">            newStr += <span class="string">"%"</span> + toCase(<span class="number">0xC0</span> + (icode &gt;&gt; <span class="number">6</span>));</span><br><span class="line">            newStr += <span class="string">"%"</span> + toCase(<span class="number">0x80</span> + icode % <span class="number">0x40</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            newStr += <span class="string">"%"</span> + toCase(<span class="number">0xE0</span> + (icode &gt;&gt; <span class="number">12</span>));</span><br><span class="line">            newStr += <span class="string">"%"</span> + toCase(<span class="number">0x80</span> + (icode &gt;&gt; <span class="number">6</span>) % <span class="number">0x40</span>);</span><br><span class="line">            newStr += <span class="string">"%"</span> + toCase(<span class="number">0x80</span> + icode % <span class="number">0x40</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newStr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//#endregion UTF8编码函数</span></span><br></pre></td></tr></table></figure>
+<h1 id="Base64编码-解码函数"><a href="#Base64编码-解码函数" class="headerlink" title="Base64编码,解码函数"></a>Base64编码,解码函数</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#region Base64编码,解码函数</span></span><br><span class="line"><span class="keyword">var</span> base64EncodeChars = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>;</span><br><span class="line"><span class="keyword">var</span> base64DecodeChars = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">62</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">63</span>,</span><br><span class="line">    <span class="number">52</span>, <span class="number">53</span>, <span class="number">54</span>, <span class="number">55</span>, <span class="number">56</span>, <span class="number">57</span>, <span class="number">58</span>, <span class="number">59</span>, <span class="number">60</span>, <span class="number">61</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>,</span><br><span class="line">    <span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span>, <span class="number">29</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>, <span class="number">36</span>, <span class="number">37</span>, <span class="number">38</span>, <span class="number">39</span>, <span class="number">40</span>,</span><br><span class="line">    <span class="number">41</span>, <span class="number">42</span>, <span class="number">43</span>, <span class="number">44</span>, <span class="number">45</span>, <span class="number">46</span>, <span class="number">47</span>, <span class="number">48</span>, <span class="number">49</span>, <span class="number">50</span>, <span class="number">51</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64encode</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> out, i, len;</span><br><span class="line">    <span class="keyword">var</span> c1, c2, c3;</span><br><span class="line"></span><br><span class="line">    len = str.length;</span><br><span class="line">    i = <span class="number">0</span>;</span><br><span class="line">    out = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">        c1 = str.charCodeAt(i++) &amp; <span class="number">0xff</span>;</span><br><span class="line">        <span class="keyword">if</span> (i == len) &#123;</span><br><span class="line">            out += base64EncodeChars.charAt(c1 &gt;&gt; <span class="number">2</span>);</span><br><span class="line">            out += base64EncodeChars.charAt((c1 &amp; <span class="number">0x3</span>) &lt;&lt; <span class="number">4</span>);</span><br><span class="line">            out += <span class="string">"=="</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        c2 = str.charCodeAt(i++);</span><br><span class="line">        <span class="keyword">if</span> (i == len) &#123;</span><br><span class="line">            out += base64EncodeChars.charAt(c1 &gt;&gt; <span class="number">2</span>);</span><br><span class="line">            out += base64EncodeChars.charAt(((c1 &amp; <span class="number">0x3</span>) &lt;&lt; <span class="number">4</span>) | ((c2 &amp; <span class="number">0xF0</span>) &gt;&gt; <span class="number">4</span>));</span><br><span class="line">            out += base64EncodeChars.charAt((c2 &amp; <span class="number">0xF</span>) &lt;&lt; <span class="number">2</span>);</span><br><span class="line">            out += <span class="string">"="</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        c3 = str.charCodeAt(i++);</span><br><span class="line">        out += base64EncodeChars.charAt(c1 &gt;&gt; <span class="number">2</span>);</span><br><span class="line">        out += base64EncodeChars.charAt(((c1 &amp; <span class="number">0x3</span>) &lt;&lt; <span class="number">4</span>) | ((c2 &amp; <span class="number">0xF0</span>) &gt;&gt; <span class="number">4</span>));</span><br><span class="line">        out += base64EncodeChars.charAt(((c2 &amp; <span class="number">0xF</span>) &lt;&lt; <span class="number">2</span>) | ((c3 &amp; <span class="number">0xC0</span>) &gt;&gt; <span class="number">6</span>));</span><br><span class="line">        out += base64EncodeChars.charAt(c3 &amp; <span class="number">0x3F</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64decode</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c1, c2, c3, c4;</span><br><span class="line">    <span class="keyword">var</span> i, len, out;</span><br><span class="line"></span><br><span class="line">    len = str.length;</span><br><span class="line">    i = <span class="number">0</span>;</span><br><span class="line">    out = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">        <span class="comment">/* c1 */</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            c1 = base64DecodeChars[str.charCodeAt(i++) &amp; <span class="number">0xff</span>];</span><br><span class="line">        &#125; <span class="keyword">while</span> (i &lt; len &amp;&amp; c1 == <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">if</span> (c1 == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* c2 */</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            c2 = base64DecodeChars[str.charCodeAt(i++) &amp; <span class="number">0xff</span>];</span><br><span class="line">        &#125; <span class="keyword">while</span> (i &lt; len &amp;&amp; c2 == <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">if</span> (c2 == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        out += <span class="built_in">String</span>.fromCharCode((c1 &lt;&lt; <span class="number">2</span>) | ((c2 &amp; <span class="number">0x30</span>) &gt;&gt; <span class="number">4</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* c3 */</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            c3 = str.charCodeAt(i++) &amp; <span class="number">0xff</span>;</span><br><span class="line">            <span class="keyword">if</span> (c3 == <span class="number">61</span>)</span><br><span class="line">                <span class="keyword">return</span> out;</span><br><span class="line">            c3 = base64DecodeChars[c3];</span><br><span class="line">        &#125; <span class="keyword">while</span> (i &lt; len &amp;&amp; c3 == <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">if</span> (c3 == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        out += <span class="built_in">String</span>.fromCharCode(((c2 &amp; <span class="number">0XF</span>) &lt;&lt; <span class="number">4</span>) | ((c3 &amp; <span class="number">0x3C</span>) &gt;&gt; <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* c4 */</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            c4 = str.charCodeAt(i++) &amp; <span class="number">0xff</span>;</span><br><span class="line">            <span class="keyword">if</span> (c4 == <span class="number">61</span>)</span><br><span class="line">                <span class="keyword">return</span> out;</span><br><span class="line">            c4 = base64DecodeChars[c4];</span><br><span class="line">        &#125; <span class="keyword">while</span> (i &lt; len &amp;&amp; c4 == <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">if</span> (c4 == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        out += <span class="built_in">String</span>.fromCharCode(((c3 &amp; <span class="number">0x03</span>) &lt;&lt; <span class="number">6</span>) | c4);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">utf16to8</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> out, i, len, c;</span><br><span class="line"></span><br><span class="line">    out = <span class="string">""</span>;</span><br><span class="line">    len = str.length;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        c = str.charCodeAt(i);</span><br><span class="line">        <span class="keyword">if</span> ((c &gt;= <span class="number">0x0001</span>) &amp;&amp; (c &lt;= <span class="number">0x007F</span>)) &#123;</span><br><span class="line">            out += str.charAt(i);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c &gt; <span class="number">0x07FF</span>) &#123;</span><br><span class="line">            out += <span class="built_in">String</span>.fromCharCode(<span class="number">0xE0</span> | ((c &gt;&gt; <span class="number">12</span>) &amp; <span class="number">0x0F</span>));</span><br><span class="line">            out += <span class="built_in">String</span>.fromCharCode(<span class="number">0x80</span> | ((c &gt;&gt; <span class="number">6</span>) &amp; <span class="number">0x3F</span>));</span><br><span class="line">            out += <span class="built_in">String</span>.fromCharCode(<span class="number">0x80</span> | ((c &gt;&gt; <span class="number">0</span>) &amp; <span class="number">0x3F</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            out += <span class="built_in">String</span>.fromCharCode(<span class="number">0xC0</span> | ((c &gt;&gt; <span class="number">6</span>) &amp; <span class="number">0x1F</span>));</span><br><span class="line">            out += <span class="built_in">String</span>.fromCharCode(<span class="number">0x80</span> | ((c &gt;&gt; <span class="number">0</span>) &amp; <span class="number">0x3F</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">utf8to16</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> out, i, len, c;</span><br><span class="line">    <span class="keyword">var</span> char2, char3;</span><br><span class="line"></span><br><span class="line">    out = <span class="string">""</span>;</span><br><span class="line">    len = str.length;</span><br><span class="line">    i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">        c = str.charCodeAt(i++);</span><br><span class="line">        <span class="keyword">switch</span> (c &gt;&gt; <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">                <span class="comment">// 0xxxxxxx </span></span><br><span class="line">                out += str.charAt(i - <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">13</span>:</span><br><span class="line">                <span class="comment">// 110x xxxx 10xx xxxx </span></span><br><span class="line">                char2 = str.charCodeAt(i++);</span><br><span class="line">                out += <span class="built_in">String</span>.fromCharCode(((c &amp; <span class="number">0x1F</span>) &lt;&lt; <span class="number">6</span>) | (char2 &amp; <span class="number">0x3F</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">14</span>:</span><br><span class="line">                <span class="comment">// 1110 xxxx 10xx xxxx 10xx xxxx </span></span><br><span class="line">                char2 = str.charCodeAt(i++);</span><br><span class="line">                char3 = str.charCodeAt(i++);</span><br><span class="line">                out += <span class="built_in">String</span>.fromCharCode(((c &amp; <span class="number">0x0F</span>) &lt;&lt; <span class="number">12</span>) |</span><br><span class="line">                    ((char2 &amp; <span class="number">0x3F</span>) &lt;&lt; <span class="number">6</span>) |</span><br><span class="line">                    ((char3 &amp; <span class="number">0x3F</span>) &lt;&lt; <span class="number">0</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doit</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="built_in">document</span>.f</span><br><span class="line">    f.output.value = base64encode(utf16to8(f.source.value))</span><br><span class="line">    f.decode.value = utf8to16(base64decode(f.output.value))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//#endregion Base64编码,解码函数</span></span><br></pre></td></tr></table></figure>
+<h1 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#region MD5</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message</span></span><br><span class="line"><span class="comment"> * Digest Algorithm, as defined in RFC 1321.</span></span><br><span class="line"><span class="comment"> * Version 2.1 Copyright (C) Paul Johnston 1999 - 2002.</span></span><br><span class="line"><span class="comment"> * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet</span></span><br><span class="line"><span class="comment"> * Distributed under the BSD License</span></span><br><span class="line"><span class="comment"> * See http://pajhome.org.uk/crypt/md5 for more info.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Configurable variables. You may need to tweak these to be compatible with</span></span><br><span class="line"><span class="comment"> * the server-side, but the defaults work in most cases.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> hexcase = <span class="number">0</span>; <span class="comment">/* hex output format. 0 - lowercase; 1 - uppercase        */</span></span><br><span class="line"><span class="keyword">var</span> b64pad = <span class="string">""</span>; <span class="comment">/* base-64 pad character. "=" for strict RFC compliance   */</span></span><br><span class="line"><span class="keyword">var</span> chrsz = <span class="number">8</span>; <span class="comment">/* bits per input character. 8 - ASCII; 16 - Unicode      */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * These are the functions you'll usually want to call</span></span><br><span class="line"><span class="comment"> * They take string arguments and return either hex or base-64 encoded strings</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hex_md5</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2hex(core_md5(str2binl(s), s.length * chrsz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b64_md5</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2b64(core_md5(str2binl(s), s.length * chrsz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str_md5</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2str(core_md5(str2binl(s), s.length * chrsz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hex_hmac_md5</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2hex(core_hmac_md5(key, data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b64_hmac_md5</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2b64(core_hmac_md5(key, data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str_hmac_md5</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2str(core_hmac_md5(key, data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Perform a simple self-test to see if the VM is working</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5_vm_test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hex_md5(<span class="string">"abc"</span>) == <span class="string">"900150983cd24fb0d6963f7d28e17f72"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Calculate the MD5 of an array of little-endian words, and a bit length</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">core_md5</span>(<span class="params">x, len</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/* append padding */</span></span><br><span class="line">    x[len &gt;&gt; <span class="number">5</span>] |= <span class="number">0x80</span> &lt;&lt; ((len) % <span class="number">32</span>);</span><br><span class="line">    x[(((len + <span class="number">64</span>) &gt;&gt;&gt; <span class="number">9</span>) &lt;&lt; <span class="number">4</span>) + <span class="number">14</span>] = len;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1732584193</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">-271733879</span>;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">-1732584194</span>;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="number">271733878</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; x.length; i += <span class="number">16</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> olda = a;</span><br><span class="line">        <span class="keyword">var</span> oldb = b;</span><br><span class="line">        <span class="keyword">var</span> oldc = c;</span><br><span class="line">        <span class="keyword">var</span> oldd = d;</span><br><span class="line"></span><br><span class="line">        a = md5_ff(a, b, c, d, x[i + <span class="number">0</span>], <span class="number">7</span>, <span class="number">-680876936</span>);</span><br><span class="line">        d = md5_ff(d, a, b, c, x[i + <span class="number">1</span>], <span class="number">12</span>, <span class="number">-389564586</span>);</span><br><span class="line">        c = md5_ff(c, d, a, b, x[i + <span class="number">2</span>], <span class="number">17</span>, <span class="number">606105819</span>);</span><br><span class="line">        b = md5_ff(b, c, d, a, x[i + <span class="number">3</span>], <span class="number">22</span>, <span class="number">-1044525330</span>);</span><br><span class="line">        a = md5_ff(a, b, c, d, x[i + <span class="number">4</span>], <span class="number">7</span>, <span class="number">-176418897</span>);</span><br><span class="line">        d = md5_ff(d, a, b, c, x[i + <span class="number">5</span>], <span class="number">12</span>, <span class="number">1200080426</span>);</span><br><span class="line">        c = md5_ff(c, d, a, b, x[i + <span class="number">6</span>], <span class="number">17</span>, <span class="number">-1473231341</span>);</span><br><span class="line">        b = md5_ff(b, c, d, a, x[i + <span class="number">7</span>], <span class="number">22</span>, <span class="number">-45705983</span>);</span><br><span class="line">        a = md5_ff(a, b, c, d, x[i + <span class="number">8</span>], <span class="number">7</span>, <span class="number">1770035416</span>);</span><br><span class="line">        d = md5_ff(d, a, b, c, x[i + <span class="number">9</span>], <span class="number">12</span>, <span class="number">-1958414417</span>);</span><br><span class="line">        c = md5_ff(c, d, a, b, x[i + <span class="number">10</span>], <span class="number">17</span>, <span class="number">-42063</span>);</span><br><span class="line">        b = md5_ff(b, c, d, a, x[i + <span class="number">11</span>], <span class="number">22</span>, <span class="number">-1990404162</span>);</span><br><span class="line">        a = md5_ff(a, b, c, d, x[i + <span class="number">12</span>], <span class="number">7</span>, <span class="number">1804603682</span>);</span><br><span class="line">        d = md5_ff(d, a, b, c, x[i + <span class="number">13</span>], <span class="number">12</span>, <span class="number">-40341101</span>);</span><br><span class="line">        c = md5_ff(c, d, a, b, x[i + <span class="number">14</span>], <span class="number">17</span>, <span class="number">-1502002290</span>);</span><br><span class="line">        b = md5_ff(b, c, d, a, x[i + <span class="number">15</span>], <span class="number">22</span>, <span class="number">1236535329</span>);</span><br><span class="line"></span><br><span class="line">        a = md5_gg(a, b, c, d, x[i + <span class="number">1</span>], <span class="number">5</span>, <span class="number">-165796510</span>);</span><br><span class="line">        d = md5_gg(d, a, b, c, x[i + <span class="number">6</span>], <span class="number">9</span>, <span class="number">-1069501632</span>);</span><br><span class="line">        c = md5_gg(c, d, a, b, x[i + <span class="number">11</span>], <span class="number">14</span>, <span class="number">643717713</span>);</span><br><span class="line">        b = md5_gg(b, c, d, a, x[i + <span class="number">0</span>], <span class="number">20</span>, <span class="number">-373897302</span>);</span><br><span class="line">        a = md5_gg(a, b, c, d, x[i + <span class="number">5</span>], <span class="number">5</span>, <span class="number">-701558691</span>);</span><br><span class="line">        d = md5_gg(d, a, b, c, x[i + <span class="number">10</span>], <span class="number">9</span>, <span class="number">38016083</span>);</span><br><span class="line">        c = md5_gg(c, d, a, b, x[i + <span class="number">15</span>], <span class="number">14</span>, <span class="number">-660478335</span>);</span><br><span class="line">        b = md5_gg(b, c, d, a, x[i + <span class="number">4</span>], <span class="number">20</span>, <span class="number">-405537848</span>);</span><br><span class="line">        a = md5_gg(a, b, c, d, x[i + <span class="number">9</span>], <span class="number">5</span>, <span class="number">568446438</span>);</span><br><span class="line">        d = md5_gg(d, a, b, c, x[i + <span class="number">14</span>], <span class="number">9</span>, <span class="number">-1019803690</span>);</span><br><span class="line">        c = md5_gg(c, d, a, b, x[i + <span class="number">3</span>], <span class="number">14</span>, <span class="number">-187363961</span>);</span><br><span class="line">        b = md5_gg(b, c, d, a, x[i + <span class="number">8</span>], <span class="number">20</span>, <span class="number">1163531501</span>);</span><br><span class="line">        a = md5_gg(a, b, c, d, x[i + <span class="number">13</span>], <span class="number">5</span>, <span class="number">-1444681467</span>);</span><br><span class="line">        d = md5_gg(d, a, b, c, x[i + <span class="number">2</span>], <span class="number">9</span>, <span class="number">-51403784</span>);</span><br><span class="line">        c = md5_gg(c, d, a, b, x[i + <span class="number">7</span>], <span class="number">14</span>, <span class="number">1735328473</span>);</span><br><span class="line">        b = md5_gg(b, c, d, a, x[i + <span class="number">12</span>], <span class="number">20</span>, <span class="number">-1926607734</span>);</span><br><span class="line"></span><br><span class="line">        a = md5_hh(a, b, c, d, x[i + <span class="number">5</span>], <span class="number">4</span>, <span class="number">-378558</span>);</span><br><span class="line">        d = md5_hh(d, a, b, c, x[i + <span class="number">8</span>], <span class="number">11</span>, <span class="number">-2022574463</span>);</span><br><span class="line">        c = md5_hh(c, d, a, b, x[i + <span class="number">11</span>], <span class="number">16</span>, <span class="number">1839030562</span>);</span><br><span class="line">        b = md5_hh(b, c, d, a, x[i + <span class="number">14</span>], <span class="number">23</span>, <span class="number">-35309556</span>);</span><br><span class="line">        a = md5_hh(a, b, c, d, x[i + <span class="number">1</span>], <span class="number">4</span>, <span class="number">-1530992060</span>);</span><br><span class="line">        d = md5_hh(d, a, b, c, x[i + <span class="number">4</span>], <span class="number">11</span>, <span class="number">1272893353</span>);</span><br><span class="line">        c = md5_hh(c, d, a, b, x[i + <span class="number">7</span>], <span class="number">16</span>, <span class="number">-155497632</span>);</span><br><span class="line">        b = md5_hh(b, c, d, a, x[i + <span class="number">10</span>], <span class="number">23</span>, <span class="number">-1094730640</span>);</span><br><span class="line">        a = md5_hh(a, b, c, d, x[i + <span class="number">13</span>], <span class="number">4</span>, <span class="number">681279174</span>);</span><br><span class="line">        d = md5_hh(d, a, b, c, x[i + <span class="number">0</span>], <span class="number">11</span>, <span class="number">-358537222</span>);</span><br><span class="line">        c = md5_hh(c, d, a, b, x[i + <span class="number">3</span>], <span class="number">16</span>, <span class="number">-722521979</span>);</span><br><span class="line">        b = md5_hh(b, c, d, a, x[i + <span class="number">6</span>], <span class="number">23</span>, <span class="number">76029189</span>);</span><br><span class="line">        a = md5_hh(a, b, c, d, x[i + <span class="number">9</span>], <span class="number">4</span>, <span class="number">-640364487</span>);</span><br><span class="line">        d = md5_hh(d, a, b, c, x[i + <span class="number">12</span>], <span class="number">11</span>, <span class="number">-421815835</span>);</span><br><span class="line">        c = md5_hh(c, d, a, b, x[i + <span class="number">15</span>], <span class="number">16</span>, <span class="number">530742520</span>);</span><br><span class="line">        b = md5_hh(b, c, d, a, x[i + <span class="number">2</span>], <span class="number">23</span>, <span class="number">-995338651</span>);</span><br><span class="line"></span><br><span class="line">        a = md5_ii(a, b, c, d, x[i + <span class="number">0</span>], <span class="number">6</span>, <span class="number">-198630844</span>);</span><br><span class="line">        d = md5_ii(d, a, b, c, x[i + <span class="number">7</span>], <span class="number">10</span>, <span class="number">1126891415</span>);</span><br><span class="line">        c = md5_ii(c, d, a, b, x[i + <span class="number">14</span>], <span class="number">15</span>, <span class="number">-1416354905</span>);</span><br><span class="line">        b = md5_ii(b, c, d, a, x[i + <span class="number">5</span>], <span class="number">21</span>, <span class="number">-57434055</span>);</span><br><span class="line">        a = md5_ii(a, b, c, d, x[i + <span class="number">12</span>], <span class="number">6</span>, <span class="number">1700485571</span>);</span><br><span class="line">        d = md5_ii(d, a, b, c, x[i + <span class="number">3</span>], <span class="number">10</span>, <span class="number">-1894986606</span>);</span><br><span class="line">        c = md5_ii(c, d, a, b, x[i + <span class="number">10</span>], <span class="number">15</span>, <span class="number">-1051523</span>);</span><br><span class="line">        b = md5_ii(b, c, d, a, x[i + <span class="number">1</span>], <span class="number">21</span>, <span class="number">-2054922799</span>);</span><br><span class="line">        a = md5_ii(a, b, c, d, x[i + <span class="number">8</span>], <span class="number">6</span>, <span class="number">1873313359</span>);</span><br><span class="line">        d = md5_ii(d, a, b, c, x[i + <span class="number">15</span>], <span class="number">10</span>, <span class="number">-30611744</span>);</span><br><span class="line">        c = md5_ii(c, d, a, b, x[i + <span class="number">6</span>], <span class="number">15</span>, <span class="number">-1560198380</span>);</span><br><span class="line">        b = md5_ii(b, c, d, a, x[i + <span class="number">13</span>], <span class="number">21</span>, <span class="number">1309151649</span>);</span><br><span class="line">        a = md5_ii(a, b, c, d, x[i + <span class="number">4</span>], <span class="number">6</span>, <span class="number">-145523070</span>);</span><br><span class="line">        d = md5_ii(d, a, b, c, x[i + <span class="number">11</span>], <span class="number">10</span>, <span class="number">-1120210379</span>);</span><br><span class="line">        c = md5_ii(c, d, a, b, x[i + <span class="number">2</span>], <span class="number">15</span>, <span class="number">718787259</span>);</span><br><span class="line">        b = md5_ii(b, c, d, a, x[i + <span class="number">9</span>], <span class="number">21</span>, <span class="number">-343485551</span>);</span><br><span class="line"></span><br><span class="line">        a = safe_add(a, olda);</span><br><span class="line">        b = safe_add(b, oldb);</span><br><span class="line">        c = safe_add(c, oldc);</span><br><span class="line">        d = safe_add(d, oldd);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>(a, b, c, d);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * These functions implement the four basic operations the algorithm uses.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5_cmn</span>(<span class="params">q, a, b, x, s, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5_ff</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> md5_cmn((b &amp; c) | ((~b) &amp; d), a, b, x, s, t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5_gg</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> md5_cmn((b &amp; d) | (c &amp; (~d)), a, b, x, s, t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5_hh</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> md5_cmn(b ^ c ^ d, a, b, x, s, t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5_ii</span>(<span class="params">a, b, c, d, x, s, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> md5_cmn(c ^ (b | (~d)), a, b, x, s, t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Calculate the HMAC-MD5, of a key and some data</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">core_hmac_md5</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bkey = str2binl(key);</span><br><span class="line">    <span class="keyword">if</span> (bkey.length &gt; <span class="number">16</span>) bkey = core_md5(bkey, key.length * chrsz);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> ipad = <span class="built_in">Array</span>(<span class="number">16</span>),</span><br><span class="line">        opad = <span class="built_in">Array</span>(<span class="number">16</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++) &#123;</span><br><span class="line">        ipad[i] = bkey[i] ^ <span class="number">0x36363636</span>;</span><br><span class="line">        opad[i] = bkey[i] ^ <span class="number">0x5C5C5C5C</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> hash = core_md5(ipad.concat(str2binl(data)), <span class="number">512</span> + data.length * chrsz);</span><br><span class="line">    <span class="keyword">return</span> core_md5(opad.concat(hash), <span class="number">512</span> + <span class="number">128</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Add integers, wrapping at 2^32. This uses 16-bit operations internally</span></span><br><span class="line"><span class="comment"> * to work around bugs in some JS interpreters.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">safe_add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> lsw = (x &amp; <span class="number">0xFFFF</span>) + (y &amp; <span class="number">0xFFFF</span>);</span><br><span class="line">    <span class="keyword">var</span> msw = (x &gt;&gt; <span class="number">16</span>) + (y &gt;&gt; <span class="number">16</span>) + (lsw &gt;&gt; <span class="number">16</span>);</span><br><span class="line">    <span class="keyword">return</span> (msw &lt;&lt; <span class="number">16</span>) | (lsw &amp; <span class="number">0xFFFF</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Bitwise rotate a 32-bit number to the left.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bit_rol</span>(<span class="params">num, cnt</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (num &lt;&lt; cnt) | (num &gt;&gt;&gt; (<span class="number">32</span> - cnt));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert a string to an array of little-endian words</span></span><br><span class="line"><span class="comment"> * If chrsz is ASCII, characters &gt;255 have their hi-byte silently ignored.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str2binl</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bin = <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">var</span> mask = (<span class="number">1</span> &lt;&lt; chrsz) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.length * chrsz; i += chrsz)</span><br><span class="line">        bin[i &gt;&gt; <span class="number">5</span>] |= (str.charCodeAt(i / chrsz) &amp; mask) &lt;&lt; (i % <span class="number">32</span>);</span><br><span class="line">    <span class="keyword">return</span> bin;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an array of little-endian words to a string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binl2str</span>(<span class="params">bin</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> mask = (<span class="number">1</span> &lt;&lt; chrsz) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bin.length * <span class="number">32</span>; i += chrsz)</span><br><span class="line">        str += <span class="built_in">String</span>.fromCharCode((bin[i &gt;&gt; <span class="number">5</span>] &gt;&gt;&gt; (i % <span class="number">32</span>)) &amp; mask);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an array of little-endian words to a hex string.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binl2hex</span>(<span class="params">binarray</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hex_tab = hexcase ? <span class="string">"0123456789ABCDEF"</span> : <span class="string">"0123456789abcdef"</span>;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; binarray.length * <span class="number">4</span>; i++) &#123;</span><br><span class="line">        str += hex_tab.charAt((binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; ((i % <span class="number">4</span>) * <span class="number">8</span> + <span class="number">4</span>)) &amp; <span class="number">0xF</span>) +</span><br><span class="line">            hex_tab.charAt((binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; ((i % <span class="number">4</span>) * <span class="number">8</span>)) &amp; <span class="number">0xF</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an array of little-endian words to a base-64 string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binl2b64</span>(<span class="params">binarray</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tab = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; binarray.length * <span class="number">4</span>; i += <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> triplet = (((binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * (i % <span class="number">4</span>)) &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">16</span>) | (((binarray[i + <span class="number">1</span> &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * ((i + <span class="number">1</span>) % <span class="number">4</span>)) &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">8</span>) | ((binarray[i + <span class="number">2</span> &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * ((i + <span class="number">2</span>) % <span class="number">4</span>)) &amp; <span class="number">0xFF</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i * <span class="number">8</span> + j * <span class="number">6</span> &gt; binarray.length * <span class="number">32</span>) str += b64pad;</span><br><span class="line">            <span class="keyword">else</span> str += tab.charAt((triplet &gt;&gt; <span class="number">6</span> * (<span class="number">3</span> - j)) &amp; <span class="number">0x3F</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//#endregion MD5</span></span><br></pre></td></tr></table></figure>
+<h1 id="MD4"><a href="#MD4" class="headerlink" title="MD4"></a>MD4</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#region MD4</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * A JavaScript implementation of the RSA Data Security, Inc. MD4 Message</span></span><br><span class="line"><span class="comment"> * Digest Algorithm, as defined in RFC 1320.</span></span><br><span class="line"><span class="comment"> * Version 2.1 Copyright (C) Jerrad Pierce, Paul Johnston 1999 - 2002.</span></span><br><span class="line"><span class="comment"> * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet</span></span><br><span class="line"><span class="comment"> * Distributed under the BSD License</span></span><br><span class="line"><span class="comment"> * See http://pajhome.org.uk/crypt/md5 for more info.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Configurable variables. You may need to tweak these to be compatible with</span></span><br><span class="line"><span class="comment"> * the server-side, but the defaults work in most cases.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> hexcase = <span class="number">0</span>; <span class="comment">/* hex output format. 0 - lowercase; 1 - uppercase        */</span></span><br><span class="line"><span class="keyword">var</span> b64pad = <span class="string">""</span>; <span class="comment">/* base-64 pad character. "=" for strict RFC compliance   */</span></span><br><span class="line"><span class="keyword">var</span> chrsz = <span class="number">8</span>; <span class="comment">/* bits per input character. 8 - ASCII; 16 - Unicode      */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * These are the functions you'll usually want to call</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hex_md4</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2hex(core_md4(str2binl(s), s.length * chrsz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b64_md4</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2b64(core_md4(str2binl(s), s.length * chrsz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str_md4</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2str(core_md4(str2binl(s), s.length * chrsz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hex_hmac_md4</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2hex(core_hmac_md4(key, data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b64_hmac_md4</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2b64(core_hmac_md4(key, data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str_hmac_md4</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binl2str(core_hmac_md4(key, data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * Perform a simple self-test to see if the VM is working</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md4_vm_test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hex_md4(<span class="string">"abc"</span>) == <span class="string">"a448017aaf21d8525fc10ae87aa6729d"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Calculate the MD4 of an array of little-endian words, and a bit length</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">core_md4</span>(<span class="params">x, len</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/* append padding */</span></span><br><span class="line">    x[len &gt;&gt; <span class="number">5</span>] |= <span class="number">0x80</span> &lt;&lt; (len % <span class="number">32</span>);</span><br><span class="line">    x[(((len + <span class="number">64</span>) &gt;&gt;&gt; <span class="number">9</span>) &lt;&lt; <span class="number">4</span>) + <span class="number">14</span>] = len;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1732584193</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">-271733879</span>;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">-1732584194</span>;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="number">271733878</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; x.length; i += <span class="number">16</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> olda = a;</span><br><span class="line">        <span class="keyword">var</span> oldb = b;</span><br><span class="line">        <span class="keyword">var</span> oldc = c;</span><br><span class="line">        <span class="keyword">var</span> oldd = d;</span><br><span class="line"></span><br><span class="line">        a = md4_ff(a, b, c, d, x[i + <span class="number">0</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_ff(d, a, b, c, x[i + <span class="number">1</span>], <span class="number">7</span>);</span><br><span class="line">        c = md4_ff(c, d, a, b, x[i + <span class="number">2</span>], <span class="number">11</span>);</span><br><span class="line">        b = md4_ff(b, c, d, a, x[i + <span class="number">3</span>], <span class="number">19</span>);</span><br><span class="line">        a = md4_ff(a, b, c, d, x[i + <span class="number">4</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_ff(d, a, b, c, x[i + <span class="number">5</span>], <span class="number">7</span>);</span><br><span class="line">        c = md4_ff(c, d, a, b, x[i + <span class="number">6</span>], <span class="number">11</span>);</span><br><span class="line">        b = md4_ff(b, c, d, a, x[i + <span class="number">7</span>], <span class="number">19</span>);</span><br><span class="line">        a = md4_ff(a, b, c, d, x[i + <span class="number">8</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_ff(d, a, b, c, x[i + <span class="number">9</span>], <span class="number">7</span>);</span><br><span class="line">        c = md4_ff(c, d, a, b, x[i + <span class="number">10</span>], <span class="number">11</span>);</span><br><span class="line">        b = md4_ff(b, c, d, a, x[i + <span class="number">11</span>], <span class="number">19</span>);</span><br><span class="line">        a = md4_ff(a, b, c, d, x[i + <span class="number">12</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_ff(d, a, b, c, x[i + <span class="number">13</span>], <span class="number">7</span>);</span><br><span class="line">        c = md4_ff(c, d, a, b, x[i + <span class="number">14</span>], <span class="number">11</span>);</span><br><span class="line">        b = md4_ff(b, c, d, a, x[i + <span class="number">15</span>], <span class="number">19</span>);</span><br><span class="line"></span><br><span class="line">        a = md4_gg(a, b, c, d, x[i + <span class="number">0</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_gg(d, a, b, c, x[i + <span class="number">4</span>], <span class="number">5</span>);</span><br><span class="line">        c = md4_gg(c, d, a, b, x[i + <span class="number">8</span>], <span class="number">9</span>);</span><br><span class="line">        b = md4_gg(b, c, d, a, x[i + <span class="number">12</span>], <span class="number">13</span>);</span><br><span class="line">        a = md4_gg(a, b, c, d, x[i + <span class="number">1</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_gg(d, a, b, c, x[i + <span class="number">5</span>], <span class="number">5</span>);</span><br><span class="line">        c = md4_gg(c, d, a, b, x[i + <span class="number">9</span>], <span class="number">9</span>);</span><br><span class="line">        b = md4_gg(b, c, d, a, x[i + <span class="number">13</span>], <span class="number">13</span>);</span><br><span class="line">        a = md4_gg(a, b, c, d, x[i + <span class="number">2</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_gg(d, a, b, c, x[i + <span class="number">6</span>], <span class="number">5</span>);</span><br><span class="line">        c = md4_gg(c, d, a, b, x[i + <span class="number">10</span>], <span class="number">9</span>);</span><br><span class="line">        b = md4_gg(b, c, d, a, x[i + <span class="number">14</span>], <span class="number">13</span>);</span><br><span class="line">        a = md4_gg(a, b, c, d, x[i + <span class="number">3</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_gg(d, a, b, c, x[i + <span class="number">7</span>], <span class="number">5</span>);</span><br><span class="line">        c = md4_gg(c, d, a, b, x[i + <span class="number">11</span>], <span class="number">9</span>);</span><br><span class="line">        b = md4_gg(b, c, d, a, x[i + <span class="number">15</span>], <span class="number">13</span>);</span><br><span class="line"></span><br><span class="line">        a = md4_hh(a, b, c, d, x[i + <span class="number">0</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_hh(d, a, b, c, x[i + <span class="number">8</span>], <span class="number">9</span>);</span><br><span class="line">        c = md4_hh(c, d, a, b, x[i + <span class="number">4</span>], <span class="number">11</span>);</span><br><span class="line">        b = md4_hh(b, c, d, a, x[i + <span class="number">12</span>], <span class="number">15</span>);</span><br><span class="line">        a = md4_hh(a, b, c, d, x[i + <span class="number">2</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_hh(d, a, b, c, x[i + <span class="number">10</span>], <span class="number">9</span>);</span><br><span class="line">        c = md4_hh(c, d, a, b, x[i + <span class="number">6</span>], <span class="number">11</span>);</span><br><span class="line">        b = md4_hh(b, c, d, a, x[i + <span class="number">14</span>], <span class="number">15</span>);</span><br><span class="line">        a = md4_hh(a, b, c, d, x[i + <span class="number">1</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_hh(d, a, b, c, x[i + <span class="number">9</span>], <span class="number">9</span>);</span><br><span class="line">        c = md4_hh(c, d, a, b, x[i + <span class="number">5</span>], <span class="number">11</span>);</span><br><span class="line">        b = md4_hh(b, c, d, a, x[i + <span class="number">13</span>], <span class="number">15</span>);</span><br><span class="line">        a = md4_hh(a, b, c, d, x[i + <span class="number">3</span>], <span class="number">3</span>);</span><br><span class="line">        d = md4_hh(d, a, b, c, x[i + <span class="number">11</span>], <span class="number">9</span>);</span><br><span class="line">        c = md4_hh(c, d, a, b, x[i + <span class="number">7</span>], <span class="number">11</span>);</span><br><span class="line">        b = md4_hh(b, c, d, a, x[i + <span class="number">15</span>], <span class="number">15</span>);</span><br><span class="line"></span><br><span class="line">        a = safe_add(a, olda);</span><br><span class="line">        b = safe_add(b, oldb);</span><br><span class="line">        c = safe_add(c, oldc);</span><br><span class="line">        d = safe_add(d, oldd);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>(a, b, c, d);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * These functions implement the basic operation for each round of the</span></span><br><span class="line"><span class="comment"> * algorithm.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md4_cmn</span>(<span class="params">q, a, b, x, s, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> safe_add(rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md4_ff</span>(<span class="params">a, b, c, d, x, s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> md4_cmn((b &amp; c) | ((~b) &amp; d), a, <span class="number">0</span>, x, s, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md4_gg</span>(<span class="params">a, b, c, d, x, s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> md4_cmn((b &amp; c) | (b &amp; d) | (c &amp; d), a, <span class="number">0</span>, x, s, <span class="number">1518500249</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md4_hh</span>(<span class="params">a, b, c, d, x, s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> md4_cmn(b ^ c ^ d, a, <span class="number">0</span>, x, s, <span class="number">1859775393</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Calculate the HMAC-MD4, of a key and some data</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">core_hmac_md4</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bkey = str2binl(key);</span><br><span class="line">    <span class="keyword">if</span> (bkey.length &gt; <span class="number">16</span>) bkey = core_md4(bkey, key.length * chrsz);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> ipad = <span class="built_in">Array</span>(<span class="number">16</span>),</span><br><span class="line">        opad = <span class="built_in">Array</span>(<span class="number">16</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++) &#123;</span><br><span class="line">        ipad[i] = bkey[i] ^ <span class="number">0x36363636</span>;</span><br><span class="line">        opad[i] = bkey[i] ^ <span class="number">0x5C5C5C5C</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> hash = core_md4(ipad.concat(str2binl(data)), <span class="number">512</span> + data.length * chrsz);</span><br><span class="line">    <span class="keyword">return</span> core_md4(opad.concat(hash), <span class="number">512</span> + <span class="number">128</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Add integers, wrapping at 2^32. This uses 16-bit operations internally</span></span><br><span class="line"><span class="comment"> * to work around bugs in some JS interpreters.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">safe_add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> lsw = (x &amp; <span class="number">0xFFFF</span>) + (y &amp; <span class="number">0xFFFF</span>);</span><br><span class="line">    <span class="keyword">var</span> msw = (x &gt;&gt; <span class="number">16</span>) + (y &gt;&gt; <span class="number">16</span>) + (lsw &gt;&gt; <span class="number">16</span>);</span><br><span class="line">    <span class="keyword">return</span> (msw &lt;&lt; <span class="number">16</span>) | (lsw &amp; <span class="number">0xFFFF</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Bitwise rotate a 32-bit number to the left.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">rol</span>(<span class="params">num, cnt</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (num &lt;&lt; cnt) | (num &gt;&gt;&gt; (<span class="number">32</span> - cnt));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert a string to an array of little-endian words</span></span><br><span class="line"><span class="comment"> * If chrsz is ASCII, characters &gt;255 have their hi-byte silently ignored.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str2binl</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bin = <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">var</span> mask = (<span class="number">1</span> &lt;&lt; chrsz) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.length * chrsz; i += chrsz)</span><br><span class="line">        bin[i &gt;&gt; <span class="number">5</span>] |= (str.charCodeAt(i / chrsz) &amp; mask) &lt;&lt; (i % <span class="number">32</span>);</span><br><span class="line">    <span class="keyword">return</span> bin;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an array of little-endian words to a string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binl2str</span>(<span class="params">bin</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> mask = (<span class="number">1</span> &lt;&lt; chrsz) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bin.length * <span class="number">32</span>; i += chrsz)</span><br><span class="line">        str += <span class="built_in">String</span>.fromCharCode((bin[i &gt;&gt; <span class="number">5</span>] &gt;&gt;&gt; (i % <span class="number">32</span>)) &amp; mask);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an array of little-endian words to a hex string.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binl2hex</span>(<span class="params">binarray</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hex_tab = hexcase ? <span class="string">"0123456789ABCDEF"</span> : <span class="string">"0123456789abcdef"</span>;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; binarray.length * <span class="number">4</span>; i++) &#123;</span><br><span class="line">        str += hex_tab.charAt((binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; ((i % <span class="number">4</span>) * <span class="number">8</span> + <span class="number">4</span>)) &amp; <span class="number">0xF</span>) +</span><br><span class="line">            hex_tab.charAt((binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; ((i % <span class="number">4</span>) * <span class="number">8</span>)) &amp; <span class="number">0xF</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an array of little-endian words to a base-64 string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binl2b64</span>(<span class="params">binarray</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tab = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; binarray.length * <span class="number">4</span>; i += <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> triplet = (((binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * (i % <span class="number">4</span>)) &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">16</span>) | (((binarray[i + <span class="number">1</span> &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * ((i + <span class="number">1</span>) % <span class="number">4</span>)) &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">8</span>) | ((binarray[i + <span class="number">2</span> &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * ((i + <span class="number">2</span>) % <span class="number">4</span>)) &amp; <span class="number">0xFF</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i * <span class="number">8</span> + j * <span class="number">6</span> &gt; binarray.length * <span class="number">32</span>) str += b64pad;</span><br><span class="line">            <span class="keyword">else</span> str += tab.charAt((triplet &gt;&gt; <span class="number">6</span> * (<span class="number">3</span> - j)) &amp; <span class="number">0x3F</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//#endregion MD4</span></span><br></pre></td></tr></table></figure>
+<h1 id="SHA1算法"><a href="#SHA1算法" class="headerlink" title="SHA1算法"></a>SHA1算法</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#region SHA1算法</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined</span></span><br><span class="line"><span class="comment"> * in FIPS PUB 180-1</span></span><br><span class="line"><span class="comment"> * Version 2.1a Copyright Paul Johnston 2000 - 2002.</span></span><br><span class="line"><span class="comment"> * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet</span></span><br><span class="line"><span class="comment"> * Distributed under the BSD License</span></span><br><span class="line"><span class="comment"> * See http://pajhome.org.uk/crypt/md5 for details.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Configurable variables. You may need to tweak these to be compatible with</span></span><br><span class="line"><span class="comment"> * the server-side, but the defaults work in most cases.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> hexcase = <span class="number">0</span>; <span class="comment">/* hex output format. 0 - lowercase; 1 - uppercase        */</span></span><br><span class="line"><span class="keyword">var</span> b64pad = <span class="string">""</span>; <span class="comment">/* base-64 pad character. "=" for strict RFC compliance   */</span></span><br><span class="line"><span class="keyword">var</span> chrsz = <span class="number">8</span>; <span class="comment">/* bits per input character. 8 - ASCII; 16 - Unicode      */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * These are the functions you'll usually want to call</span></span><br><span class="line"><span class="comment"> * They take string arguments and return either hex or base-64 encoded strings</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hex_sha1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binb2hex(core_sha1(str2binb(s), s.length * chrsz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b64_sha1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binb2b64(core_sha1(str2binb(s), s.length * chrsz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str_sha1</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binb2str(core_sha1(str2binb(s), s.length * chrsz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hex_hmac_sha1</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binb2hex(core_hmac_sha1(key, data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b64_hmac_sha1</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binb2b64(core_hmac_sha1(key, data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str_hmac_sha1</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> binb2str(core_hmac_sha1(key, data));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Perform a simple self-test to see if the VM is working</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sha1_vm_test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hex_sha1(<span class="string">"abc"</span>) == <span class="string">"a9993e364706816aba3e25717850c26c9cd0d89d"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Calculate the SHA-1 of an array of big-endian words, and a bit length</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">core_sha1</span>(<span class="params">x, len</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/* append padding */</span></span><br><span class="line">    x[len &gt;&gt; <span class="number">5</span>] |= <span class="number">0x80</span> &lt;&lt; (<span class="number">24</span> - len % <span class="number">32</span>);</span><br><span class="line">    x[((len + <span class="number">64</span> &gt;&gt; <span class="number">9</span>) &lt;&lt; <span class="number">4</span>) + <span class="number">15</span>] = len;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> w = <span class="built_in">Array</span>(<span class="number">80</span>);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1732584193</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">-271733879</span>;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">-1732584194</span>;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="number">271733878</span>;</span><br><span class="line">    <span class="keyword">var</span> e = <span class="number">-1009589776</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; x.length; i += <span class="number">16</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> olda = a;</span><br><span class="line">        <span class="keyword">var</span> oldb = b;</span><br><span class="line">        <span class="keyword">var</span> oldc = c;</span><br><span class="line">        <span class="keyword">var</span> oldd = d;</span><br><span class="line">        <span class="keyword">var</span> olde = e;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">80</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j &lt; <span class="number">16</span>) w[j] = x[i + j];</span><br><span class="line">            <span class="keyword">else</span> w[j] = rol(w[j - <span class="number">3</span>] ^ w[j - <span class="number">8</span>] ^ w[j - <span class="number">14</span>] ^ w[j - <span class="number">16</span>], <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">var</span> t = safe_add(safe_add(rol(a, <span class="number">5</span>), sha1_ft(j, b, c, d)),</span><br><span class="line">                safe_add(safe_add(e, w[j]), sha1_kt(j)));</span><br><span class="line">            e = d;</span><br><span class="line">            d = c;</span><br><span class="line">            c = rol(b, <span class="number">30</span>);</span><br><span class="line">            b = a;</span><br><span class="line">            a = t;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        a = safe_add(a, olda);</span><br><span class="line">        b = safe_add(b, oldb);</span><br><span class="line">        c = safe_add(c, oldc);</span><br><span class="line">        d = safe_add(d, oldd);</span><br><span class="line">        e = safe_add(e, olde);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>(a, b, c, d, e);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Perform the appropriate triplet combination function for the current</span></span><br><span class="line"><span class="comment"> * iteration</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sha1_ft</span>(<span class="params">t, b, c, d</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (t &lt; <span class="number">20</span>) <span class="keyword">return</span> (b &amp; c) | ((~b) &amp; d);</span><br><span class="line">    <span class="keyword">if</span> (t &lt; <span class="number">40</span>) <span class="keyword">return</span> b ^ c ^ d;</span><br><span class="line">    <span class="keyword">if</span> (t &lt; <span class="number">60</span>) <span class="keyword">return</span> (b &amp; c) | (b &amp; d) | (c &amp; d);</span><br><span class="line">    <span class="keyword">return</span> b ^ c ^ d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Determine the appropriate additive constant for the current iteration</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sha1_kt</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (t &lt; <span class="number">20</span>) ? <span class="number">1518500249</span> : (t &lt; <span class="number">40</span>) ? <span class="number">1859775393</span> :</span><br><span class="line">        (t &lt; <span class="number">60</span>) ? <span class="number">-1894007588</span> : <span class="number">-899497514</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Calculate the HMAC-SHA1 of a key and some data</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">core_hmac_sha1</span>(<span class="params">key, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bkey = str2binb(key);</span><br><span class="line">    <span class="keyword">if</span> (bkey.length &gt; <span class="number">16</span>) bkey = core_sha1(bkey, key.length * chrsz);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> ipad = <span class="built_in">Array</span>(<span class="number">16</span>),</span><br><span class="line">        opad = <span class="built_in">Array</span>(<span class="number">16</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++) &#123;</span><br><span class="line">        ipad[i] = bkey[i] ^ <span class="number">0x36363636</span>;</span><br><span class="line">        opad[i] = bkey[i] ^ <span class="number">0x5C5C5C5C</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> hash = core_sha1(ipad.concat(str2binb(data)), <span class="number">512</span> + data.length * chrsz);</span><br><span class="line">    <span class="keyword">return</span> core_sha1(opad.concat(hash), <span class="number">512</span> + <span class="number">160</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Add integers, wrapping at 2^32. This uses 16-bit operations internally</span></span><br><span class="line"><span class="comment"> * to work around bugs in some JS interpreters.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">safe_add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> lsw = (x &amp; <span class="number">0xFFFF</span>) + (y &amp; <span class="number">0xFFFF</span>);</span><br><span class="line">    <span class="keyword">var</span> msw = (x &gt;&gt; <span class="number">16</span>) + (y &gt;&gt; <span class="number">16</span>) + (lsw &gt;&gt; <span class="number">16</span>);</span><br><span class="line">    <span class="keyword">return</span> (msw &lt;&lt; <span class="number">16</span>) | (lsw &amp; <span class="number">0xFFFF</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Bitwise rotate a 32-bit number to the left.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">rol</span>(<span class="params">num, cnt</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (num &lt;&lt; cnt) | (num &gt;&gt;&gt; (<span class="number">32</span> - cnt));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an 8-bit or 16-bit string to an array of big-endian words</span></span><br><span class="line"><span class="comment"> * In 8-bit function, characters &gt;255 have their hi-byte silently ignored.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str2binb</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bin = <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">var</span> mask = (<span class="number">1</span> &lt;&lt; chrsz) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.length * chrsz; i += chrsz)</span><br><span class="line">        bin[i &gt;&gt; <span class="number">5</span>] |= (str.charCodeAt(i / chrsz) &amp; mask) &lt;&lt; (<span class="number">32</span> - chrsz - i % <span class="number">32</span>);</span><br><span class="line">    <span class="keyword">return</span> bin;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an array of big-endian words to a string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binb2str</span>(<span class="params">bin</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> mask = (<span class="number">1</span> &lt;&lt; chrsz) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; bin.length * <span class="number">32</span>; i += chrsz)</span><br><span class="line">        str += <span class="built_in">String</span>.fromCharCode((bin[i &gt;&gt; <span class="number">5</span>] &gt;&gt;&gt; (<span class="number">32</span> - chrsz - i % <span class="number">32</span>)) &amp; mask);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an array of big-endian words to a hex string.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binb2hex</span>(<span class="params">binarray</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hex_tab = hexcase ? <span class="string">"0123456789ABCDEF"</span> : <span class="string">"0123456789abcdef"</span>;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; binarray.length * <span class="number">4</span>; i++) &#123;</span><br><span class="line">        str += hex_tab.charAt((binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; ((<span class="number">3</span> - i % <span class="number">4</span>) * <span class="number">8</span> + <span class="number">4</span>)) &amp; <span class="number">0xF</span>) +</span><br><span class="line">            hex_tab.charAt((binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; ((<span class="number">3</span> - i % <span class="number">4</span>) * <span class="number">8</span>)) &amp; <span class="number">0xF</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Convert an array of big-endian words to a base-64 string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binb2b64</span>(<span class="params">binarray</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tab = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; binarray.length * <span class="number">4</span>; i += <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> triplet = (((binarray[i &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * (<span class="number">3</span> - i % <span class="number">4</span>)) &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">16</span>) | (((binarray[i + <span class="number">1</span> &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * (<span class="number">3</span> - (i + <span class="number">1</span>) % <span class="number">4</span>)) &amp; <span class="number">0xFF</span>) &lt;&lt; <span class="number">8</span>) | ((binarray[i + <span class="number">2</span> &gt;&gt; <span class="number">2</span>] &gt;&gt; <span class="number">8</span> * (<span class="number">3</span> - (i + <span class="number">2</span>) % <span class="number">4</span>)) &amp; <span class="number">0xFF</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i * <span class="number">8</span> + j * <span class="number">6</span> &gt; binarray.length * <span class="number">32</span>) str += b64pad;</span><br><span class="line">            <span class="keyword">else</span> str += tab.charAt((triplet &gt;&gt; <span class="number">6</span> * (<span class="number">3</span> - j)) &amp; <span class="number">0x3F</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//#endregion SHA1算法</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://image.xuebin.me/wechatpay.JPG" alt="Leo 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://image.xuebin.me/alipay.JPG" alt="Leo 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Leo</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://xuebin.me/posts/e3043b41.html" title="常用JS加密编码算法">https://xuebin.me/posts/e3043b41.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dev/" rel="tag"># dev</a>
+          
+            <a href="/tags/代码片段/" rel="tag"># 代码片段</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/加密-解密/" rel="tag"># 加密&解密</a>
+          
+            <a href="/tags/编码/" rel="tag"># 编码</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+              <div>
+                
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/ea17ae1b.html" rel="next" title="url参数操作">
+                <i class="fa fa-chevron-left"></i> url参数操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/a787b817.html" rel="prev" title="node-mongodb">
+                node-mongodb <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars0.githubusercontent.com/u/3761566?v=3&s=460" alt="Leo">
+            
+              <p class="site-author-name" itemprop="name">Leo</p>
+              <div class="site-description motion-element" itemprop="description">😆</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93cGEucXEuY29tL21zZ3JkP3Y9MyZ1aW49NjUyODg5NTU5JnNpdGU9cXEmbWVudT15ZXM=" title="QQ &rarr; https://wpa.qq.com/msgrd?v=3&uin=652889559&site=qq&menu=yes"><i class="fa fa-fw fa-qq"></i>QQ</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vdS8xMzc4MjUyNjM3" title="微博 &rarr; https://weibo.com/u/1378252637"><i class="fa fa-fw fa-weibo"></i>微博</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:leo@xuebin.me" title="E-Mail &rarr; mailto:leo@xuebin.me"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yTGVv" title="GitHub &rarr; https://github.com/MrLeo"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly96aGFuZ21pYW8uY2Mv" title="https://zhangmiao.cc/">ZM</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9sZW8tanVseS5naXRodWIuaW8v" title="https://leo-july.github.io/">july</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UTF8编码函数"><span class="nav-number">1.</span> <span class="nav-text">UTF8编码函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Base64编码-解码函数"><span class="nav-number">2.</span> <span class="nav-text">Base64编码,解码函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MD5"><span class="nav-number">3.</span> <span class="nav-text">MD5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MD4"><span class="nav-number">4.</span> <span class="nav-text">MD4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SHA1算法"><span class="nav-number">5.</span> <span class="nav-text">SHA1算法</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+    <div id="sidebar-dimmer"></div>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1263395414&web_id=1263395414"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+
+
+
+  
+
+
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/fastclick@1/lib/fastclick.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery-lazyload@1/jquery.lazyload.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/exturl.js?v=7.0.1"></script>
+
+
+  
+  
+  
+    
+  
+
+  
+
+  
+  
+  
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://xuebin.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://xuebin.me/posts/e3043b41.html";
+    this.page.identifier = "posts/e3043b41.html";
+    this.page.title = '常用JS加密编码算法';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://xuebin.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '7qjY0VDwGw02BmgMqqGfDFO0-gzGzoHsz',
+                'X-LC-Key': 'eYX7CBXn2T7iUGa9LAUnIt9q',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+<style>
+.pdfobject-container {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+}
+</style>
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+</body>
+</html>
