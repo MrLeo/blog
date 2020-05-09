@@ -6,7 +6,7 @@ env:
     - GH_REF: github.com/MrLeo/blog.git #设置GH_REF，注意更改成自己的仓库地址
 
 language: node_js # 设置语言
-node_js: stable # 设置相应版本
+node_js: v10.16.3 # stable # 设置相应版本
 
 branches:
   only: # 只监测hexo分支
