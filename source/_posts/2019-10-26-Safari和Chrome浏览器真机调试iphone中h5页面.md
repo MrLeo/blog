@@ -1,13 +1,14 @@
 ---
 title: Safari和Chrome浏览器真机调试iphone中h5页面
+categories:
+  - 工具
+tags:
+  - dev
+  - 调试
+  - 工具
+abbrlink: 6c7d587e
 date: 2019-10-26 23:46:05
 updated: 2019-10-26 23:46:05
-categories:
-- 工具
-tags:
-- dev
-- 调试
-- 工具
 ---
 
 # 背景

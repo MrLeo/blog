@@ -23,6 +23,6 @@ dist/
 npm-debug.log.*
 .vs
 .vscode
-package-lock.json
+# package-lock.json
 .deploy_git
 Icon?

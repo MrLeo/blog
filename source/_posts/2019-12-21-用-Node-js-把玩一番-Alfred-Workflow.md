@@ -1,13 +1,14 @@
 ---
 title: 用 Node.js 把玩一番 Alfred Workflow
+categories:
+  - 工具
+tags:
+  - 效率
+  - 工具
+  - Alfred
+abbrlink: d2bbb3c7
 date: 2019-12-21 01:08:29
 updated: 2019-12-21 01:08:29
-categories:
-- 工具
-tags:
-- 效率
-- 工具
-- Alfred
 ---
 
 - [sindresorhus/alfy](https://github.com/sindresorhus/alfy)
