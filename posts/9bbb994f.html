@@ -125,7 +125,7 @@
 
 
   <meta name="description" content="运行环境 主机： Master 操作系统：Windows 2003 x64 IP 地址：192.168.1.5 数据库版本：mysql-essential-5.1.61 x64  从机： Slave 操作系统：Windows XP x32 IP 地址：192.168.1.25 数据库版本：mysql-essential-5.1.61 x32">
-<meta name="keywords" content="dev,db,mysql,同步">
+<meta name="keywords" content="dev,db,同步,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL Master&amp;Slave">
 <meta property="og:url" content="https://xuebin.me/posts/9bbb994f.html">
@@ -600,7 +600,7 @@
 </li>
 <li><p>接下来在 Slave 上检验一下是否能正确连接到 Master 上，并且具备相应的权限。</p>
 <p>在从服务器连接到主服务器 MySQL，</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">root$</span>mysql -hroot -urep -p123456</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">root$</span><span class="bash">mysql -hroot -urep -p123456</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;SHOW GRANTS;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+------------------------------------------------------------------------------+</span><br><span class="line">|Grants for root@192.168.1.25 |</span><br><span class="line">+------------------------------------------------------------------------------+</span><br><span class="line">| GRANT Select, FILE, REPLICATION SLAVE ON *.* TO &apos;root&apos;@&apos;192.168.1.25&apos; IDENTIFIED     BY PASSWORD &apos;*9FF2C222F44C7BBA5CC7E3BE8573AA4E1776278C&apos; |</span><br><span class="line">+------------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
 </li>
@@ -755,9 +755,9 @@
           
             <a href="/tags/db/" rel="tag"># db</a>
           
-            <a href="/tags/mysql/" rel="tag"># mysql</a>
-          
             <a href="/tags/同步/" rel="tag"># 同步</a>
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
           
         </div>
       

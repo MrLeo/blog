@@ -127,7 +127,7 @@
   <meta name="description" content="😆">
 <meta property="og:type" content="website">
 <meta property="og:title" content="♌">
-<meta property="og:url" content="https://xuebin.me/tags/C/index.html">
+<meta property="og:url" content="https://xuebin.me/tags/c/index.html">
 <meta property="og:site_name" content="♌">
 <meta property="og:description" content="😆">
 <meta property="og:locale" content="zh-CN">
@@ -142,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="https://xuebin.me/tags/C/">
+  <link rel="canonical" href="https://xuebin.me/tags/c/">
 
 
 
@@ -152,7 +152,7 @@
   };
 </script>
 
-  <title>标签: C# | ♌</title>
+  <title>标签: c# | ♌</title>
   
 
 
@@ -443,7 +443,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h2>C#<small>标签</small>
+        <h2>c#<small>标签</small>
         </h2>
       </div>
 
@@ -455,17 +455,69 @@
 
       <h3 class="post-title">
         
-          <a class="post-title-link" href="/posts/2c2d4cf1.html" itemprop="url">
+          <a class="post-title-link" href="/posts/ce9b377c.html" itemprop="url">
             
-              <span itemprop="name">C#开发规范</span>
+              <span itemprop="name">JSON Helper</span>
             
           </a>
         
       </h3>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-01-07T16:58:48+08:00" content="2017-01-07">
-          01-07
+        <time class="post-time" itemprop="dateCreated" datetime="2013-11-20T14:36:49+08:00" content="2013-11-20">
+          11-20
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+          <a class="post-title-link" href="/posts/aa2690c9.html" itemprop="url">
+            
+              <span itemprop="name">C# 导出 Excel</span>
+            
+          </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2013-10-31T17:19:13+08:00" content="2013-10-31">
+          10-31
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+          <a class="post-title-link" href="/posts/827e8832.html" itemprop="url">
+            
+              <span itemprop="name">csharp过滤HTML标签</span>
+            
+          </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2013-05-22T10:44:20+08:00" content="2013-05-22">
+          05-22
         </time>
       </div>
 
@@ -1771,44 +1823,6 @@ if ($('body').find('pre.mermaid').length) {
   }
 </style>
 <script>
-  $('.highlight').each(function(i, e) {
-    var $wrap = $('<div>').addClass('highlight-wrap');
-    $(e).after($wrap);
-    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
-      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
-        return $(e).text();
-      }).toArray().join('\n');
-      var ta = document.createElement('textarea');
-      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-      ta.style.top = yPosition + 'px'; // Prevent page scroll
-      ta.style.position = 'absolute';
-      ta.style.opacity = '0';
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.appendChild(ta);
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand('copy');
-      
-        if (result) $(this).text('复制成功');
-        else $(this).text('复制失败');
-      
-      ta.blur(); // For iOS
-      $(this).blur();
-    })).on('mouseleave', function(e) {
-      var $b = $(this).find('.copy-btn');
-      setTimeout(function() {
-        $b.text('复制');
-      }, 300);
-    }).append(e);
-  })
-</script>
-
-
-</body>
-</html>
-pt>
   $('.highlight').each(function(i, e) {
     var $wrap = $('<div>').addClass('highlight-wrap');
     $(e).after($wrap);
