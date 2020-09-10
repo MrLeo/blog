@@ -11,7 +11,7 @@ comments: true
 <div style="text-align:center;">我的邮箱：<a href="mailto:leo@xuebin.me">leo@xuebin.me</a></div>
 
 {% cq %}
-[notion.xuebin.me](https://notion.xuebin.me/)
+[xuebin.me](https://xuebin.me/)
 {% endcq %}
 
 |                    GitHub                    |                       segmentfault                        |                    博客园                    |                            GitBook                            |
