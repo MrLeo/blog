@@ -634,7 +634,7 @@
 <li><code>--dest</code> : 输出目录，默认 <code>dist</code>。这里我们改成 <code>lib</code></li>
 <li><code>[entry]</code>: 最后一个参数为入口文件，默认为 <code>src/App.vue</code>。这里我们指定编译 <code>packages/</code> 组件库目录。</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">	// ...</span><br><span class="line">	"lib": "vue-cli-service build --target lib --name vcolorpicker --dest lib packages/index.js"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	"lib": "vue-cli-service build --target lib --name vcolorpicker --dest lib packages/index.js"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>执行编译库命令</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run lib</span><br></pre></td></tr></table></figure>
 <p><img src="https://image.xuebin.me/006tKfTcly1g0ytwsz7byj30tg086wja.jpg" alt></p>

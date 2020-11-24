@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="♌">
 <meta property="og:description" content="字符串、URL 应该始终被单引号(‘)所包裹，initial 或 sans-serif 的专用名词无须引用起来 12345// Yep$direction: &apos;left&apos;;// Nope$direction: left; 123456789// Yep.foo &amp;#123;  background-image: url(&apos;/images/kittens.jpg&apos;);&amp;#125;// Nope.fo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-12T07:18:03.617Z">
+<meta property="og:updated_time" content="2020-11-24T23:28:47.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS字符串规范">
 <meta name="twitter:description" content="字符串、URL 应该始终被单引号(‘)所包裹，initial 或 sans-serif 的专用名词无须引用起来 12345// Yep$direction: &apos;left&apos;;// Nope$direction: left; 123456789// Yep.foo &amp;#123;  background-image: url(&apos;/images/kittens.jpg&apos;);&amp;#125;// Nope.fo">
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-09-12 15:18:03" itemprop="dateModified" datetime="2020-09-12T15:18:03+08:00">2020-09-12</time>
+                <time title="修改时间：2020-11-25 07:28:47" itemprop="dateModified" datetime="2020-11-25T07:28:47+08:00">2020-11-25</time>
               
             
           </span>
@@ -581,7 +581,7 @@
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Yep</span></span><br><span class="line"><span class="variable">$direction</span>: <span class="string">'left'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Nope</span></span><br><span class="line"><span class="variable">$direction</span>: left;</span><br></pre></td></tr></table></figure>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Yep</span></span><br><span class="line"><span class="selector-class">.foo</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: url(<span class="string">'/images/kittens.jpg'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Nope</span></span><br><span class="line"><span class="selector-class">.foo</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: url(/images/kittens.jpg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Yep</span></span><br><span class="line"><span class="variable">$font-type</span>: sans-serif;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Nope</span></span><br><span class="line"><span class="variable">$font-type</span>: <span class="string">'sans-serif'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Okay I guess</span></span><br><span class="line"><span class="variable">$font-type</span>: unquote(<span class="string">'sans-serif'</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Okay</span></span><br><span class="line">@<span class="keyword">warn</span> <span class="string">'You can\'t do that.'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Okay</span></span><br><span class="line">@<span class="keyword">warn</span> <span class="string">"You can't do that."</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Okay</span></span><br><span class="line"><span class="keyword">@warn</span> <span class="string">'You can\'t do that.'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Okay</span></span><br><span class="line"><span class="keyword">@warn</span> <span class="string">"You can't do that."</span>;</span><br></pre></td></tr></table></figure>
 
       
     </div>
