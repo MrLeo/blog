@@ -568,7 +568,7 @@
 <p>另一种方法就是，目前已经有修改后支持置顶的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25ldGNhbi9oZXhvLWdlbmVyYXRvci1pbmRleC1waW4tdG9w" title="https://github.com/netcan/hexo-generator-index-pin-top">仓库<i class="fa fa-external-link"></i></span>，可以直接用以下命令安装。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm uninstall hexo-generator-index --save</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-generator-index-pin-top --save</span></span><br></pre></td></tr></table></figure>
 <p>然后在需要置顶的文章的<code>Front-matter</code>中加上<code>top: true</code>(<em>top 的值可以是 true，也可以是 n，n 越大代表级别越高</em>)即可。比如下面这篇文章：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">hexo+GitHub博客搭建实战</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="number">-09</span><span class="number">-08</span> <span class="number">12</span><span class="string">:00:25</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">博客搭建系列</span></span><br><span class="line"><span class="attr">top:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">hexo+GitHub博客搭建实战</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="bullet">-09</span><span class="bullet">-08</span> <span class="number">12</span><span class="string">:00:25</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">博客搭建系列</span></span><br><span class="line"><span class="attr">top:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
 <p>到目前为止，置顶功能已经可以实现了。所有相关博文到这边就结束了。</p>
 <p>不过置顶的文章显示在最上面之后，如果没有明确的置顶标志，是不是感觉有点怪怪的呢？</p>
 <h2 id="设置置顶标志"><a href="#设置置顶标志" class="headerlink" title="设置置顶标志"></a>设置置顶标志</h2><p>打开：<code>/blog/themes/next/layout/_macro</code> 目录下的<code>post.swig</code>文件，定位到<code>&lt;div class=&quot;post-meta&quot;&gt;</code>标签下，插入如下代码：</p>
@@ -1354,7 +1354,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

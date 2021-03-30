@@ -748,7 +748,7 @@
 <p>nginx的所有者是root<br>我们都知道nginx的主进程需要使用root来运行,而子进程可以使用普通用户运行,<br>普通用户如果不使用<code>sudo</code>命令运行nginx时则需要获取<code>SUID</code>权限才能在nginx运行时将身份切换为root,否则就是用自己的身份来执行nginx,而恰巧在这个nginx.conf文件中设置了ssl的证书的放置位置在一些普通用户不能读取的位置或者一些普通用户不能读取的目录,所以出现了权限的错误.<br>解决的方法我总结了两种,一种是使用<code>sudo</code>来运行nginx,另一种是给nginx赋予<code>SUID</code>权限,让普通用户在执行nginx时将身份提升为nginx的所有者也就是root</p>
 <blockquote>
 <p><strong>给nginx赋予<code>SUID</code>权限</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> $ sudo chmod u+s /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> //或者$ sudo chmod 4755 /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> $ ll /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> -rwsr-xr-x 1 root root 8641260 Sep  7 14:33 /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span></span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> $ sudo chmod u+s /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> //或者$ sudo chmod 4755 /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> $ ll /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> -rwsr-xr-x 1 root root 8641260 Sep  7 14:33 /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
 <p>但是由于<code>SUID</code>权限是linux中比较危险的一种程序,假设要执行的程序的所有者是root,那么任何非sudo用户都可以在运行这个程序的时候身份都变为了root,所以这个程序可以让任何人以root身份执行,有点心里慌慌.<br>还是用<code>sudo</code>执行好一些吧,至少只有在<code>sudoers</code>列表中的用户才能以root权限执行,还必须在命令前敲<code>sudo</code>来提醒一下自己,感觉安全性是提高了不少.</p>
@@ -1535,7 +1535,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
